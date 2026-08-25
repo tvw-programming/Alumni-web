@@ -1,0 +1,25 @@
+{
+  "name": "CodeGen",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "libraries/*"
+  ],
+  "scripts": {
+    "install:all": "pnpm install",
+    "build:all": "pnpm -r run build",
+    "dev:core": "cd core && python -m uvicorn main:app --reload",
+    "dev:react": "cd apps/react-web && npm start",
+    "dev:all": "concurrently \"npm run dev:core\" \"npm run dev:react\"",
+    "test:all": "pnpm -r run test",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "export:context": "bash scripts/export-context.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "pnpm": "^8.0.0"
+  }
+}

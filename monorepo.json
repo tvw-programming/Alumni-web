@@ -1,0 +1,45 @@
+{
+  "name": "CodeGen",
+  "version": "1.0.0",
+  "description": "Unified AI workflow with multiple frontends and backends",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "libraries/*",
+    "services/*/node_modules"
+  ],
+  "projects": {
+    "core": {
+      "type": "python+react",
+      "description": "24-step AI workflow engine",
+      "path": "core/",
+      "languages": [
+        "python",
+        "javascript"
+      ]
+    },
+    "react-components": {
+      "type": "library",
+      "description": "Reusable React components",
+      "path": "libraries/react-components/",
+      "language": "javascript"
+    },
+    "python-explainer": {
+      "type": "service",
+      "description": "Python code to video",
+      "path": "services/python-explainer/",
+      "language": "python"
+    },
+    "react-web": {
+      "type": "app",
+      "description": "React UI for workflow",
+      "path": "apps/react-web/",
+      "language": "javascript"
+    }
+  },
+  "shared": {
+    "types": "packages/shared-types/",
+    "utils": "packages/shared-utils/",
+    "tokens": "packages/design-tokens/"
+  }
+}

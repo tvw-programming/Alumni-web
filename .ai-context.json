@@ -1,0 +1,89 @@
+{
+  "monorepo": {
+    "name": "CodeGen",
+    "description": "Unified AI platform with multiple services and UIs"
+  },
+  "projects": [
+    {
+      "name": "core-workflow",
+      "path": "core/",
+      "description": "24-step AI workflow orchestrator",
+      "key-files": [
+        "core/python/agents/",
+        "core/python/services/",
+        "core/react/src/App.tsx",
+        "core/python/requirements.txt"
+      ],
+      "languages": [
+        "python",
+        "javascript"
+      ],
+      "ignore": [
+        "__pycache__",
+        "node_modules",
+        "dist"
+      ]
+    },
+    {
+      "name": "react-components",
+      "path": "libraries/react-components/",
+      "description": "Reusable React component library",
+      "key-files": [
+        "src/components/",
+        "src/hooks/",
+        "src/types/index.ts",
+        "package.json"
+      ],
+      "language": "javascript",
+      "ignore": [
+        "node_modules",
+        "dist"
+      ]
+    },
+    {
+      "name": "python-explainer",
+      "path": "services/python-explainer/",
+      "description": "Convert Python code to video",
+      "key-files": [
+        "src/main.py",
+        "src/video_generator.py",
+        "requirements.txt"
+      ],
+      "language": "python",
+      "ignore": [
+        "__pycache__",
+        "venv"
+      ]
+    },
+    {
+      "name": "react-web",
+      "path": "apps/react-web/",
+      "description": "Main React UI for workflow",
+      "key-files": [
+        "src/App.tsx",
+        "src/components/",
+        "src/pages/",
+        "package.json"
+      ],
+      "language": "javascript",
+      "ignore": [
+        "node_modules",
+        "dist"
+      ]
+    }
+  ],
+  "shared": [
+    "packages/shared-types/src/index.ts",
+    "packages/design-tokens/index.ts",
+    "packages/shared-utils/src/"
+  ],
+  "ignore-globally": [
+    "node_modules",
+    "dist",
+    "build",
+    ".git",
+    "__pycache__",
+    ".venv",
+    "venv"
+  ]
+}
