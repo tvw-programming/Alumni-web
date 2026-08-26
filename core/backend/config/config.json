@@ -342,6 +342,163 @@
       },
       "enabled": false
     },
+    "local.lmstudio.qwen3coder": {
+      "driver": "openai_compatible",
+      "tier": "local",
+      "model": "${env:LMSTUDIO_MODEL:-qwen3-coder-30b-a3b-instruct}",
+      "base_url": "${env:LMSTUDIO_BASE_URL:-http://host.docker.internal:1234/v1}",
+      "auth": {
+        "type": "bearer",
+        "token_env": "LMSTUDIO_API_KEY"
+      },
+      "capabilities": [
+        "fast",
+        "coding",
+        "reasoning",
+        "security"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 2048,
+        "timeout": 1800,
+        "max_retries": 3
+      },
+      "limits": {
+        "timeout_s": 1800,
+        "rpm": 0
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "health_check": {
+        "type": "http",
+        "path": "/models"
+      },
+      "enabled": true
+    },
+    "local.lmstudio.qwen35": {
+      "driver": "openai_compatible",
+      "tier": "local",
+      "model": "${env:LMSTUDIO_FALLBACK_MODEL:-qwen/qwen3.5-9b}",
+      "base_url": "${env:LMSTUDIO_BASE_URL:-http://host.docker.internal:1234/v1}",
+      "auth": {
+        "type": "bearer",
+        "token_env": "LMSTUDIO_API_KEY"
+      },
+      "capabilities": [
+        "fast",
+        "coding",
+        "reasoning",
+        "security"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 4096,
+        "timeout": 1800,
+        "max_retries": 3,
+        "reasoning_effort": "none"
+      },
+      "limits": {
+        "timeout_s": 1800,
+        "rpm": 0
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": true
+    },
+    "free.freebuff.minimax": {
+      "driver": "openai_compatible",
+      "tier": "cloud",
+      "model": "${env:FREEBUFF_REASONING_MODEL:-MiniMax-M3}",
+      "base_url": "${env:FREEBUFF_BASE_URL:-http://host.docker.internal:8080/v1}",
+      "auth": {
+        "type": "bearer",
+        "token_env": "FREEBUFF_API_KEY"
+      },
+      "capabilities": [
+        "fast",
+        "coding",
+        "reasoning",
+        "security",
+        "vision"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 16384
+      },
+      "limits": {
+        "timeout_s": 600,
+        "rpm": 0
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "health_check": {
+        "type": "http",
+        "path": "/models"
+      },
+      "enabled": true
+    },
+    "free.freebuff.deepseek": {
+      "driver": "openai_compatible",
+      "tier": "cloud",
+      "model": "${env:FREEBUFF_CODING_MODEL:-DeepSeek-V4-Pro}",
+      "base_url": "${env:FREEBUFF_BASE_URL:-http://host.docker.internal:8080/v1}",
+      "auth": {
+        "type": "bearer",
+        "token_env": "FREEBUFF_API_KEY"
+      },
+      "capabilities": [
+        "fast",
+        "coding",
+        "reasoning",
+        "security"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 16384
+      },
+      "limits": {
+        "timeout_s": 900,
+        "rpm": 0
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": true
+    },
+    "free.freebuff.gemini": {
+      "driver": "openai_compatible",
+      "tier": "cloud",
+      "model": "${env:FREEBUFF_FAST_MODEL:-Gemini-3.1-Flash-Lite}",
+      "base_url": "${env:FREEBUFF_BASE_URL:-http://host.docker.internal:8080/v1}",
+      "auth": {
+        "type": "bearer",
+        "token_env": "FREEBUFF_API_KEY"
+      },
+      "capabilities": [
+        "fast",
+        "vision"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 8192
+      },
+      "limits": {
+        "timeout_s": 300,
+        "rpm": 0
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": true
+    },
     "mock.offline": {
       "driver": "mock",
       "tier": "mock",
@@ -1400,6 +1557,200 @@
         "budgets": {
           "per_job_usd": 5.0,
           "on_exceed": "halt_and_notify"
+        }
+      },
+      "plugins": {
+        "tracker": {
+          "driver": "file",
+          "stories_dir": "/stories",
+          "dry_run": false
+        },
+        "vcs": {
+          "dry_run": true
+        },
+        "test_runner": {
+          "dry_run": false
+        },
+        "e2e_runner": {
+          "dry_run": true
+        },
+        "sast": {
+          "dry_run": true
+        },
+        "sca": {
+          "dry_run": true
+        },
+        "secrets": {
+          "dry_run": true
+        },
+        "dast": {
+          "dry_run": true
+        },
+        "notifier": {
+          "dry_run": true
+        },
+        "dashboard": {
+          "driver": "fastapi",
+          "dry_run": false
+        }
+      },
+      "policy": {
+        "write_scope": {
+          "deny_globs": [
+            "**/.env*",
+            "**/*.pem",
+            "**/secrets/**",
+            "**/.git/**",
+            "media/**"
+          ],
+          "max_changed_files": 12,
+          "max_changed_loc": 400,
+          "migrations_require_human_signoff": true
+        }
+      },
+      "observability": {
+        "log_level": "INFO"
+      }
+    },
+    "docker-lmstudio": {
+      "app": {
+        "paths": {
+          "artifacts": "/data/artifacts/{job_id}",
+          "runs": "/data/runs/{job_id}",
+          "workspace": "/workspace",
+          "prompts": "/app/config/prompts",
+          "schema_registry": "/app/config/schemas"
+        }
+      },
+      "routing": {
+        "defaults": {
+          "fast": "local.lmstudio.qwen3coder",
+          "coding": "local.lmstudio.qwen3coder",
+          "reasoning": "local.lmstudio.qwen3coder",
+          "security": "local.lmstudio.qwen3coder",
+          "vision": "free.freebuff.minimax"
+        },
+        "fallback_chains": {
+          "fast": [
+            "local.lmstudio.qwen3coder",
+            "local.lmstudio.qwen35"
+          ],
+          "coding": [
+            "local.lmstudio.qwen3coder",
+            "local.lmstudio.qwen35"
+          ],
+          "reasoning": [
+            "local.lmstudio.qwen3coder",
+            "local.lmstudio.qwen35"
+          ],
+          "security": [
+            "local.lmstudio.qwen3coder",
+            "local.lmstudio.qwen35"
+          ],
+          "vision": [
+            "free.freebuff.minimax"
+          ]
+        },
+        "budgets": {
+          "per_job_usd": 0.0
+        }
+      },
+      "plugins": {
+        "tracker": {
+          "driver": "file",
+          "stories_dir": "/stories",
+          "dry_run": false
+        },
+        "vcs": {
+          "dry_run": true
+        },
+        "test_runner": {
+          "dry_run": false
+        },
+        "e2e_runner": {
+          "dry_run": true
+        },
+        "sast": {
+          "dry_run": true
+        },
+        "sca": {
+          "dry_run": true
+        },
+        "secrets": {
+          "dry_run": true
+        },
+        "dast": {
+          "dry_run": true
+        },
+        "notifier": {
+          "dry_run": true
+        },
+        "dashboard": {
+          "driver": "fastapi",
+          "dry_run": false
+        }
+      },
+      "policy": {
+        "write_scope": {
+          "deny_globs": [
+            "**/.env*",
+            "**/*.pem",
+            "**/secrets/**",
+            "**/.git/**",
+            "media/**"
+          ],
+          "max_changed_files": 12,
+          "max_changed_loc": 400,
+          "migrations_require_human_signoff": true
+        }
+      },
+      "observability": {
+        "log_level": "INFO"
+      }
+    },
+    "docker-freebuff": {
+      "app": {
+        "paths": {
+          "artifacts": "/data/artifacts/{job_id}",
+          "runs": "/data/runs/{job_id}",
+          "workspace": "/workspace",
+          "prompts": "/app/config/prompts",
+          "schema_registry": "/app/config/schemas"
+        }
+      },
+      "routing": {
+        "defaults": {
+          "fast": "free.freebuff.gemini",
+          "coding": "free.freebuff.deepseek",
+          "reasoning": "free.freebuff.minimax",
+          "security": "free.freebuff.minimax",
+          "vision": "free.freebuff.minimax"
+        },
+        "fallback_chains": {
+          "fast": [
+            "free.freebuff.gemini",
+            "free.freebuff.deepseek",
+            "free.freebuff.minimax"
+          ],
+          "coding": [
+            "free.freebuff.deepseek",
+            "free.freebuff.minimax"
+          ],
+          "reasoning": [
+            "free.freebuff.minimax",
+            "free.freebuff.deepseek"
+          ],
+          "security": [
+            "free.freebuff.minimax",
+            "free.freebuff.deepseek"
+          ],
+          "vision": [
+            "free.freebuff.minimax",
+            "free.freebuff.gemini"
+          ]
+        },
+        "budgets": {
+          "per_job_usd": 0.0
         }
       },
       "plugins": {

@@ -8,7 +8,7 @@ to boot into something useful on first start.
 Format is YAML-ish front matter plus markdown:
 
     ---
-    key: DEEP-2041
+    key: DEEP-2042
     title: Implement user profile avatar upload feature
     priority: High
     labels: [profile, media]

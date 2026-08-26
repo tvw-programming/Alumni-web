@@ -65,7 +65,7 @@ TITLE_CHARS = 15
 
 
 def safe_folder_name(jira_id: str, title: str) -> str:
-    """`DEEP-2041` + `Implement user profile…` -> `DEEP-2041-implement-user`.
+    """`DEEP-2042` + `Implement user profile…` -> `DEEP-2042-implement-user`.
 
     The result has to be a legal directory name on macOS, Linux and Windows, so
     everything outside [A-Za-z0-9._-] becomes a hyphen, runs collapse, and the

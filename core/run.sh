@@ -81,7 +81,7 @@ for i in $(seq 1 60); do
 done
 
 # --- report -----------------------------------------------------------------
-STORY="${CODEGEN_STORY:-DEEP-2041}"
+STORY="${CODEGEN_STORY:-DEEP-2042}"
 cat <<BANNER
 
   ${AMBER}CodeGen Core is running.${OFF}

@@ -1,4 +1,4 @@
-"""Profile reads and renames — the behaviour that exists before DEEP-2041."""
+"""Profile reads and renames — the behaviour that exists before DEEP-2042."""
 
 from .conftest import PRIYA, TOM
 
@@ -20,7 +20,7 @@ def test_read_one_profile(client):
 
 
 def test_profile_falls_back_to_initials(client):
-    """The state DEEP-2041 replaces: no avatar means initials."""
+    """The state DEEP-2042 replaces: no avatar means initials."""
     body = client.get(f"/api/v1/users/{PRIYA}").json()
     assert body["avatar_url"] is None and body["initials"] == "PR"
 

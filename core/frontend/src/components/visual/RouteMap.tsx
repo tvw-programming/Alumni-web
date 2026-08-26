@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import type { RemediationEdge, RunStep, StepAction } from '../../types/workflow';
 import type { VisualVariant } from '../../data/visualVariants';
+import { focusedStep, useKeepStepInView } from '../../hooks/useKeepStepInView';
 import { fonts, tokens } from '../../theme';
 import RouteConnector from './RouteConnector';
 import TruckCard from './TruckCard';
@@ -64,19 +65,10 @@ export default function RouteMap({
   const horizontal = orientation === 'horizontal';
   const cleared = steps.filter((s) => routeStatus(s) === 'cleared').length;
 
-  // Keep whatever the run is working on in view, without scrolling the page.
-  useEffect(() => {
-    if (!horizontal || !viewport.current) return;
-    const node = viewport.current;
-    const active = node.querySelector<HTMLElement>('[aria-current="step"]');
-    if (!active) return;
-    const nodeRect = node.getBoundingClientRect();
-    const activeRect = active.getBoundingClientRect();
-    node.scrollTo({
-      left: node.scrollLeft + activeRect.left - nodeRect.left - node.clientWidth / 2 + activeRect.width / 2,
-      behavior: 'smooth',
-    });
-  }, [horizontal, steps]);
+  // Keep whatever the run is working on — or stuck on — in view, in either
+  // orientation. The old version only handled horizontal and centred on the
+  // first card claiming aria-current, which every waiting gate does.
+  useKeepStepInView(viewport, focusedStep(steps)?.step ?? null, orientation);
 
   return (
     <Box>
@@ -128,6 +120,7 @@ export default function RouteMap({
           {steps.map((step, index) => (
             <Box
               key={step.step}
+              data-step={step.step}
               sx={{
                 display: 'flex',
                 flexDirection: horizontal ? 'row' : 'column',

@@ -11,7 +11,7 @@ import {
 } from '../api/client';
 import type { RevisionUpload } from '../api/client';
 
-export const REFRESH_INTERVAL_MS = 600_000;
+export const REFRESH_INTERVAL_MS = 120_000;
 
 interface UseRunResult {
   /** Null until the first poll lands when talking to a live orchestrator. */

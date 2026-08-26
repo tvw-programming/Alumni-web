@@ -44,12 +44,12 @@ shell: ## Bash inside the backend container
 	@$(COMPOSE) exec backend /bin/bash
 
 .PHONY: cli
-cli: ## Run a codegen-core command, e.g. make cli ARGS="status DEEP-2041-ab12cd"
+cli: ## Run a codegen-core command, e.g. make cli ARGS="status DEEP-2042-ab12cd"
 	@$(COMPOSE) exec backend python -m codegen_core.cli $(ARGS)
 
 .PHONY: run-story
-run-story: ## Start a fresh run: make run-story STORY=DEEP-2041
-	@$(COMPOSE) exec backend python -m codegen_core.cli run $(or $(STORY),DEEP-2041)
+run-story: ## Start a fresh run: make run-story STORY=DEEP-2042
+	@$(COMPOSE) exec backend python -m codegen_core.cli run $(or $(STORY),DEEP-2042)
 
 .PHONY: gates
 gates: ## Show gates waiting on a human

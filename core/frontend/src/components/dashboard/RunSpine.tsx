@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { Box, Chip, IconButton, Stack, Tooltip, Typography } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import Timeline from '@mui/lab/Timeline';
@@ -10,6 +11,7 @@ import GavelIcon from '@mui/icons-material/Gavel';
 import LaunchIcon from '@mui/icons-material/OpenInNew';
 import ReplayIcon from '@mui/icons-material/Replay';
 import type { RemediationEdge, RunStep, StepAction } from '../../types/workflow';
+import { focusedStep, useKeepStepInView } from '../../hooks/useKeepStepInView';
 import { fonts, kindMeta, statusMeta, tokens } from '../../theme';
 import StatusChip from './StatusChip';
 import ActionButtons, { isInspectable } from './ActionButtons';
@@ -42,9 +44,15 @@ function duration(ms: number | null): string {
  */
 export default function RunSpine({ steps, edges, onInspect, onAction, busy }: Props) {
   const activeEdge = (step: number) => edges.find((e) => e.from === step && e.loopsUsed > 0);
+  const rail = useRef<HTMLUListElement | null>(null);
+
+  // The rail runs down the page rather than inside a scrolling box, so this
+  // centres the step in the window. Same rule as the route map.
+  useKeepStepInView(rail, focusedStep(steps)?.step ?? null, 'vertical');
 
   return (
     <Timeline
+      ref={rail}
       sx={{
         p: 0,
         m: 0,
@@ -61,7 +69,7 @@ export default function RunSpine({ steps, edges, onInspect, onAction, busy }: Pr
 
         if (isGate) {
           return (
-            <TimelineItem key={step.step} sx={{ minHeight: 'auto' }}>
+            <TimelineItem key={step.step} data-step={step.step} sx={{ minHeight: 'auto' }}>
               <TimelineSeparator sx={{ display: 'none' }} />
               <TimelineContent sx={{ px: 0, py: 1 }}>
                 <Box
@@ -131,7 +139,7 @@ export default function RunSpine({ steps, edges, onInspect, onAction, busy }: Pr
         }
 
         return (
-          <TimelineItem key={step.step} sx={{ minHeight: 62 }}>
+          <TimelineItem key={step.step} data-step={step.step} sx={{ minHeight: 62 }}>
             <TimelineSeparator>
               <TimelineDot
                 sx={{

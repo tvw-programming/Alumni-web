@@ -32,6 +32,6 @@ app/
 
 ## The open story
 
-`stories/DEEP-2041.md` asks for avatar upload. The pieces it should build on
+`stories/DEEP-2042.md` asks for avatar upload. The pieces it should build on
 already exist: `LocalFileStorage` handles where a file lands and what URL points
 at it, and `UserService.authorise` is the single place ownership is checked.

@@ -22,7 +22,7 @@ core/
 │   ├── src/codegen_core/         was src/deepage/
 │   ├── config/config.json        models, prompts, budgets, gates, remediation
 │   ├── tests/                    149 tests
-│   ├── stories/DEEP-2041.md      the predefined story
+│   ├── stories/DEEP-2042.md      the predefined story
 │   ├── sample-project/           was the repo-root workspace/ — the FastAPI
 │   │                             service the pipeline implements against
 │   ├── artifacts/, runs/         39 sample runs, tracked so the dashboard has

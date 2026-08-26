@@ -160,7 +160,7 @@ export default function StartRunDialog({ open, busy, onClose, onStart }: Props) 
             autoFocus
             size="small"
             label="Jira story number"
-            placeholder="DEEP-2041"
+            placeholder="DEEP-2042"
             required
             value={jiraId}
             onChange={(e) => setJiraId(e.target.value)}

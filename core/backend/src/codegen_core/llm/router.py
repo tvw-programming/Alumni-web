@@ -11,10 +11,20 @@ finds a different one.
 
 from __future__ import annotations
 
+import time
 from typing import Any
 
-from ..core.errors import ConfigError
+from ..core.errors import BackendError, ConfigError
+from ..core.telemetry import log
 from .base import BaseBackend, Capability, Completion
+
+#: A backend that dies mid-generation - a local server killed for memory, a
+#: socket closed by a restart - has not been misconfigured, so give it a chance
+#: to come back before demoting the step to a different model. The attempt
+#: itself is what waits out a reload: a server that reloads on demand blocks the
+#: request while it does, which is why these backoffs are short.
+BACKEND_ATTEMPTS = 3
+BACKEND_BACKOFF_S = 5.0
 
 
 class LLMRouter:
@@ -69,12 +79,26 @@ class LLMRouter:
         ]
         last: Exception | None = None
         for b in chain:
-            try:
-                return b.complete(system, user, **params), b
-            except Exception as exc:  # noqa: BLE001 - fall through to next backend
-                tried.append(f"{b.id}: {exc}")
-                last = exc
-        raise ConfigError(f"step {step:02d}: every backend failed -> {tried}") from last
+            for attempt in range(1, BACKEND_ATTEMPTS + 1):
+                try:
+                    return b.complete(system, user, **params), b
+                except Exception as exc:  # noqa: BLE001 - retry, then next backend
+                    last = exc
+                    if attempt < BACKEND_ATTEMPTS:
+                        log.warning(
+                            "backend call failed, retrying",
+                            extra={"extra_fields": {
+                                "step": step, "backend": b.id, "attempt": attempt,
+                                "error": str(exc)[:200],
+                            }},
+                        )
+                        time.sleep(BACKEND_BACKOFF_S * attempt)
+            tried.append(f"{b.id}: {last}")
+        # BackendError, not ConfigError: every backend having failed at run time
+        # is a transient condition the step's own retry policy may survive, and
+        # RetryPolicy only retries BackendError. A routing mistake still raises
+        # ConfigError, from backend_for, before any of this runs.
+        raise BackendError(f"step {step:02d}: every backend failed -> {tried}") from last
 
     def explain(self, step: int) -> dict[str, Any]:
         b = self.backend_for(step)

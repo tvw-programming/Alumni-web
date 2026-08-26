@@ -10,7 +10,7 @@
 # ---------------------------------------------------------------------------
 set -euo pipefail
 
-STORY="${CODEGEN_STORY:-DEEP-2041}"
+STORY="${CODEGEN_STORY:-DEEP-2042}"
 PROFILE="${CODEGEN_PROFILE:-docker}"
 # Nothing starts a pipeline on its own. A developer starts a run from the
 # dashboard, or with `codegen-core run`, and until they do the stack is idle. Set

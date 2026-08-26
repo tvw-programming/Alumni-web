@@ -1,6 +1,10 @@
 """Reviewer isolation is enforced against the journal, not by convention."""
 
+import pytest
+
 from codegen_core.core.context import JobContext
+from codegen_core.core.errors import BackendError
+from codegen_core.llm.base import Completion
 from codegen_core.llm.factory import build_backends
 from codegen_core.llm.router import LLMRouter
 
@@ -41,3 +45,41 @@ def test_unknown_driver_is_rejected(cfg):
     object.__setattr__(broken.backends["mock.offline"], "driver", "telepathy")
     with pytest.raises(ConfigError, match="unknown driver"):
         build_backends(broken)
+
+
+def test_a_backend_that_dies_is_retried_before_the_step_is_demoted(cfg, ctx, monkeypatch):
+    """A local server killed for memory comes back; a reviewer swap is not the
+    right answer to a transient death."""
+    from codegen_core.llm import router as router_mod
+
+    monkeypatch.setattr(router_mod, "BACKEND_BACKOFF_S", 0)
+    r = _router(cfg, ctx)
+    chosen = r.backend_for(2)
+    calls = {"n": 0}
+
+    def flaky(system, user, **params):
+        calls["n"] += 1
+        if calls["n"] < 3:
+            raise BackendError("terminated")
+        return Completion("{}", 1, 1)
+
+    monkeypatch.setattr(chosen, "complete", flaky)
+    completion, used = r.complete(2, "sys", "usr")
+    assert calls["n"] == 3
+    assert used is chosen  # never demoted to another model
+
+
+def test_every_backend_failing_is_a_backend_error_not_a_config_error(cfg, ctx, monkeypatch):
+    """RetryPolicy only retries BackendError, and a run-time death is not a
+    configuration mistake."""
+    from codegen_core.llm import router as router_mod
+
+    monkeypatch.setattr(router_mod, "BACKEND_BACKOFF_S", 0)
+    r = _router(cfg, ctx)
+    for backend in r.backends.values():
+        monkeypatch.setattr(
+            backend, "complete",
+            lambda *a, **k: (_ for _ in ()).throw(BackendError("terminated")),
+        )
+    with pytest.raises(BackendError, match="every backend failed"):
+        r.complete(2, "sys", "usr")

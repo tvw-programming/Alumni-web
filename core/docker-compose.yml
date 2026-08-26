@@ -35,14 +35,33 @@ services:
     restart: unless-stopped
 
     environment:
-      CODEGEN_PROFILE: ${CODEGEN_PROFILE:-docker}
-      CODEGEN_STORY: ${CODEGEN_STORY:-DEEP-2041}
+      # Every capability routes to the model loaded in LM Studio on the Mac.
+      # CODEGEN_PROFILE=docker-freebuff uses the free gateway instead;
+      # CODEGEN_PROFILE=docker goes back to mocked, offline, zero-network.
+      CODEGEN_PROFILE: ${CODEGEN_PROFILE:-docker-lmstudio}
+      CODEGEN_STORY: ${CODEGEN_STORY:-DEEP-2042}
       CODEGEN_SEED_RUN: ${CODEGEN_SEED_RUN:-0}
       CODEGEN_SEED_STOP: ${CODEGEN_SEED_STOP:-5}
       CODEGEN_WATCH_INTERVAL: ${CODEGEN_WATCH_INTERVAL:-3}
       # Only read when you switch to the docker-cloud profile.
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      # Only read by the docker-lmstudio profile. LM Studio runs on the Mac, so
+      # the container reaches its server through host.docker.internal. The key is
+      # ignored by LM Studio but the OpenAI client refuses to send an empty one.
+      LMSTUDIO_API_KEY: ${LMSTUDIO_API_KEY:-lm-studio}
+      LMSTUDIO_BASE_URL: ${LMSTUDIO_BASE_URL:-http://host.docker.internal:1234/v1}
+      LMSTUDIO_MODEL: ${LMSTUDIO_MODEL:-qwen3-coder-30b-a3b-instruct}
+      # Taken when the model above fails, and by steps 13 and 23, which review
+      # what 12 and 15 wrote and so must not run on the same model.
+      LMSTUDIO_FALLBACK_MODEL: ${LMSTUDIO_FALLBACK_MODEL:-qwen/qwen3.5-9b}
+      # Only read by the docker-freebuff profile. The gateway runs on the Mac,
+      # so the default base_url reaches it through host.docker.internal.
+      FREEBUFF_API_KEY: ${FREEBUFF_API_KEY:-freebuff}
+      FREEBUFF_BASE_URL: ${FREEBUFF_BASE_URL:-http://host.docker.internal:8080/v1}
+      FREEBUFF_FAST_MODEL: ${FREEBUFF_FAST_MODEL:-Gemini-3.1-Flash-Lite}
+      FREEBUFF_CODING_MODEL: ${FREEBUFF_CODING_MODEL:-DeepSeek-V4-Pro}
+      FREEBUFF_REASONING_MODEL: ${FREEBUFF_REASONING_MODEL:-MiniMax-M3}
       MEDIA_ROOT: /workspace/media
 
     volumes:

@@ -60,7 +60,9 @@ src/codegen_core/core/        protocol + kernel (config, envelope, artifacts, po
                          ledger = per-story idempotency, story_input = typed-in
                          story details that stand in for the tracker)
 src/codegen_core/llm/         6 drivers + capability router
-src/codegen_core/steps/       NN_name.py, one per stage, each exports STEP
+src/codegen_core/steps/       NN_name.py, one per stage, each exports STEP,
+                         grouped into a directory per pipeline phase
+                         (requirements, design, build, validate, publish, gates)
 src/codegen_core/tools/       deterministic helpers; file_write_guard.py is critical
 src/codegen_core/plugins/     external systems, vendor chosen by config
 src/codegen_core/schemas/     pydantic contracts, versioned (V1, V2 - never edit V1)
@@ -73,6 +75,10 @@ config/prompts/*.md      prompt text (never in JSON)
 - Step files are `NN_snake_case.py` and export exactly one `STEP`. Python cannot
   import a module starting with a digit, so `steps/_loader.py` loads by path.
   Inside the file write `step = 6`, not `06` — the latter is a syntax error.
+  They live in a directory per pipeline phase, which the loader discovers
+  recursively; the numeric prefix alone decides order, so moving a file between
+  phases changes nothing about how it runs. Two files claiming the same number
+  is a hard error.
 - Artifacts: `NN_slug[__variant]__JOB__vK.ext`. Extension is enforced by output
   class: structured `.json`, document `.pdf`/`.docx`, error `.jpg`, spec `.md`.
 - Schemas are append-only. Add `V2`, never mutate `V1`.

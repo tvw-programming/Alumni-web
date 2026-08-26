@@ -69,7 +69,7 @@ Which driver is active depends on the profile:
 | base / `local` (default) | `driver: "jira"`, `local` adds `dry_run: true` | Fixture story, no network |
 | `docker`, `docker-ollama`, `docker-cloud` | `driver: "file"`, `stories_dir: "/stories"` | Reads `stories/<KEY>.md` |
 
-Today `stories/` has exactly one file, `DEEP-2041.md` — the file driver can
+Today `stories/` has exactly one file, `DEEP-2042.md` — the file driver can
 only resolve that key until you add more.
 
 **To point at a real Jira instance**: set `JIRA_URL`/`JIRA_USER`/`JIRA_TOKEN`
@@ -78,7 +78,7 @@ or set `plugins.tracker.dry_run` to `false` explicitly in whichever profile
 you're running.
 
 **To add a local fixture story**: drop `stories/<YOUR-KEY>.md` in the same
-shape as `DEEP-2041.md`, run under a `docker*` profile (or override
+shape as `DEEP-2042.md`, run under a `docker*` profile (or override
 `plugins.tracker.driver` to `"file"` yourself).
 
 The third source — the one actually used most of the time — is per-run, not

@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.mark.parametrize(
     ("jira", "title", "expected"),
     [
-        ("DEEP-2041", "Implement user profile avatar upload", "DEEP-2041-implement-user"),
+        ("DEEP-2042", "Implement user profile avatar upload", "DEEP-2042-implement-user"),
         # Only the first 15 characters of the title are used.
         ("DEEP-7", "Add export", "DEEP-7-add-export"),
         # Path separators, colons and the rest cannot survive into a folder name.
@@ -47,19 +47,19 @@ def test_story_folder_names_are_portable(jira, title, expected):
 
 
 def test_story_folder_names_contain_no_illegal_characters():
-    name = safe_folder_name("DEEP-2041", 'weird: "name" <with> every/thing\\bad|here?*')
+    name = safe_folder_name("DEEP-2042", 'weird: "name" <with> every/thing\\bad|here?*')
     assert not set(name) & set('<>:"/\\|?*')
     assert name == name.strip(". ")
 
 
 def test_artifacts_land_in_the_story_folder(ctx):
-    ctx.artifacts.bind_story("DEEP-2041", "Implement user profile avatar upload")
+    ctx.artifacts.bind_story("DEEP-2042", "Implement user profile avatar upload")
 
     md = ctx.artifacts.write(5, "brd", "# BRD", ext="md", output_class="specification")
     pdf = ctx.artifacts.write(5, "brd", b"%PDF-1.4", ext="pdf", output_class="document")
     js = ctx.artifacts.write(5, "brd", {"ok": True}, ext="json")
 
-    folder = ctx.artifacts.root / "DEEP-2041-implement-user"
+    folder = ctx.artifacts.root / "DEEP-2042-implement-user"
     assert folder.is_dir()
     for uri in (md, pdf, js):
         path = ctx.artifacts.local_path(uri)
@@ -67,13 +67,13 @@ def test_artifacts_land_in_the_story_folder(ctx):
         assert path.is_file()
 
     # The index records the folder, so readers never have to guess it.
-    assert all(e["dir"] == "DEEP-2041-implement-user" for e in ctx.artifacts.index())
+    assert all(e["dir"] == "DEEP-2042-implement-user" for e in ctx.artifacts.index())
 
 
 def test_the_index_stays_at_the_job_root(ctx):
     """The index is about the run, not about one story inside it."""
-    ctx.artifacts.bind_story("DEEP-2041", "Anything at all")
-    ctx.artifacts.write(1, "jira_story", {"key": "DEEP-2041"}, ext="json")
+    ctx.artifacts.bind_story("DEEP-2042", "Anything at all")
+    ctx.artifacts.write(1, "jira_story", {"key": "DEEP-2042"}, ext="json")
     assert ctx.artifacts.index_path.parent == ctx.artifacts.root
 
 

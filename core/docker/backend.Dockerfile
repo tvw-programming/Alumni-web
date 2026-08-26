@@ -43,7 +43,8 @@ RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked \
       "httpx" \
       "pytest>=8" "pytest-cov" "pytest-json-report" \
       "reportlab" "pillow" \
-      "pymupdf" "python-docx"
+      "pymupdf" "python-docx" \
+      "langchain-openai>=0.3"
 
 
 # --- runtime ----------------------------------------------------------------
@@ -72,7 +73,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh \
 ENV PYTHONPATH=/app/src \
     CODEGEN_CONFIG=/app/config/config.json \
     CODEGEN_PROFILE=docker \
-    CODEGEN_STORY=DEEP-2041 \
+    CODEGEN_STORY=DEEP-2042 \
     PATH="/home/codegen/.local/bin:${PATH}"
 
 USER codegen

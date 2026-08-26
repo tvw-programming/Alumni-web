@@ -49,4 +49,4 @@ def update_display_name(
         raise HTTPException(422, str(exc)) from exc
 
 
-# DEEP-2041 adds avatar upload, replace and remove routes below this line.
+# DEEP-2042 adds avatar upload, replace and remove routes below this line.

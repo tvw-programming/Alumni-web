@@ -73,7 +73,7 @@ correct the path, or set app.project.must_exist=false to let the run create it.
 
 Artifacts are written to `<app.paths.artifacts>/<story folder>`, where the story
 folder is the Jira id plus the first 15 characters of the story title, sanitised
-for every supported OS — `DEEP-2041-implement-user`. Step 01 binds it as soon as
+for every supported OS — `DEEP-2042-implement-user`. Step 01 binds it as soon as
 the ticket is in hand, so the JSON, Markdown, PDF and DOCX of one story sit
 together. The artifact index records the folder per entry (`dir`), and readers
 resolve through `ArtifactStore.local_path()` rather than assuming a layout.
@@ -202,7 +202,7 @@ The run does **not** resume on the strength of an upload. It waits for a fresh
 decision on the new document, which is the whole point of the gate.
 
 ```bash
-codegen-core revise DEEP-2041-9b607e 6 ./brd-v2.md --as priya.raman --role product_owner
+codegen-core revise DEEP-2042-9b607e 6 ./brd-v2.md --as priya.raman --role product_owner
 ```
 
 ## What is not in config.json

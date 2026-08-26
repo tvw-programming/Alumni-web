@@ -8,6 +8,14 @@ import-safe alias `codegen_core.steps.step_01_jira_story_extraction`.
 Each step file must export exactly one object named STEP, whose .step attribute
 matches its filename prefix. A mismatch is a hard error - a silently misnumbered
 step would corrupt artifact names and the journal.
+
+Files are grouped into one directory per pipeline phase - requirements, design,
+build, validate, publish, gates - matching PHASES in dashboard/presenter.py and
+the phase stepper in the UI. Discovery is recursive and ordering comes from the
+numeric prefix alone, so which directory a step sits in is presentation only:
+moving a file between phases changes nothing about how it runs. The alias each
+module is registered under is unchanged by the nesting, which is why the step
+files' relative imports still resolve against codegen_core.steps.
 """
 
 from __future__ import annotations
@@ -29,11 +37,28 @@ def load_steps(cfg: Any, steps_dir: Path | None = None) -> dict[int, Component]:
     steps_dir = steps_dir or STEPS_DIR
     registry: dict[int, Component] = {}
 
-    for path in sorted(steps_dir.glob("[0-9][0-9]_*.py")):
-        m = STEP_RE.match(path.name)
-        if not m:
+    # Resolve the whole file set before loading any of it. One flat directory
+    # made a duplicate step number impossible; phase directories do not, and two
+    # files claiming step 12 would leave whichever sorted last silently in charge
+    # of the run. Checking upfront also means the clash is reported as a clash,
+    # rather than as whatever error the first of the two happens to raise.
+    by_number: dict[int, Path] = {}
+    for path in sorted(steps_dir.rglob("[0-9][0-9]_*.py"), key=lambda p: p.name):
+        if not STEP_RE.match(path.name):
             raise ConfigError(f"step file violates the naming convention: {path.name}")
-        num, slug = int(m.group(1)), m.group(2)
+        num = int(path.name[:2])
+        if num in by_number:
+            first = by_number[num]
+            raise ConfigError(
+                f"step {num:02d} is defined twice: {first.parent.name}/{first.name} "
+                f"and {path.parent.name}/{path.name}"
+            )
+        by_number[num] = path
+
+    for num, path in sorted(by_number.items()):
+        m = STEP_RE.match(path.name)
+        assert m is not None  # every path was matched above
+        slug = m.group(2)
 
         step_cfg = cfg.steps.get(f"{num:02d}")
         if step_cfg is None:

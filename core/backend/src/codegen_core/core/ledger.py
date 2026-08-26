@@ -1,6 +1,6 @@
 """What has already been produced for a story, across runs.
 
-Every `codegen-core run` mints a new job id, so a second run of DEEP-2041 shares
+Every `codegen-core run` mints a new job id, so a second run of DEEP-2042 shares
 nothing with the first: it regenerates the same analysis, the same context spec
 and the same BRD from the same ticket, and pays for all of it again. The journal
 already stops a *resumed* run repeating itself; nothing stopped a new one.

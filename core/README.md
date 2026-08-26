@@ -108,7 +108,7 @@ gates are never reused: they always run, and always wait for a person.
 
 ## The story it's implementing
 
-`backend/stories/DEEP-2041.md` — *Implement user profile avatar upload feature*.
+`backend/stories/DEEP-2042.md` — *Implement user profile avatar upload feature*.
 
 Five acceptance criteria, an explicit out-of-scope list, and one unresolved
 question about retention. It's written the way a decent ticket is written,
@@ -148,7 +148,7 @@ backend/sample-project/
 ├── app/
 │   ├── api/users.py              routes, one router per resource
 │   ├── services/user_service.py  business logic and ownership checks
-│   ├── services/storage.py       file storage — what DEEP-2041 should reuse
+│   ├── services/storage.py       file storage — what DEEP-2042 should reuse
 │   ├── repositories/             persistence
 │   ├── models/user.py            domain model and profile response
 │   └── deps.py                   request dependencies
@@ -213,8 +213,8 @@ make reset       clean, and restore backend/sample-project/ to its original stat
 make test        orchestrator suite, then the sample project's suite
 make shell       bash inside the orchestrator
 make gates       which gates are waiting on a human
-make cli ARGS="status DEEP-2041-ab12cd"
-make run-story STORY=DEEP-2041
+make cli ARGS="status DEEP-2042-ab12cd"
+make run-story STORY=DEEP-2042
 ```
 
 ---
@@ -237,7 +237,7 @@ core/
 │   ├── src/codegen_core/         steps, orchestrator, llm, plugins, tools
 │   ├── config/config.json        models, prompts, budgets, gates
 │   ├── tests/                    the orchestrator suite
-│   ├── stories/DEEP-2041.md      the predefined story
+│   ├── stories/DEEP-2042.md      the predefined story
 │   ├── sample-project/           the project the agent edits
 │   ├── artifacts/, runs/         sample run data the dashboard renders
 │   └── docs/                     architecture, safety model, step reference

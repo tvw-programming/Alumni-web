@@ -174,7 +174,7 @@ export default function DashboardPage({ controller }: Props) {
                 Start a run
               </Button>
               <Typography variant="caption" sx={{ color: 'text.secondary', fontFamily: fonts.mono }}>
-                or: codegen-core run DEEP-2041 --title "…" --criteria "AC-1 …"
+                or: codegen-core run DEEP-2042 --title "…" --criteria "AC-1 …"
               </Typography>
             </>
           ) : (

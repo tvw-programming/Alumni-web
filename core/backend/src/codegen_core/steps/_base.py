@@ -28,6 +28,50 @@ never invent content that is not supported by the inputs you were given.
 """.strip()
 
 
+def _json_type(prop: dict[str, Any], defs: dict[str, Any]) -> str:
+    """The JSON type a field wants, phrased the way a prompt can state it.
+
+    A nested model is named by its keys rather than left as "object": the one
+    place that detail is load-bearing is AmbiguityReportV1.questions_for_human,
+    whose `blocks_step` decides whether the run halts for a human.
+    """
+    if "$ref" in prop:
+        nested = defs.get(prop["$ref"].rsplit("/", 1)[-1], {})
+        keys = ", ".join(nested.get("properties", {}))
+        return f"object with keys: {keys}" if keys else "object"
+    if "anyOf" in prop:
+        named = [_json_type(o, defs) for o in prop["anyOf"] if o.get("type") != "null"]
+        return named[0] if named else "any"
+    kind = prop.get("type")
+    if kind == "array":
+        return f"array of {_json_type(prop.get('items', {}), defs)}"
+    if kind == "object":
+        values = prop.get("additionalProperties")
+        return f"object of {_json_type(values, defs)}" if isinstance(values, dict) else "object"
+    return {"integer": "number", "boolean": "true or false"}.get(kind, kind or "any")
+
+
+def field_spec(schema_id: str) -> str:
+    """The fields of a schema, one per line, as types a model can honour.
+
+    Naming the schema is enough for the mock backend, which keys off the name
+    alone. A real model has to be told the shape: asked for ProjectContextV1
+    without it, a local model returns `"architecture": []` where the schema
+    wants a string, and strict validation rejects the step.
+    """
+    model_cls = REGISTRY.get(schema_id)
+    if model_cls is None:
+        return ""
+    schema = model_cls.model_json_schema()
+    defs = schema.get("$defs", {})
+    required = set(schema.get("required", []))
+    lines = [
+        f"- {name}: {_json_type(prop, defs)}" + (" (required)" if name in required else "")
+        for name, prop in schema.get("properties", {}).items()
+    ]
+    return f"### {schema_id} fields\n" + "\n".join(lines) if lines else ""
+
+
 class JsonAgentStep(Agent):
     """An agent whose entire output is one validated JSON artifact."""
 
@@ -48,6 +92,9 @@ class JsonAgentStep(Agent):
             if data is not None:
                 blocks.append(f"## {schema_id}\n```json\n{json.dumps(data, indent=2)}\n```")
         blocks.append(SCHEMA_INSTRUCTION.format(schema_id=self.emits))
+        spec = field_spec(self.emits)
+        if spec:
+            blocks.append(spec)
         return "\n\n".join(blocks)
 
     def post_process(self, payload: dict, ctx: Any) -> dict:

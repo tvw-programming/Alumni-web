@@ -7,12 +7,17 @@ Add step $1 named `$2` of kind `$3`.
 
 Do all of the following, in this order:
 
-1. Create `src/codegen_core/steps/$1_$2.py`.
+1. Create `src/codegen_core/steps/<phase>/$1_$2.py`, where `<phase>` is the one
+   the step number falls in: `requirements` (01-05), `design` (07-11), `build`
+   (12-15), `validate` (16-19), `publish` (20-23), `gates` (06, 24). Discovery is
+   recursive and ordering comes from the numeric prefix, so the directory is
+   presentation only — but keep it honest with `PHASES` in
+   `dashboard/presenter.py`, which is what the UI's phase stepper reads.
    - Start with a module docstring in the house style: one line naming the step,
      then `Component:` and `Category:`, then a paragraph explaining *why* this
      step is that component kind rather than another. Read
-     `steps/09_impact_analysis.py` for the tone — explain the reasoning, not the
-     mechanics.
+     `steps/design/09_impact_analysis.py` for the tone — explain the reasoning,
+     not the mechanics.
    - For an agent, subclass `JsonAgentStep` from `._base` and set `emits`,
      `slug`, `consumes`, `capability`. For anything else subclass `Tool`,
      `Plugin` or `Gate` from `core.component` and implement `handle`.

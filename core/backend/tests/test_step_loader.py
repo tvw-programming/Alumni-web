@@ -43,3 +43,29 @@ def test_gates_survive_a_config_that_disables_other_steps(cfg, raw_config, tmp_p
 def test_every_step_declares_a_category(cfg):
     for step in load_steps(cfg).values():
         assert step.category, f"step {step.step} has no functional category"
+
+
+def test_phase_directories_hold_every_step(cfg):
+    """Discovery is recursive, and each step sits under its dashboard phase."""
+    from codegen_core.steps import _loader
+
+    found = {
+        int(p.name[:2]): p.parent.name
+        for p in _loader.STEPS_DIR.rglob("[0-9][0-9]_*.py")
+    }
+    assert sorted(found) == list(range(1, 25))
+    assert found[1] == "requirements"
+    assert found[12] == "build"
+    assert found[6] == found[24] == "gates"
+
+
+def test_the_same_step_number_in_two_phases_is_refused(cfg, tmp_path):
+    """A flat directory made this impossible; phase directories do not."""
+    (tmp_path / "design").mkdir()
+    (tmp_path / "build").mkdir()
+    body = "from codegen_core.core.component import Component\n"
+    (tmp_path / "design" / "12_code_update.py").write_text(body)
+    (tmp_path / "build" / "12_code_update_again.py").write_text(body)
+
+    with pytest.raises(ConfigError, match="defined twice"):
+        load_steps(cfg, steps_dir=tmp_path)
