@@ -1,0 +1,6 @@
+{
+  "brightness": { "label": "Brightness", "value": 65, "min": 0, "max": 100, "unit": "%" },
+  "volume": { "label": "Volume", "value": 40, "min": 0, "max": 100, "unit": "%" },
+  "temperature": { "label": "Temperature", "value": 22, "min": 16, "max": 30, "unit": "°C" },
+  "offline": { "label": "Fan speed", "value": 0, "min": 0, "max": 5, "unit": "" }
+}

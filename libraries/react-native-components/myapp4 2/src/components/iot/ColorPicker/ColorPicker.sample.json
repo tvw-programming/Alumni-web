@@ -1,0 +1,13 @@
+{
+  "color": "#FFAA55",
+  "brightness": 80,
+  "capability": { "supportsColor": true, "supportsTemperature": true, "supportsBrightness": true },
+  "presets": [
+    { "id": "p-1", "label": "Reading", "color": "#F5E6C8" },
+    { "id": "p-2", "label": "Relax", "color": "#FF8A5C" },
+    { "id": "p-3", "label": "Energize", "color": "#7FD1FF" },
+    { "id": "p-4", "label": "Concentrate", "color": "#FFFFFF" },
+    { "id": "p-5", "label": "Warm", "color": "#FFB870" },
+    { "id": "p-6", "label": "Cool", "color": "#AEDFFF" }
+  ]
+}

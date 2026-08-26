@@ -1,0 +1,17 @@
+{
+  "twoSeasons": [
+    { "id": "s1", "label": "Season 1", "episodeCount": 8 },
+    { "id": "s2", "label": "Season 2", "episodeCount": 6, "badge": "New episodes" }
+  ],
+  "manySeasons": [
+    { "id": "s1", "label": "Season 1", "episodeCount": 10 },
+    { "id": "s2", "label": "Season 2", "episodeCount": 10 },
+    { "id": "s3", "label": "Season 3", "episodeCount": 8 },
+    { "id": "s4", "label": "Season 4", "episodeCount": 8 },
+    { "id": "s5", "label": "Season 5", "episodeCount": 6 },
+    { "id": "s6", "label": "Season 6", "episodeCount": 6 },
+    { "id": "s7", "label": "Specials", "episodeCount": 3 },
+    { "id": "s8", "label": "Season 7", "episodeCount": 0, "disabled": true, "badge": "Unreleased" }
+  ],
+  "oneSeason": [{ "id": "s1", "label": "Season 1", "episodeCount": 6 }]
+}

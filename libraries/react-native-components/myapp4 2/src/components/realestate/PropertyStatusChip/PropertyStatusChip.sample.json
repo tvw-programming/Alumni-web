@@ -1,0 +1,12 @@
+{
+  "statuses": [
+    { "status": "ready" },
+    { "status": "underConstruction", "detail": "Possession by Dec 2027" },
+    { "status": "sold" },
+    { "status": "rented" },
+    { "status": "priceReduced", "detail": "Reduced 3 days ago" },
+    { "status": "newLaunch" },
+    { "status": "pending", "detail": "Awaiting owner confirmation" },
+    { "status": "verified", "detail": "Verified by platform on 12 Aug" }
+  ]
+}

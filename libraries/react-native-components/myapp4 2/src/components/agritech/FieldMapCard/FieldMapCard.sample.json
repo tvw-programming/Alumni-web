@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "id": "field-north",
+      "name": "North field",
+      "area": 2.4,
+      "areaUnit": "acre",
+      "cropName": "Cotton",
+      "boundary": [
+        { "latitude": 28.61, "longitude": 77.20 },
+        { "latitude": 28.612, "longitude": 77.202 },
+        { "latitude": 28.611, "longitude": 77.205 }
+      ],
+      "mapStatus": "available",
+      "stressLevel": "medium",
+      "lastMappedAt": "3 days ago"
+    },
+    {
+      "id": "field-south",
+      "name": "South plot",
+      "area": 1.1,
+      "areaUnit": "acre",
+      "cropName": "Wheat",
+      "mapStatus": "missing"
+    },
+    {
+      "id": "field-east",
+      "name": "East field",
+      "area": 3.0,
+      "areaUnit": "acre",
+      "mapStatus": "stale",
+      "lastMappedAt": "8 months ago"
+    }
+  ]
+}

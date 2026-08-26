@@ -1,0 +1,12 @@
+{
+  "records": [
+    { "id": "pr-1", "label": "Best 5K", "valueLabel": "22:14", "activityType": "Run", "achievedAt": "2026-08-18", "previousValueLabel": "23:02", "isNew": true },
+    { "id": "pr-2", "label": "Longest ride", "valueLabel": "68.4 km", "activityType": "Cycle", "achievedAt": "2026-08-10", "pendingSync": true },
+    { "id": "pr-3", "label": "Max deadlift", "valueLabel": "120 kg", "activityType": "Strength", "achievedAt": "2026-07-30", "isTied": true }
+  ],
+  "streaks": {
+    "active": { "currentDays": 6, "longestDays": 21, "status": "active", "milestoneLabel": "One more workout to reach 7 days" },
+    "protected": { "currentDays": 3, "longestDays": 21, "status": "protected" },
+    "broken": { "currentDays": 0, "longestDays": 21, "status": "broken" }
+  }
+}

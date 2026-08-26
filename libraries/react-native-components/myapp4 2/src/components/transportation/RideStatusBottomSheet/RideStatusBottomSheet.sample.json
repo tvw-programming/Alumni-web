@@ -1,0 +1,34 @@
+{
+  "searching": { "status": "searching", "connection": "connected" },
+  "driverArriving": {
+    "status": "driverArriving",
+    "eta": "4 min",
+    "connection": "connected",
+    "pickup": { "label": "12th Main Road, Indiranagar", "address": "12th Main Road, Indiranagar", "type": "current" },
+    "dropoff": { "label": "Kempegowda International Airport", "address": "Devanahalli", "type": "landmark" },
+    "driver": {
+      "id": "dr-1",
+      "name": "Rajesh Kumar",
+      "rating": 4.9,
+      "ratingCount": 3120,
+      "vehicle": { "make": "Toyota", "model": "Innova", "color": "White", "plateNumber": "KA 05 AB 1234" },
+      "verificationStatus": "verified",
+      "phoneContact": "masked",
+      "eta": "4 min"
+    }
+  },
+  "reconnecting": {
+    "status": "inTrip",
+    "connection": "reconnecting",
+    "lastUpdatedAt": "2 minutes ago",
+    "driver": {
+      "id": "dr-1",
+      "name": "Rajesh Kumar",
+      "rating": 4.9,
+      "vehicle": { "make": "Toyota", "model": "Innova", "color": "White", "plateNumber": "KA 05 AB 1234" },
+      "verificationStatus": "verified",
+      "phoneContact": "masked"
+    }
+  },
+  "failed": { "status": "failed", "connection": "connected" }
+}

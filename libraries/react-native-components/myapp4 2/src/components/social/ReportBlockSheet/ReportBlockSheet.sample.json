@@ -1,0 +1,25 @@
+{
+  "$comment": "Reason taxonomy is versioned policy content, not UI copy. `escalation` triggers the safety pathway — it is authored by the trust-and-safety team, never inferred from the label text.",
+  "policyVersion": "community-policies-v7",
+  "policyUrl": "https://example.invalid/policies/community",
+  "reasons": [
+    { "id": "spam", "label": "Spam or scam", "description": "Repetitive posting, fake offers, or attempts to defraud." },
+    { "id": "harassment", "label": "Harassment or bullying", "description": "Targeted abuse, threats, or repeated unwanted contact.", "requiresDetails": true, "escalation": "safety" },
+    { "id": "hate", "label": "Hate speech or symbols", "description": "Attacks based on protected characteristics.", "requiresDetails": true, "escalation": "safety" },
+    { "id": "selfHarm", "label": "Suicide or self-harm", "description": "Content that encourages or depicts self-harm.", "escalation": "selfHarm" },
+    { "id": "childSafety", "label": "Child safety", "description": "Content that endangers or exploits a minor.", "requiresDetails": true, "escalation": "childSafety" },
+    { "id": "violence", "label": "Violence or dangerous organisations", "escalation": "safety" },
+    { "id": "nudity", "label": "Nudity or sexual content" },
+    { "id": "misinformation", "label": "False information", "description": "Misleading claims about health, elections or public safety." },
+    { "id": "impersonation", "label": "Impersonation", "description": "Pretending to be someone else.", "requiresDetails": true },
+    { "id": "intellectualProperty", "label": "Intellectual property", "description": "Copyright or trademark infringement.", "requiresDetails": true },
+    { "id": "other", "label": "Something else", "requiresDetails": true }
+  ],
+  "targets": {
+    "post": { "targetKind": "post", "targetId": "p-1", "targetUser": { "id": "u-1", "displayName": "Maya Iyer", "handle": "@mayaiyer" } },
+    "comment": { "targetKind": "comment", "targetId": "c-4", "targetUser": { "id": "u-5", "displayName": "Sara Whitfield", "handle": "@sarawrites" } },
+    "message": { "targetKind": "message", "targetId": "m-9", "targetUser": { "id": "u-9", "displayName": "Jonas Berg", "handle": "@jonasb" } },
+    "profile": { "targetKind": "profile", "targetId": "u-8", "targetUser": { "id": "u-8", "displayName": "Elena Volkov", "handle": "@elenav" } },
+    "alreadyBlocked": { "targetKind": "profile", "targetId": "u-8", "targetUser": { "id": "u-8", "displayName": "Elena Volkov", "handle": "@elenav" } }
+  }
+}

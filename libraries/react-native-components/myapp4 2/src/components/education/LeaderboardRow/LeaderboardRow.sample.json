@@ -1,0 +1,23 @@
+{
+  "$comment": "Includes a tie, an anonymous learner, an opted-out learner, and promotion/demotion boundaries. Points are XP earned this week — never a measure of ability.",
+  "title": "Weekly leaderboard · Silver league",
+  "periodNote": "New leaderboard period starts Monday at 00:00 in your time zone.",
+  "pointsLabel": "XP",
+  "entries": [
+    { "userId": "u-1", "rank": 1, "displayName": "Ananya R.", "points": 1240, "movement": "same" },
+    { "userId": "u-2", "rank": 2, "displayName": "Marcus L.", "points": 1180, "movement": "up" },
+    { "userId": "u-3", "rank": 3, "displayName": "Wei Chen", "points": 960, "movement": "up" },
+    { "userId": "u-4", "rank": 4, "displayName": "Learner", "points": 880, "movement": "down", "privacyMode": "anonymous" },
+    { "userId": "u-5", "rank": 5, "displayName": "Sofia M.", "points": 742, "movement": "same" },
+    { "userId": "u-6", "rank": 6, "displayName": "Tejasvi W.", "points": 615, "movement": "up", "isCurrentUser": true },
+    { "userId": "u-7", "rank": 7, "displayName": "Kwame A.", "points": 615, "movement": "down", "tiedWith": 1 },
+    { "userId": "u-8", "rank": 8, "displayName": "Hidden", "points": 480, "privacyMode": "hidden" },
+    { "userId": "u-9", "rank": 9, "displayName": "Elena V.", "points": 310, "movement": "down" },
+    { "userId": "u-10", "rank": 10, "displayName": "Jonas B.", "points": 120, "movement": "down" }
+  ],
+  "boundaries": { "promotionAfterRank": 3, "demotionBeforeRank": 9 },
+  "unranked": {
+    "$note": "What a learner sees before they qualify",
+    "note": "You're not ranked yet — complete a lesson to join this week's leaderboard."
+  }
+}

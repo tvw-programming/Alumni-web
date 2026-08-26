@@ -1,0 +1,10 @@
+{
+  "people": [
+    { "id": "p-1", "name": "Maya Osei", "role": "Lead actor", "character": "Dr. Elena Cross", "avatar": { "uri": "https://images.example.com/maya-osei.jpg", "alt": "Maya Osei" }, "type": "cast" },
+    { "id": "p-2", "name": "Julian Marsh", "role": "Lead actor", "character": "Captain Reyes", "type": "cast" },
+    { "id": "p-3", "name": "Priya Chandran", "role": "Supporting actor", "character": "Nova", "avatar": { "uri": "https://images.example.com/priya-chandran.jpg", "alt": "Priya Chandran" }, "type": "cast" },
+    { "id": "p-4", "name": "Tomás Rivera", "role": "Voice cast", "character": "AI Companion (voice)", "type": "cast" },
+    { "id": "p-5", "name": "Aisha Bello", "role": "Director", "type": "crew" },
+    { "id": "p-6", "name": "Chen Wei", "role": "Creator", "type": "creator" }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "running": { "durationSeconds": 60, "remainingSeconds": 42, "status": "running", "nextExerciseLabel": "Push-ups" },
+  "urgent": { "durationSeconds": 60, "remainingSeconds": 4, "status": "running", "nextExerciseLabel": "Push-ups" },
+  "paused": { "durationSeconds": 60, "remainingSeconds": 28, "status": "paused", "nextExerciseLabel": "Push-ups" },
+  "complete": { "durationSeconds": 60, "remainingSeconds": 0, "status": "complete" }
+}

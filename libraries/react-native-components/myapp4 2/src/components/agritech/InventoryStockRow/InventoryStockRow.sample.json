@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "sku": "4521", "productName": "NPK 19:19:19 Fertilizer 1kg", "quantity": 24, "reservedQuantity": 8, "reorderPoint": 10, "unitLabel": "packs", "warehouseName": "Bengaluru FC", "status": "healthy", "updatedAt": "5 minutes ago" },
+    { "sku": "4522", "productName": "Neem Oil Bio Pesticide 500ml", "quantity": 6, "reservedQuantity": 2, "reorderPoint": 10, "unitLabel": "bottles", "warehouseName": "Bengaluru FC", "status": "low", "updatedAt": "5 minutes ago" },
+    { "sku": "4523", "productName": "Hybrid Cotton Seed Bt-II", "quantity": 0, "reorderPoint": 20, "unitLabel": "packs", "warehouseName": "Pune warehouse", "status": "outOfStock", "updatedAt": "1 hour ago" },
+    { "sku": "4524", "productName": "Urea 50kg Bag", "quantity": 140, "unitLabel": "bags", "warehouseName": "Pune warehouse", "status": "syncError" }
+  ]
+}

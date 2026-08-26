@@ -1,0 +1,42 @@
+{
+  "live": {
+    "provider": { "id": "sp-2", "name": "Ramesh Iyer" },
+    "providerLocation": { "latitude": 12.9721, "longitude": 77.6412 },
+    "destination": { "latitude": 12.9784, "longitude": 77.6408 },
+    "etaLabel": "4 minutes",
+    "distanceLabel": "1.2 km",
+    "trackingStatus": "live",
+    "canCall": true,
+    "canChat": true,
+    "syncStatus": "live",
+    "confidence": "high"
+  },
+  "pending": {
+    "trackingStatus": "pending"
+  },
+  "stale": {
+    "provider": { "id": "sp-2", "name": "Ramesh Iyer" },
+    "distanceLabel": "~2 km",
+    "trackingStatus": "stale",
+    "lastUpdatedAt": "6 minutes ago",
+    "canCall": true,
+    "canChat": true,
+    "syncStatus": "stale",
+    "confidence": "low"
+  },
+  "routeChanged": {
+    "provider": { "id": "sp-2", "name": "Ramesh Iyer" },
+    "etaLabel": "9 minutes",
+    "distanceLabel": "3.1 km",
+    "trackingStatus": "live",
+    "canCall": true,
+    "canChat": true,
+    "routeChangedNote": "Route updated due to road closure on 100ft Road.",
+    "syncStatus": "live"
+  },
+  "ended": {
+    "provider": { "id": "sp-2", "name": "Ramesh Iyer" },
+    "trackingStatus": "ended",
+    "syncStatus": "ended"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$comment": "Covers unread, mentions, typing, draft, muted, pinned, non-text previews, a request, an archived thread and a failed sync.",
+  "conversations": [
+    {
+      "id": "conv-1",
+      "kind": "group",
+      "title": "Release crew",
+      "lastMessagePreview": "Priya: Shipping at 3pm, anything red?",
+      "lastMessageKind": "text",
+      "lastMessageAt": "2026-08-20T08:02:00.000Z",
+      "unreadCount": 4,
+      "mentionCount": 1,
+      "pinned": true
+    },
+    {
+      "id": "conv-2",
+      "kind": "direct",
+      "title": "Kabir Menon",
+      "lastMessageKind": "voice",
+      "lastMessageAt": "2026-08-20T08:08:00.000Z",
+      "presence": "online",
+      "typingUsers": ["Kabir"]
+    },
+    {
+      "id": "conv-3",
+      "kind": "direct",
+      "title": "Maya Iyer",
+      "lastMessagePreview": "Sounds good — I'll send the deck tonight",
+      "lastMessageKind": "text",
+      "lastMessageAt": "2026-08-20T07:15:00.000Z",
+      "lastMessageStatus": "read",
+      "presence": "away"
+    },
+    {
+      "id": "conv-4",
+      "kind": "direct",
+      "title": "Sara Whitfield",
+      "lastMessageKind": "photo",
+      "lastMessageAt": "2026-08-19T22:40:00.000Z",
+      "unreadCount": 2,
+      "presence": "offline"
+    },
+    {
+      "id": "conv-5",
+      "kind": "direct",
+      "title": "Devansh Rao",
+      "draft": "Actually, on second thoughts about the migration —",
+      "lastMessageAt": "2026-08-19T18:00:00.000Z",
+      "lastMessageKind": "text",
+      "lastMessagePreview": "No worries, take your time"
+    },
+    {
+      "id": "conv-6",
+      "kind": "channel",
+      "title": "#engineering-announcements",
+      "lastMessagePreview": "Deploy window moved to Thursday",
+      "lastMessageKind": "text",
+      "lastMessageAt": "2026-08-19T16:00:00.000Z",
+      "muted": true,
+      "unreadCount": 27
+    },
+    {
+      "id": "conv-7",
+      "kind": "direct",
+      "title": "Priya Nair",
+      "lastMessageKind": "document",
+      "lastMessageAt": "2026-08-19T12:00:00.000Z",
+      "lastMessageStatus": "delivered",
+      "presence": "online"
+    },
+    {
+      "id": "conv-8",
+      "kind": "request",
+      "title": "Unknown number",
+      "lastMessagePreview": "Hi, is this the right number for bookings?",
+      "lastMessageKind": "text",
+      "lastMessageAt": "2026-08-19T09:00:00.000Z",
+      "unreadCount": 1
+    },
+    {
+      "id": "conv-9",
+      "kind": "direct",
+      "title": "Jonas Berg",
+      "lastMessageKind": "unavailable",
+      "lastMessageAt": "2026-08-18T14:00:00.000Z",
+      "syncFailed": true
+    },
+    {
+      "id": "conv-10",
+      "kind": "group",
+      "title": "Weekend plans (archived)",
+      "lastMessagePreview": "See you all Saturday",
+      "lastMessageKind": "text",
+      "lastMessageAt": "2026-08-10T10:00:00.000Z",
+      "archived": true
+    },
+    {
+      "id": "conv-11",
+      "kind": "group",
+      "title": "Design systems working group — components, tokens and documentation",
+      "lastMessagePreview": "Long titles wrap rather than truncating away the part that identifies the thread",
+      "lastMessageKind": "text",
+      "lastMessageAt": "2026-08-20T06:00:00.000Z",
+      "typingUsers": ["Maya", "Sara", "Kabir"]
+    }
+  ]
+}

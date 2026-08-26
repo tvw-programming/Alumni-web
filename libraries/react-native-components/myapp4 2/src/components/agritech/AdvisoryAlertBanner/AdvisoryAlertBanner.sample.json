@@ -1,0 +1,36 @@
+{
+  "alerts": [
+    {
+      "id": "advisory-rain",
+      "severity": "warning",
+      "title": "Heavy rain expected tomorrow",
+      "message": "Delay fertilizer application until after the rain to avoid runoff loss.",
+      "cropName": "Cotton",
+      "fieldName": "North field",
+      "issuedAt": "1 hour ago",
+      "source": "Regional weather advisory",
+      "actionLabel": "View recommended action"
+    },
+    {
+      "id": "advisory-pest",
+      "severity": "urgent",
+      "title": "Possible fungal disease detected",
+      "message": "Leaf imagery flagged signs consistent with early blight. Inspect your cotton field and consult an agronomist before treating.",
+      "cropName": "Cotton",
+      "fieldName": "North field",
+      "issuedAt": "20 minutes ago",
+      "source": "Crop diagnostic model, unconfirmed",
+      "actionLabel": "View diagnosis"
+    },
+    {
+      "id": "advisory-info",
+      "severity": "info",
+      "title": "Irrigation window opens today",
+      "message": "Soil moisture has dropped into the recommended irrigation range for wheat.",
+      "cropName": "Wheat",
+      "fieldName": "South plot",
+      "issuedAt": "this morning",
+      "source": "Crop calendar"
+    }
+  ]
+}

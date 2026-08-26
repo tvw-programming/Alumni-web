@@ -1,0 +1,37 @@
+{
+  "wellReviewed": {
+    "overallScore": 4.7,
+    "maxScore": 5,
+    "reviewCount": 1842,
+    "verified": true,
+    "recentReviewDate": "3 days ago",
+    "categories": [
+      { "id": "c-1", "label": "Cleanliness", "score": 4.8, "maxScore": 5, "reviewCount": 1842 },
+      { "id": "c-2", "label": "Location", "score": 4.9, "maxScore": 5, "reviewCount": 1842 },
+      { "id": "c-3", "label": "Comfort", "score": 4.6, "maxScore": 5, "reviewCount": 1842 },
+      { "id": "c-4", "label": "Facilities", "score": 4.5, "maxScore": 5, "reviewCount": 1842 },
+      { "id": "c-5", "label": "Staff", "score": 4.9, "maxScore": 5, "reviewCount": 1842 },
+      { "id": "c-6", "label": "Value for money", "score": 4.3, "maxScore": 5, "reviewCount": 1842 }
+    ],
+    "highlights": [
+      { "id": "h-1", "text": "\"Stunning beachfront property, staff went above and beyond.\"", "sentiment": "positive" },
+      { "id": "h-2", "text": "\"Breakfast buffet felt repetitive by day three.\"", "sentiment": "negative" }
+    ]
+  },
+  "lowSample": {
+    "overallScore": 4.2,
+    "maxScore": 5,
+    "reviewCount": 3,
+    "verified": true,
+    "categories": [
+      { "id": "c-7", "label": "Cleanliness", "score": 4.3, "maxScore": 5 },
+      { "id": "c-8", "label": "Location", "score": 4.0, "maxScore": 5 }
+    ]
+  },
+  "none": {
+    "overallScore": 0,
+    "maxScore": 5,
+    "reviewCount": 0,
+    "categories": []
+  }
+}

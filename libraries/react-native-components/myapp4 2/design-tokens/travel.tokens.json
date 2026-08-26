@@ -1,0 +1,90 @@
+{
+  "$description": "Domain tokens for travel, hospitality and booking. Price, availability, cancellation and freshness states must be legible without colour — every status below is paired with an icon and a word at the point of use.",
+  "brand": "travel-default",
+  "color": {
+    "light": {
+      "surfaceSearch": "#FFFFFF",
+      "surfaceSelected": "#E8F1FB",
+      "onSurfaceSelected": "#12405F",
+      "surfaceTicket": "#FFFFFF",
+      "surfaceTicketPerforation": "#E2E5E8",
+
+      "cheapest": "#2E7D32",
+      "bestValue": "#1565C0",
+      "highDemand": "#B45309",
+      "priceUp": "#B3261E",
+      "priceDown": "#2E7D32",
+
+      "verified": "#1565C0",
+      "ratingFill": "#F5A524",
+      "guestFavorite": "#B3261E",
+
+      "availableNow": "#2E7D32",
+      "limitedAvailability": "#B45309",
+      "unavailable": "#8A9099",
+      "soldOut": "#8A9099",
+
+      "freeCancellation": "#2E7D32",
+      "partialRefund": "#B45309",
+      "nonRefundable": "#B3261E",
+
+      "statusConfirmed": "#2E7D32",
+      "statusPending": "#6750A4",
+      "statusChanged": "#B45309",
+      "statusCanceled": "#8A9099",
+      "statusExpired": "#B3261E",
+
+      "freshnessFresh": "#2E7D32",
+      "freshnessStale": "#B45309",
+      "freshnessExpired": "#B3261E",
+
+      "focusRing": "#1565C0"
+    },
+    "dark": {
+      "surfaceSearch": "#1E2124",
+      "surfaceSelected": "#173042",
+      "onSurfaceSelected": "#BBDCF5",
+      "surfaceTicket": "#232629",
+      "surfaceTicketPerforation": "#3A3E42",
+
+      "cheapest": "#8ED49C",
+      "bestValue": "#A9C7FF",
+      "highDemand": "#E3A882",
+      "priceUp": "#FFB4AB",
+      "priceDown": "#8ED49C",
+
+      "verified": "#A9C7FF",
+      "ratingFill": "#F5A524",
+      "guestFavorite": "#FFB4AB",
+
+      "availableNow": "#8ED49C",
+      "limitedAvailability": "#E3A882",
+      "unavailable": "#8D9199",
+      "soldOut": "#8D9199",
+
+      "freeCancellation": "#8ED49C",
+      "partialRefund": "#E3A882",
+      "nonRefundable": "#FFB4AB",
+
+      "statusConfirmed": "#8ED49C",
+      "statusPending": "#CFBCFF",
+      "statusChanged": "#E3A882",
+      "statusCanceled": "#8D9199",
+      "statusExpired": "#FFB4AB",
+
+      "freshnessFresh": "#8ED49C",
+      "freshnessStale": "#E3A882",
+      "freshnessExpired": "#FFB4AB",
+
+      "focusRing": "#A9C7FF"
+    }
+  },
+  "layout": {
+    "propertyImageHeight": 176,
+    "propertyThumbSize": 64,
+    "amenityIconSize": 22,
+    "calendarCellMinWidth": 64,
+    "ticketBarcodeSize": 148,
+    "timelineNodeSize": 22
+  }
+}

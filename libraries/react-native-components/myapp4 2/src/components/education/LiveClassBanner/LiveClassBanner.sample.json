@@ -1,0 +1,77 @@
+{
+  "$comment": "startsAt values are relative to the demo clock in the usage file so the countdown is live. Note that the 'live' entry has no countdown — it is replaced by a join action.",
+  "classes": {
+    "scheduled": {
+      "id": "lc-1",
+      "title": "Live Q&A: Regularisation and model selection",
+      "instructor": "Dr. Anita Deshpande",
+      "startsAt": "2026-08-19T18:00:00.000Z",
+      "endsAt": "2026-08-19T19:00:00.000Z",
+      "timezoneLabel": "IST",
+      "status": "scheduled",
+      "reminderEnabled": false
+    },
+    "startingSoon": {
+      "id": "lc-2",
+      "title": "Workshop: Building your first pipeline",
+      "instructor": "Marcus Lee",
+      "startsAt": "2026-08-19T12:12:00.000Z",
+      "timezoneLabel": "IST",
+      "status": "startingSoon",
+      "reminderEnabled": true,
+      "seatsRemaining": 8
+    },
+    "live": {
+      "id": "lc-3",
+      "title": "Office hours with the teaching team",
+      "instructor": "Teaching assistants",
+      "startsAt": "2026-08-19T11:00:00.000Z",
+      "timezoneLabel": "IST",
+      "status": "live"
+    },
+    "rescheduled": {
+      "id": "lc-4",
+      "title": "Guest lecture: ML in production",
+      "instructor": "Priya Nair, Staff Engineer",
+      "startsAt": "2026-08-22T17:00:00.000Z",
+      "timezoneLabel": "IST",
+      "status": "scheduled",
+      "statusNote": "This class was moved from 20 August to 22 August at the instructor's request.",
+      "reminderEnabled": true
+    },
+    "full": {
+      "id": "lc-5",
+      "title": "Small-group review session",
+      "instructor": "Wei Chen",
+      "startsAt": "2026-08-20T14:00:00.000Z",
+      "timezoneLabel": "IST",
+      "status": "scheduled",
+      "seatsRemaining": 0,
+      "accessRestrictedReason": "This session is full. A recording will be shared with everyone afterwards."
+    },
+    "endedWithRecording": {
+      "id": "lc-6",
+      "title": "Live Q&A: Gradient descent deep dive",
+      "instructor": "Dr. Anita Deshpande",
+      "startsAt": "2026-08-15T18:00:00.000Z",
+      "endsAt": "2026-08-15T19:00:00.000Z",
+      "status": "ended",
+      "recordingAvailable": true
+    },
+    "endedNoRecording": {
+      "id": "lc-7",
+      "title": "Cohort welcome call",
+      "startsAt": "2026-08-01T10:00:00.000Z",
+      "status": "ended",
+      "recordingAvailable": false
+    },
+    "canceled": {
+      "id": "lc-8",
+      "title": "Bonus session: Kaggle walkthrough",
+      "instructor": "Marcus Lee",
+      "startsAt": "2026-08-18T16:00:00.000Z",
+      "status": "canceled",
+      "statusNote": "Canceled by the instructor. A replacement session will be scheduled next week."
+    }
+  }
+}

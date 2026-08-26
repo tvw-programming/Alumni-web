@@ -1,0 +1,19 @@
+{
+  "travellers": [
+    { "id": "tr-1", "type": "adult", "firstName": "Aditi", "lastName": "Sharma", "dateOfBirth": "1994-03-12", "nationality": "Indian", "passport": { "number": "N1234567" }, "contact": { "email": "aditi@example.com", "phone": "+91 90000 00000" } },
+    { "id": "tr-2", "type": "adult", "firstName": "", "lastName": "", "passport": {} },
+    { "id": "tr-3", "type": "child", "firstName": "Ira", "lastName": "Sharma", "dateOfBirth": "2018-07-04", "passport": {} }
+  ],
+  "assistanceOptions": [
+    { "id": "as-1", "label": "Wheelchair assistance" },
+    { "id": "as-2", "label": "Special meal request" },
+    { "id": "as-3", "label": "Traveling with an infant" }
+  ],
+  "bookerContact": { "email": "aditi@example.com", "phone": "+91 90000 00000" },
+  "errors": {
+    "tr-2": [
+      { "field": "firstName", "message": "First name is required." },
+      { "field": "passportNumber", "message": "Passport number must contain 9 characters." }
+    ]
+  }
+}

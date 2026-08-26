@@ -1,0 +1,31 @@
+{
+  "property": {
+    "id": "pr-1",
+    "title": "Sunrise Meadows 3BHK",
+    "images": [{ "uri": "https://images.example.com/sunrise-meadows-1.jpg", "alt": "Sunrise Meadows apartment" }],
+    "locality": "Whitefield",
+    "city": "Bengaluru",
+    "price": { "minorUnits": 850000000, "currency": "INR" },
+    "priceUnit": "total",
+    "listingType": "buy",
+    "propertyType": "Apartment"
+  },
+  "dates": [
+    { "date": "2026-08-21", "availableCount": 4 },
+    { "date": "2026-08-22", "availableCount": 2 },
+    { "date": "2026-08-23", "availableCount": 0 },
+    { "date": "2026-08-24", "availableCount": 3 }
+  ],
+  "slotsByDate": {
+    "2026-08-21": [
+      { "id": "sl-1", "startsAt": "2026-08-21T10:00:00+05:30", "endsAt": "2026-08-21T10:30:00+05:30", "status": "available" },
+      { "id": "sl-2", "startsAt": "2026-08-21T11:00:00+05:30", "endsAt": "2026-08-21T11:30:00+05:30", "status": "held" },
+      { "id": "sl-3", "startsAt": "2026-08-21T16:00:00+05:30", "endsAt": "2026-08-21T16:30:00+05:30", "status": "available" }
+    ],
+    "2026-08-22": [{ "id": "sl-4", "startsAt": "2026-08-22T14:00:00+05:30", "endsAt": "2026-08-22T14:30:00+05:30", "status": "available" }],
+    "2026-08-24": [
+      { "id": "sl-5", "startsAt": "2026-08-24T09:30:00+05:30", "endsAt": "2026-08-24T10:00:00+05:30", "status": "available" },
+      { "id": "sl-6", "startsAt": "2026-08-24T12:00:00+05:30", "endsAt": "2026-08-24T12:30:00+05:30", "status": "available" }
+    ]
+  }
+}

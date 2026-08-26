@@ -1,0 +1,17 @@
+{
+  "$comment": "Every alt text is a real description — 'photo 3' would fail an accessibility review. Includes uploading, processing, broken, restricted and content-warning tiles.",
+  "tiles": [
+    { "id": "t-1", "state": "ready", "media": { "id": "g-1", "type": "image", "src": "https://example.invalid/g1.jpg", "alt": "Fishing boats moored at dawn, mist over the water" } },
+    { "id": "t-2", "state": "ready", "itemCount": 4, "media": { "id": "g-2", "type": "image", "src": "https://example.invalid/g2.jpg", "alt": "Market stall stacked with mangoes and jackfruit" } },
+    { "id": "t-3", "state": "ready", "durationLabel": "0:42", "media": { "id": "g-3", "type": "video", "src": "https://example.invalid/g3.mp4", "alt": "Short clip of rain falling on a tiled courtyard" } },
+    { "id": "t-4", "state": "ready", "media": { "id": "g-4", "type": "image", "src": "https://example.invalid/g4.jpg", "alt": "Woman weaving coir rope by hand on a wooden frame" } },
+    { "id": "t-5", "state": "uploading", "uploadProgress": 0.55, "media": { "id": "g-5", "type": "image", "src": "https://example.invalid/g5.jpg", "alt": "Sunset over the backwaters from a moving houseboat" } },
+    { "id": "t-6", "state": "processing", "media": { "id": "g-6", "type": "video", "src": "https://example.invalid/g6.mp4", "alt": "Timelapse of clouds building before a monsoon storm" } },
+    { "id": "t-7", "state": "broken", "media": { "id": "g-7", "type": "image", "src": "https://example.invalid/missing.jpg", "alt": "Street mural of a tiger in blue and gold" } },
+    { "id": "t-8", "state": "restricted", "restrictedReason": "Only followers can see this", "media": { "id": "g-8", "type": "image", "src": "https://example.invalid/g8.jpg", "alt": "Family gathering on a veranda at dusk" } },
+    { "id": "t-9", "state": "ready", "contentWarning": "This image shows a road accident.", "media": { "id": "g-9", "type": "image", "src": "https://example.invalid/g9.jpg", "alt": "Aftermath of a road accident with emergency vehicles present" } },
+    { "id": "t-10", "state": "ready", "media": { "id": "g-10", "type": "image", "src": "https://example.invalid/g10.jpg", "alt": "Close-up of hands shaping clay on a potter's wheel" } },
+    { "id": "t-11", "state": "ready", "itemCount": 2, "media": { "id": "g-11", "type": "image", "src": "https://example.invalid/g11.jpg", "alt": "Two fishermen mending a net on the sand" } },
+    { "id": "t-12", "state": "ready", "durationLabel": "1:15", "media": { "id": "g-12", "type": "video", "src": "https://example.invalid/g12.mp4", "alt": "Kathakali performer applying stage make-up" } }
+  ]
+}

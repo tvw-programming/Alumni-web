@@ -1,0 +1,38 @@
+{
+  "name": "@codegen/core-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Workflow monitoring dashboard for the CodeGen Core 24-stage pipeline",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "smoke": "vite build --config vite.smoke.config.ts --logLevel error && node dist-smoke/smoke.js"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.3.1",
+    "@mui/lab": "^9.0.0-beta.8",
+    "@mui/material": "^9.3.1",
+    "@mui/x-data-grid": "^9.11.0",
+    "@mui/x-tree-view": "^9.11.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.18.2",
+    "react-syntax-highlighter": "^16.1.1",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@vitejs/plugin-react": "^6.0.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1"
+  }
+}

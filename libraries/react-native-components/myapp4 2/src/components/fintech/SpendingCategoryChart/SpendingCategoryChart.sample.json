@@ -1,0 +1,28 @@
+{
+  "$comment": "Dummy analytics. `basis` is mandatory in the props — a total with no stated scope is untrustworthy.",
+  "periodLabel": "August 2026",
+  "basis": "All accounts · excluding transfers",
+  "total": { "minorUnits": 8742500, "currency": "INR" },
+  "budget": { "minorUnits": 8000000, "currency": "INR" },
+  "comparisonLabel": "July",
+  "comparisonDelta": 12,
+  "categories": [
+    { "id": "food", "label": "Eating out", "value": { "minorUnits": 2450000, "currency": "INR" }, "percentage": 28, "colorToken": "chart1", "transactionCount": 34 },
+    { "id": "groceries", "label": "Groceries", "value": { "minorUnits": 1890000, "currency": "INR" }, "percentage": 21.6, "colorToken": "chart2", "transactionCount": 12 },
+    { "id": "transport", "label": "Transport", "value": { "minorUnits": 1320000, "currency": "INR" }, "percentage": 15.1, "colorToken": "chart3", "transactionCount": 46 },
+    { "id": "shopping", "label": "Shopping", "value": { "minorUnits": 1150000, "currency": "INR" }, "percentage": 13.2, "colorToken": "chart4", "transactionCount": 9 },
+    { "id": "bills", "label": "Bills", "value": { "minorUnits": 980000, "currency": "INR" }, "percentage": 11.2, "colorToken": "chart5", "transactionCount": 6 },
+    { "id": "health", "label": "Health", "value": { "minorUnits": 520000, "currency": "INR" }, "percentage": 6, "colorToken": "chart6", "transactionCount": 3 },
+    { "id": "subs", "label": "Subscriptions", "value": { "minorUnits": 280000, "currency": "INR" }, "percentage": 3.2, "colorToken": "chart7", "transactionCount": 7 },
+    { "id": "pets", "label": "Pets", "value": { "minorUnits": 90000, "currency": "INR" }, "percentage": 1, "transactionCount": 2 },
+    { "id": "gifts", "label": "Gifts", "value": { "minorUnits": 62500, "currency": "INR" }, "percentage": 0.7, "transactionCount": 1 }
+  ],
+  "trend": [
+    { "label": "Mar", "value": { "minorUnits": 6200000, "currency": "INR" }, "comparison": { "minorUnits": 5900000, "currency": "INR" } },
+    { "label": "Apr", "value": { "minorUnits": 7100000, "currency": "INR" }, "comparison": { "minorUnits": 6200000, "currency": "INR" } },
+    { "label": "May", "value": { "minorUnits": 6800000, "currency": "INR" }, "comparison": { "minorUnits": 7100000, "currency": "INR" } },
+    { "label": "Jun", "value": { "minorUnits": 7900000, "currency": "INR" }, "comparison": { "minorUnits": 6800000, "currency": "INR" } },
+    { "label": "Jul", "value": { "minorUnits": 7800000, "currency": "INR" }, "comparison": { "minorUnits": 7900000, "currency": "INR" } },
+    { "label": "Aug", "value": { "minorUnits": 8742500, "currency": "INR" }, "comparison": { "minorUnits": 7800000, "currency": "INR" } }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$comment": "Relationship comes from the graph service. A private target produces `requested`, never `following` — the component shows the relationship the user actually has.",
+  "targets": [
+    { "targetId": "u-1", "targetName": "Maya Iyer", "relationship": "none", "privacy": "public", "note": "Public account, not followed" },
+    { "targetId": "u-2", "targetName": "Kabir Menon", "relationship": "following", "privacy": "public", "note": "Following — tap to unfollow" },
+    { "targetId": "u-3", "targetName": "Priya Nair", "relationship": "none", "privacy": "private", "note": "Private account — follow becomes a request" },
+    { "targetId": "u-4", "targetName": "Devansh Rao", "relationship": "requested", "privacy": "private", "note": "Request pending" },
+    { "targetId": "u-8", "targetName": "Elena Volkov", "relationship": "blocked", "privacy": "public", "note": "You blocked this account" },
+    { "targetId": "u-9", "targetName": "Jonas Berg", "relationship": "restricted", "privacy": "public", "note": "Restricted account" },
+    { "targetId": "u-10", "targetName": "Suspended Account", "relationship": "notAllowed", "privacy": "public", "note": "Cannot be followed" }
+  ]
+}

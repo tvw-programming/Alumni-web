@@ -1,0 +1,87 @@
+{
+  "offers": [
+    {
+      "id": "fl-1",
+      "segments": [
+        { "carrier": "6E", "carrierName": "IndiGo", "flightNumber": "6E 204", "departure": { "airportCode": "BLR", "time": "06:15" }, "arrival": { "airportCode": "GOI", "time": "07:35" }, "duration": "1h 20m" }
+      ],
+      "stops": 0,
+      "totalDuration": "1h 20m",
+      "price": { "minorUnits": 419900, "currency": "INR" },
+      "fareType": "Saver",
+      "baggage": { "cabin": "7 kg", "checked": "15 kg", "included": true },
+      "refundability": "partiallyRefundable",
+      "status": "available",
+      "badge": "cheapest"
+    },
+    {
+      "id": "fl-2",
+      "segments": [
+        {
+          "carrier": "AI",
+          "carrierName": "Air India",
+          "flightNumber": "AI 505",
+          "departure": { "airportCode": "BLR", "time": "09:40" },
+          "arrival": { "airportCode": "BOM", "time": "11:05" },
+          "duration": "1h 25m",
+          "layoverAfter": { "duration": "2h 10m", "airportCode": "BOM" }
+        },
+        { "carrier": "AI", "carrierName": "Air India", "flightNumber": "AI 640", "departure": { "airportCode": "BOM", "time": "13:15" }, "arrival": { "airportCode": "GOI", "time": "14:20" }, "duration": "1h 05m" }
+      ],
+      "stops": 1,
+      "totalDuration": "4h 40m",
+      "price": { "minorUnits": 389900, "currency": "INR" },
+      "fareType": "Flex",
+      "baggage": { "cabin": "7 kg", "checked": "25 kg", "included": true },
+      "refundability": "refundable",
+      "status": "available",
+      "badge": "best"
+    },
+    {
+      "id": "fl-3",
+      "segments": [
+        {
+          "carrier": "SG",
+          "carrierName": "SpiceJet",
+          "flightNumber": "SG 8157",
+          "departure": { "airportCode": "BLR", "time": "22:50" },
+          "arrival": { "airportCode": "DEL", "time": "01:25", "nextDay": true },
+          "duration": "2h 35m",
+          "layoverAfter": { "duration": "1h 40m", "airportCode": "DEL", "selfTransfer": true }
+        },
+        { "carrier": "6E", "carrierName": "IndiGo", "flightNumber": "6E 6103", "departure": { "airportCode": "DEL", "time": "03:05" }, "arrival": { "airportCode": "GOI", "time": "05:30" }, "duration": "2h 25m" }
+      ],
+      "stops": 1,
+      "totalDuration": "6h 40m",
+      "price": { "minorUnits": 329900, "currency": "INR" },
+      "fareType": "Basic",
+      "baggage": { "included": false },
+      "refundability": "nonRefundable",
+      "status": "priceChanged",
+      "badge": "fastest"
+    },
+    {
+      "id": "fl-4",
+      "segments": [
+        { "carrier": "UK", "carrierName": "Vistara", "flightNumber": "UK 815", "departure": { "airportCode": "BLR", "time": "18:00" }, "arrival": { "airportCode": "GOI", "time": "19:20" }, "duration": "1h 20m" }
+      ],
+      "stops": 0,
+      "totalDuration": "1h 20m",
+      "price": { "minorUnits": 459900, "currency": "INR" },
+      "fareType": "Saver",
+      "baggage": { "cabin": "7 kg", "checked": "15 kg", "included": true },
+      "refundability": "nonRefundable",
+      "status": "expired"
+    },
+    {
+      "id": "fl-5",
+      "segments": [
+        { "carrier": "6E", "carrierName": "IndiGo", "flightNumber": "6E 719", "departure": { "airportCode": "BLR", "time": "12:30" }, "arrival": { "airportCode": "GOI", "time": "13:50" }, "duration": "1h 20m" }
+      ],
+      "stops": 0,
+      "totalDuration": "1h 20m",
+      "price": { "minorUnits": 399900, "currency": "INR" },
+      "status": "soldOut"
+    }
+  ]
+}

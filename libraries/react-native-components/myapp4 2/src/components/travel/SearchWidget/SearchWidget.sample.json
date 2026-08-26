@@ -1,0 +1,41 @@
+{
+  "locations": [
+    { "id": "loc-1", "code": "BLR", "city": "Bengaluru", "name": "Kempegowda International Airport", "country": "India" },
+    { "id": "loc-2", "code": "DEL", "city": "Delhi", "name": "Indira Gandhi International Airport", "country": "India" },
+    { "id": "loc-3", "code": "BOM", "city": "Mumbai", "name": "Chhatrapati Shivaji Maharaj International Airport", "country": "India" },
+    { "id": "loc-4", "code": "GOI", "city": "Goa", "name": "Manohar International Airport", "country": "India" },
+    { "id": "loc-5", "code": "DXB", "city": "Dubai", "name": "Dubai International Airport", "country": "UAE" },
+    { "id": "loc-6", "code": "SIN", "city": "Singapore", "name": "Changi Airport", "country": "Singapore" },
+    { "id": "loc-7", "code": "HYD", "city": "Hyderabad", "name": "Rajiv Gandhi International Airport", "country": "India", "isNearby": true }
+  ],
+  "recentSearches": [
+    {
+      "id": "rs-1",
+      "searchedAt": "2026-08-18T10:00:00+05:30",
+      "summaryLabel": "Bengaluru → Goa, 22–25 Aug, 2 travelers",
+      "query": {
+        "mode": "flight",
+        "tripType": "roundTrip",
+        "origin": { "id": "loc-1", "code": "BLR", "city": "Bengaluru", "name": "Kempegowda International Airport", "country": "India" },
+        "destination": { "id": "loc-4", "code": "GOI", "city": "Goa", "name": "Manohar International Airport", "country": "India" },
+        "departureDate": "2026-08-22",
+        "returnDate": "2026-08-25",
+        "travelers": { "adults": 2, "children": 0 }
+      }
+    },
+    {
+      "id": "rs-2",
+      "searchedAt": "2026-08-15T09:00:00+05:30",
+      "summaryLabel": "Stays in Dubai, 10–14 Sep, 2 guests",
+      "query": {
+        "mode": "hotel",
+        "destination": { "id": "loc-5", "code": "DXB", "city": "Dubai", "name": "Dubai International Airport", "country": "UAE" },
+        "departureDate": "2026-09-10",
+        "returnDate": "2026-09-14",
+        "travelers": { "adults": 2, "children": 0 },
+        "rooms": 1
+      }
+    }
+  ],
+  "occupancyRules": { "minAdults": 1, "maxAdults": 16, "maxChildren": 8, "maxRooms": 8, "maxGuestsPerRoom": 3, "requireChildAges": true }
+}

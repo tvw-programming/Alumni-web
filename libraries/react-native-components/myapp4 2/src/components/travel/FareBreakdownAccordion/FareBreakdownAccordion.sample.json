@@ -1,0 +1,39 @@
+{
+  "estimated": {
+    "lines": [
+      { "id": "l-1", "label": "Room price (2 nights)", "amount": { "minorUnits": 379980, "currency": "INR" }, "kind": "base" },
+      { "id": "l-2", "label": "Taxes", "amount": { "minorUnits": 45600, "currency": "INR" }, "kind": "tax" },
+      { "id": "l-3", "label": "Resort fee", "amount": { "minorUnits": 15000, "currency": "INR" }, "kind": "fee", "explanation": "Covers pool towels, Wi-Fi and daily housekeeping." }
+    ],
+    "total": { "minorUnits": 440580, "currency": "INR" },
+    "status": "estimated",
+    "paymentTiming": "later"
+  },
+  "final": {
+    "lines": [
+      { "id": "l-1", "label": "Base fare", "amount": { "minorUnits": 389900, "currency": "INR" }, "kind": "base" },
+      { "id": "l-2", "label": "Taxes and fees", "amount": { "minorUnits": 61200, "currency": "INR" }, "kind": "tax" },
+      { "id": "l-3", "label": "Seat selection", "amount": { "minorUnits": 40000, "currency": "INR" }, "kind": "addOn", "optional": true },
+      { "id": "l-4", "label": "Promo discount", "amount": { "minorUnits": 25000, "currency": "INR" }, "kind": "discount" }
+    ],
+    "total": { "minorUnits": 466100, "currency": "INR" },
+    "status": "final",
+    "paymentTiming": "now"
+  },
+  "changed": {
+    "lines": [
+      { "id": "l-1", "label": "Room price (2 nights)", "amount": { "minorUnits": 379980, "currency": "INR" }, "kind": "base" },
+      { "id": "l-2", "label": "Taxes", "amount": { "minorUnits": 45600, "currency": "INR" }, "kind": "tax" },
+      { "id": "l-3", "label": "Service fee", "amount": { "minorUnits": 22000, "currency": "INR" }, "kind": "fee", "explanation": "Platform fee covering payment processing and 24/7 support." }
+    ],
+    "total": { "minorUnits": 447580, "currency": "INR" },
+    "status": "changed",
+    "paymentTiming": "later",
+    "changedNote": "The property added a service fee of ₹220 since you started booking."
+  },
+  "calculating": {
+    "lines": [],
+    "total": { "minorUnits": 0, "currency": "INR" },
+    "status": "calculating"
+  }
+}

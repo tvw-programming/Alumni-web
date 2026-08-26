@@ -1,0 +1,71 @@
+{
+  "$comment": "verificationScope is required alongside `verified: true` — a bare badge implies background checking the platform may not actually perform.",
+  "providers": [
+    {
+      "id": "sp-1",
+      "name": "Ramesh Kumar",
+      "avatar": { "uri": "https://example.invalid/ramesh.jpg", "alt": "Ramesh Kumar, plumber" },
+      "serviceLabel": "Plumbing · Leaks & fittings",
+      "rating": { "average": 4.8, "count": 312 },
+      "distanceLabel": "1.2 km away",
+      "price": { "minorUnits": 50000, "currency": "INR" },
+      "priceUnit": "visit",
+      "verified": true,
+      "verificationScope": "ID and address verified. Background check not performed.",
+      "nextAvailableLabel": "Available today",
+      "availability": "available"
+    },
+    {
+      "id": "sp-2",
+      "name": "Sunita Fernandes",
+      "avatar": { "uri": "https://example.invalid/sunita.jpg", "alt": "Sunita Fernandes, house cleaner" },
+      "serviceLabel": "Home cleaning · Deep clean specialist",
+      "rating": { "average": 4.9, "count": 8 },
+      "distanceLabel": "3.5 km away",
+      "price": { "minorUnits": 40000, "currency": "INR" },
+      "priceUnit": "hour",
+      "verified": true,
+      "verificationScope": "ID verified, 3 platform references checked.",
+      "nextAvailableLabel": "Next available tomorrow",
+      "availability": "limited"
+    },
+    {
+      "id": "sp-3",
+      "name": "Arjun Electricals",
+      "serviceLabel": "Electrical · Wiring & installation",
+      "rating": { "average": 4.5, "count": 96 },
+      "distanceLabel": "5.8 km away",
+      "priceUnit": "from",
+      "price": { "minorUnits": 30000, "currency": "INR" },
+      "availability": "available"
+    },
+    {
+      "id": "sp-4",
+      "name": "Priya's Pet Grooming",
+      "avatar": { "uri": "https://example.invalid/priya-pets.jpg", "alt": "Priya, pet groomer, with a dog" },
+      "serviceLabel": "Pet grooming · Mobile service",
+      "rating": { "average": 5, "count": 3 },
+      "distanceLabel": "0.8 km away",
+      "availability": "available",
+      "requestOnly": true
+    },
+    {
+      "id": "sp-5",
+      "name": "Metro Movers & Packers",
+      "serviceLabel": "Moving & packing",
+      "rating": { "average": 4.2, "count": 540 },
+      "distanceLabel": "12 km away",
+      "price": { "minorUnits": 250000, "currency": "INR" },
+      "priceUnit": "flat",
+      "availability": "unavailable"
+    },
+    {
+      "id": "sp-6",
+      "name": "New Provider — Just Joined",
+      "serviceLabel": "Furniture assembly",
+      "distanceLabel": "2.1 km away",
+      "availability": "available",
+      "profileIncomplete": true
+    }
+  ]
+}

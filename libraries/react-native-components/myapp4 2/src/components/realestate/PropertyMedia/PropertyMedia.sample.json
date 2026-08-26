@@ -1,0 +1,32 @@
+{
+  "floors": [
+    {
+      "id": "fl-1",
+      "label": "Ground Floor",
+      "image": { "uri": "https://images.example.com/floor-ground.jpg", "alt": "Ground floor plan" },
+      "rooms": [
+        { "id": "r-1", "label": "Living room" },
+        { "id": "r-2", "label": "Kitchen" },
+        { "id": "r-3", "label": "Guest bedroom" }
+      ]
+    },
+    {
+      "id": "fl-2",
+      "label": "First Floor",
+      "image": { "alt": "First floor plan" },
+      "rooms": [
+        { "id": "r-4", "label": "Master bedroom" },
+        { "id": "r-5", "label": "Bedroom 2" },
+        { "id": "r-6", "label": "Balcony" }
+      ]
+    }
+  ],
+  "images": [
+    { "id": "g-1", "image": { "uri": "https://images.example.com/gallery-living.jpg", "alt": "Living room with large windows" }, "room": "Living room", "type": "image" },
+    { "id": "g-2", "image": { "uri": "https://images.example.com/gallery-kitchen.jpg", "alt": "Modular kitchen with island" }, "room": "Kitchen", "type": "image" },
+    { "id": "g-3", "image": { "alt": "3D tour of the apartment" }, "type": "tour" },
+    { "id": "g-4", "image": { "uri": "https://images.example.com/gallery-bedroom.jpg", "alt": "Master bedroom" }, "room": "Master bedroom", "type": "image" },
+    { "id": "g-5", "image": { "alt": "Walkthrough video" }, "type": "video" },
+    { "id": "g-6", "image": { "uri": "https://images.example.com/gallery-balcony.jpg", "alt": "Balcony view" }, "room": "Balcony", "type": "image" }
+  ]
+}

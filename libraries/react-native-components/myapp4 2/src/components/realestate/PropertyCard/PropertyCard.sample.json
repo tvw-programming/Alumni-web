@@ -1,0 +1,73 @@
+{
+  "properties": [
+    {
+      "id": "pr-1",
+      "title": "Sunrise Meadows 3BHK",
+      "images": [
+        { "uri": "https://images.example.com/sunrise-meadows-1.jpg", "alt": "Living room of a 3-bedroom apartment" },
+        { "uri": "https://images.example.com/sunrise-meadows-2.jpg", "alt": "Kitchen of a 3-bedroom apartment" }
+      ],
+      "locality": "Whitefield",
+      "city": "Bengaluru",
+      "price": { "minorUnits": 850000000, "currency": "INR" },
+      "priceUnit": "total",
+      "listingType": "buy",
+      "bhk": "3 BHK",
+      "areaLabel": "1,450 sq ft",
+      "propertyType": "Apartment",
+      "amenityHighlights": ["Parking", "Lift", "Gym"],
+      "status": "ready",
+      "verified": true,
+      "listedBy": "agent"
+    },
+    {
+      "id": "pr-2",
+      "title": "Green Valley 2BHK for rent",
+      "images": [{ "uri": "https://images.example.com/green-valley.jpg", "alt": "Living room of a 2-bedroom apartment" }],
+      "locality": "Koramangala",
+      "city": "Bengaluru",
+      "price": { "minorUnits": 3200000, "currency": "INR" },
+      "priceUnit": "perMonth",
+      "listingType": "rent",
+      "bhk": "2 BHK",
+      "areaLabel": "1,050 sq ft",
+      "propertyType": "Apartment",
+      "amenityHighlights": ["Power backup"],
+      "status": "priceReduced",
+      "listedBy": "owner",
+      "freshness": { "status": "stale", "lastUpdatedAt": "2026-08-05" }
+    },
+    {
+      "id": "pr-3",
+      "title": "Palm Residency Towers",
+      "images": [{ "alt": "Palm Residency Towers rendering" }],
+      "locality": "Sarjapur Road",
+      "city": "Bengaluru",
+      "price": { "minorUnits": 620000000, "currency": "INR" },
+      "priceUnit": "total",
+      "listingType": "newProject",
+      "bhk": "2, 3 BHK",
+      "areaLabel": "980–1,600 sq ft",
+      "propertyType": "New project",
+      "status": "underConstruction",
+      "verified": true,
+      "listedBy": "builder",
+      "sponsored": true
+    },
+    {
+      "id": "pr-4",
+      "title": "Lakeview Villa",
+      "images": [{ "uri": "https://images.example.com/lakeview-villa.jpg", "alt": "Exterior of a lakeside villa" }],
+      "locality": "Hebbal",
+      "city": "Bengaluru",
+      "price": { "minorUnits": 1450000000, "currency": "INR" },
+      "priceUnit": "total",
+      "listingType": "buy",
+      "bhk": "4 BHK",
+      "areaLabel": "3,200 sq ft",
+      "propertyType": "Villa",
+      "status": "sold",
+      "listedBy": "agent"
+    }
+  ]
+}

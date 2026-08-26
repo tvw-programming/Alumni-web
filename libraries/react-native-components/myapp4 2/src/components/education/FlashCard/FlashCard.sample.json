@@ -1,0 +1,17 @@
+{
+  "$comment": "A Spanish deck. `mastery` is set by the review engine; the card only reports which recall button was pressed.",
+  "deck": {
+    "id": "deck-es-1",
+    "title": "Spanish · Everyday verbs",
+    "cards": [
+      { "id": "fc-1", "front": "to speak", "back": "hablar", "mastery": "review", "hint": "Related to 'able' in English via Latin" },
+      { "id": "fc-2", "front": "to eat", "back": "comer", "mastery": "learning" },
+      { "id": "fc-3", "front": "to live", "back": "vivir", "mastery": "mastered" },
+      { "id": "fc-4", "front": "to write", "back": "escribir", "mastery": "new" },
+      { "id": "fc-5", "front": "¿Cómo se dice 'library' en español?", "back": "la biblioteca — note that 'librería' means bookshop", "mastery": "learning", "hint": "It is a false friend" },
+      { "id": "fc-6", "front": "to be (permanent)", "back": "ser — used for identity, origin and characteristics", "mastery": "review" }
+    ]
+  },
+  "emptyDeck": { "id": "deck-empty", "title": "Advanced idioms", "cards": [] },
+  "brokenCard": { "id": "fc-broken", "front": "—", "back": "—", "mastery": "new" }
+}

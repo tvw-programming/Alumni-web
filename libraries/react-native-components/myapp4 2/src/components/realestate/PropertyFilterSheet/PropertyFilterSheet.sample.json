@@ -1,0 +1,12 @@
+{
+  "filters": {
+    "minPrice": 5000000,
+    "maxPrice": 10000000,
+    "bhk": ["2 BHK", "3 BHK"],
+    "propertyTypes": ["Apartment"],
+    "statuses": ["Ready to move"],
+    "amenities": ["Parking"],
+    "verifiedOnly": true
+  },
+  "resultCount": 248
+}

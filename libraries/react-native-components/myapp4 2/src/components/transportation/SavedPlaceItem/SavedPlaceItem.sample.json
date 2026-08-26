@@ -1,0 +1,8 @@
+{
+  "places": [
+    { "id": "sp-1", "label": "home", "address": "12th Main Road, Indiranagar, Bengaluru", "coordinates": { "latitude": 12.9719, "longitude": 77.6412 }, "isDefault": true },
+    { "id": "sp-2", "label": "work", "address": "Ecospace Business Park, Bellandur, Bengaluru", "coordinates": { "latitude": 12.9257, "longitude": 77.6773 } },
+    { "id": "sp-3", "label": "airport", "address": "Kempegowda International Airport, Devanahalli", "coordinates": { "latitude": 13.1986, "longitude": 77.7066 } },
+    { "id": "sp-4", "label": "custom", "customLabel": "Mom's place", "address": "4th Cross, Jayanagar, Bengaluru", "coordinates": { "latitude": 12.9308, "longitude": 77.5838 } }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "searches": [
+    {
+      "id": "ss-1",
+      "name": "2 BHK in Whitefield",
+      "locationLabel": "Whitefield, Bengaluru",
+      "filterSummary": ["₹50L–₹80L", "2 BHK", "Ready to move"],
+      "resultCount": 86,
+      "newMatchCount": 3,
+      "alerts": { "newListings": true, "priceChanges": true, "statusChanges": false }
+    },
+    {
+      "id": "ss-2",
+      "name": "Villas near Hebbal",
+      "locationLabel": "Hebbal, Bengaluru",
+      "filterSummary": ["₹1Cr+", "Villa"],
+      "resultCount": 14,
+      "alerts": { "newListings": false, "priceChanges": false, "statusChanges": false },
+      "paused": true
+    }
+  ],
+  "trend": {
+    "points": [
+      { "date": "2025-09-01", "value": 11200, "unit": "sq ft" },
+      { "date": "2025-11-01", "value": 11450, "unit": "sq ft" },
+      { "date": "2026-01-01", "value": 11800, "unit": "sq ft" },
+      { "date": "2026-03-01", "value": 12100, "unit": "sq ft" },
+      { "date": "2026-05-01", "value": 12300, "unit": "sq ft" },
+      { "date": "2026-07-01", "value": 12500, "unit": "sq ft" }
+    ],
+    "currentValue": 12500,
+    "freshnessLabel": "Data updated June 2026"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "inProgress": {
+    "steps": [
+      { "id": "s1", "label": "Booking confirmed", "timestamp": "10:02 AM", "status": "complete" },
+      { "id": "s2", "label": "Provider assigned", "description": "Ramesh Iyer", "timestamp": "10:05 AM", "status": "complete" },
+      { "id": "s3", "label": "On the way", "description": "Arriving in ~12 min", "status": "current", "actionLabel": "Track live", "onAction": null },
+      { "id": "s4", "label": "Service in progress", "status": "upcoming" },
+      { "id": "s5", "label": "Completed", "status": "upcoming" }
+    ]
+  },
+  "delayed": {
+    "steps": [
+      { "id": "s1", "label": "Booking confirmed", "timestamp": "9:00 AM", "status": "complete" },
+      { "id": "s2", "label": "Provider assigned", "timestamp": "9:04 AM", "status": "complete" },
+      { "id": "s3", "label": "On the way — running late", "description": "Held up by traffic near the previous stop", "status": "delayed", "actionLabel": "Chat with provider", "onAction": null },
+      { "id": "s4", "label": "Service in progress", "status": "upcoming" },
+      { "id": "s5", "label": "Completed", "status": "upcoming" }
+    ],
+    "lastUpdatedLabel": "18 minutes ago",
+    "stale": true
+  },
+  "failed": {
+    "steps": [
+      { "id": "s1", "label": "Booking confirmed", "timestamp": "8:00 AM", "status": "complete" },
+      { "id": "s2", "label": "Finding a provider", "timestamp": "8:02 AM", "status": "failed", "description": "No providers accepted this request", "actionLabel": "Search again", "onAction": null }
+    ]
+  },
+  "canceled": {
+    "steps": [
+      { "id": "s1", "label": "Booking confirmed", "timestamp": "Yesterday, 4:10 PM", "status": "complete" },
+      { "id": "s2", "label": "Provider assigned", "timestamp": "Yesterday, 4:12 PM", "status": "complete" },
+      { "id": "s3", "label": "Canceled by you", "timestamp": "Yesterday, 4:20 PM", "status": "canceled", "description": "No cancellation fee applied" }
+    ]
+  },
+  "completed": {
+    "steps": [
+      { "id": "s1", "label": "Booking confirmed", "timestamp": "Mon, 9:00 AM", "status": "complete" },
+      { "id": "s2", "label": "Provider assigned", "timestamp": "Mon, 9:05 AM", "status": "complete" },
+      { "id": "s3", "label": "Service completed", "timestamp": "Mon, 11:10 AM", "status": "complete" },
+      { "id": "s4", "label": "Payment settled", "timestamp": "Mon, 11:11 AM", "status": "complete" }
+    ]
+  }
+}

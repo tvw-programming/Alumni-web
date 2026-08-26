@@ -1,0 +1,49 @@
+{
+  "$comment": "Every outcome a payment can land in. Note 'processing' and 'pending' are NOT success — that distinction is the whole point of this component.",
+  "results": {
+    "processing": {
+      "status": "processing",
+      "title": "Sending your payment",
+      "description": "Do not close the app. This usually takes a few seconds.",
+      "amount": { "minorUnits": 1250000, "currency": "INR" },
+      "recipientName": "@alexsmith"
+    },
+    "success": {
+      "status": "success",
+      "title": "Payment completed",
+      "description": "The money has reached Alex Smith.",
+      "amount": { "minorUnits": 1250000, "currency": "INR" },
+      "recipientName": "@alexsmith",
+      "transactionId": "TXN-8841-2299-01"
+    },
+    "pending": {
+      "status": "pending",
+      "title": "Payment submitted",
+      "description": "Your bank is still processing this transfer. We will notify you when it settles.",
+      "amount": { "minorUnits": 4500000, "currency": "INR" },
+      "recipientName": "Bharat Traders Pvt Ltd",
+      "transactionId": "TXN-8841-2299-02",
+      "expectedResolutionAt": "2026-08-21T00:00:00.000Z"
+    },
+    "declined": {
+      "status": "declined",
+      "title": "Payment declined",
+      "description": "Your bank declined this payment. No money has left your account.",
+      "amount": { "minorUnits": 990000, "currency": "INR" },
+      "transactionId": "TXN-8841-2299-03"
+    },
+    "failed": {
+      "status": "failed",
+      "title": "We could not send this payment",
+      "description": "Something went wrong on our side. You have not been charged.",
+      "amount": { "minorUnits": 250000, "currency": "INR" }
+    },
+    "reversed": {
+      "status": "reversed",
+      "title": "Payment reversed",
+      "description": "The recipient's bank returned this transfer. The money is back in your account.",
+      "amount": { "minorUnits": 1250000, "currency": "INR" },
+      "transactionId": "TXN-8841-2299-04"
+    }
+  }
+}

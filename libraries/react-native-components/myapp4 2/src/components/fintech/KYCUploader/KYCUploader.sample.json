@@ -1,0 +1,46 @@
+{
+  "$comment": "Dummy verification workflow. Requirements come from the compliance team, not from the component.",
+  "documents": [
+    {
+      "type": "passport",
+      "label": "Passport",
+      "sides": ["front"],
+      "status": "notStarted",
+      "retryable": true,
+      "requirements": [
+        "The name must match your account details",
+        "The document must be valid for at least 3 more months",
+        "All four corners must be visible",
+        "No glare across the photo page"
+      ]
+    },
+    {
+      "type": "proofOfAddress",
+      "label": "Proof of address",
+      "sides": ["front"],
+      "status": "notStarted",
+      "retryable": true,
+      "requirements": [
+        "Issued in the last 3 months",
+        "Shows your full name and address",
+        "Bank statement, utility bill or council tax letter"
+      ]
+    },
+    {
+      "type": "drivingLicense",
+      "label": "Driving licence",
+      "sides": ["front", "back"],
+      "status": "rejected",
+      "rejectionReason": "The expiry date was not readable. Please retake the photo in better light.",
+      "retryable": true,
+      "requirements": ["Both sides required", "Avoid shadows across the text"]
+    }
+  ],
+  "reviewState": {
+    "type": "passport",
+    "label": "Passport",
+    "sides": ["front"],
+    "status": "manualReview",
+    "retryable": false
+  }
+}

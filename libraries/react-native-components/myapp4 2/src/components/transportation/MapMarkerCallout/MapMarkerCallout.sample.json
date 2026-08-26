@@ -1,0 +1,11 @@
+{
+  "markers": [
+    { "id": "m-1", "type": "pickup", "coordinates": { "latitude": 12.9719, "longitude": 77.6412 }, "label": "Pickup · 12th Main Road, Indiranagar", "status": "Confirmed" },
+    { "id": "m-2", "type": "driver", "coordinates": { "latitude": 12.9700, "longitude": 77.6390 }, "label": "Rajesh Kumar's car", "status": "4 min away" },
+    { "id": "m-3", "type": "dropoff", "coordinates": { "latitude": 13.1986, "longitude": 77.7066 }, "label": "Destination · Kempegowda International Airport" }
+  ],
+  "routeSegments": [
+    { "id": "r-1", "coordinates": [{ "latitude": 12.97, "longitude": 77.639 }, { "latitude": 12.9719, "longitude": 77.6412 }], "mode": "ride", "label": "Driver to pickup" },
+    { "id": "r-2", "coordinates": [{ "latitude": 12.9719, "longitude": 77.6412 }, { "latitude": 13.1986, "longitude": 77.7066 }], "mode": "ride", "label": "Pickup to destination" }
+  ]
+}

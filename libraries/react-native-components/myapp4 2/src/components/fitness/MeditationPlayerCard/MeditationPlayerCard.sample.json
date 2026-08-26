@@ -1,0 +1,25 @@
+{
+  "playing": {
+    "session": { "id": "med-1", "title": "Daily Calm", "subtitle": "Tamara Levitt", "image": { "uri": "https://images.example.com/daily-calm.jpg", "alt": "Daily Calm artwork" }, "durationSeconds": 600, "type": "guided" },
+    "playbackState": "playing",
+    "positionSeconds": 210,
+    "downloaded": true,
+    "sleepTimerMinutes": 10
+  },
+  "buffering": {
+    "session": { "id": "med-2", "title": "Rainforest Sounds", "subtitle": "Soundscape", "image": { "alt": "Rainforest artwork" }, "durationSeconds": 1800, "type": "soundscape" },
+    "playbackState": "buffering",
+    "positionSeconds": 0
+  },
+  "offline": {
+    "session": { "id": "med-3", "title": "The Sleepy Meadow", "subtitle": "Sleep Story · Kate Winslet", "image": { "alt": "Sleepy Meadow artwork" }, "durationSeconds": 1500, "type": "sleepStory" },
+    "playbackState": "offline",
+    "positionSeconds": 320,
+    "downloaded": true
+  },
+  "error": {
+    "session": { "id": "med-4", "title": "Box Breathing", "subtitle": "Breathing exercise", "image": { "alt": "Box breathing artwork" }, "durationSeconds": 300, "type": "breathing" },
+    "playbackState": "error",
+    "positionSeconds": 0
+  }
+}

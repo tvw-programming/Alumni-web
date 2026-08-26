@@ -1,0 +1,134 @@
+{
+  "$comment": "A group conversation covering every delivery state, a reply quote, a voice note, a failed send, both deletion outcomes and a system message.",
+  "conversationId": "conv-1",
+  "messages": [
+    {
+      "id": "m-1",
+      "conversationId": "conv-1",
+      "sender": { "id": "system", "displayName": "System" },
+      "body": "Priya added Kabir to the group.",
+      "sentAt": "2026-08-20T08:00:00.000Z",
+      "direction": "received",
+      "status": "delivered",
+      "system": true
+    },
+    {
+      "id": "m-2",
+      "conversationId": "conv-1",
+      "sender": { "id": "u-3", "displayName": "Priya Nair", "roleLabel": "Admin" },
+      "body": "Morning all — shipping the release at 3pm. Anything still red on your side?",
+      "sentAt": "2026-08-20T08:02:00.000Z",
+      "direction": "received",
+      "status": "read"
+    },
+    {
+      "id": "m-3",
+      "conversationId": "conv-1",
+      "sender": { "id": "u-2", "displayName": "Kabir Menon" },
+      "body": "Nothing red. Two flaky tests but they pass on retry.",
+      "sentAt": "2026-08-20T08:04:00.000Z",
+      "direction": "received",
+      "status": "read"
+    },
+    {
+      "id": "m-4",
+      "conversationId": "conv-1",
+      "sender": { "id": "me", "displayName": "Tejasvi" },
+      "body": "Flaky how? If it's the auth suite I've seen that one — it's a timezone assumption in the fixtures.",
+      "sentAt": "2026-08-20T08:06:00.000Z",
+      "direction": "sent",
+      "status": "read",
+      "replyTo": { "id": "m-3", "authorName": "Kabir Menon", "preview": "Nothing red. Two flaky tests but they pass on retry." },
+      "reactions": [{ "emoji": "👍", "count": 2, "reactedByMe": false }]
+    },
+    {
+      "id": "m-5",
+      "conversationId": "conv-1",
+      "sender": { "id": "u-2", "displayName": "Kabir Menon" },
+      "sentAt": "2026-08-20T08:08:00.000Z",
+      "direction": "received",
+      "status": "delivered",
+      "voiceDurationSeconds": 34
+    },
+    {
+      "id": "m-6",
+      "conversationId": "conv-1",
+      "sender": { "id": "u-3", "displayName": "Priya Nair", "roleLabel": "Admin" },
+      "body": "Here's the release checklist.",
+      "sentAt": "2026-08-20T08:12:00.000Z",
+      "direction": "received",
+      "status": "delivered",
+      "attachments": [
+        { "id": "at-1", "name": "release-checklist.pdf", "mimeType": "application/pdf", "size": 184000, "state": "ready" }
+      ],
+      "reactions": [
+        { "emoji": "🙏", "count": 3, "reactedByMe": true },
+        { "emoji": "🎉", "count": 1 }
+      ]
+    },
+    {
+      "id": "m-7",
+      "conversationId": "conv-1",
+      "sender": { "id": "me", "displayName": "Tejasvi" },
+      "body": "Uploading the build now.",
+      "sentAt": "2026-08-20T08:20:00.000Z",
+      "direction": "sent",
+      "status": "sent",
+      "attachments": [
+        { "id": "at-2", "name": "app-release.ipa", "mimeType": "application/octet-stream", "size": 62000000, "state": "uploading", "progress": 0.44 }
+      ]
+    },
+    {
+      "id": "m-8",
+      "conversationId": "conv-1",
+      "sender": { "id": "me", "displayName": "Tejasvi" },
+      "body": "Scanning this one before it goes out.",
+      "sentAt": "2026-08-20T08:22:00.000Z",
+      "direction": "sent",
+      "status": "sending",
+      "attachments": [
+        { "id": "at-3", "name": "credentials.zip", "mimeType": "application/zip", "size": 8400, "state": "blocked", "blockedReason": "Zip files can't be sent in this workspace." }
+      ]
+    },
+    {
+      "id": "m-9",
+      "conversationId": "conv-1",
+      "sender": { "id": "me", "displayName": "Tejasvi" },
+      "body": "This one failed to send — it stays put with a retry rather than disappearing.",
+      "sentAt": "2026-08-20T08:25:00.000Z",
+      "direction": "sent",
+      "status": "failed"
+    },
+    {
+      "id": "m-10",
+      "conversationId": "conv-1",
+      "sender": { "id": "u-5", "displayName": "Sara Whitfield" },
+      "body": "",
+      "sentAt": "2026-08-20T08:30:00.000Z",
+      "direction": "received",
+      "status": "delivered",
+      "moderation": "deletedForEveryone"
+    },
+    {
+      "id": "m-11",
+      "conversationId": "conv-1",
+      "sender": { "id": "u-4", "displayName": "Devansh Rao" },
+      "body": "Forwarding what ops said about the rollout window.",
+      "sentAt": "2026-08-20T08:35:00.000Z",
+      "direction": "received",
+      "status": "delivered",
+      "forwarded": true,
+      "editedAt": "2026-08-20T08:36:00.000Z"
+    },
+    {
+      "id": "m-12",
+      "conversationId": "conv-1",
+      "sender": { "id": "me", "displayName": "Tejasvi" },
+      "body": "This one disappears after 24 hours.",
+      "sentAt": "2026-08-20T08:40:00.000Z",
+      "direction": "sent",
+      "status": "delivered",
+      "expiresAt": "2026-08-21T08:40:00.000Z"
+    }
+  ]
+}

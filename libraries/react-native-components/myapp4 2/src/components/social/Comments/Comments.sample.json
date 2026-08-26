@@ -1,0 +1,89 @@
+{
+  "$comment": "Includes an optimistic comment mid-send, a failed one with a retry path, and both moderation outcomes — author deletion is distinct from moderator removal.",
+  "currentUser": { "id": "me", "displayName": "Tejasvi Waghulde", "handle": "@tejasvi" },
+  "comments": [
+    {
+      "id": "c-1",
+      "author": { "id": "u-4", "displayName": "Devansh Rao", "handle": "@devansh", "roleLabel": "Moderator" },
+      "body": "Pinning this — the four screens Maya deleted are exactly the ones our support queue kept asking about. Correlation isn't causation, but it's a strong hint.",
+      "createdAt": "2026-08-20T07:00:00.000Z",
+      "likeCount": 84,
+      "userLiked": true,
+      "replyCount": 3,
+      "pinned": true,
+      "depth": 0
+    },
+    {
+      "id": "c-2",
+      "author": { "id": "u-1", "displayName": "Maya Iyer", "handle": "@mayaiyer", "verified": true },
+      "body": "That matches what we saw. Ticket volume on onboarding dropped about 40% in the first fortnight.",
+      "createdAt": "2026-08-20T07:14:00.000Z",
+      "likeCount": 31,
+      "byCreator": true,
+      "depth": 1,
+      "parentId": "c-1",
+      "parentAuthorName": "Devansh Rao"
+    },
+    {
+      "id": "c-3",
+      "author": { "id": "u-9", "displayName": "Jonas Berg", "handle": "@jonasb" },
+      "body": "Did you A/B this or ship it straight to everyone? Curious how confident you were before rollout.",
+      "createdAt": "2026-08-20T08:02:00.000Z",
+      "likeCount": 12,
+      "depth": 1,
+      "parentId": "c-1",
+      "parentAuthorName": "Devansh Rao"
+    },
+    {
+      "id": "c-4",
+      "author": { "id": "u-5", "displayName": "Sara Whitfield", "handle": "@sarawrites" },
+      "body": "The bit about deleting screens rather than redesigning them is the part I keep coming back to. We spend so much effort making bad steps prettier.",
+      "createdAt": "2026-08-20T09:30:00.000Z",
+      "likeCount": 205,
+      "replyCount": 8,
+      "depth": 0,
+      "editedAt": "2026-08-20T09:35:00.000Z"
+    },
+    {
+      "id": "c-5",
+      "author": { "id": "me", "displayName": "Tejasvi Waghulde", "handle": "@tejasvi" },
+      "body": "Trying this on our KYC flow next week.",
+      "createdAt": "2026-08-20T10:00:00.000Z",
+      "status": "sending",
+      "clientId": "tmp-1",
+      "depth": 0
+    },
+    {
+      "id": "c-6",
+      "author": { "id": "me", "displayName": "Tejasvi Waghulde", "handle": "@tejasvi" },
+      "body": "This one failed to send — the retry path stays visible instead of the comment vanishing.",
+      "createdAt": "2026-08-20T10:02:00.000Z",
+      "status": "failed",
+      "clientId": "tmp-2",
+      "depth": 0
+    },
+    {
+      "id": "c-7",
+      "author": { "id": "u-8", "displayName": "Elena Volkov", "handle": "@elenav", "deleted": true },
+      "body": "",
+      "createdAt": "2026-08-19T22:00:00.000Z",
+      "moderation": "removedByModerator",
+      "moderationNote": "Removed for breaking the guidelines on spam.",
+      "depth": 0
+    },
+    {
+      "id": "c-8",
+      "author": { "id": "u-2", "displayName": "Kabir Menon", "handle": "@kabirshoots" },
+      "body": "",
+      "createdAt": "2026-08-19T20:00:00.000Z",
+      "moderation": "removedByAuthor",
+      "depth": 1,
+      "parentAuthorName": "Sara Whitfield"
+    }
+  ],
+  "disabledReasons": {
+    "off": "Comments are turned off for this post",
+    "restricted": "You can't comment because the author limits who can reply",
+    "slowMode": "Slow mode is on. You can comment again in 20 seconds."
+  }
+}

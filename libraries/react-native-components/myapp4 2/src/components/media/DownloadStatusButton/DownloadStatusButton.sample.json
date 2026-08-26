@@ -1,0 +1,12 @@
+{
+  "buttons": [
+    { "title": "Episode 1", "status": "idle" },
+    { "title": "Episode 2", "status": "queued" },
+    { "title": "Episode 3", "status": "downloading", "progress": 0.42 },
+    { "title": "Episode 4", "status": "paused", "progress": 0.6 },
+    { "title": "Episode 5", "status": "done" },
+    { "title": "Episode 6", "status": "error" },
+    { "title": "Episode 7", "status": "expired" },
+    { "title": "Episode 8", "status": "unavailable" }
+  ]
+}

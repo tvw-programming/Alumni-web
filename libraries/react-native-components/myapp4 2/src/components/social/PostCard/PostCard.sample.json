@@ -1,0 +1,136 @@
+{
+  "$comment": "Media URIs are unreachable on purpose so every tile falls back to its alt text — which is exactly what a screen reader announces. Includes moderated tombstones and a deleted author.",
+  "posts": [
+    {
+      "id": "p-1",
+      "kind": "text",
+      "author": { "id": "u-1", "displayName": "Maya Iyer", "handle": "@mayaiyer", "verified": true, "roleLabel": "Creator" },
+      "body": "Spent the weekend rewriting our onboarding flow from scratch. The biggest win wasn't the new screens — it was deleting four of them. Fewer decisions, same outcome. Full write-up here: https://example.invalid/onboarding cc @devansh #productdesign",
+      "createdAt": "2026-08-20T06:30:00.000Z",
+      "audienceLabel": "Public"
+    },
+    {
+      "id": "p-2",
+      "kind": "carousel",
+      "author": { "id": "u-2", "displayName": "Kabir Menon", "handle": "@kabirshoots" },
+      "body": "Three frames from the same street, ten minutes apart. The light does all the work.",
+      "media": [
+        { "id": "m-1", "type": "image", "src": "https://example.invalid/street-1.jpg", "alt": "Empty street at dawn with long shadows across wet cobblestones" },
+        { "id": "m-2", "type": "image", "src": "https://example.invalid/street-2.jpg", "alt": "The same street with a cyclist passing through low golden light" },
+        { "id": "m-3", "type": "image", "src": "https://example.invalid/street-3.jpg", "alt": "The street in full morning sun, shadows gone, a vendor setting up" }
+      ],
+      "createdAt": "2026-08-20T04:10:00.000Z",
+      "locationLabel": "Fort Kochi, Kerala"
+    },
+    {
+      "id": "p-3",
+      "kind": "video",
+      "author": { "id": "u-3", "displayName": "Priya Nair", "handle": "@priyabuilds", "verified": true },
+      "body": "60 seconds on why your test suite is slow. (Spoiler: it's the database.)",
+      "media": [
+        { "id": "m-4", "type": "video", "src": "https://example.invalid/tests.mp4", "alt": "Screen recording of a test suite running, with timing output highlighted" }
+      ],
+      "createdAt": "2026-08-19T18:45:00.000Z"
+    },
+    {
+      "id": "p-4",
+      "kind": "link",
+      "author": { "id": "u-4", "displayName": "Devansh Rao", "handle": "@devansh", "roleLabel": "Moderator" },
+      "body": "Worth your time this morning.",
+      "link": {
+        "url": "https://example.invalid/articles/attention",
+        "domain": "example.invalid",
+        "title": "The attention economy is eating design reviews",
+        "description": "Why the loudest feedback in the room is usually the least useful, and what to do about it.",
+        "image": { "uri": "https://example.invalid/article-cover.jpg", "alt": "Illustration of a crowded meeting room" }
+      },
+      "createdAt": "2026-08-19T09:00:00.000Z",
+      "pinned": true
+    },
+    {
+      "id": "p-5",
+      "kind": "poll",
+      "author": { "id": "u-1", "displayName": "Maya Iyer", "handle": "@mayaiyer", "verified": true },
+      "body": "Settle this for me — where does the primary action go on a mobile form?",
+      "poll": {
+        "options": [
+          { "id": "o-1", "label": "Fixed to the bottom of the screen", "votes": 842 },
+          { "id": "o-2", "label": "Inline, after the last field", "votes": 391 },
+          { "id": "o-3", "label": "Depends on form length", "votes": 1204 }
+        ],
+        "totalVotes": 2437,
+        "closesAt": "2026-08-21T00:00:00.000Z"
+      },
+      "createdAt": "2026-08-19T12:00:00.000Z"
+    },
+    {
+      "id": "p-6",
+      "kind": "quote",
+      "author": { "id": "u-5", "displayName": "Sara Whitfield", "handle": "@sarawrites" },
+      "body": "This is the clearest explanation of the tradeoff I've read.",
+      "quotedPost": {
+        "id": "p-1",
+        "kind": "text",
+        "author": { "id": "u-1", "displayName": "Maya Iyer", "handle": "@mayaiyer", "verified": true },
+        "body": "Spent the weekend rewriting our onboarding flow from scratch. The biggest win wasn't the new screens — it was deleting four of them.",
+        "createdAt": "2026-08-20T06:30:00.000Z"
+      },
+      "createdAt": "2026-08-20T07:05:00.000Z"
+    },
+    {
+      "id": "p-7",
+      "kind": "sponsored",
+      "author": { "id": "u-6", "displayName": "Northwind Tools", "handle": "@northwind" },
+      "body": "Ship your side project this weekend. Free tier, no card required.",
+      "media": [{ "id": "m-5", "type": "image", "src": "https://example.invalid/ad.jpg", "alt": "Product screenshot showing a deployment dashboard" }],
+      "createdAt": "2026-08-20T05:00:00.000Z",
+      "sponsored": true
+    },
+    {
+      "id": "p-8",
+      "kind": "image",
+      "author": { "id": "u-7", "displayName": "Anon", "handle": "@anon_photo" },
+      "body": "Aftermath of the storm on the coast road.",
+      "media": [{ "id": "m-6", "type": "image", "src": "https://example.invalid/storm.jpg", "alt": "Damaged coastal road with debris after a storm" }],
+      "createdAt": "2026-08-18T20:00:00.000Z",
+      "contentWarning": "This image shows storm damage that some people may find distressing."
+    },
+    {
+      "id": "p-9",
+      "kind": "text",
+      "author": { "id": "u-8", "displayName": "Elena Volkov", "handle": "@elenav", "deleted": true },
+      "body": "",
+      "createdAt": "2026-08-17T11:00:00.000Z",
+      "moderation": "removedByModerator",
+      "moderationNote": "Removed for breaking the community guidelines on harassment."
+    },
+    {
+      "id": "p-10",
+      "kind": "text",
+      "author": { "id": "u-9", "displayName": "Jonas Berg", "handle": "@jonasb" },
+      "body": "",
+      "createdAt": "2026-08-16T08:00:00.000Z",
+      "moderation": "removedByAuthor"
+    },
+    {
+      "id": "p-11",
+      "kind": "text",
+      "author": { "id": "u-2", "displayName": "Kabir Menon", "handle": "@kabirshoots" },
+      "body": "Cached while you were offline — this one loaded from local storage.",
+      "createdAt": "2026-08-15T10:00:00.000Z",
+      "fromCache": true,
+      "editedAt": "2026-08-15T10:30:00.000Z"
+    }
+  ],
+  "reactions": {
+    "p-1": { "counts": { "like": 342, "insightful": 88 }, "userReaction": "insightful", "commentCount": 41, "shareCount": 12 },
+    "p-2": { "counts": { "like": 1820, "celebrate": 96 }, "commentCount": 134, "shareCount": 22, "saved": true },
+    "p-3": { "counts": { "like": 5400, "laugh": 210 }, "commentCount": 302, "shareCount": 180 },
+    "p-4": { "counts": { "like": 64, "insightful": 31 }, "commentCount": 8 },
+    "p-5": { "counts": { "like": 210 }, "commentCount": 96 },
+    "p-6": { "counts": { "like": 18 }, "commentCount": 2 },
+    "p-7": { "counts": { "like": 9 }, "commentCount": 1, "countsHidden": true, "hiddenReason": "Engagement is hidden on sponsored posts" },
+    "p-8": { "counts": { "support": 44 }, "commentCount": 12 },
+    "p-11": { "counts": {}, "commentCount": 0 }
+  }
+}

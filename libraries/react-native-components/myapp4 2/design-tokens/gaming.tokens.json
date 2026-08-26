@@ -1,0 +1,73 @@
+{
+  "$description": "Domain tokens for gaming. Rarity, ownership and claim states must be legible without colour — every status below is paired with an icon and a word at the point of use, and rarity is never the sole status cue.",
+  "brand": "gaming-default",
+  "color": {
+    "light": {
+      "surfaceGame": "#FFFFFF",
+      "surfaceOverlay": "rgba(20, 22, 30, 0.72)",
+      "surfaceSelected": "#EFE7FD",
+      "onSurfaceSelected": "#4A2E96",
+
+      "statusLocked": "#8A9099",
+      "statusEarned": "#2E7D32",
+      "statusInProgress": "#1565C0",
+      "statusHidden": "#6750A4",
+      "statusError": "#B3261E",
+
+      "rarityCommon": "#5F6B72",
+      "rarityRare": "#1565C0",
+      "rarityEpic": "#7C3AED",
+      "rarityLegendary": "#B45309",
+
+      "currencyCoins": "#B45309",
+      "currencyGems": "#7C3AED",
+      "currencyTokens": "#1565C0",
+      "livesFull": "#B3261E",
+      "energyFull": "#1565C0",
+
+      "progressTrack": "#E4E1EC",
+      "success": "#2E7D32",
+      "warning": "#B45309",
+      "critical": "#B3261E",
+
+      "focusRing": "#7C3AED"
+    },
+    "dark": {
+      "surfaceGame": "#151923",
+      "surfaceOverlay": "rgba(8, 9, 14, 0.78)",
+      "surfaceSelected": "#2E2450",
+      "onSurfaceSelected": "#D9C9FF",
+
+      "statusLocked": "#8D9199",
+      "statusEarned": "#8ED49C",
+      "statusInProgress": "#A9C7FF",
+      "statusHidden": "#CFBCFF",
+      "statusError": "#FFB4AB",
+
+      "rarityCommon": "#A8B2B8",
+      "rarityRare": "#A9C7FF",
+      "rarityEpic": "#CFBCFF",
+      "rarityLegendary": "#E3A882",
+
+      "currencyCoins": "#E3A882",
+      "currencyGems": "#CFBCFF",
+      "currencyTokens": "#A9C7FF",
+      "livesFull": "#FFB4AB",
+      "energyFull": "#A9C7FF",
+
+      "progressTrack": "#3A3A4A",
+      "success": "#8ED49C",
+      "warning": "#E3A882",
+      "critical": "#FFB4AB",
+
+      "focusRing": "#CFBCFF"
+    }
+  },
+  "layout": {
+    "coverAspectRatio": 0.7,
+    "avatarSize": 48,
+    "podiumAvatarSize": 64,
+    "badgeIconSize": 40,
+    "wheelSize": 220
+  }
+}

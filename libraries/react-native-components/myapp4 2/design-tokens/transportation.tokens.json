@@ -1,0 +1,93 @@
+{
+  "$description": "Domain tokens for transportation and ride-hailing. Ride status, safety, and OTP states must be legible without colour — every status below is paired with an icon and a word at the point of use.",
+  "brand": "transportation-default",
+  "color": {
+    "light": {
+      "surfaceSearch": "#FFFFFF",
+      "surfaceSelected": "#E8F1FB",
+      "onSurfaceSelected": "#12405F",
+      "surfaceMap": "#EAF0EC",
+
+      "statusSearching": "#6750A4",
+      "statusAssigned": "#1565C0",
+      "statusArriving": "#1565C0",
+      "statusArrived": "#2E7D32",
+      "statusInTrip": "#0F766E",
+      "statusArrivingDestination": "#0F766E",
+      "statusCompleted": "#2E7D32",
+      "statusCanceled": "#8A9099",
+      "statusFailed": "#B3261E",
+      "statusReconnecting": "#B45309",
+
+      "availableNow": "#2E7D32",
+      "limitedAvailability": "#B45309",
+      "unavailable": "#8A9099",
+      "recommended": "#1565C0",
+
+      "verified": "#1565C0",
+      "ratingFill": "#F5A524",
+
+      "otpSurface": "#FFF6E5",
+      "onOtpSurface": "#6B4405",
+      "otpBorder": "#E8A33D",
+
+      "safety": "#B3261E",
+      "safetyContainer": "#FBE9E7",
+      "onSafetyContainer": "#7A1E14",
+
+      "markerPickup": "#1565C0",
+      "markerDropoff": "#B3261E",
+      "markerDriver": "#2E7D32",
+      "markerUser": "#6750A4",
+
+      "focusRing": "#1565C0"
+    },
+    "dark": {
+      "surfaceSearch": "#1E2124",
+      "surfaceSelected": "#173042",
+      "onSurfaceSelected": "#BBDCF5",
+      "surfaceMap": "#1B231C",
+
+      "statusSearching": "#CFBCFF",
+      "statusAssigned": "#A9C7FF",
+      "statusArriving": "#A9C7FF",
+      "statusArrived": "#8ED49C",
+      "statusInTrip": "#6BC7BC",
+      "statusArrivingDestination": "#6BC7BC",
+      "statusCompleted": "#8ED49C",
+      "statusCanceled": "#8D9199",
+      "statusFailed": "#FFB4AB",
+      "statusReconnecting": "#E3A882",
+
+      "availableNow": "#8ED49C",
+      "limitedAvailability": "#E3A882",
+      "unavailable": "#8D9199",
+      "recommended": "#A9C7FF",
+
+      "verified": "#A9C7FF",
+      "ratingFill": "#F5A524",
+
+      "otpSurface": "#3A2E18",
+      "onOtpSurface": "#FFE2B0",
+      "otpBorder": "#F0BE6A",
+
+      "safety": "#FFB4AB",
+      "safetyContainer": "#4B1712",
+      "onSafetyContainer": "#FFDAD4",
+
+      "markerPickup": "#A9C7FF",
+      "markerDropoff": "#FFB4AB",
+      "markerDriver": "#8ED49C",
+      "markerUser": "#CFBCFF",
+
+      "focusRing": "#A9C7FF"
+    }
+  },
+  "layout": {
+    "rideCardMinWidth": 108,
+    "driverAvatarSize": 56,
+    "otpDigitSize": 44,
+    "mapPreviewHeight": 160,
+    "timelineNodeSize": 22
+  }
+}

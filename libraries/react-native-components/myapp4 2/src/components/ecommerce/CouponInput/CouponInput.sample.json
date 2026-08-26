@@ -1,0 +1,59 @@
+{
+  "$comment": "Error copy is specific because 'invalid code' is useless. Validation is always server-authoritative.",
+  "offers": [
+    {
+      "code": "SAVE200",
+      "title": "₹200 off orders over ₹2,000",
+      "description": "Applies to all electronics and footwear.",
+      "expiresAt": "2026-09-30T00:00:00.000Z",
+      "minOrder": { "minUnits": 200000, "currency": "INR" },
+      "eligible": true
+    },
+    {
+      "code": "FIRSTBUY",
+      "title": "15% off your first order",
+      "description": "New customers only, up to ₹500 off.",
+      "eligible": false,
+      "ineligibleReason": "You have ordered before, so this offer does not apply."
+    },
+    {
+      "code": "BANK10",
+      "title": "10% off with HDFC cards",
+      "description": "Applied automatically when you pay with an eligible card.",
+      "eligible": true,
+      "autoApplied": true
+    },
+    {
+      "code": "FASHION25",
+      "title": "25% off fashion",
+      "description": "Selected brands only.",
+      "expiresAt": "2026-08-25T00:00:00.000Z",
+      "eligible": false,
+      "ineligibleReason": "Add ₹500 more of eligible fashion items to use this coupon."
+    }
+  ],
+  "results": {
+    "applied": {
+      "code": "SAVE200",
+      "state": "applied",
+      "discount": { "minorUnits": 20000, "currency": "INR" },
+      "message": "Applied to 3 eligible items"
+    },
+    "conditional": {
+      "code": "BANK10",
+      "state": "applied",
+      "discount": { "minorUnits": 45000, "currency": "INR" },
+      "conditional": true,
+      "message": "Applies when you pay with an HDFC card"
+    },
+    "expired": { "code": "SUMMER20", "state": "expired", "message": "This code expired on 31 July." },
+    "ineligible": {
+      "code": "FASHION25",
+      "state": "ineligible",
+      "message": "Add ₹500 more to use this coupon",
+      "restrictions": ["Valid on selected fashion brands", "Minimum order ₹1,500", "Cannot be combined with SAVE200"]
+    },
+    "invalid": { "code": "NOTACODE", "state": "invalid", "message": "We do not recognise that code." },
+    "error": { "code": "SAVE200", "state": "error", "message": "We could not reach the offers service. Try again." }
+  }
+}

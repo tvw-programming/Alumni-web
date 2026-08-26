@@ -1,0 +1,72 @@
+{
+  "$comment": "Includes a removed post and a deleted author — both are attributed honestly rather than vanishing from the list.",
+  "threads": [
+    {
+      "id": "t-1",
+      "title": "Announcement: Module 2 deadline extended to 26 August",
+      "preview": "We've had a few requests for more time on the housing prices assignment, so the deadline now falls on 26 August at 23:59 IST.",
+      "author": { "id": "u-i1", "name": "Dr. Anita Deshpande", "role": "instructor" },
+      "replyCount": 4,
+      "reactionCount": 62,
+      "status": "open",
+      "pinned": true,
+      "updatedAt": "2026-08-19T09:00:00.000Z",
+      "contextLabel": "Course announcements"
+    },
+    {
+      "id": "t-2",
+      "title": "Why does my gradient descent diverge with lr = 0.5?",
+      "preview": "I followed the lecture exactly but my cost goes to infinity after about six iterations. Scaling the features didn't help.",
+      "author": { "id": "u-3", "name": "Marcus Lee", "role": "learner" },
+      "replyCount": 7,
+      "reactionCount": 12,
+      "status": "resolved",
+      "hasInstructorReply": true,
+      "updatedAt": "2026-08-18T14:20:00.000Z",
+      "contextLabel": "Module 2 · Lesson 6"
+    },
+    {
+      "id": "t-3",
+      "title": "Study group for the capstone — anyone in IST?",
+      "preview": "Thinking of meeting twice a week in the evenings. Reply if you'd like to join.",
+      "author": { "id": "u-4", "name": "Priya Nair", "role": "learner" },
+      "replyCount": 23,
+      "reactionCount": 31,
+      "status": "open",
+      "unread": true,
+      "updatedAt": "2026-08-19T07:45:00.000Z",
+      "contextLabel": "General discussion"
+    },
+    {
+      "id": "t-4",
+      "title": "Confusion matrix: is precision TP/(TP+FP) or TP/(TP+FN)?",
+      "preview": "I keep mixing these up before the quiz.",
+      "author": { "id": "u-5", "name": "Elena Volkov", "role": "learner", "deleted": true },
+      "replyCount": 3,
+      "status": "open",
+      "hasInstructorReply": true,
+      "updatedAt": "2026-08-17T11:00:00.000Z",
+      "contextLabel": "Module 3 · Lesson 11"
+    },
+    {
+      "id": "t-5",
+      "title": "Week 1 introductions",
+      "preview": "Say hello and tell us what you're hoping to build.",
+      "author": { "id": "u-i2", "name": "Sara Whitfield", "role": "moderator" },
+      "replyCount": 148,
+      "reactionCount": 90,
+      "status": "locked",
+      "updatedAt": "2026-08-05T08:00:00.000Z",
+      "contextLabel": "Course welcome"
+    },
+    {
+      "id": "t-6",
+      "title": "Removed post",
+      "author": { "id": "u-6", "name": "Anonymous", "role": "learner" },
+      "replyCount": 0,
+      "status": "removed",
+      "updatedAt": "2026-08-16T13:00:00.000Z",
+      "removedReason": "A moderator removed this post because it shared assignment solutions."
+    }
+  ]
+}

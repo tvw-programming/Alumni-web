@@ -1,0 +1,38 @@
+{
+  "$comment": "Dummy configs for AmountKeypad. All amounts are integer MINOR units.",
+  "sendMoney": {
+    "currency": "INR",
+    "locale": "en-IN",
+    "submitLabel": "Continue",
+    "availableBalance": 4823150,
+    "min": 100,
+    "limit": 20000000,
+    "quickAmounts": [50000, 100000, 250000, 500000],
+    "footnote": "No fee · Arrives instantly"
+  },
+  "zeroDecimalCurrency": {
+    "currency": "JPY",
+    "locale": "ja-JP",
+    "submitLabel": "Send",
+    "min": 100,
+    "quickAmounts": [100000, 500000, 1000000],
+    "footnote": "JPY has no minor units — the keypad adapts automatically"
+  },
+  "internationalTransfer": {
+    "currency": "USD",
+    "locale": "en-US",
+    "submitLabel": "Review transfer",
+    "availableBalance": 250000,
+    "min": 500,
+    "max": 1000000,
+    "quickAmounts": [10000, 25000, 50000],
+    "footnote": "Fee $4.20 · 1 USD = ₹83.42 · Arrives in 1–2 days"
+  },
+  "requestMoney": {
+    "currency": "INR",
+    "locale": "en-IN",
+    "submitLabel": "Request",
+    "allowZero": false,
+    "quickAmounts": [10000, 20000, 50000]
+  }
+}

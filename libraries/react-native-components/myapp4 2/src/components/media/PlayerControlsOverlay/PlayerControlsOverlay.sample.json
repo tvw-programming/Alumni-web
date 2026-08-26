@@ -1,0 +1,32 @@
+{
+  "playing": {
+    "isPlaying": true,
+    "positionMs": 645000,
+    "durationMs": 2880000,
+    "buffering": false,
+    "qualityOptions": ["Auto", "1080p", "720p", "480p"],
+    "selectedQuality": "Auto",
+    "subtitleOptions": ["Off", "English", "Spanish", "Hindi"],
+    "selectedSubtitle": "English",
+    "audioOptions": ["English", "Spanish (Dubbed)", "English (Audio Description)"],
+    "selectedAudio": "English",
+    "speedOptions": [0.5, 1, 1.25, 1.5, 2],
+    "selectedSpeed": 1,
+    "castState": "available",
+    "nextEpisodeLabel": "Next episode in 45s"
+  },
+  "buffering": {
+    "isPlaying": true,
+    "positionMs": 120000,
+    "durationMs": 2880000,
+    "buffering": true,
+    "castState": "unavailable"
+  },
+  "error": {
+    "isPlaying": false,
+    "positionMs": 0,
+    "durationMs": 2880000,
+    "errorMessage": "Trying to reconnect.",
+    "castState": "unavailable"
+  }
+}

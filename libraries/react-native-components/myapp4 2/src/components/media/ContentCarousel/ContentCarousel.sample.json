@@ -1,0 +1,13 @@
+{
+  "trending": {
+    "title": "Trending now",
+    "items": [
+      { "id": "car-1", "title": "Nebula Drift", "image": { "uri": "https://images.example.com/nebula-drift.jpg", "alt": "Nebula Drift poster" }, "aspectRatio": "portrait", "metadata": "2026 · Sci-Fi", "badges": ["New"], "maturityRating": "16+", "availability": { "status": "available" } },
+      { "id": "car-2", "title": "Quiet Harbor", "image": { "uri": "https://images.example.com/quiet-harbor.jpg", "alt": "Quiet Harbor poster" }, "aspectRatio": "portrait", "metadata": "Drama", "maturityRating": "13+", "availability": { "status": "available" } },
+      { "id": "car-3", "title": "Iron Circuit", "image": { "alt": "Iron Circuit poster" }, "aspectRatio": "portrait", "metadata": "Action", "maturityRating": "18+", "availability": { "status": "restricted" } },
+      { "id": "car-4", "title": "Departed Frontier", "image": { "alt": "Departed Frontier poster" }, "aspectRatio": "portrait", "metadata": "Western", "maturityRating": "16+", "availability": { "status": "available" } },
+      { "id": "car-5", "title": "Skyline Echoes", "image": { "alt": "Skyline Echoes poster" }, "aspectRatio": "portrait", "metadata": "Thriller", "maturityRating": "16+", "availability": { "status": "available" } }
+    ]
+  },
+  "becauseYouWatched": { "title": "Because you watched Nebula Drift", "items": [] }
+}

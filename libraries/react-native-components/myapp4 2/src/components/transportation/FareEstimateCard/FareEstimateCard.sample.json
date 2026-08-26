@@ -1,0 +1,33 @@
+{
+  "upfront": {
+    "rideTypeId": "rt-1",
+    "amount": { "minorUnits": 24000, "currency": "INR" },
+    "status": "upfront",
+    "includes": ["tolls", "service fee"],
+    "breakdown": [
+      { "id": "l-1", "label": "Base fare", "amount": { "minorUnits": 18000, "currency": "INR" }, "kind": "base" },
+      { "id": "l-2", "label": "Tolls", "amount": { "minorUnits": 3000, "currency": "INR" }, "kind": "toll" },
+      { "id": "l-3", "label": "Service fee", "amount": { "minorUnits": 3000, "currency": "INR" }, "kind": "fee", "explanation": "Covers payment processing and platform support." }
+    ]
+  },
+  "changed": {
+    "rideTypeId": "rt-1",
+    "amount": { "minorUnits": 27000, "currency": "INR" },
+    "previousAmount": { "minorUnits": 24000, "currency": "INR" },
+    "status": "changed",
+    "breakdown": [
+      { "id": "l-4", "label": "Base fare", "amount": { "minorUnits": 18000, "currency": "INR" }, "kind": "base" },
+      { "id": "l-5", "label": "Surge pricing", "amount": { "minorUnits": 6000, "currency": "INR" }, "kind": "surge", "explanation": "High demand in your area right now." },
+      { "id": "l-6", "label": "Service fee", "amount": { "minorUnits": 3000, "currency": "INR" }, "kind": "fee" }
+    ]
+  },
+  "estimated": {
+    "rideTypeId": "rt-3",
+    "minAmount": { "minorUnits": 42000, "currency": "INR" },
+    "maxAmount": { "minorUnits": 58000, "currency": "INR" },
+    "status": "estimated"
+  },
+  "calculating": { "rideTypeId": "rt-1", "status": "calculating" },
+  "expired": { "rideTypeId": "rt-1", "amount": { "minorUnits": 24000, "currency": "INR" }, "status": "expired" },
+  "paymentMethod": { "id": "pm-1", "kind": "card", "label": "Paid with Visa ending in 4821" }
+}

@@ -1,0 +1,105 @@
+{
+  "$description": "Domain tokens for AgriTech (crop/field/market) and logistics (shipment/route/warehouse) surfaces. Status must be legible without colour — every status below is paired with an icon and a word at the point of use. Never a brand-specific green/blue/orange.",
+  "brand": "agritech-default",
+  "color": {
+    "light": {
+      "background": "#F6F7F2",
+      "surface": "#FFFFFF",
+      "surfaceVariant": "#EDF0E4",
+      "onSurface": "#1B2117",
+      "onSurfaceVariant": "#5C6552",
+
+      "primary": "#2E7D32",
+      "focus": "#1B5E20",
+
+      "stageOnTrack": "#2E7D32",
+      "stageOverdue": "#B7791F",
+      "stageInferred": "#5C6552",
+
+      "priceUp": "#2E7D32",
+      "priceDown": "#C53030",
+      "priceFlat": "#5C6552",
+
+      "nutrientLow": "#B7791F",
+      "nutrientOptimal": "#2E7D32",
+      "nutrientHigh": "#C53030",
+
+      "severityInfo": "#2563EB",
+      "severityWatch": "#B7791F",
+      "severityWarning": "#C2650C",
+      "severityUrgent": "#C53030",
+
+      "shipmentPending": "#5C6552",
+      "shipmentInTransit": "#2563EB",
+      "shipmentOutForDelivery": "#B7791F",
+      "shipmentDelivered": "#2E7D32",
+      "shipmentException": "#C53030",
+
+      "stockHealthy": "#2E7D32",
+      "stockLow": "#B7791F",
+      "stockOut": "#C53030",
+
+      "trackingLive": "#2E7D32",
+      "trackingStale": "#B7791F",
+      "trackingOffline": "#5C6552",
+
+      "online": "#2E7D32",
+      "offline": "#5C6552",
+      "pending": "#B7791F",
+      "warning": "#B7791F",
+      "error": "#C53030"
+    },
+    "dark": {
+      "background": "#10140D",
+      "surface": "#1B2117",
+      "surfaceVariant": "#262E1F",
+      "onSurface": "#EDF0E4",
+      "onSurfaceVariant": "#AEB8A2",
+
+      "primary": "#8ED08F",
+      "focus": "#8ED08F",
+
+      "stageOnTrack": "#8ED08F",
+      "stageOverdue": "#F0C179",
+      "stageInferred": "#AEB8A2",
+
+      "priceUp": "#8ED08F",
+      "priceDown": "#FFB4AB",
+      "priceFlat": "#AEB8A2",
+
+      "nutrientLow": "#F0C179",
+      "nutrientOptimal": "#8ED08F",
+      "nutrientHigh": "#FFB4AB",
+
+      "severityInfo": "#8FADFF",
+      "severityWatch": "#F0C179",
+      "severityWarning": "#F5A55A",
+      "severityUrgent": "#FFB4AB",
+
+      "shipmentPending": "#AEB8A2",
+      "shipmentInTransit": "#8FADFF",
+      "shipmentOutForDelivery": "#F0C179",
+      "shipmentDelivered": "#8ED08F",
+      "shipmentException": "#FFB4AB",
+
+      "stockHealthy": "#8ED08F",
+      "stockLow": "#F0C179",
+      "stockOut": "#FFB4AB",
+
+      "trackingLive": "#8ED08F",
+      "trackingStale": "#F0C179",
+      "trackingOffline": "#AEB8A2",
+
+      "online": "#8ED08F",
+      "offline": "#AEB8A2",
+      "pending": "#F0C179",
+      "warning": "#F0C179",
+      "error": "#FFB4AB"
+    }
+  },
+  "layout": {
+    "forecastCardWidth": 88,
+    "mapPreviewHeight": 140,
+    "scannerFrameSize": 240
+  }
+}

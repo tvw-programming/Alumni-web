@@ -1,0 +1,42 @@
+{
+  "$comment": "Slots and events as they arrive from the fulfilment service. ETA is a RANGE with a freshness stamp — never a single false-precision minute.",
+  "slots": [
+    { "id": "s-now", "date": "2026-08-19", "startTime": "Now", "endTime": "", "label": "Arrives in 12 minutes", "type": "instant", "availability": "available", "recommended": true, "fee": { "minorUnits": 2900, "currency": "INR" } },
+    { "id": "s-1", "date": "2026-08-19", "startTime": "18:00", "endTime": "20:00", "type": "scheduled", "availability": "available", "fee": { "minorUnits": 0, "currency": "INR" } },
+    { "id": "s-2", "date": "2026-08-19", "startTime": "20:00", "endTime": "22:00", "type": "scheduled", "availability": "full" },
+    { "id": "s-3", "date": "2026-08-20", "startTime": "08:00", "endTime": "10:00", "type": "scheduled", "availability": "available", "fee": { "minorUnits": 0, "currency": "INR" } },
+    { "id": "s-4", "date": "2026-08-20", "startTime": "10:00", "endTime": "12:00", "type": "scheduled", "availability": "available", "fee": { "minorUnits": 4900, "currency": "INR" } },
+    { "id": "s-5", "date": "2026-08-20", "startTime": "12:00", "endTime": "14:00", "type": "scheduled", "availability": "expired" },
+    { "id": "s-6", "date": "2026-08-21", "startTime": "09:00", "endTime": "13:00", "type": "pickup", "label": "Pickup — Church Street store", "availability": "available", "fee": { "minorUnits": 0, "currency": "INR" } }
+  ],
+  "shipments": [
+    {
+      "id": "ship-1",
+      "label": "Groceries",
+      "courierName": "Shopper: Ravi K.",
+      "eta": { "earliest": "6:40 pm", "latest": "7:05 pm", "updatedAt": "2026-08-19T13:02:00.000Z", "confident": true },
+      "events": [
+        { "id": "e1", "status": "placed", "label": "Order placed", "timestamp": "2026-08-19T12:30:00.000Z", "completed": true, "current": false },
+        { "id": "e2", "status": "confirmed", "label": "Order confirmed", "timestamp": "2026-08-19T12:31:00.000Z", "completed": true, "current": false },
+        { "id": "e3", "status": "shopping", "label": "Ravi is shopping your order", "timestamp": "2026-08-19T12:45:00.000Z", "description": "1 item is unavailable and needs your decision.", "completed": false, "current": true },
+        { "id": "e4", "status": "packed", "label": "Packed", "completed": false, "current": false },
+        { "id": "e5", "status": "outForDelivery", "label": "Out for delivery", "completed": false, "current": false },
+        { "id": "e6", "status": "delivered", "label": "Delivered", "completed": false, "current": false }
+      ]
+    },
+    {
+      "id": "ship-2",
+      "label": "Electronics",
+      "courierName": "Delivered by BlueDart",
+      "eta": { "earliest": "Mon 25 Aug", "latest": "Tue 26 Aug", "updatedAt": "2026-08-19T09:00:00.000Z", "confident": false },
+      "events": [
+        { "id": "f1", "status": "placed", "label": "Order placed", "timestamp": "2026-08-19T12:30:00.000Z", "completed": true, "current": false },
+        { "id": "f2", "status": "confirmed", "label": "Confirmed by the seller", "timestamp": "2026-08-19T14:00:00.000Z", "completed": true, "current": false },
+        { "id": "f3", "status": "packed", "label": "Packed and ready", "timestamp": "2026-08-19T18:20:00.000Z", "completed": true, "current": false },
+        { "id": "f4", "status": "delayed", "label": "Delayed in transit", "timestamp": "2026-08-20T08:00:00.000Z", "description": "Heavy rain has held up the regional hub. We will send another update by 6 pm tomorrow.", "completed": false, "current": true },
+        { "id": "f5", "status": "outForDelivery", "label": "Out for delivery", "completed": false, "current": false },
+        { "id": "f6", "status": "delivered", "label": "Delivered", "completed": false, "current": false }
+      ]
+    }
+  ]
+}

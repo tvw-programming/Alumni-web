@@ -1,0 +1,8 @@
+{
+  "notifications": [
+    { "id": "n-1", "type": "assignment", "title": "5 tasks assigned to you", "timestamp": "2026-08-20T09:00:00Z", "read": false, "priority": "important", "groupCount": 5 },
+    { "id": "n-2", "type": "comment", "title": "3 new comments on Project Atlas", "timestamp": "2026-08-20T08:30:00Z", "actor": { "id": "u-2", "name": "Devon Osei" }, "read": false, "groupCount": 3 },
+    { "id": "n-3", "type": "approval", "title": "Approval request needs your attention", "body": "Purchase order — new laptops, $18,400", "timestamp": "2026-08-19T17:00:00Z", "read": false, "priority": "urgent" },
+    { "id": "n-4", "type": "mention", "title": "You were mentioned in a comment", "actor": { "id": "u-3", "name": "Priya Nair" }, "timestamp": "2026-08-18T14:00:00Z", "read": true }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$comment": "`correct` flags are present here only because this is a practice deck. In graded mode the client never receives the answer key — the server scores the submission.",
+  "practiceQuestions": [
+    {
+      "id": "q-1",
+      "type": "single",
+      "prompt": "In linear regression, what does the least-squares method minimise?",
+      "required": true,
+      "points": 1,
+      "explanation": "Least squares minimises the sum of the squared vertical distances between each observed point and the fitted line.",
+      "options": [
+        { "id": "a", "label": "The sum of squared residuals", "correct": true },
+        { "id": "b", "label": "The number of features in the model" },
+        { "id": "c", "label": "The slope of the regression line" },
+        { "id": "d", "label": "The correlation coefficient" }
+      ]
+    },
+    {
+      "id": "q-2",
+      "type": "multiple",
+      "prompt": "Which of these can cause a model to overfit? Select all that apply.",
+      "required": true,
+      "minSelections": 1,
+      "points": 2,
+      "explanation": "Too many parameters relative to the data, and training for too long without regularisation, both let the model memorise noise. More training data generally reduces overfitting.",
+      "options": [
+        { "id": "a", "label": "Too many parameters for the amount of data", "correct": true },
+        { "id": "b", "label": "Training for too many epochs without regularisation", "correct": true },
+        { "id": "c", "label": "Collecting more training data" },
+        { "id": "d", "label": "Leaving test data in the training set", "correct": true }
+      ]
+    },
+    {
+      "id": "q-3",
+      "type": "trueFalse",
+      "prompt": "A high R-squared value always means the model will generalise well to new data.",
+      "required": true,
+      "points": 1,
+      "explanation": "False. R-squared measures fit on the data you already have. A model can fit training data almost perfectly and still fail on new data."
+    }
+  ],
+  "gradedQuestion": {
+    "$note": "No `correct` flags — this is what the client actually receives for a graded assessment.",
+    "id": "q-graded-1",
+    "type": "single",
+    "prompt": "Given a confusion matrix with 40 true positives, 10 false positives, 5 false negatives and 45 true negatives, what is the precision?",
+    "required": true,
+    "points": 5,
+    "options": [
+      { "id": "a", "label": "0.80" },
+      { "id": "b", "label": "0.89" },
+      { "id": "c", "label": "0.85" },
+      { "id": "d", "label": "0.90" }
+    ]
+  }
+}

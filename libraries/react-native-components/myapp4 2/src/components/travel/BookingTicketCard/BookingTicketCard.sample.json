@@ -1,0 +1,59 @@
+{
+  "tickets": [
+    {
+      "id": "tk-1",
+      "type": "flight",
+      "status": "confirmed",
+      "provider": "IndiGo",
+      "travelerName": "Aditi Sharma",
+      "origin": "BLR",
+      "destination": "GOI",
+      "startAt": "2026-08-22T06:15:00+05:30",
+      "confirmationCode": "6EXJ4K9P",
+      "barcode": { "value": "6EXJ4K9P-BLR-GOI-20260822", "format": "qr", "expiresAt": "2026-08-22T07:35:00+05:30" },
+      "details": [
+        { "id": "d-1", "label": "Flight", "value": "6E 204" },
+        { "id": "d-2", "label": "Seat", "value": "14C" },
+        { "id": "d-3", "label": "Gate", "value": "12B" },
+        { "id": "d-4", "label": "Boarding", "value": "05:45" }
+      ]
+    },
+    {
+      "id": "tk-2",
+      "type": "hotel",
+      "status": "changed",
+      "provider": "Taj Fort Aguada Resort & Spa",
+      "travelerName": "Aditi Sharma",
+      "startAt": "2026-08-22T14:00:00+05:30",
+      "confirmationCode": "TAJ889213",
+      "barcode": { "value": "TAJ889213", "format": "qr" },
+      "details": [
+        { "id": "d-5", "label": "Room type", "value": "Deluxe Room, Garden View" },
+        { "id": "d-6", "label": "Check-in", "value": "22 Aug, 2:00 PM" },
+        { "id": "d-7", "label": "Check-out", "value": "25 Aug, 12:00 PM" }
+      ]
+    },
+    {
+      "id": "tk-3",
+      "type": "event",
+      "status": "expired",
+      "provider": "Grande Island Watersports",
+      "travelerName": "Aditi Sharma",
+      "startAt": "2026-08-10T10:00:00+05:30",
+      "confirmationCode": "ACT77213",
+      "details": [{ "id": "d-8", "label": "Activity", "value": "Scuba diving experience" }]
+    },
+    {
+      "id": "tk-4",
+      "type": "flight",
+      "status": "canceled",
+      "provider": "IndiGo",
+      "travelerName": "Aditi Sharma",
+      "origin": "GOI",
+      "destination": "BLR",
+      "startAt": "2026-08-25T16:30:00+05:30",
+      "confirmationCode": "6EXJ4K9P",
+      "details": [{ "id": "d-9", "label": "Flight", "value": "6E 719" }]
+    }
+  ]
+}

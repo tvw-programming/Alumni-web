@@ -1,0 +1,26 @@
+{
+  "reports": [
+    {
+      "fieldName": "North field",
+      "sampleDate": "12 Jun",
+      "source": "State Soil Testing Lab",
+      "status": "available",
+      "nutrients": [
+        { "id": "nitrogen", "label": "Nitrogen", "value": 180, "unit": " kg/ha", "min": 200, "max": 400, "status": "low" },
+        { "id": "phosphorus", "label": "Phosphorus", "value": 28, "unit": " kg/ha", "min": 10, "max": 30, "status": "optimal" },
+        { "id": "potassium", "label": "Potassium", "value": 260, "unit": " kg/ha", "min": 100, "max": 200, "status": "high" }
+      ]
+    },
+    {
+      "fieldName": "South plot",
+      "status": "processing",
+      "nutrients": []
+    },
+    {
+      "fieldName": "East field",
+      "status": "missing",
+      "nutrients": []
+    }
+  ],
+  "disclaimer": "Nitrogen is below the recommended range for cotton. Consult your agronomist before applying fertilizer."
+}

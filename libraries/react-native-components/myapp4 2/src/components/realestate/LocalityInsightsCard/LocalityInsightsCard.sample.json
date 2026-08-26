@@ -1,0 +1,11 @@
+{
+  "localityName": "Whitefield, Bengaluru",
+  "priceTrend": { "changePercent": 4.2, "direction": "up", "periodLabel": "this year" },
+  "insights": [
+    { "id": "in-1", "label": "Vidya Public School", "value": "Rated 4.3/5", "category": "school", "distance": "0.8 km", "source": "GreatSchools", "freshness": "Updated last month" },
+    { "id": "in-2", "label": "Metro station", "value": "Purple Line", "category": "transit", "distance": "12 min walk" },
+    { "id": "in-3", "label": "Manipal Hospital", "value": "Multi-specialty", "category": "hospital", "distance": "2.1 km" },
+    { "id": "in-4", "label": "Average price", "value": "₹12,500/sq ft", "category": "price", "source": "Platform data", "freshness": "Updated June 2026" },
+    { "id": "in-5", "label": "Commute to Manyata Tech Park", "value": "~35 min by car", "category": "commute" }
+  ]
+}

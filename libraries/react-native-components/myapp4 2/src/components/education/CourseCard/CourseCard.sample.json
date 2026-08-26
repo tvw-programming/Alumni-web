@@ -1,0 +1,79 @@
+{
+  "$comment": "Thumbnail URIs are unreachable on purpose so the fallback renders its alt text — which is exactly what a screen reader announces. Note the course with progress: null, which is 'unavailable', not 'zero'.",
+  "courses": [
+    {
+      "id": "c-1",
+      "title": "Machine Learning Foundations: Regression, Classification and Model Evaluation",
+      "instructor": "Dr. Anita Deshpande",
+      "provider": "IIT Bombay",
+      "thumbnail": { "uri": "https://example.invalid/ml.jpg", "alt": "Scatter plot with a fitted regression line on a chalkboard" },
+      "duration": "18 hours",
+      "lessonCount": 12,
+      "level": "intermediate",
+      "progress": 42,
+      "enrollmentState": "inProgress",
+      "rating": { "average": 4.7, "count": 12840 },
+      "completionRule": "Progress counts required lessons and graded quizzes. Optional readings are excluded."
+    },
+    {
+      "id": "c-2",
+      "title": "Spanish for Beginners",
+      "instructor": "Elena Ruiz",
+      "thumbnail": { "uri": "https://example.invalid/spanish.jpg", "alt": "Colourful street signs in Seville" },
+      "duration": "6 hours",
+      "lessonCount": 30,
+      "level": "beginner",
+      "progress": 8,
+      "enrollmentState": "inProgress",
+      "rating": { "average": 4.9, "count": 48210 },
+      "availableOffline": true
+    },
+    {
+      "id": "c-3",
+      "title": "Introduction to Statistics",
+      "instructor": "Prof. Michael Chen",
+      "thumbnail": { "uri": "https://example.invalid/stats.jpg", "alt": "Histogram and normal distribution curve" },
+      "duration": "9 hours",
+      "lessonCount": 8,
+      "level": "beginner",
+      "progress": 100,
+      "enrollmentState": "completed",
+      "rating": { "average": 4.5, "count": 3102 }
+    },
+    {
+      "id": "c-4",
+      "title": "Deep Learning Specialisation",
+      "instructor": "Dr. Anita Deshpande",
+      "thumbnail": { "uri": "https://example.invalid/dl.jpg", "alt": "Layered neural network diagram" },
+      "duration": "40 hours",
+      "lessonCount": 26,
+      "level": "advanced",
+      "enrollmentState": "locked",
+      "lockedReason": "Complete Machine Learning Foundations to unlock this course.",
+      "rating": { "average": 4.8, "count": 9420 }
+    },
+    {
+      "id": "c-5",
+      "title": "Creative Writing Workshop",
+      "provider": "Open Arts College",
+      "thumbnail": { "uri": "https://example.invalid/writing.jpg", "alt": "Notebook and fountain pen on a wooden desk" },
+      "duration": "12 hours",
+      "lessonCount": 10,
+      "level": "beginner",
+      "enrollmentState": "notEnrolled",
+      "rating": { "average": 4.3, "count": 812 }
+    },
+    {
+      "id": "c-6",
+      "title": "Algorithms and Data Structures",
+      "instructor": "Prof. Sara Whitfield",
+      "thumbnail": { "alt": "Binary tree diagram with labelled nodes" },
+      "duration": "24 hours",
+      "lessonCount": 20,
+      "level": "advanced",
+      "progress": null,
+      "enrollmentState": "inProgress",
+      "rating": { "average": 4.6, "count": 5601 }
+    }
+  ]
+}

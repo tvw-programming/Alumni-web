@@ -1,0 +1,36 @@
+{
+  "$comment": "A course curriculum. Note that opening a lesson never marks it complete — `state` is supplied by the course service according to explicit completion rules.",
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Module 1 · Foundations",
+      "lessons": [
+        { "id": "l-1", "title": "Welcome and course overview", "type": "video", "duration": "4 min", "state": "completed" },
+        { "id": "l-2", "title": "What is supervised learning?", "type": "video", "duration": "12 min", "state": "completed" },
+        { "id": "l-3", "title": "Reading: A short history of regression", "type": "reading", "duration": "8 min", "state": "completed", "optional": true },
+        { "id": "l-4", "title": "Knowledge check: Foundations", "type": "quiz", "duration": "5 min", "state": "completed" }
+      ]
+    },
+    {
+      "id": "sec-2",
+      "title": "Module 2 · Linear Regression",
+      "lessons": [
+        { "id": "l-5", "title": "Fitting a line: least squares explained", "type": "video", "duration": "18 min", "state": "playing", "progress": 64 },
+        { "id": "l-6", "title": "Gradient descent, step by step", "type": "video", "duration": "22 min", "state": "downloaded" },
+        { "id": "l-7", "title": "Downloading: Feature scaling", "type": "video", "duration": "14 min", "state": "downloading", "downloadProgress": 0.45 },
+        { "id": "l-8", "title": "Graded quiz: Linear regression", "type": "quiz", "duration": "15 min", "state": "notStarted", "attemptFailed": true },
+        { "id": "l-9", "title": "Assignment: Predict housing prices", "type": "assignment", "duration": "2 hours", "state": "notStarted" }
+      ]
+    },
+    {
+      "id": "sec-3",
+      "title": "Module 3 · Classification",
+      "lessons": [
+        { "id": "l-10", "title": "Logistic regression", "type": "video", "duration": "20 min", "state": "locked", "lockedReason": "Complete the Module 2 graded quiz to unlock." },
+        { "id": "l-11", "title": "Confusion matrices and metrics", "type": "video", "duration": "16 min", "state": "locked", "lockedReason": "Complete the Module 2 graded quiz to unlock." },
+        { "id": "l-12", "title": "Capstone project", "type": "project", "duration": "6 hours", "state": "locked", "lockedReason": "Complete all modules to unlock." },
+        { "id": "l-13", "title": "Bonus: Interview with a practitioner", "type": "video", "duration": "28 min", "state": "error", "errorMessage": "This video is unavailable right now." }
+      ]
+    }
+  ]
+}

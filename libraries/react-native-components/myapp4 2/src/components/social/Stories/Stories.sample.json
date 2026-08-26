@@ -1,0 +1,50 @@
+{
+  "$comment": "Includes an own-story tile mid-upload, a failed upload with a retry path, a live story, a close-friends story and an expired one.",
+  "items": [
+    { "id": "s-own", "user": { "id": "me", "displayName": "Tejasvi" }, "hasUnseen": false, "isOwn": true },
+    { "id": "s-1", "user": { "id": "u-1", "displayName": "Maya", "verified": true }, "hasUnseen": true, "segmentCount": 3 },
+    { "id": "s-2", "user": { "id": "u-3", "displayName": "Priya" }, "hasUnseen": true, "segmentCount": 5, "isLive": true },
+    { "id": "s-3", "user": { "id": "u-2", "displayName": "Kabir" }, "hasUnseen": true, "segmentCount": 2, "audience": "closeFriends" },
+    { "id": "s-4", "user": { "id": "u-5", "displayName": "Sara" }, "hasUnseen": false, "segmentCount": 4, "seenCount": 4 },
+    { "id": "s-5", "user": { "id": "u-4", "displayName": "Devansh" }, "hasUnseen": false, "segmentCount": 1 },
+    { "id": "s-6", "user": { "id": "u-6", "displayName": "Northwind" }, "hasUnseen": true, "segmentCount": 1, "sponsored": true },
+    { "id": "s-7", "user": { "id": "u-9", "displayName": "Jonas" }, "hasUnseen": false, "expired": true }
+  ],
+  "uploadingItem": {
+    "id": "s-own-uploading",
+    "user": { "id": "me", "displayName": "Tejasvi" },
+    "hasUnseen": false,
+    "isOwn": true,
+    "uploadState": "uploading",
+    "uploadProgress": 0.62
+  },
+  "failedItem": {
+    "id": "s-own-failed",
+    "user": { "id": "me", "displayName": "Tejasvi" },
+    "hasUnseen": false,
+    "isOwn": true,
+    "uploadState": "failed"
+  },
+  "segments": [
+    {
+      "id": "seg-1",
+      "media": { "id": "sm-1", "type": "image", "src": "https://example.invalid/story-1.jpg", "alt": "Sunrise over a harbour with fishing boats leaving the dock" },
+      "durationMs": 5000,
+      "createdAt": "2026-08-20T05:00:00.000Z",
+      "caption": "5am start. Worth it."
+    },
+    {
+      "id": "seg-2",
+      "media": { "id": "sm-2", "type": "image", "src": "https://example.invalid/story-2.jpg", "alt": "Close-up of nets being folded on the quayside" },
+      "durationMs": 5000,
+      "createdAt": "2026-08-20T05:12:00.000Z"
+    },
+    {
+      "id": "seg-3",
+      "media": { "id": "sm-3", "type": "video", "src": "https://example.invalid/story-3.mp4", "alt": "Short clip of gulls circling above the water" },
+      "durationMs": 7000,
+      "createdAt": "2026-08-20T05:30:00.000Z",
+      "caption": "Sound on for this one"
+    }
+  ]
+}

@@ -1,0 +1,1076 @@
+[
+  {
+    "domain": "agritech",
+    "component": "AdvisoryAlertBanner",
+    "key": "agritech-AdvisoryAlertBanner",
+    "fileName": "agritech-AdvisoryAlertBanner.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "BarcodeScannerOverlay",
+    "key": "agritech-BarcodeScannerOverlay",
+    "fileName": "agritech-BarcodeScannerOverlay.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "CropCard",
+    "key": "agritech-CropCard",
+    "fileName": "agritech-CropCard.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "FieldMapCard",
+    "key": "agritech-FieldMapCard",
+    "fileName": "agritech-FieldMapCard.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "InputOrderCard",
+    "key": "agritech-InputOrderCard",
+    "fileName": "agritech-InputOrderCard.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "InventoryStockRow",
+    "key": "agritech-InventoryStockRow",
+    "fileName": "agritech-InventoryStockRow.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "MandiPriceListItem",
+    "key": "agritech-MandiPriceListItem",
+    "fileName": "agritech-MandiPriceListItem.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "PODCaptureSheet",
+    "key": "agritech-PODCaptureSheet",
+    "fileName": "agritech-PODCaptureSheet.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "RouteStopListItem",
+    "key": "agritech-RouteStopListItem",
+    "fileName": "agritech-RouteStopListItem.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "ShipmentCard",
+    "key": "agritech-ShipmentCard",
+    "fileName": "agritech-ShipmentCard.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "ShipmentStatusTimeline",
+    "key": "agritech-ShipmentStatusTimeline",
+    "fileName": "agritech-ShipmentStatusTimeline.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "SoilHealthCard",
+    "key": "agritech-SoilHealthCard",
+    "fileName": "agritech-SoilHealthCard.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "VehicleTrackingCard",
+    "key": "agritech-VehicleTrackingCard",
+    "fileName": "agritech-VehicleTrackingCard.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "WarehouseSelector",
+    "key": "agritech-WarehouseSelector",
+    "fileName": "agritech-WarehouseSelector.jpg"
+  },
+  {
+    "domain": "agritech",
+    "component": "WeatherForecastStrip",
+    "key": "agritech-WeatherForecastStrip",
+    "fileName": "agritech-WeatherForecastStrip.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "AddToCartButton",
+    "key": "ecommerce-AddToCartButton",
+    "fileName": "ecommerce-AddToCartButton.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "AddressPicker",
+    "key": "ecommerce-AddressPicker",
+    "fileName": "ecommerce-AddressPicker.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "Cart",
+    "key": "ecommerce-Cart",
+    "fileName": "ecommerce-Cart.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "CouponInput",
+    "key": "ecommerce-CouponInput",
+    "fileName": "ecommerce-CouponInput.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "FilterSortSheet",
+    "key": "ecommerce-FilterSortSheet",
+    "fileName": "ecommerce-FilterSortSheet.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "Fulfillment",
+    "key": "ecommerce-Fulfillment",
+    "fileName": "ecommerce-Fulfillment.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "ImageCarousel",
+    "key": "ecommerce-ImageCarousel",
+    "fileName": "ecommerce-ImageCarousel.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "PriceTag",
+    "key": "ecommerce-PriceTag",
+    "fileName": "ecommerce-PriceTag.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "ProductCard",
+    "key": "ecommerce-ProductCard",
+    "fileName": "ecommerce-ProductCard.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "QuantityStepper",
+    "key": "ecommerce-QuantityStepper",
+    "fileName": "ecommerce-QuantityStepper.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "Reviews",
+    "key": "ecommerce-Reviews",
+    "fileName": "ecommerce-Reviews.jpg"
+  },
+  {
+    "domain": "ecommerce",
+    "component": "VariantSelector",
+    "key": "ecommerce-VariantSelector",
+    "fileName": "ecommerce-VariantSelector.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "Achievements",
+    "key": "education-Achievements",
+    "fileName": "education-Achievements.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "AssignmentSubmissionCard",
+    "key": "education-AssignmentSubmissionCard",
+    "fileName": "education-AssignmentSubmissionCard.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "CourseCard",
+    "key": "education-CourseCard",
+    "fileName": "education-CourseCard.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "DiscussionThreadItem",
+    "key": "education-DiscussionThreadItem",
+    "fileName": "education-DiscussionThreadItem.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "FlashCard",
+    "key": "education-FlashCard",
+    "fileName": "education-FlashCard.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "LeaderboardRow",
+    "key": "education-LeaderboardRow",
+    "fileName": "education-LeaderboardRow.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "LessonListItem",
+    "key": "education-LessonListItem",
+    "fileName": "education-LessonListItem.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "LiveClassBanner",
+    "key": "education-LiveClassBanner",
+    "fileName": "education-LiveClassBanner.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "NoteTakerSheet",
+    "key": "education-NoteTakerSheet",
+    "fileName": "education-NoteTakerSheet.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "Progress",
+    "key": "education-Progress",
+    "fileName": "education-Progress.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "QuizQuestionCard",
+    "key": "education-QuizQuestionCard",
+    "fileName": "education-QuizQuestionCard.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "QuizResultCard",
+    "key": "education-QuizResultCard",
+    "fileName": "education-QuizResultCard.jpg"
+  },
+  {
+    "domain": "education",
+    "component": "VideoPlayerControls",
+    "key": "education-VideoPlayerControls",
+    "fileName": "education-VideoPlayerControls.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "ApprovalRequestCard",
+    "key": "enterprise-ApprovalRequestCard",
+    "fileName": "enterprise-ApprovalRequestCard.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "AuditLogRow",
+    "key": "enterprise-AuditLogRow",
+    "fileName": "enterprise-AuditLogRow.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "DashboardChartCard",
+    "key": "enterprise-DashboardChartCard",
+    "fileName": "enterprise-DashboardChartCard.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "DataTableWrapper",
+    "key": "enterprise-DataTableWrapper",
+    "fileName": "enterprise-DataTableWrapper.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "ExportSheet",
+    "key": "enterprise-ExportSheet",
+    "fileName": "enterprise-ExportSheet.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "FileAttachmentItem",
+    "key": "enterprise-FileAttachmentItem",
+    "fileName": "enterprise-FileAttachmentItem.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "FilterToolbar",
+    "key": "enterprise-FilterToolbar",
+    "fileName": "enterprise-FilterToolbar.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "KPIStatCard",
+    "key": "enterprise-KPIStatCard",
+    "fileName": "enterprise-KPIStatCard.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "Kanban",
+    "key": "enterprise-Kanban",
+    "fileName": "enterprise-Kanban.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "MultiStepFormWizard",
+    "key": "enterprise-MultiStepFormWizard",
+    "fileName": "enterprise-MultiStepFormWizard.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "NotificationListItem",
+    "key": "enterprise-NotificationListItem",
+    "fileName": "enterprise-NotificationListItem.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "TaskListItem",
+    "key": "enterprise-TaskListItem",
+    "fileName": "enterprise-TaskListItem.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "TeamMember",
+    "key": "enterprise-TeamMember",
+    "fileName": "enterprise-TeamMember.jpg"
+  },
+  {
+    "domain": "enterprise",
+    "component": "TimelineActivityFeed",
+    "key": "enterprise-TimelineActivityFeed",
+    "fileName": "enterprise-TimelineActivityFeed.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "AmountKeypad",
+    "key": "fintech-AmountKeypad",
+    "fileName": "fintech-AmountKeypad.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "BalanceCard",
+    "key": "fintech-BalanceCard",
+    "fileName": "fintech-BalanceCard.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "CardVisual",
+    "key": "fintech-CardVisual",
+    "fileName": "fintech-CardVisual.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "EMICalculator",
+    "key": "fintech-EMICalculator",
+    "fileName": "fintech-EMICalculator.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "KYCUploader",
+    "key": "fintech-KYCUploader",
+    "fileName": "fintech-KYCUploader.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "PayeeSelector",
+    "key": "fintech-PayeeSelector",
+    "fileName": "fintech-PayeeSelector.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "PaymentMethodSelector",
+    "key": "fintech-PaymentMethodSelector",
+    "fileName": "fintech-PaymentMethodSelector.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "PinPad",
+    "key": "fintech-PinPad",
+    "fileName": "fintech-PinPad.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "SpendingCategoryChart",
+    "key": "fintech-SpendingCategoryChart",
+    "fileName": "fintech-SpendingCategoryChart.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "StatementFilterSheet",
+    "key": "fintech-StatementFilterSheet",
+    "fileName": "fintech-StatementFilterSheet.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "TransactionListItem",
+    "key": "fintech-TransactionListItem",
+    "fileName": "fintech-TransactionListItem.jpg"
+  },
+  {
+    "domain": "fintech",
+    "component": "TransactionStatusSheet",
+    "key": "fintech-TransactionStatusSheet",
+    "fileName": "fintech-TransactionStatusSheet.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "ActivityRings",
+    "key": "fitness-ActivityRings",
+    "fileName": "fitness-ActivityRings.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "ExerciseListItem",
+    "key": "fitness-ExerciseListItem",
+    "fileName": "fitness-ExerciseListItem.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "HabitCheckRow",
+    "key": "fitness-HabitCheckRow",
+    "fileName": "fitness-HabitCheckRow.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "MealCard",
+    "key": "fitness-MealCard",
+    "fileName": "fitness-MealCard.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "MeditationPlayerCard",
+    "key": "fitness-MeditationPlayerCard",
+    "fileName": "fitness-MeditationPlayerCard.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "PersonalRecordAndStreak",
+    "key": "fitness-PersonalRecordAndStreak",
+    "fileName": "fitness-PersonalRecordAndStreak.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "RestTimerCircle",
+    "key": "fitness-RestTimerCircle",
+    "fileName": "fitness-RestTimerCircle.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "SleepSummaryCard",
+    "key": "fitness-SleepSummaryCard",
+    "fileName": "fitness-SleepSummaryCard.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "WaterIntakeTracker",
+    "key": "fitness-WaterIntakeTracker",
+    "fileName": "fitness-WaterIntakeTracker.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "WeightLogChart",
+    "key": "fitness-WeightLogChart",
+    "fileName": "fitness-WeightLogChart.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "WorkoutCard",
+    "key": "fitness-WorkoutCard",
+    "fileName": "fitness-WorkoutCard.jpg"
+  },
+  {
+    "domain": "fitness",
+    "component": "WorkoutPlanTimeline",
+    "key": "fitness-WorkoutPlanTimeline",
+    "fileName": "fitness-WorkoutPlanTimeline.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "Achievement",
+    "key": "gaming-Achievement",
+    "fileName": "gaming-Achievement.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "DailyReward",
+    "key": "gaming-DailyReward",
+    "fileName": "gaming-DailyReward.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "GameCard",
+    "key": "gaming-GameCard",
+    "fileName": "gaming-GameCard.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "GameControlsOverlay",
+    "key": "gaming-GameControlsOverlay",
+    "fileName": "gaming-GameControlsOverlay.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "InAppPurchaseCard",
+    "key": "gaming-InAppPurchaseCard",
+    "fileName": "gaming-InAppPurchaseCard.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "Leaderboard",
+    "key": "gaming-Leaderboard",
+    "fileName": "gaming-Leaderboard.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "MatchmakingDialog",
+    "key": "gaming-MatchmakingDialog",
+    "fileName": "gaming-MatchmakingDialog.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "PlayerProfileCard",
+    "key": "gaming-PlayerProfileCard",
+    "fileName": "gaming-PlayerProfileCard.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "ResourcePill",
+    "key": "gaming-ResourcePill",
+    "fileName": "gaming-ResourcePill.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "ScoreAndTimer",
+    "key": "gaming-ScoreAndTimer",
+    "fileName": "gaming-ScoreAndTimer.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "SpinWheelWidget",
+    "key": "gaming-SpinWheelWidget",
+    "fileName": "gaming-SpinWheelWidget.jpg"
+  },
+  {
+    "domain": "gaming",
+    "component": "TournamentCard",
+    "key": "gaming-TournamentCard",
+    "fileName": "gaming-TournamentCard.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "AppointmentCard",
+    "key": "healthcare-AppointmentCard",
+    "fileName": "healthcare-AppointmentCard.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "AppointmentSlotGrid",
+    "key": "healthcare-AppointmentSlotGrid",
+    "fileName": "healthcare-AppointmentSlotGrid.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "BMICalculatorCard",
+    "key": "healthcare-BMICalculatorCard",
+    "fileName": "healthcare-BMICalculatorCard.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "ChatBubble",
+    "key": "healthcare-ChatBubble",
+    "fileName": "healthcare-ChatBubble.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "ConsentDialog",
+    "key": "healthcare-ConsentDialog",
+    "fileName": "healthcare-ConsentDialog.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "DoctorCard",
+    "key": "healthcare-DoctorCard",
+    "fileName": "healthcare-DoctorCard.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "EmergencyContactCard",
+    "key": "healthcare-EmergencyContactCard",
+    "fileName": "healthcare-EmergencyContactCard.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "HealthDocuments",
+    "key": "healthcare-HealthDocuments",
+    "fileName": "healthcare-HealthDocuments.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "HealthQuestionnaireForm",
+    "key": "healthcare-HealthQuestionnaireForm",
+    "fileName": "healthcare-HealthQuestionnaireForm.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "MedicationReminderItem",
+    "key": "healthcare-MedicationReminderItem",
+    "fileName": "healthcare-MedicationReminderItem.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "SymptomSelector",
+    "key": "healthcare-SymptomSelector",
+    "fileName": "healthcare-SymptomSelector.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "VideoCallControlsBar",
+    "key": "healthcare-VideoCallControlsBar",
+    "fileName": "healthcare-VideoCallControlsBar.jpg"
+  },
+  {
+    "domain": "healthcare",
+    "component": "VitalsCard",
+    "key": "healthcare-VitalsCard",
+    "fileName": "healthcare-VitalsCard.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "AutomationRuleCard",
+    "key": "iot-AutomationRuleCard",
+    "fileName": "iot-AutomationRuleCard.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "ColorPicker",
+    "key": "iot-ColorPicker",
+    "fileName": "iot-ColorPicker.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "DeviceCard",
+    "key": "iot-DeviceCard",
+    "fileName": "iot-DeviceCard.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "DeviceHealth",
+    "key": "iot-DeviceHealth",
+    "fileName": "iot-DeviceHealth.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "DevicePairingWizard",
+    "key": "iot-DevicePairingWizard",
+    "fileName": "iot-DevicePairingWizard.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "DeviceToggleTile",
+    "key": "iot-DeviceToggleTile",
+    "fileName": "iot-DeviceToggleTile.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "FirmwareUpdateCard",
+    "key": "iot-FirmwareUpdateCard",
+    "fileName": "iot-FirmwareUpdateCard.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "RoomTabs",
+    "key": "iot-RoomTabs",
+    "fileName": "iot-RoomTabs.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "SceneCard",
+    "key": "iot-SceneCard",
+    "fileName": "iot-SceneCard.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "ScheduleTimerRow",
+    "key": "iot-ScheduleTimerRow",
+    "fileName": "iot-ScheduleTimerRow.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "SensorReadingCard",
+    "key": "iot-SensorReadingCard",
+    "fileName": "iot-SensorReadingCard.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "SliderControl",
+    "key": "iot-SliderControl",
+    "fileName": "iot-SliderControl.jpg"
+  },
+  {
+    "domain": "iot",
+    "component": "ThermostatDial",
+    "key": "iot-ThermostatDial",
+    "fileName": "iot-ThermostatDial.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "CastCrewStrip",
+    "key": "media-CastCrewStrip",
+    "fileName": "media-CastCrewStrip.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "ContentCarousel",
+    "key": "media-ContentCarousel",
+    "fileName": "media-ContentCarousel.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "ContentPosterCard",
+    "key": "media-ContentPosterCard",
+    "fileName": "media-ContentPosterCard.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "ContinueWatchingCard",
+    "key": "media-ContinueWatchingCard",
+    "fileName": "media-ContinueWatchingCard.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "DownloadStatusButton",
+    "key": "media-DownloadStatusButton",
+    "fileName": "media-DownloadStatusButton.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "EpisodeListItem",
+    "key": "media-EpisodeListItem",
+    "fileName": "media-EpisodeListItem.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "HeroBanner",
+    "key": "media-HeroBanner",
+    "fileName": "media-HeroBanner.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "MiniPlayerBar",
+    "key": "media-MiniPlayerBar",
+    "fileName": "media-MiniPlayerBar.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "PlayerControlsOverlay",
+    "key": "media-PlayerControlsOverlay",
+    "fileName": "media-PlayerControlsOverlay.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "SeasonSelector",
+    "key": "media-SeasonSelector",
+    "fileName": "media-SeasonSelector.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "SubscriptionPlanCard",
+    "key": "media-SubscriptionPlanCard",
+    "fileName": "media-SubscriptionPlanCard.jpg"
+  },
+  {
+    "domain": "media",
+    "component": "WatchlistAndRating",
+    "key": "media-WatchlistAndRating",
+    "fileName": "media-WatchlistAndRating.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "AgentContactCard",
+    "key": "realestate-AgentContactCard",
+    "fileName": "realestate-AgentContactCard.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "AmenityGrid",
+    "key": "realestate-AmenityGrid",
+    "fileName": "realestate-AmenityGrid.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "ComparePropertiesTable",
+    "key": "realestate-ComparePropertiesTable",
+    "fileName": "realestate-ComparePropertiesTable.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "DocumentChecklistItem",
+    "key": "realestate-DocumentChecklistItem",
+    "fileName": "realestate-DocumentChecklistItem.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "EMICalculatorCard",
+    "key": "realestate-EMICalculatorCard",
+    "fileName": "realestate-EMICalculatorCard.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "LocalityInsightsCard",
+    "key": "realestate-LocalityInsightsCard",
+    "fileName": "realestate-LocalityInsightsCard.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "PropertyCard",
+    "key": "realestate-PropertyCard",
+    "fileName": "realestate-PropertyCard.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "PropertyFilterSheet",
+    "key": "realestate-PropertyFilterSheet",
+    "fileName": "realestate-PropertyFilterSheet.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "PropertyMedia",
+    "key": "realestate-PropertyMedia",
+    "fileName": "realestate-PropertyMedia.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "PropertyStatusChip",
+    "key": "realestate-PropertyStatusChip",
+    "fileName": "realestate-PropertyStatusChip.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "SavedSearchAndTrend",
+    "key": "realestate-SavedSearchAndTrend",
+    "fileName": "realestate-SavedSearchAndTrend.jpg"
+  },
+  {
+    "domain": "realestate",
+    "component": "SiteVisitSchedulerSheet",
+    "key": "realestate-SiteVisitSchedulerSheet",
+    "fileName": "realestate-SiteVisitSchedulerSheet.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "ChatInputBar",
+    "key": "social-ChatInputBar",
+    "fileName": "social-ChatInputBar.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "Comments",
+    "key": "social-Comments",
+    "fileName": "social-Comments.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "ConversationListItem",
+    "key": "social-ConversationListItem",
+    "fileName": "social-ConversationListItem.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "FollowButton",
+    "key": "social-FollowButton",
+    "fileName": "social-FollowButton.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "MediaGridViewer",
+    "key": "social-MediaGridViewer",
+    "fileName": "social-MediaGridViewer.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "MentionTextInput",
+    "key": "social-MentionTextInput",
+    "fileName": "social-MentionTextInput.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "MessageBubble",
+    "key": "social-MessageBubble",
+    "fileName": "social-MessageBubble.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "MessageStatus",
+    "key": "social-MessageStatus",
+    "fileName": "social-MessageStatus.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "PostCard",
+    "key": "social-PostCard",
+    "fileName": "social-PostCard.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "ReactionBar",
+    "key": "social-ReactionBar",
+    "fileName": "social-ReactionBar.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "ReportBlockSheet",
+    "key": "social-ReportBlockSheet",
+    "fileName": "social-ReportBlockSheet.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "Stories",
+    "key": "social-Stories",
+    "fileName": "social-Stories.jpg"
+  },
+  {
+    "domain": "social",
+    "component": "UserProfileHeader",
+    "key": "social-UserProfileHeader",
+    "fileName": "social-UserProfileHeader.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "DriverCard",
+    "key": "transportation-DriverCard",
+    "fileName": "transportation-DriverCard.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "FareEstimateCard",
+    "key": "transportation-FareEstimateCard",
+    "fileName": "transportation-FareEstimateCard.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "LocationSearchSheet",
+    "key": "transportation-LocationSearchSheet",
+    "fileName": "transportation-LocationSearchSheet.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "MapMarkerCallout",
+    "key": "transportation-MapMarkerCallout",
+    "fileName": "transportation-MapMarkerCallout.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "OTPDisplayCard",
+    "key": "transportation-OTPDisplayCard",
+    "fileName": "transportation-OTPDisplayCard.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "RideHistoryListItem",
+    "key": "transportation-RideHistoryListItem",
+    "fileName": "transportation-RideHistoryListItem.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "RideStatusBottomSheet",
+    "key": "transportation-RideStatusBottomSheet",
+    "fileName": "transportation-RideStatusBottomSheet.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "RideTypeSelector",
+    "key": "transportation-RideTypeSelector",
+    "fileName": "transportation-RideTypeSelector.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "SOSButton",
+    "key": "transportation-SOSButton",
+    "fileName": "transportation-SOSButton.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "SavedPlaceItem",
+    "key": "transportation-SavedPlaceItem",
+    "fileName": "transportation-SavedPlaceItem.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "ScheduleRideSheet",
+    "key": "transportation-ScheduleRideSheet",
+    "fileName": "transportation-ScheduleRideSheet.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "TipSelector",
+    "key": "transportation-TipSelector",
+    "fileName": "transportation-TipSelector.jpg"
+  },
+  {
+    "domain": "transportation",
+    "component": "TripSummaryCard",
+    "key": "transportation-TripSummaryCard",
+    "fileName": "transportation-TripSummaryCard.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "AmenityIconGrid",
+    "key": "travel-AmenityIconGrid",
+    "fileName": "travel-AmenityIconGrid.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "BookingTicketCard",
+    "key": "travel-BookingTicketCard",
+    "fileName": "travel-BookingTicketCard.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "CancellationPolicyCard",
+    "key": "travel-CancellationPolicyCard",
+    "fileName": "travel-CancellationPolicyCard.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "FareBreakdownAccordion",
+    "key": "travel-FareBreakdownAccordion",
+    "fileName": "travel-FareBreakdownAccordion.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "FlightResultCard",
+    "key": "travel-FlightResultCard",
+    "fileName": "travel-FlightResultCard.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "GuestRoomSelector",
+    "key": "travel-GuestRoomSelector",
+    "fileName": "travel-GuestRoomSelector.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "HotelCard",
+    "key": "travel-HotelCard",
+    "fileName": "travel-HotelCard.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "ItineraryTimeline",
+    "key": "travel-ItineraryTimeline",
+    "fileName": "travel-ItineraryTimeline.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "PriceCalendarStrip",
+    "key": "travel-PriceCalendarStrip",
+    "fileName": "travel-PriceCalendarStrip.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "ReviewSummaryCard",
+    "key": "travel-ReviewSummaryCard",
+    "fileName": "travel-ReviewSummaryCard.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "RoomTypeCard",
+    "key": "travel-RoomTypeCard",
+    "fileName": "travel-RoomTypeCard.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "SearchWidget",
+    "key": "travel-SearchWidget",
+    "fileName": "travel-SearchWidget.jpg"
+  },
+  {
+    "domain": "travel",
+    "component": "TravellerDetailsForm",
+    "key": "travel-TravellerDetailsForm",
+    "fileName": "travel-TravellerDetailsForm.jpg"
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "$comment": "Playback status mirrors the player SDK. Speed range follows Khan Academy's 0.25x–2x; the learner's choice persists across lectures.",
+  "scenarios": {
+    "playing": {
+      "state": "playing",
+      "position": 372,
+      "duration": 1084,
+      "buffered": 520,
+      "speed": 1,
+      "volume": 0.8,
+      "muted": false,
+      "captionsEnabled": true,
+      "quality": "auto"
+    },
+    "pausedFast": {
+      "state": "paused",
+      "position": 45,
+      "duration": 1084,
+      "buffered": 300,
+      "speed": 1.5,
+      "volume": 0.8,
+      "muted": false,
+      "captionsEnabled": false,
+      "quality": "720p"
+    },
+    "buffering": {
+      "state": "buffering",
+      "position": 610,
+      "duration": 1084,
+      "buffered": 615,
+      "speed": 1,
+      "volume": 0.8,
+      "muted": false,
+      "captionsEnabled": true,
+      "quality": "360p"
+    },
+    "error": {
+      "state": "error",
+      "position": 0,
+      "duration": 0,
+      "speed": 1,
+      "volume": 0.8,
+      "muted": false,
+      "captionsEnabled": true,
+      "quality": "auto",
+      "errorMessage": "Your connection is unstable. Try a lower video quality."
+    },
+    "offline": {
+      "state": "error",
+      "position": 0,
+      "duration": 0,
+      "speed": 1,
+      "volume": 0.8,
+      "muted": false,
+      "captionsEnabled": true,
+      "quality": "auto",
+      "offline": true
+    }
+  },
+  "lesson": {
+    "title": "Fitting a line: least squares explained",
+    "transcriptExcerpt": "So if we take the vertical distance from each point to the line, square it, and add all of those up, we get a single number that tells us how badly the line fits..."
+  }
+}

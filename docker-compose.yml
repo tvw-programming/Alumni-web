@@ -1,0 +1,16 @@
+# ---------------------------------------------------------------------------
+# CodeGen — monorepo stack.
+#
+#   npm run docker:up     start everything
+#   npm run docker:down   stop it
+#
+# The core services (the 24-step workflow backend and its dashboard) are
+# defined in core/docker-compose.yml and pulled in here, so `make up` from
+# core/ and `docker compose up` from the repo root bring up the same thing.
+# ---------------------------------------------------------------------------
+
+name: codegen
+
+include:
+  - path: core/docker-compose.yml
+    project_directory: core

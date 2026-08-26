@@ -1,0 +1,61 @@
+{
+  "$comment": "Note `completionRule` on each entry — what counts toward progress is stated, never left for the learner to infer.",
+  "values": {
+    "course": {
+      "value": 42,
+      "label": "Machine Learning Foundations",
+      "status": "inProgress",
+      "detail": "5 of 12 lessons complete · 2 more to finish this module",
+      "completionRule": "Progress counts required lessons and graded quizzes. Optional readings are excluded."
+    },
+    "module": {
+      "value": 75,
+      "label": "Module 2: Linear Regression",
+      "status": "inProgress",
+      "detail": "3 of 4 lessons complete"
+    },
+    "dailyGoal": {
+      "value": 60,
+      "label": "Daily goal",
+      "status": "inProgress",
+      "detail": "6 of 10 XP earned today"
+    },
+    "complete": {
+      "value": 100,
+      "label": "Introduction to Statistics",
+      "status": "complete",
+      "detail": "All 8 lessons and the final quiz complete"
+    },
+    "almostComplete": {
+      "$note": "99% caps the bar — the final project is still ungraded, so this must not render as finished",
+      "value": 99,
+      "label": "Data Visualisation",
+      "status": "inProgress",
+      "detail": "Final project awaiting instructor review"
+    },
+    "notStarted": {
+      "value": 0,
+      "label": "Deep Learning",
+      "status": "notStarted",
+      "detail": "Progress will appear after you begin"
+    },
+    "stale": {
+      "value": 33,
+      "label": "Statistics for Data Science",
+      "status": "stale",
+      "detail": "Last synced 3 days ago"
+    },
+    "error": {
+      "value": 0,
+      "label": "Algorithms",
+      "status": "error",
+      "detail": "We couldn't load your progress"
+    }
+  },
+  "milestones": [
+    { "at": 25, "label": "Module 1", "reached": true },
+    { "at": 50, "label": "Module 2", "reached": false },
+    { "at": 75, "label": "Module 3", "reached": false },
+    { "at": 100, "label": "Final project", "reached": false }
+  ]
+}

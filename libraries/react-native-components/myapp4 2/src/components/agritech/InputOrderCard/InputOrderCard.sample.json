@@ -1,0 +1,33 @@
+{
+  "products": [
+    {
+      "id": "input-npk",
+      "name": "NPK 19:19:19 Water Soluble Fertilizer",
+      "brand": "IFFCO",
+      "packSize": "1 kg pack",
+      "price": { "minorUnits": 18500, "currency": "INR" },
+      "availability": "available",
+      "deliveryLabel": "Delivery by Friday",
+      "cropSuitability": ["cotton", "wheat"],
+      "verified": true
+    },
+    {
+      "id": "input-neem",
+      "name": "Neem Oil Bio Pesticide",
+      "brand": "AgroStar",
+      "packSize": "500 ml",
+      "price": { "minorUnits": 32000, "currency": "INR" },
+      "availability": "lowStock",
+      "deliveryLabel": "Only 3 left",
+      "cropSuitability": ["cotton"]
+    },
+    {
+      "id": "input-seed",
+      "name": "Hybrid Cotton Seed Bt-II",
+      "brand": "Mahyco",
+      "packSize": "450 g pack",
+      "price": { "minorUnits": 76000, "currency": "INR" },
+      "availability": "outOfStock"
+    }
+  ]
+}

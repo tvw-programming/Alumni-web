@@ -1,0 +1,8 @@
+{
+  "warehouses": [
+    { "id": "wh-1", "name": "Main warehouse", "code": "MW01", "city": "Bengaluru", "stockCount": 1240, "shipmentCount": 12, "serviceability": "available", "isDefault": true },
+    { "id": "wh-2", "name": "Bengaluru fulfillment center", "code": "BLR-FC", "city": "Bengaluru", "stockCount": 860, "shipmentCount": 4, "serviceability": "available" },
+    { "id": "wh-3", "name": "Pune warehouse", "code": "PN02", "city": "Pune", "stockCount": 340, "serviceability": "checking" },
+    { "id": "wh-4", "name": "Chennai hub", "code": "CH01", "city": "Chennai", "serviceability": "unavailable" }
+  ]
+}

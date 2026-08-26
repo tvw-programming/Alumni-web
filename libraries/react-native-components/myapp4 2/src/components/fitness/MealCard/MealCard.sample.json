@@ -1,0 +1,51 @@
+{
+  "meals": [
+    {
+      "id": "meal-1",
+      "mealName": "Breakfast",
+      "timeLabel": "8:12 AM",
+      "calories": 420,
+      "macros": [
+        { "key": "protein", "grams": 28, "goalGrams": 35 },
+        { "key": "carbs", "grams": 45, "goalGrams": 60 },
+        { "key": "fat", "grams": 14, "goalGrams": 20 }
+      ],
+      "items": [
+        { "id": "f-1", "name": "Greek yogurt", "servingLabel": "1 cup", "calories": 150 },
+        { "id": "f-2", "name": "Granola", "servingLabel": "30 g", "calories": 140 },
+        { "id": "f-3", "name": "Blueberries", "servingLabel": "1/2 cup", "calories": 40 }
+      ],
+      "state": "logged"
+    },
+    {
+      "id": "meal-2",
+      "mealName": "Lunch",
+      "timeLabel": "1:00 PM",
+      "calories": 680,
+      "macros": [
+        { "key": "protein", "grams": 52, "goalGrams": 45 },
+        { "key": "carbs", "grams": 70, "goalGrams": 65 },
+        { "key": "fat", "grams": 22, "goalGrams": 20 }
+      ],
+      "items": [
+        { "id": "f-4", "name": "Grilled chicken bowl", "servingLabel": "1 bowl", "calories": 680 }
+      ],
+      "state": "partial"
+    },
+    {
+      "id": "meal-3",
+      "mealName": "Dinner",
+      "calories": null,
+      "macros": [],
+      "items": [],
+      "state": "empty"
+    },
+    {
+      "id": "meal-4",
+      "mealName": "Snacks",
+      "macros": [],
+      "items": [],
+      "state": "loading"
+    }
+  ]
+}

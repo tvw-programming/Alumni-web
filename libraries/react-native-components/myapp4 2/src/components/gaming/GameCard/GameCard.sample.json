@@ -1,0 +1,72 @@
+{
+  "games": [
+    {
+      "id": "g-1",
+      "title": "Nebula Racers",
+      "cover": { "uri": "https://images.example.com/nebula-racers.jpg", "alt": "Nebula Racers cover art" },
+      "genres": ["Racing", "Arcade"],
+      "platform": "Xbox",
+      "downloadSizeLabel": "4.2 GB",
+      "ownership": "owned",
+      "installState": "notInstalled",
+      "primaryAction": "install",
+      "offlinePlayable": true
+    },
+    {
+      "id": "g-2",
+      "title": "Shattered Keep",
+      "cover": { "uri": "https://images.example.com/shattered-keep.jpg", "alt": "Shattered Keep cover art" },
+      "genres": ["RPG"],
+      "platform": "PlayStation",
+      "ownership": "owned",
+      "installState": "installing",
+      "progress": 0.42,
+      "primaryAction": "install",
+      "wishlisted": true
+    },
+    {
+      "id": "g-3",
+      "title": "Cloud Kingdoms",
+      "cover": { "alt": "Cloud Kingdoms cover art" },
+      "genres": ["Strategy", "Simulation"],
+      "platform": "PC",
+      "ownership": "subscription",
+      "installState": "installed",
+      "primaryAction": "play"
+    },
+    {
+      "id": "g-4",
+      "title": "Voidwalker",
+      "cover": { "uri": "https://images.example.com/voidwalker.jpg", "alt": "Voidwalker cover art" },
+      "genres": ["Action", "Shooter"],
+      "platform": "PC",
+      "downloadSizeLabel": "18.6 GB",
+      "ownership": "notOwned",
+      "installState": "notInstalled",
+      "priceLabel": "₹1,999",
+      "primaryAction": "buy"
+    },
+    {
+      "id": "g-5",
+      "title": "Puzzle Meadows",
+      "cover": { "alt": "Puzzle Meadows cover art" },
+      "genres": ["Puzzle"],
+      "platform": "Mobile",
+      "ownership": "owned",
+      "installState": "error",
+      "errorMessage": "Not enough storage",
+      "primaryAction": "install"
+    },
+    {
+      "id": "g-6",
+      "title": "Iron Frontier",
+      "cover": { "alt": "Iron Frontier cover art" },
+      "genres": ["Strategy"],
+      "platform": "PC",
+      "ownership": "locked",
+      "installState": "notInstalled",
+      "primaryAction": "buy",
+      "parentalRestriction": true
+    }
+  ]
+}

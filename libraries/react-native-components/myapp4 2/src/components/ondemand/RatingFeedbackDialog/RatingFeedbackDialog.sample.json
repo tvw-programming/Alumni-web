@@ -1,0 +1,29 @@
+{
+  "subject": { "id": "sp-2", "name": "Ramesh Iyer", "type": "provider" },
+  "tagsByRating": {
+    "1": [
+      { "id": "t-late", "label": "Arrived very late" },
+      { "id": "t-rude", "label": "Unprofessional" },
+      { "id": "t-incomplete", "label": "Work incomplete" }
+    ],
+    "2": [
+      { "id": "t-late", "label": "Arrived late" },
+      { "id": "t-quality", "label": "Below expected quality" }
+    ],
+    "3": [
+      { "id": "t-avg", "label": "Just okay" },
+      { "id": "t-slow", "label": "Slower than expected" }
+    ],
+    "4": [
+      { "id": "t-friendly", "label": "Friendly" },
+      { "id": "t-ontime", "label": "On time" },
+      { "id": "t-tidy", "label": "Left the place tidy" }
+    ],
+    "5": [
+      { "id": "t-excellent", "label": "Excellent work" },
+      { "id": "t-friendly", "label": "Friendly" },
+      { "id": "t-ontime", "label": "On time" },
+      { "id": "t-rebook", "label": "Would rebook" }
+    ]
+  }
+}

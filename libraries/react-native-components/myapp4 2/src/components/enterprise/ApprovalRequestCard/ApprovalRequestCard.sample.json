@@ -1,0 +1,33 @@
+{
+  "requests": [
+    {
+      "id": "ap-1",
+      "title": "Purchase order — new laptops",
+      "requester": { "id": "u-2", "name": "Devon Osei" },
+      "submittedAt": "2026-08-17T09:00:00Z",
+      "amount": "$18,400",
+      "summary": "12 laptops for the new engineering hires starting next month.",
+      "status": "pending",
+      "dueAt": "2026-08-22T00:00:00Z"
+    },
+    {
+      "id": "ap-2",
+      "title": "Travel expense — client visit",
+      "requester": { "id": "u-3", "name": "Priya Nair" },
+      "submittedAt": "2026-08-14T11:00:00Z",
+      "amount": "$1,240",
+      "status": "approved",
+      "resolvedBy": { "id": "u-1", "name": "Maya Chen" }
+    },
+    {
+      "id": "ap-3",
+      "title": "Vendor contract renewal",
+      "requester": { "id": "u-4", "name": "Jordan Lee" },
+      "submittedAt": "2026-08-10T15:00:00Z",
+      "amount": "$54,000",
+      "status": "rejected",
+      "resolvedBy": { "id": "u-1", "name": "Maya Chen" },
+      "resolvedNote": "Needs a competing quote before we proceed"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "controls": [
+    { "id": "c-1", "type": "pause", "enabled": true, "active": false, "label": "Pause" },
+    { "id": "c-2", "type": "sound", "enabled": true, "active": true, "label": "Sound on" },
+    { "id": "c-3", "type": "captions", "enabled": true, "active": false, "label": "Captions off" },
+    { "id": "c-4", "type": "settings", "enabled": true, "label": "Settings" },
+    { "id": "c-5", "type": "restart", "enabled": true, "label": "Restart level" },
+    { "id": "c-6", "type": "exit", "enabled": true, "label": "Exit to menu" }
+  ]
+}

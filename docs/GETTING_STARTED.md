@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Node.js 18+
-- Python 3.9+
+- Python 3.11+
 - Docker (optional, for containerized setup)
 - Git
 
@@ -21,10 +21,11 @@ bash scripts/install.sh
 ```
 
 This will:
-- Install root npm dependencies
-- Create Python virtual environment for core/python
-- Install Python dependencies from requirements.txt
-- Install Python dependencies for explainer services
+- Install the root npm workspaces
+- Create a Python virtual environment in `core/backend/.venv`
+- Install `core/backend` and its dashboard/dev extras into it
+- Install `core/frontend` npm dependencies from the lockfile
+- Seed `.env` files from the checked-in `.env.example` files
 
 ### Step 3: Verify Installation
 ```bash
@@ -37,21 +38,27 @@ ls -la | grep -E ".gitignore|monorepo.json|package.json|.ai-context.json"
 
 ## Starting Development
 
-### Option 1: Start All Services
+### Option 1: Start the core workflow
 ```bash
-npm run dev:all
+npm run dev:core
 ```
 
 This runs:
-- Python core workflow: http://localhost:8000
-- React web UI: http://localhost:3000
+- Core backend (pipeline + gate API): http://localhost:8000
+- Core dashboard: http://localhost:5173
+
+Open the dashboard and press **Start a run**. Every model is a deterministic
+mock by default, so this works offline and costs nothing.
 
 ### Option 2: Start Individual Services
 ```bash
-# Start Python workflow
-npm run dev:core
+# Start the workflow backend
+npm run dev:core-backend
 
 # In another terminal:
+npm run dev:core-frontend
+
+# Or a different app entirely:
 npm run dev:react
 ```
 
@@ -61,7 +68,8 @@ npm run docker:up
 ```
 
 Access services:
-- Core API: http://localhost:8000
+- Core API: http://localhost:8000/api/health
+- Core dashboard: http://localhost:5173
 - React UI: http://localhost:3000
 - Angular UI: http://localhost:4200
 
@@ -102,7 +110,9 @@ For each project, check `.ai-context.json` to see:
 
 ```
 CodeGen/
-├── core/              ← 24-step AI workflow
+├── core/
+│   ├── backend/       ← 24-step AI workflow engine (Python)
+│   └── frontend/      ← run monitor dashboard (React)
 ├── apps/              ← React, Angular, React Native, Kotlin
 ├── libraries/         ← Reusable components
 ├── services/          ← Code explainers (Python, Java, Go, etc.)
@@ -126,6 +136,13 @@ npm run build:all
 # Run all tests
 npm run test:all
 
+# Just the core workflow suite
+npm run test:core
+
+# Talk to the workflow from a terminal
+npm run cli:core -- steps list
+npm run cli:core -- config validate
+
 # Start development
 npm run dev:all
 
@@ -148,10 +165,10 @@ npm run export:context
 
 ### Python venv not activating?
 ```bash
-cd core/python
-source venv/bin/activate  # Mac/Linux
+cd core/backend
+source .venv/bin/activate  # Mac/Linux
 # or
-venv\Scripts\activate  # Windows
+.venv\Scripts\activate  # Windows
 ```
 
 ### Node modules not installing?
@@ -162,7 +179,7 @@ pnpm install
 
 ### Port already in use?
 Change ports in the respective app configs:
-- Python: `core/python/main.py`
+- Core backend / dashboard: `core/.env` (`CODEGEN_API_PORT`, `CODEGEN_FRONTEND_PORT`)
 - React: `apps/react-web/.env`
 - Angular: `apps/angular-web/angular.json`
 

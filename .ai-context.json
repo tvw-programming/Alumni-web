@@ -5,24 +5,35 @@
   },
   "projects": [
     {
-      "name": "core-workflow",
-      "path": "core/",
-      "description": "24-step AI workflow orchestrator",
+      "name": "core-backend",
+      "path": "core/backend/",
+      "description": "24-step AI workflow engine — pipeline runner, two human gates, gate API and CLI",
       "key-files": [
-        "core/python/agents/",
-        "core/python/services/",
-        "core/react/src/App.tsx",
-        "core/python/requirements.txt"
+        "core/backend/src/codegen_core/orchestrator/runner.py",
+        "core/backend/src/codegen_core/steps/",
+        "core/backend/src/codegen_core/core/config.py",
+        "core/backend/src/codegen_core/dashboard/api.py",
+        "core/backend/src/codegen_core/tools/file_write_guard.py",
+        "core/backend/config/config.json",
+        "core/backend/pyproject.toml"
       ],
-      "languages": [
-        "python",
-        "javascript"
+      "language": "python",
+      "ignore": ["__pycache__", "artifacts", "runs", "workspace", ".venv"]
+    },
+    {
+      "name": "core-frontend",
+      "path": "core/frontend/",
+      "description": "Run monitor dashboard — React 19 + MUI, reads the core-backend gate API",
+      "key-files": [
+        "core/frontend/src/App.tsx",
+        "core/frontend/src/api/httpApi.ts",
+        "core/frontend/src/api/mockApi.ts",
+        "core/frontend/src/types/workflow.ts",
+        "core/frontend/src/pages/DashboardPage.tsx",
+        "core/frontend/package.json"
       ],
-      "ignore": [
-        "__pycache__",
-        "node_modules",
-        "dist"
-      ]
+      "language": "typescript",
+      "ignore": ["node_modules", "dist", "dist-smoke"]
     },
     {
       "name": "react-components",
@@ -35,10 +46,7 @@
         "package.json"
       ],
       "language": "javascript",
-      "ignore": [
-        "node_modules",
-        "dist"
-      ]
+      "ignore": ["node_modules", "dist"]
     },
     {
       "name": "python-explainer",
@@ -50,10 +58,7 @@
         "requirements.txt"
       ],
       "language": "python",
-      "ignore": [
-        "__pycache__",
-        "venv"
-      ]
+      "ignore": ["__pycache__", "venv"]
     },
     {
       "name": "react-web",
@@ -66,10 +71,7 @@
         "package.json"
       ],
       "language": "javascript",
-      "ignore": [
-        "node_modules",
-        "dist"
-      ]
+      "ignore": ["node_modules", "dist"]
     }
   ],
   "shared": [

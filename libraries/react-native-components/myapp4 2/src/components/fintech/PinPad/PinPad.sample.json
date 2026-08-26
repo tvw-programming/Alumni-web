@@ -1,0 +1,42 @@
+{
+  "$comment": "Dummy auth scenarios. The correct PIN for the demo is 123456 — the component never knows this; the caller decides.",
+  "transferConfirmation": {
+    "transactionContext": {
+      "purpose": "Confirm this transfer",
+      "amount": { "minorUnits": 1250000, "currency": "INR" },
+      "recipientName": "Alex Smith (@alexsmith)"
+    },
+    "methods": ["faceId"],
+    "preferredMethod": "faceId",
+    "pinLength": 6,
+    "attemptsRemaining": 3
+  },
+  "stepUpHighValue": {
+    "transactionContext": {
+      "purpose": "This is a high-value transfer. Confirm it is you.",
+      "amount": { "minorUnits": 45000000, "currency": "INR" },
+      "recipientName": "New beneficiary — Bharat Traders"
+    },
+    "methods": ["fingerprint"],
+    "preferredMethod": "fingerprint",
+    "pinLength": 6,
+    "attemptsRemaining": 2,
+    "randomizeKeypad": true
+  },
+  "lockedOut": {
+    "transactionContext": {
+      "purpose": "Confirm this transfer",
+      "amount": { "minorUnits": 250000, "currency": "INR" }
+    },
+    "methods": ["none"],
+    "pinLength": 6,
+    "attemptsRemaining": 0,
+    "lockoutUntil": "2099-01-01T10:30:00.000Z",
+    "errorMessage": "Too many incorrect attempts"
+  },
+  "pinOnly": {
+    "transactionContext": { "purpose": "Confirm your identity" },
+    "methods": ["none"],
+    "pinLength": 4
+  }
+}

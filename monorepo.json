@@ -9,20 +9,35 @@
     "services/*/node_modules"
   ],
   "projects": {
-    "core": {
-      "type": "python+react",
-      "description": "24-step AI workflow engine",
-      "path": "core/",
-      "languages": [
-        "python",
-        "javascript"
-      ]
+    "core-backend": {
+      "type": "python",
+      "description": "24-step AI workflow engine: pipeline runner, gate API and CLI",
+      "path": "core/backend/",
+      "languages": ["python"],
+      "entrypoints": {
+        "api": "codegen_core.dashboard.api:create_app",
+        "cli": "codegen_core.cli:main"
+      },
+      "port": 8000
+    },
+    "core-frontend": {
+      "type": "react",
+      "description": "Run monitor dashboard for the 24-step workflow",
+      "path": "core/frontend/",
+      "language": "javascript",
+      "port": 5173
     },
     "react-components": {
       "type": "library",
       "description": "Reusable React components",
       "path": "libraries/react-components/",
       "language": "javascript"
+    },
+    "react-native-components": {
+      "type": "library",
+      "description": "Reusable React Native components across six domains",
+      "path": "libraries/react-native-components/",
+      "language": "typescript"
     },
     "python-explainer": {
       "type": "service",

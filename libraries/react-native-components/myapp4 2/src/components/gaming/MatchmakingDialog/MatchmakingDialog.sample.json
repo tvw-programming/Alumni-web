@@ -1,0 +1,6 @@
+{
+  "searching": { "state": "searching", "mode": "Ranked 3v3", "partySize": 3, "elapsedSeconds": 42, "estimatedWait": "under 1 minute", "region": "Asia", "cancellationPenaltyNote": "Canceling now may lower your matchmaking priority for 2 minutes." },
+  "matchFound": { "state": "matchFound", "mode": "Ranked 3v3", "partySize": 3, "elapsedSeconds": 58, "region": "Asia" },
+  "timeout": { "state": "timeout", "mode": "Ranked 3v3", "partySize": 3, "elapsedSeconds": 180, "region": "Asia" },
+  "error": { "state": "error", "mode": "Ranked 3v3", "partySize": 1, "elapsedSeconds": 12 }
+}

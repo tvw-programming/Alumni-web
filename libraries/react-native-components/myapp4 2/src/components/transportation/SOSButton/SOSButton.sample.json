@@ -1,0 +1,10 @@
+{
+  "context": {
+    "tripId": "trip-1",
+    "active": true,
+    "emergencyNumber": "112",
+    "safetyTeamAvailable": true,
+    "emergencyContacts": [{ "id": "ec-1", "name": "Meera Sharma", "relation": "Spouse" }],
+    "location": { "latitude": 12.9719, "longitude": 77.6412 }
+  }
+}

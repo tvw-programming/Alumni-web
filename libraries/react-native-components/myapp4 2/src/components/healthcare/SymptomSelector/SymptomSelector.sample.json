@@ -1,0 +1,42 @@
+{
+  "$comment": "Symptom taxonomy from a versioned clinical content service. clinicalPriority is authored and reviewed by clinicians — it is NEVER inferred from the label text.",
+  "contentVersion": "symptoms-v4.2",
+  "suggested": ["headache", "fever", "cough", "soreThroat", "stomachPain", "fatigue", "rash", "dizziness"],
+  "recent": ["headache", "cough"],
+  "symptoms": [
+    {
+      "id": "headache",
+      "label": "Headache",
+      "synonyms": ["head pain", "migraine", "sar dard"],
+      "bodyRegion": "Head",
+      "clinicalPriority": "routine",
+      "severityOptions": [
+        { "id": "mild", "label": "Mild" },
+        { "id": "moderate", "label": "Moderate" },
+        { "id": "severe", "label": "Severe" }
+      ]
+    },
+    { "id": "fever", "label": "Fever", "synonyms": ["high temperature", "bukhar"], "clinicalPriority": "attention", "severityOptions": [{ "id": "low", "label": "Below 38°C" }, { "id": "high", "label": "38°C or above" }] },
+    { "id": "cough", "label": "Cough", "synonyms": ["khansi"], "bodyRegion": "Chest", "clinicalPriority": "routine" },
+    { "id": "soreThroat", "label": "Sore throat", "synonyms": ["throat pain"], "bodyRegion": "Throat", "clinicalPriority": "routine" },
+    { "id": "stomachPain", "label": "Stomach pain", "synonyms": ["abdominal pain", "belly ache", "pet dard"], "bodyRegion": "Abdomen", "clinicalPriority": "attention", "severityOptions": [{ "id": "mild", "label": "Mild" }, { "id": "moderate", "label": "Moderate" }, { "id": "severe", "label": "Severe" }] },
+    { "id": "fatigue", "label": "Feeling very tired", "synonyms": ["fatigue", "exhaustion"], "clinicalPriority": "routine" },
+    { "id": "rash", "label": "Skin rash", "synonyms": ["hives", "spots"], "bodyRegion": "Skin", "clinicalPriority": "routine" },
+    { "id": "dizziness", "label": "Dizziness", "synonyms": ["lightheaded", "vertigo"], "clinicalPriority": "attention" },
+    {
+      "id": "chestPain",
+      "label": "Chest pain or pressure",
+      "synonyms": ["chest tightness", "heart pain"],
+      "bodyRegion": "Chest",
+      "clinicalPriority": "urgent",
+      "severityOptions": [{ "id": "mild", "label": "Mild" }, { "id": "severe", "label": "Severe" }]
+    },
+    { "id": "breathlessness", "label": "Difficulty breathing", "synonyms": ["shortness of breath", "can't breathe"], "bodyRegion": "Chest", "clinicalPriority": "urgent" },
+    { "id": "faceDroop", "label": "Sudden face drooping or weakness on one side", "synonyms": ["stroke symptoms"], "clinicalPriority": "urgent" },
+    { "id": "heavyBleeding", "label": "Heavy bleeding that will not stop", "clinicalPriority": "urgent" },
+    { "id": "moodLow", "label": "Feeling low or hopeless", "synonyms": ["depressed", "sad"], "clinicalPriority": "attention", "sensitive": true },
+    { "id": "sleepTrouble", "label": "Trouble sleeping", "synonyms": ["insomnia"], "clinicalPriority": "routine" },
+    { "id": "jointPain", "label": "Joint pain", "bodyRegion": "Joints", "clinicalPriority": "routine" },
+    { "id": "nausea", "label": "Feeling sick or vomiting", "synonyms": ["nausea", "throwing up"], "bodyRegion": "Abdomen", "clinicalPriority": "routine" }
+  ]
+}

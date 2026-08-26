@@ -1,0 +1,58 @@
+{
+  "hotels": [
+    {
+      "id": "ht-1",
+      "name": "Taj Fort Aguada Resort & Spa",
+      "images": [{ "uri": "https://images.example.com/taj-aguada.jpg", "alt": "Taj Fort Aguada Resort exterior with pool" }],
+      "location": "Candolim, Goa",
+      "rating": { "average": 4.7, "count": 1842 },
+      "propertyType": "Resort",
+      "starRating": 5,
+      "amenities": [
+        { "id": "a-1", "label": "Free Wi-Fi", "icon": "wifi" },
+        { "id": "a-2", "label": "Pool", "icon": "pool" },
+        { "id": "a-3", "label": "Breakfast included", "icon": "food-croissant" }
+      ],
+      "price": { "minorUnits": 1899900, "currency": "INR" },
+      "totalPrice": { "minorUnits": 3799800, "currency": "INR" },
+      "nights": 2,
+      "cancellation": { "type": "free", "deadline": "2026-08-20T18:00:00+05:30", "timezone": "Asia/Kolkata", "summary": "Free cancellation until 20 Aug, 6:00 PM" },
+      "availability": "available",
+      "guestFavorite": true,
+      "favorited": true
+    },
+    {
+      "id": "ht-2",
+      "name": "Grand Hyatt Goa",
+      "images": [{ "uri": "https://images.example.com/hyatt-goa.jpg", "alt": "Grand Hyatt Goa lobby" }],
+      "location": "Bambolim, Goa",
+      "rating": { "average": 4.5, "count": 968 },
+      "propertyType": "Hotel",
+      "starRating": 5,
+      "amenities": [
+        { "id": "a-4", "label": "Free parking", "icon": "parking" },
+        { "id": "a-5", "label": "Air conditioning", "icon": "air-conditioner" },
+        { "id": "a-6", "label": "Wheelchair accessible", "icon": "wheelchair-accessibility" }
+      ],
+      "price": { "minorUnits": 1499900, "currency": "INR" },
+      "totalPrice": { "minorUnits": 2999800, "currency": "INR" },
+      "nights": 2,
+      "cancellation": { "type": "partialRefund", "deadline": "2026-08-19T12:00:00+05:30", "timezone": "Asia/Kolkata", "summary": "Free cancellation until 19 Aug, 12:00 PM, then 50% refund" },
+      "availability": "limited"
+    },
+    {
+      "id": "ht-3",
+      "name": "Ginger Panaji",
+      "images": [{ "alt": "Ginger Panaji hotel exterior" }],
+      "location": "Panaji, Goa",
+      "rating": { "average": 4.0, "count": 312 },
+      "propertyType": "Budget hotel",
+      "amenities": [{ "id": "a-7", "label": "Free Wi-Fi", "icon": "wifi" }],
+      "price": { "minorUnits": 449900, "currency": "INR" },
+      "totalPrice": { "minorUnits": 899800, "currency": "INR" },
+      "nights": 2,
+      "cancellation": { "type": "nonRefundable", "timezone": "Asia/Kolkata", "summary": "Nonrefundable" },
+      "availability": "soldOut"
+    }
+  ]
+}

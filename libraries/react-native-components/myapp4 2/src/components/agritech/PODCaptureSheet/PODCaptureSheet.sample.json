@@ -1,0 +1,8 @@
+{
+  "requirements": [
+    { "type": "photo", "required": true, "completed": false },
+    { "type": "signature", "required": true, "completed": false },
+    { "type": "recipientName", "required": true, "completed": false },
+    { "type": "note", "required": false, "completed": false }
+  ]
+}

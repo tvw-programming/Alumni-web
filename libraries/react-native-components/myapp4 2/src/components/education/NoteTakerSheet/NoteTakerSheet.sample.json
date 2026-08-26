@@ -1,0 +1,47 @@
+{
+  "$comment": "Includes a sync conflict with both versions preserved. The component never resolves a conflict on its own.",
+  "current": {
+    "id": "n-1",
+    "title": "Least squares intuition",
+    "body": "The vertical distance from each point to the line is the residual. Squaring means big misses hurt much more than small ones, which is why a single outlier can drag the whole line.",
+    "lessonId": "l-5",
+    "lessonTitle": "Fitting a line: least squares explained",
+    "timestampSeconds": 372,
+    "updatedAt": "2026-08-19T11:42:00.000Z",
+    "status": "saved",
+    "pinned": true
+  },
+  "conflicted": {
+    "id": "n-2",
+    "title": "Gradient descent",
+    "body": "Learning rate too high = overshoot. Too low = takes forever.",
+    "lessonId": "l-6",
+    "lessonTitle": "Gradient descent, step by step",
+    "timestampSeconds": 640,
+    "updatedAt": "2026-08-19T09:15:00.000Z",
+    "status": "conflict",
+    "conflictingBody": "Learning rate too high = overshoot and diverge. Too low = converges but very slowly. Try a schedule that decays over time."
+  },
+  "offline": {
+    "id": "n-3",
+    "title": "Feature scaling",
+    "body": "Standardise before gradient descent or the contours are elongated and convergence is slow.",
+    "lessonId": "l-7",
+    "updatedAt": "2026-08-19T08:00:00.000Z",
+    "status": "offline"
+  },
+  "readOnly": {
+    "id": "n-4",
+    "title": "Instructor notes — exam scope",
+    "body": "The graded quiz covers modules 1 and 2 only. The capstone is assessed separately against the rubric in the syllabus.",
+    "lessonTitle": "Course announcements",
+    "updatedAt": "2026-08-16T10:00:00.000Z",
+    "status": "saved",
+    "readOnly": true
+  },
+  "otherNotes": [
+    { "id": "n-5", "title": "Overfitting", "body": "More data usually helps more than a fancier model.", "timestampSeconds": 120, "updatedAt": "2026-08-18T10:00:00.000Z", "status": "saved" },
+    { "id": "n-6", "title": "Confusion matrix", "body": "Precision = TP / (TP + FP). Recall = TP / (TP + FN). I keep mixing these up.", "timestampSeconds": 845, "updatedAt": "2026-08-17T16:20:00.000Z", "status": "saved", "pinned": true },
+    { "id": "n-7", "body": "Ask in the forum about regularisation vs early stopping.", "updatedAt": "2026-08-16T09:00:00.000Z", "status": "saved" }
+  ]
+}

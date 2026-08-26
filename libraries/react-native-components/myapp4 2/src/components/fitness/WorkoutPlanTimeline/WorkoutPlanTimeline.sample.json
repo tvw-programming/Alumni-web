@@ -1,0 +1,12 @@
+{
+  "weekLabel": "Week 2",
+  "days": [
+    { "date": "2026-08-17", "label": "Monday", "state": "completed", "workouts": [{ "id": "pw-1", "title": "Full Body Strength", "durationLabel": "30 min", "type": "Strength", "status": "completed" }] },
+    { "date": "2026-08-18", "label": "Tuesday", "state": "missed", "workouts": [{ "id": "pw-2", "title": "HIIT Sprint Intervals", "durationLabel": "25 min", "type": "Cardio", "status": "skipped" }] },
+    { "date": "2026-08-19", "label": "Wednesday", "state": "rest", "workouts": [] },
+    { "date": "2026-08-20", "label": "Thursday", "state": "today", "workouts": [{ "id": "pw-3", "title": "Morning Flow Yoga", "durationLabel": "20 min", "type": "Yoga", "status": "planned" }] },
+    { "date": "2026-08-21", "label": "Friday", "state": "upcoming", "workouts": [{ "id": "pw-4", "title": "Core & Mobility", "durationLabel": "15 min", "type": "Mobility", "status": "planned" }] },
+    { "date": "2026-08-22", "label": "Saturday", "state": "upcoming", "workouts": [{ "id": "pw-5", "title": "Elite Power Circuit", "durationLabel": "45 min", "type": "Strength", "status": "planned" }] },
+    { "date": "2026-08-23", "label": "Sunday", "state": "rest", "workouts": [] }
+  ]
+}

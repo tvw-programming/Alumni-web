@@ -1,0 +1,11 @@
+{
+  "reasons": [
+    { "id": "r-1", "label": "Plans changed", "kind": "noFee" },
+    { "id": "r-2", "label": "Booked by mistake", "kind": "noFee" },
+    { "id": "r-3", "label": "Found a better price elsewhere", "kind": "noFee" },
+    { "id": "r-4", "label": "Provider is running too late", "kind": "noFee" },
+    { "id": "r-5", "label": "Cancelling less than 1 hour before slot", "kind": "feeApplicable" },
+    { "id": "r-6", "label": "Other", "kind": "feeApplicable", "requiresNote": true }
+  ],
+  "cancellationFee": { "minorUnits": 15000, "currency": "INR" }
+}

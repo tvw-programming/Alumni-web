@@ -1,0 +1,90 @@
+{
+  "$description": "Domain tokens for delivery and home-service. Live tracking and cancellation states must be legible without colour — assignment, arrival and fee states are each paired with an icon and a word at the point of use.",
+  "brand": "ondemand-default",
+  "color": {
+    "light": {
+      "surfaceService": "#FFFFFF",
+      "surfaceSelected": "#E8F1FB",
+      "onSurfaceSelected": "#12405F",
+      "surfaceMap": "#EAF0EC",
+
+      "statusSearching": "#6750A4",
+      "statusAssigned": "#1565C0",
+      "statusEnRoute": "#1565C0",
+      "statusArrived": "#2E7D32",
+      "statusInProgress": "#0F766E",
+      "statusCompleted": "#2E7D32",
+      "statusDelayed": "#B45309",
+      "statusCanceled": "#8A9099",
+      "statusFailed": "#B3261E",
+      "statusStale": "#8A6D1F",
+
+      "verified": "#1565C0",
+      "ratingFill": "#F5A524",
+      "availableNow": "#2E7D32",
+      "limitedAvailability": "#B45309",
+      "unavailable": "#8A9099",
+
+      "feeStandard": "#5F6B72",
+      "feeWaived": "#2E7D32",
+      "cancellationFee": "#B3261E",
+      "discount": "#2E7D32",
+
+      "otpSurface": "#FFF6E5",
+      "onOtpSurface": "#6B4405",
+      "otpBorder": "#E8A33D",
+
+      "trackLive": "#1565C0",
+      "trackStale": "#8A6D1F",
+      "trackEnded": "#8A9099",
+
+      "focusRing": "#1565C0"
+    },
+    "dark": {
+      "surfaceService": "#1E2124",
+      "surfaceSelected": "#173042",
+      "onSurfaceSelected": "#BBDCF5",
+      "surfaceMap": "#1B231C",
+
+      "statusSearching": "#CFBCFF",
+      "statusAssigned": "#A9C7FF",
+      "statusEnRoute": "#A9C7FF",
+      "statusArrived": "#8ED49C",
+      "statusInProgress": "#6BC7BC",
+      "statusCompleted": "#8ED49C",
+      "statusDelayed": "#E3A882",
+      "statusCanceled": "#8D9199",
+      "statusFailed": "#FFB4AB",
+      "statusStale": "#E0BE72",
+
+      "verified": "#A9C7FF",
+      "ratingFill": "#F5A524",
+      "availableNow": "#8ED49C",
+      "limitedAvailability": "#E3A882",
+      "unavailable": "#8D9199",
+
+      "feeStandard": "#A8B2B8",
+      "feeWaived": "#8ED49C",
+      "cancellationFee": "#FFB4AB",
+      "discount": "#8ED49C",
+
+      "otpSurface": "#3A2E18",
+      "onOtpSurface": "#FFE2B0",
+      "otpBorder": "#F0BE6A",
+
+      "trackLive": "#A9C7FF",
+      "trackStale": "#E0BE72",
+      "trackEnded": "#8D9199",
+
+      "focusRing": "#A9C7FF"
+    }
+  },
+  "layout": {
+    "categoryTileSize": 76,
+    "providerAvatarSize": 56,
+    "agentAvatarSize": 64,
+    "mapPreviewHeight": 160,
+    "slotChipMinWidth": 88,
+    "otpDigitSize": 44
+  }
+}

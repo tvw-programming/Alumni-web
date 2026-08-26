@@ -1,0 +1,46 @@
+{
+  "bundles": [
+    {
+      "id": "iap-1",
+      "title": "Starter pack",
+      "items": [
+        { "id": "i-1", "label": "Gems", "quantity": 1200 },
+        { "id": "i-2", "label": "Boost tokens", "quantity": 5 }
+      ],
+      "priceLabel": "₹99",
+      "originalValueLabel": "₹149",
+      "savingsLabel": "Save 33%",
+      "purchaseType": "consumable",
+      "availability": "available",
+      "limitedTime": true
+    },
+    {
+      "id": "iap-2",
+      "title": "Champion bundle",
+      "items": [
+        { "id": "i-3", "label": "Legendary skin", "quantity": 1 },
+        { "id": "i-4", "label": "Gems", "quantity": 500 }
+      ],
+      "priceLabel": "₹499",
+      "purchaseType": "nonConsumable",
+      "availability": "owned"
+    },
+    {
+      "id": "iap-3",
+      "title": "Season pass",
+      "items": [{ "id": "i-5", "label": "Monthly rewards + XP boost", "quantity": 1 }],
+      "priceLabel": "₹299 / month",
+      "purchaseType": "subscription",
+      "availability": "available"
+    },
+    {
+      "id": "iap-4",
+      "title": "Regional exclusive pack",
+      "items": [{ "id": "i-6", "label": "Coins", "quantity": 2000 }],
+      "priceLabel": "—",
+      "purchaseType": "consumable",
+      "availability": "unavailable"
+    }
+  ],
+  "taxDisclosure": "Price includes applicable taxes. Charged to your app store account."
+}

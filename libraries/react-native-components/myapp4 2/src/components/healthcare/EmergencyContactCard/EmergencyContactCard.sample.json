@@ -1,0 +1,38 @@
+{
+  "$comment": "Emergency numbers vary by country — 112 across the EU and India, 911 in the US, 999 in the UK. The locale drives this, never a constant in the component.",
+  "emergencyServices": { "number": "112", "label": "Emergency services", "locale": "en-IN" },
+  "alternateLocale": { "number": "911", "label": "Emergency services", "locale": "en-US" },
+  "contacts": [
+    {
+      "id": "ec-1",
+      "name": "Anjali Waghulde",
+      "relationship": "Spouse",
+      "phone": "+919876543210",
+      "countryCode": "IN",
+      "isPrimary": true,
+      "lastConfirmedAt": "2026-07-02T10:00:00.000Z",
+      "status": "valid"
+    },
+    {
+      "id": "ec-2",
+      "name": "Ravi Kumar",
+      "relationship": "Brother",
+      "phone": "+919812345678",
+      "countryCode": "IN",
+      "lastConfirmedAt": "2025-03-14T10:00:00.000Z",
+      "status": "needsVerification"
+    },
+    {
+      "id": "ec-3",
+      "name": "Dr. Meera Nair",
+      "relationship": "Family doctor",
+      "phone": "+91802233",
+      "countryCode": "IN",
+      "status": "invalid"
+    }
+  ],
+  "crisisSupport": {
+    "label": "Talk to someone now",
+    "description": "Free, confidential mental-health support, 24 hours a day."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pytest*)",
+      "Bash(codegen-core *)",
+      "Bash(python -m codegen_core*)",
+      "Bash(ruff*)",
+      "Bash(git diff*)",
+      "Bash(git status*)"
+    ],
+    "deny": [
+      "Bash(rm -rf*)",
+      "Read(./.env)",
+      "Read(./**/*.pem)",
+      "Write(./config/config.json)"
+    ]
+  },
+  "env": {
+    "CODEGEN_PROFILE": "local",
+    "PYTHONPATH": "src"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "pickup": { "label": "Home · 12th Main Road, Indiranagar", "address": "12th Main Road, Indiranagar", "type": "saved" },
+  "dropoff": { "label": "Kempegowda International Airport", "address": "Devanahalli", "type": "landmark" },
+  "ride": {
+    "timezone": "Asia/Kolkata",
+    "rideTypeId": "rt-2",
+    "schedulingFee": { "minorUnits": 3000, "currency": "INR" },
+    "fare": { "minorUnits": 61000, "currency": "INR" },
+    "status": "draft"
+  },
+  "dateOptions": ["2026-08-21", "2026-08-22", "2026-08-23", "2026-08-24", "2026-08-25", "2026-08-26"]
+}

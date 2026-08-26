@@ -1,0 +1,49 @@
+{
+  "$comment": "Counts come from the server. The `countsHidden` case exists because an unexplained zero reads as 'nobody engaged' when the real reason is a product policy.",
+  "reactions": [
+    { "id": "like", "label": "Like", "icon": "heart", "glyph": "❤️" },
+    { "id": "celebrate", "label": "Celebrate", "icon": "party-popper", "glyph": "🎉" },
+    { "id": "insightful", "label": "Insightful", "icon": "lightbulb-on", "glyph": "💡" },
+    { "id": "support", "label": "Support", "icon": "hand-heart", "glyph": "🤝" },
+    { "id": "laugh", "label": "Funny", "icon": "emoticon-happy", "glyph": "😄" }
+  ],
+  "states": {
+    "unreacted": {
+      "counts": { "like": 128, "celebrate": 14, "insightful": 6 },
+      "commentCount": 23,
+      "shareCount": 4
+    },
+    "reacted": {
+      "counts": { "like": 129, "celebrate": 14, "insightful": 6 },
+      "userReaction": "like",
+      "commentCount": 23,
+      "shareCount": 4,
+      "saved": true
+    },
+    "nonPrimaryReaction": {
+      "counts": { "like": 128, "celebrate": 15, "insightful": 6 },
+      "userReaction": "celebrate",
+      "commentCount": 23
+    },
+    "largeCounts": {
+      "counts": { "like": 1284000, "celebrate": 92400, "laugh": 15600 },
+      "commentCount": 48200,
+      "shareCount": 9100
+    },
+    "noEngagement": {
+      "counts": {},
+      "commentCount": 0
+    },
+    "countsHidden": {
+      "counts": { "like": 12 },
+      "userReaction": "like",
+      "commentCount": 3,
+      "countsHidden": true,
+      "hiddenReason": "The author hid reaction counts on this post"
+    },
+    "restricted": {
+      "counts": { "like": 44 },
+      "commentCount": 0
+    }
+  }
+}

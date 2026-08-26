@@ -1,0 +1,29 @@
+{
+  "events": [
+    { "id": "au-1", "timestamp": "2026-08-20T09:12:00Z", "timezoneLabel": "UTC", "actor": { "id": "u-1", "name": "Maya Chen" }, "action": "approved", "entityType": "request", "entityLabel": "PR-1042", "source": "Web app", "severity": "normal" },
+    {
+      "id": "au-2",
+      "timestamp": "2026-08-19T15:40:00Z",
+      "timezoneLabel": "UTC",
+      "actor": { "id": "u-1", "name": "Maya Chen" },
+      "action": "permissionChanged",
+      "entityType": "user",
+      "entityLabel": "Sam Rivera",
+      "changes": [{ "field": "Role", "before": "Member", "after": "Admin" }],
+      "ipOrDeviceLabel": "192.168.1.42 · Chrome on macOS",
+      "severity": "security"
+    },
+    {
+      "id": "au-3",
+      "timestamp": "2026-08-18T11:05:00Z",
+      "timezoneLabel": "UTC",
+      "actor": { "id": "u-2", "name": "Devon Osei" },
+      "action": "deleted",
+      "entityType": "record",
+      "entityLabel": "Customer contract #4021",
+      "changes": [{ "field": "Contract value", "before": "$54,000", "after": null, "redacted": true }],
+      "severity": "critical"
+    },
+    { "id": "au-4", "timestamp": "2026-08-17T08:00:00Z", "timezoneLabel": "UTC", "action": "exported", "entityType": "report", "entityLabel": "Q3 financial summary", "source": "Scheduled job", "severity": "normal" }
+  ]
+}

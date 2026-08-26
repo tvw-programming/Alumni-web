@@ -1,0 +1,11 @@
+{
+  "options": [
+    { "id": "t-1", "label": "₹20", "amount": { "minorUnits": 2000, "currency": "INR" }, "percentage": 8, "type": "preset" },
+    { "id": "t-2", "label": "₹40", "amount": { "minorUnits": 4000, "currency": "INR" }, "percentage": 16, "type": "preset" },
+    { "id": "t-3", "label": "₹60", "amount": { "minorUnits": 6000, "currency": "INR" }, "percentage": 24, "type": "preset" },
+    { "id": "t-4", "label": "Custom amount", "type": "custom" },
+    { "id": "t-5", "label": "No tip", "type": "none" }
+  ],
+  "minCustom": { "minorUnits": 1000, "currency": "INR" },
+  "maxCustom": { "minorUnits": 100000, "currency": "INR" }
+}

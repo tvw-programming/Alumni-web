@@ -1,0 +1,9 @@
+{
+  "candidates": [
+    { "id": "cand-1", "name": "Living Room Plug", "type": "Smart Plug", "signalStatus": "excellent" },
+    { "id": "cand-2", "name": "Hallway Sensor", "type": "Motion Sensor", "signalStatus": "good" }
+  ],
+  "rooms": ["Living Room", "Bedroom", "Kitchen", "Hallway"],
+  "config": { "name": "" },
+  "error": { "message": "Couldn't reach the device. Make sure it's powered on and nearby.", "recoverable": true }
+}

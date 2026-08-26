@@ -1,0 +1,19 @@
+{
+  "playing": {
+    "item": { "id": "mp-1", "title": "Episode 42: The Long Wait", "subtitle": "Deep Space Podcast", "artwork": { "uri": "https://images.example.com/deep-space-podcast.jpg", "alt": "Deep Space Podcast artwork" } },
+    "isPlaying": true,
+    "progress": 0.35
+  },
+  "buffering": {
+    "item": { "id": "mp-2", "title": "Nebula Drift", "subtitle": "Movie", "artwork": { "alt": "Nebula Drift artwork" } },
+    "isPlaying": true,
+    "progress": 0.1,
+    "buffering": true
+  },
+  "offline": {
+    "item": { "id": "mp-3", "title": "Episode 41: Signal Lost", "subtitle": "Deep Space Podcast", "artwork": { "alt": "Deep Space Podcast artwork" } },
+    "isPlaying": false,
+    "progress": 0.8,
+    "status": "offline"
+  }
+}

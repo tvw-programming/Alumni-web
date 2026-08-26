@@ -1,0 +1,10 @@
+{
+  "currentStatus": "Out for delivery",
+  "events": [
+    { "id": "evt-1", "status": "pending", "label": "Shipment created", "timestamp": "20 Aug, 8:00 AM", "state": "completed" },
+    { "id": "evt-2", "status": "pickedUp", "label": "Picked up", "location": "Delhi hub", "timestamp": "20 Aug, 11:20 AM", "state": "completed" },
+    { "id": "evt-3", "status": "inTransit", "label": "In transit", "location": "Reached Hyderabad hub", "timestamp": "21 Aug, 6:45 AM", "state": "completed" },
+    { "id": "evt-4", "status": "outForDelivery", "label": "Out for delivery", "location": "Bengaluru delivery center", "timestamp": "22 Aug, 8:10 AM", "state": "current", "description": "Delivery attempt expected today" },
+    { "id": "evt-5", "status": "delivered", "label": "Delivered", "state": "upcoming" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "vehicles": [
+    {
+      "id": "vehicle-1",
+      "driverName": "Ravi Kumar",
+      "vehicleNumber": "HR 38 AB 1024",
+      "vehicleType": "Truck",
+      "eta": "18 minutes",
+      "trackingStatus": "live",
+      "lastUpdatedAt": "1 minute ago"
+    },
+    {
+      "id": "vehicle-2",
+      "driverName": "Suresh Patil",
+      "vehicleNumber": "MH 12 XY 4531",
+      "vehicleType": "Mini van",
+      "trackingStatus": "stale",
+      "lastUpdatedAt": "12 minutes ago"
+    },
+    {
+      "id": "vehicle-3",
+      "vehicleNumber": "KA 05 CD 7788",
+      "vehicleType": "Truck",
+      "trackingStatus": "ended",
+      "lastUpdatedAt": "delivered yesterday"
+    }
+  ]
+}

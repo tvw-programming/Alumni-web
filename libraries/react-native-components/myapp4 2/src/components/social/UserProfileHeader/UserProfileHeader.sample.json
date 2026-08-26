@@ -1,0 +1,70 @@
+{
+  "$comment": "Covers personal, creator, business, private, blocked and own-profile cases. Note that the private profile still renders its header — that is how someone decides whether to request access.",
+  "profiles": {
+    "creator": {
+      "user": { "id": "u-1", "displayName": "Maya Iyer", "handle": "@mayaiyer", "verified": true, "roleLabel": "Creator", "presence": "online" },
+      "cover": { "uri": "https://example.invalid/cover-1.jpg", "alt": "Abstract gradient artwork in teal and amber" },
+      "bio": "Product designer. Writing about onboarding, forms and the cost of one extra screen. Newsletter: https://example.invalid/newsletter",
+      "headline": "Design lead at Northwind",
+      "location": "Bengaluru, India",
+      "websiteUrl": "https://example.invalid/maya",
+      "stats": { "posts": 428, "followers": 128400, "following": 312 },
+      "relationship": "none",
+      "privacy": "public",
+      "joinedAt": "2021-03-14T00:00:00.000Z"
+    },
+    "professional": {
+      "user": { "id": "u-5", "displayName": "Sara Whitfield", "handle": "@sarawrites", "presence": "away" },
+      "bio": "Staff engineer. Distributed systems, mostly. Occasionally opinions about testing.",
+      "headline": "Staff Engineer at Cascade Systems",
+      "organization": "Cascade Systems",
+      "location": "Edinburgh, UK",
+      "stats": { "followers": 8420, "connections": 1204 },
+      "relationship": "none",
+      "privacy": "public",
+      "mutualCount": 17
+    },
+    "following": {
+      "user": { "id": "u-2", "displayName": "Kabir Menon", "handle": "@kabirshoots" },
+      "bio": "Street photography, mostly Kerala. Film when I can afford it.",
+      "stats": { "posts": 1240, "followers": 42100, "following": 890 },
+      "relationship": "following",
+      "privacy": "public"
+    },
+    "privateRequested": {
+      "user": { "id": "u-3", "displayName": "Priya Nair", "handle": "@priyabuilds", "verified": true },
+      "bio": "Building things. Mostly in public, sometimes not.",
+      "stats": { "posts": 96, "followers": 3400, "following": 210 },
+      "relationship": "requested",
+      "privacy": "private"
+    },
+    "privateNotFollowed": {
+      "user": { "id": "u-12", "displayName": "Ravi Kulkarni", "handle": "@ravik" },
+      "stats": { "posts": 12, "followers": 88, "following": 140 },
+      "relationship": "none",
+      "privacy": "private"
+    },
+    "blocked": {
+      "user": { "id": "u-8", "displayName": "Elena Volkov", "handle": "@elenav" },
+      "stats": { "followers": 210, "following": 180 },
+      "relationship": "blocked",
+      "privacy": "public",
+      "statusNote": "You blocked this account on 12 August."
+    },
+    "ownProfile": {
+      "user": { "id": "me", "displayName": "Tejasvi Waghulde", "handle": "@tejasvi" },
+      "bio": "Mobile engineer. React Native, mostly.",
+      "stats": { "posts": 34, "followers": 512, "following": 288 },
+      "relationship": "none",
+      "privacy": "public",
+      "isOwnProfile": true
+    },
+    "longName": {
+      "user": { "id": "u-13", "displayName": "Dr. Aravind Venkataraman Krishnamurthy Iyengar", "handle": "@aravindvkiyengar", "verified": true },
+      "headline": "Professor of Distributed Systems and Applied Cryptography",
+      "stats": { "posts": 88, "followers": 12400, "following": 42 },
+      "relationship": "none",
+      "privacy": "public"
+    }
+  }
+}

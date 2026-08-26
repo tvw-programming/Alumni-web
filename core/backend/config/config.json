@@ -1,0 +1,1459 @@
+{
+  "$schema": "./config.schema.json",
+  "version": "1.0.0",
+  "default_profile": "local",
+  "app": {
+    "job_id_prefix": "DEEP",
+    "paths": {
+      "artifacts": "./artifacts/{job_id}",
+      "runs": "./runs/{job_id}",
+      "workspace": "./workspace/{job_id}",
+      "prompts": "./config/prompts",
+      "schema_registry": "./config/schemas"
+    },
+    "project": {
+      "path": "",
+      "must_exist": true,
+      "must_be_writable": true
+    },
+    "retention_days": {
+      "artifacts": 180,
+      "journal": 730,
+      "workspace": 2
+    },
+    "concurrency": {
+      "max_parallel_steps": 3,
+      "max_parallel_llm_calls": 4
+    }
+  },
+  "a2a": {
+    "protocol": "a2a/1.0",
+    "transport": "in_process",
+    "inline_payload_limit_bytes": 65536,
+    "strict_schema_validation": true,
+    "adapters": {
+      "image/jpeg->text/plain": {
+        "enabled": true,
+        "driver": "vision_caption",
+        "capability": "vision"
+      },
+      "image/png->text/plain": {
+        "enabled": true,
+        "driver": "vision_caption",
+        "capability": "vision"
+      },
+      "application/pdf->text/markdown": {
+        "enabled": true,
+        "driver": "pymupdf"
+      },
+      "application/json->text/plain": {
+        "enabled": true,
+        "driver": "pretty_print"
+      },
+      "text/x-diff->application/json": {
+        "enabled": true,
+        "driver": "unidiff"
+      }
+    }
+  },
+  "backends": {
+    "local.ollama.qwen": {
+      "driver": "ollama",
+      "tier": "local",
+      "model": "qwen3:8b",
+      "base_url": "${env:OLLAMA_HOST:-http://localhost:11434}",
+      "capabilities": [
+        "fast"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "num_ctx": 32768
+      },
+      "limits": {
+        "timeout_s": 300,
+        "max_tokens": 8192,
+        "rpm": 0
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "health_check": {
+        "type": "http",
+        "path": "/api/tags"
+      },
+      "enabled": true
+    },
+    "local.ollama.deepseek": {
+      "driver": "ollama",
+      "tier": "local",
+      "model": "deepseek-coder-v2:16b",
+      "base_url": "${env:OLLAMA_HOST:-http://localhost:11434}",
+      "capabilities": [
+        "coding"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "num_ctx": 65536
+      },
+      "limits": {
+        "timeout_s": 900,
+        "max_tokens": 16384
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": true
+    },
+    "cloud.bedrock.sonnet": {
+      "driver": "bedrock",
+      "tier": "cloud",
+      "model": "anthropic.claude-sonnet-4-v1:0",
+      "region": "${env:AWS_REGION:-ap-south-1}",
+      "auth": {
+        "type": "aws_profile",
+        "profile_env": "AWS_PROFILE"
+      },
+      "capabilities": [
+        "coding",
+        "reasoning",
+        "security",
+        "vision"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 16384
+      },
+      "limits": {
+        "timeout_s": 600,
+        "rpm": 60
+      },
+      "cost_per_1k_usd": {
+        "input": 0.003,
+        "output": 0.015
+      },
+      "enabled": true
+    },
+    "cloud.together.llama": {
+      "driver": "openai_compatible",
+      "tier": "cloud",
+      "model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "base_url": "https://api.together.xyz/v1",
+      "auth": {
+        "type": "bearer",
+        "token_env": "TOGETHER_API_KEY"
+      },
+      "capabilities": [
+        "fast",
+        "coding"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 8192
+      },
+      "limits": {
+        "timeout_s": 300,
+        "rpm": 120
+      },
+      "cost_per_1k_usd": {
+        "input": 0.00088,
+        "output": 0.00088
+      },
+      "enabled": true
+    },
+    "cloud.custom.vllm": {
+      "driver": "openai_compatible",
+      "tier": "cloud",
+      "model": "${env:CUSTOM_LLM_MODEL:-internal/coder-32b}",
+      "base_url": "${env:CUSTOM_LLM_URL:-https://llm.internal.corp/v1}",
+      "auth": {
+        "type": "bearer",
+        "token_env": "CUSTOM_LLM_KEY"
+      },
+      "capabilities": [
+        "coding",
+        "reasoning"
+      ],
+      "params": {
+        "temperature": 0.0
+      },
+      "limits": {
+        "timeout_s": 600
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": false
+    },
+    "paid.anthropic.sonnet": {
+      "driver": "anthropic",
+      "tier": "paid_api",
+      "model": "claude-sonnet-4-6",
+      "auth": {
+        "type": "api_key",
+        "token_env": "ANTHROPIC_API_KEY"
+      },
+      "capabilities": [
+        "coding",
+        "reasoning",
+        "security",
+        "vision"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 32000
+      },
+      "limits": {
+        "timeout_s": 600,
+        "rpm": 50
+      },
+      "cost_per_1k_usd": {
+        "input": 0.003,
+        "output": 0.015
+      },
+      "enabled": true
+    },
+    "paid.anthropic.opus": {
+      "driver": "anthropic",
+      "tier": "paid_api",
+      "model": "claude-opus-4-1",
+      "auth": {
+        "type": "api_key",
+        "token_env": "ANTHROPIC_API_KEY"
+      },
+      "capabilities": [
+        "reasoning",
+        "security"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 32000
+      },
+      "limits": {
+        "timeout_s": 900,
+        "rpm": 20
+      },
+      "cost_per_1k_usd": {
+        "input": 0.015,
+        "output": 0.075
+      },
+      "enabled": true
+    },
+    "paid.openai.gpt": {
+      "driver": "openai",
+      "tier": "paid_api",
+      "model": "gpt-4.1",
+      "auth": {
+        "type": "api_key",
+        "token_env": "OPENAI_API_KEY"
+      },
+      "capabilities": [
+        "fast",
+        "coding",
+        "reasoning",
+        "vision"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 16384
+      },
+      "limits": {
+        "timeout_s": 600,
+        "rpm": 100
+      },
+      "cost_per_1k_usd": {
+        "input": 0.002,
+        "output": 0.008
+      },
+      "enabled": true
+    },
+    "devtool.cursor": {
+      "driver": "cli_agent",
+      "tier": "dev_tool",
+      "command": "cursor-agent",
+      "argv": [
+        "--headless",
+        "--json",
+        "--cwd",
+        "{workspace}",
+        "-p",
+        "{prompt}"
+      ],
+      "model": "cursor:auto",
+      "result_json_path": "$.result",
+      "edits_files_directly": true,
+      "capabilities": [
+        "coding"
+      ],
+      "limits": {
+        "timeout_s": 900
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": false
+    },
+    "devtool.copilot": {
+      "driver": "cli_agent",
+      "tier": "dev_tool",
+      "command": "gh",
+      "argv": [
+        "copilot",
+        "suggest",
+        "--target",
+        "shell",
+        "-p",
+        "{prompt}"
+      ],
+      "model": "copilot:default",
+      "result_json_path": null,
+      "edits_files_directly": false,
+      "capabilities": [
+        "coding"
+      ],
+      "limits": {
+        "timeout_s": 300
+      },
+      "enabled": false
+    },
+    "devtool.claude_code": {
+      "driver": "cli_agent",
+      "tier": "dev_tool",
+      "command": "claude",
+      "argv": [
+        "-p",
+        "{prompt}",
+        "--output-format",
+        "json",
+        "--cwd",
+        "{workspace}"
+      ],
+      "model": "claude-code",
+      "result_json_path": "$.result",
+      "edits_files_directly": true,
+      "capabilities": [
+        "coding"
+      ],
+      "limits": {
+        "timeout_s": 1800
+      },
+      "enabled": false
+    },
+    "mock.offline": {
+      "driver": "mock",
+      "tier": "mock",
+      "model": "mock-1",
+      "capabilities": [
+        "fast",
+        "coding",
+        "reasoning",
+        "security",
+        "vision"
+      ],
+      "params": {},
+      "limits": {
+        "timeout_s": 30
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": true
+    },
+    "mock.reviewer": {
+      "driver": "mock",
+      "tier": "mock",
+      "model": "mock-reviewer-1",
+      "capabilities": [
+        "fast",
+        "coding",
+        "reasoning",
+        "security",
+        "vision"
+      ],
+      "params": {},
+      "limits": {
+        "timeout_s": 30
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": true
+    }
+  },
+  "routing": {
+    "defaults": {
+      "fast": "local.ollama.qwen",
+      "coding": "paid.anthropic.sonnet",
+      "reasoning": "paid.anthropic.opus",
+      "security": "cloud.bedrock.sonnet",
+      "vision": "paid.openai.gpt"
+    },
+    "fallback_chains": {
+      "fast": [
+        "local.ollama.qwen",
+        "cloud.together.llama",
+        "paid.openai.gpt"
+      ],
+      "coding": [
+        "paid.anthropic.sonnet",
+        "cloud.bedrock.sonnet",
+        "local.ollama.deepseek"
+      ],
+      "reasoning": [
+        "paid.anthropic.opus",
+        "cloud.bedrock.sonnet",
+        "paid.openai.gpt"
+      ],
+      "security": [
+        "cloud.bedrock.sonnet",
+        "paid.anthropic.opus"
+      ],
+      "vision": [
+        "paid.openai.gpt",
+        "cloud.bedrock.sonnet"
+      ]
+    },
+    "steps": {
+      "01": {
+        "capability": "fast"
+      },
+      "02": {
+        "capability": "reasoning"
+      },
+      "03": {
+        "capability": "reasoning",
+        "params": {
+          "temperature": 0.0
+        }
+      },
+      "04": {
+        "capability": "reasoning"
+      },
+      "05": {
+        "capability": "reasoning"
+      },
+      "07": {
+        "capability": "reasoning"
+      },
+      "08": {
+        "capability": "coding"
+      },
+      "09": {
+        "capability": "coding"
+      },
+      "10": {
+        "capability": "reasoning"
+      },
+      "11": {
+        "capability": "coding"
+      },
+      "12": {
+        "capability": "coding"
+      },
+      "13": {
+        "capability": "reasoning"
+      },
+      "15": {
+        "capability": "coding"
+      },
+      "19": {
+        "capability": "security"
+      },
+      "20": {
+        "capability": "reasoning"
+      },
+      "21": {
+        "capability": "coding"
+      },
+      "23": {
+        "capability": "reasoning"
+      },
+      "24": {
+        "capability": "fast"
+      }
+    },
+    "isolation": [
+      {
+        "rule_id": "no_self_review",
+        "reviewer_steps": [
+          13,
+          23
+        ],
+        "must_differ_from": [
+          12,
+          15
+        ],
+        "scope": "model_and_context",
+        "on_violation": "use_fallback"
+      }
+    ],
+    "budgets": {
+      "per_job_usd": 12.0,
+      "per_step_usd": 3.0,
+      "per_step_tokens": 250000,
+      "on_exceed": "halt_and_notify"
+    }
+  },
+  "pipeline": {
+    "start_step": 1,
+    "stop_step": 24,
+    "parallel_groups": [
+      [
+        18,
+        19
+      ],
+      [
+        20,
+        21
+      ]
+    ],
+    "remediation_edges": [
+      {
+        "from": 13,
+        "on": "FAILED",
+        "to": 12,
+        "max_loops": 3
+      },
+      {
+        "from": 14,
+        "on": "FAILED",
+        "to": 12,
+        "max_loops": 3
+      },
+      {
+        "from": 16,
+        "on": "FAILED",
+        "to": 12,
+        "max_loops": 4
+      },
+      {
+        "from": 17,
+        "on": "FAILED",
+        "to": 12,
+        "max_loops": 3
+      },
+      {
+        "from": 18,
+        "on": "BLOCKING_FINDINGS",
+        "to": 12,
+        "max_loops": 2
+      },
+      {
+        "from": 19,
+        "on": "BLOCKING_FINDINGS",
+        "to": 12,
+        "max_loops": 2
+      },
+      {
+        "from": 23,
+        "on": "CHANGES_REQUESTED",
+        "to": 12,
+        "max_loops": 3
+      },
+      {
+        "from": 24,
+        "on": "CHANGES_REQUESTED",
+        "to": 12,
+        "max_loops": 5
+      }
+    ],
+    "on_max_loops_exceeded": "halt_and_escalate"
+  },
+  "steps": {
+    "01": {
+      "enabled": true,
+      "component": "plugin",
+      "binding": "tracker",
+      "timeout_s": 120,
+      "retry": {
+        "max_attempts": 3,
+        "backoff_s": 5
+      }
+    },
+    "02": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "02_story_analysis.system.md",
+      "rubric": "02_story_analysis.rubric.md",
+      "timeout_s": 300,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      }
+    },
+    "03": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "03_gap_detection.system.md",
+      "timeout_s": 300,
+      "on_ambiguity": "halt_and_ticket"
+    },
+    "04": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "04_project_context.system.md",
+      "timeout_s": 600
+    },
+    "05": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "05_brd.system.md",
+      "timeout_s": 600,
+      "render_documents": [
+        "pdf"
+      ]
+    },
+    "06": {
+      "enabled": true,
+      "component": "gate",
+      "locked": true,
+      "timeout_s": 604800
+    },
+    "07": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "07_test_design.system.md",
+      "timeout_s": 600
+    },
+    "08": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "08_repo_understanding.system.md",
+      "timeout_s": 900
+    },
+    "09": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "09_impact_analysis.system.md",
+      "timeout_s": 600
+    },
+    "10": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "10_feature_spec.system.md",
+      "timeout_s": 600
+    },
+    "11": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "11_change_plan.system.md",
+      "timeout_s": 300
+    },
+    "12": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "12_code_update.system.md",
+      "timeout_s": 1800,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 15
+      }
+    },
+    "13": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "13_verification.system.md",
+      "timeout_s": 600
+    },
+    "14": {
+      "enabled": true,
+      "component": "tool",
+      "timeout_s": 600
+    },
+    "15": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "15_test_sync.system.md",
+      "timeout_s": 900
+    },
+    "16": {
+      "enabled": true,
+      "component": "plugin",
+      "binding": "test_runner",
+      "timeout_s": 1800
+    },
+    "17": {
+      "enabled": true,
+      "component": "plugin",
+      "binding": "e2e_runner",
+      "timeout_s": 3600
+    },
+    "18": {
+      "enabled": true,
+      "component": "plugin",
+      "binding": [
+        "sast",
+        "sca",
+        "secrets"
+      ],
+      "timeout_s": 1800
+    },
+    "19": {
+      "enabled": true,
+      "component": "plugin",
+      "binding": "dast",
+      "timeout_s": 3600,
+      "prompt": "19_dast_triage.system.md"
+    },
+    "20": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "20_tdd.system.md",
+      "timeout_s": 900,
+      "render_documents": [
+        "pdf"
+      ]
+    },
+    "21": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "21_docs_update.system.md",
+      "timeout_s": 600
+    },
+    "22": {
+      "enabled": true,
+      "component": "plugin",
+      "binding": "vcs",
+      "timeout_s": 300
+    },
+    "23": {
+      "enabled": true,
+      "component": "agent",
+      "prompt": "23_ai_pr_review.system.md",
+      "timeout_s": 900
+    },
+    "24": {
+      "enabled": true,
+      "component": "gate",
+      "locked": true,
+      "timeout_s": 1209600
+    }
+  },
+  "artifacts": {
+    "naming_template": "{step:02d}_{slug}{variant_suffix}__{job_id}__v{version}.{ext}",
+    "variant_suffix_template": "__{variant}",
+    "extension_rules": {
+      "structured": ["json", "diff"],
+      "document": [
+        "pdf",
+        "docx"
+      ],
+      "error_snapshot": "jpg",
+      "specification": "md"
+    },
+    "checksum_algorithm": "sha256",
+    "immutable": true,
+    "versioning": "increment_on_retry",
+    "index_file": "index.json"
+  },
+  "policy": {
+    "write_scope": {
+      "source": "step_09.allowed_paths",
+      "deny_globs": [
+        "**/.github/workflows/**",
+        "**/secrets/**",
+        "**/*.pem",
+        "**/*.key",
+        "**/.env*"
+      ],
+      "max_changed_files": 40,
+      "max_changed_loc": 800,
+      "migrations_require_human_signoff": true
+    },
+    "non_invention": {
+      "on_ambiguity": "halt_and_ticket",
+      "hallucination_detector_step": 13,
+      "forbid_requirement_synthesis": true
+    },
+    "quality_thresholds": {
+      "min_line_coverage_pct": 80,
+      "min_changed_line_coverage_pct": 90,
+      "max_cyclomatic_complexity": 12,
+      "block_on_severity": [
+        "CRITICAL",
+        "HIGH"
+      ]
+    },
+    "forbidden_dependencies": [
+      "pycrypto",
+      "requests<2.31"
+    ],
+    "override": {
+      "allowed_roles": [
+        "security_owner"
+      ],
+      "requires_justification": true,
+      "audited": true
+    }
+  },
+  "gates": {
+    "06": {
+      "name": "BRD Approval",
+      "required_roles": [
+        "product_owner"
+      ],
+      "quorum": 1,
+      "bind_to_artifact_sha": true,
+      "reminder_after_hours": 24,
+      "escalate_after_hours": 72,
+      "escalate_to": [
+        "engineering_manager"
+      ],
+      "can_disable": false,
+      "revision": {
+        "enabled": true,
+        "replaces_step": 5,
+        "slug": "brd",
+        "variant": "revised",
+        "schema_id": "BrdV1",
+        "accepted_extensions": [
+          "md",
+          "pdf",
+          "docx"
+        ],
+        "max_bytes": 10485760,
+        "max_revisions": 3
+      }
+    },
+    "24": {
+      "name": "PR Approval & Merge",
+      "required_roles": [
+        "senior_engineer"
+      ],
+      "quorum": 1,
+      "bind_to_artifact_sha": true,
+      "block_if_open_findings": true,
+      "reminder_after_hours": 12,
+      "escalate_after_hours": 48,
+      "escalate_to": [
+        "engineering_manager"
+      ],
+      "can_disable": false
+    }
+  },
+  "plugins": {
+    "tracker": {
+      "driver": "jira",
+      "base_url": "${env:JIRA_URL:-}",
+      "auth": {
+        "type": "api_token",
+        "user_env": "JIRA_USER",
+        "token_env": "JIRA_TOKEN"
+      },
+      "project_key": "DEEP"
+    },
+    "vcs": {
+      "driver": "github",
+      "base_url": "https://api.github.com",
+      "auth": {
+        "type": "api_token",
+        "token_env": "GITHUB_TOKEN"
+      },
+      "repo": "${env:TARGET_REPO:-}",
+      "branch_template": "codegen/{jira_id}-{slug}",
+      "draft_pr": true
+    },
+    "test_runner": {
+      "driver": "pytest",
+      "command": [
+        "pytest",
+        "-q",
+        "--json-report",
+        "--cov"
+      ],
+      "coverage_format": "cobertura"
+    },
+    "e2e_runner": {
+      "driver": "playwright",
+      "command": [
+        "npx",
+        "playwright",
+        "test",
+        "--reporter=json"
+      ],
+      "screenshot_on_failure": true,
+      "ephemeral_env": {
+        "enabled": true,
+        "compose_file": "docker-compose.test.yml",
+        "teardown": true
+      }
+    },
+    "sast": {
+      "driver": "semgrep",
+      "command": [
+        "semgrep",
+        "--config",
+        "auto",
+        "--json"
+      ]
+    },
+    "sca": {
+      "driver": "trivy",
+      "command": [
+        "trivy",
+        "fs",
+        "--format",
+        "json",
+        "."
+      ]
+    },
+    "secrets": {
+      "driver": "gitleaks",
+      "command": [
+        "gitleaks",
+        "detect",
+        "--report-format",
+        "json"
+      ]
+    },
+    "dast": {
+      "driver": "zap",
+      "target_url": "${env:STAGING_URL:-}",
+      "auth_scenario": "authenticated_user",
+      "rules": "owasp-top-10"
+    },
+    "notifier": {
+      "driver": "slack",
+      "webhook_env": "SLACK_WEBHOOK",
+      "notify_on": [
+        "gate_opened",
+        "gate_timeout",
+        "pipeline_halted",
+        "budget_exceeded"
+      ]
+    },
+    "dashboard": {
+      "driver": "fastapi",
+      "host": "0.0.0.0",
+      "port": 8080,
+      "auth": {
+        "type": "oidc",
+        "issuer_env": "OIDC_ISSUER"
+      }
+    }
+  },
+  "observability": {
+    "log_level": "INFO",
+    "log_format": "json",
+    "metrics_sink": {
+      "driver": "prometheus",
+      "port": 9090
+    },
+    "trace_sink": {
+      "driver": "otlp",
+      "endpoint_env": "OTEL_ENDPOINT",
+      "enabled": false
+    },
+    "emit_per_step": [
+      "latency_s",
+      "tokens_in",
+      "tokens_out",
+      "cost_usd",
+      "status",
+      "retry_count"
+    ],
+    "alerts": {
+      "step_failure_rate_pct": 20,
+      "job_duration_minutes": 180,
+      "cost_overrun_pct": 120
+    }
+  },
+  "secrets": {
+    "provider": "env",
+    "vault": {
+      "enabled": false,
+      "address_env": "VAULT_ADDR",
+      "mount": "codegen-core"
+    },
+    "redaction": {
+      "scrub_pii_from_prompts": true,
+      "patterns": [
+        "(?i)api[_-]?key",
+        "(?i)authorization:\\s*bearer\\s+\\S+",
+        "sk-[A-Za-z0-9]{20,}",
+        "ghp_[A-Za-z0-9]{20,}"
+      ],
+      "never_persist_in": [
+        "artifacts",
+        "runs"
+      ]
+    },
+    "reject_literal_secrets_in_config": true
+  },
+  "visualization": {
+    "default_variant": "logistics",
+    "variants": {
+      "logistics": {
+        "label": "Logistics",
+        "kicker": "INTELLIGENT FREIGHT CORRIDOR",
+        "headline": "Every release arrives on time",
+        "route_label": "FREIGHT ROUTE",
+        "vehicle": "truck",
+        "motion": "speed-route",
+        "palette": {
+          "accent": "#55b8ff",
+          "accent_bright": "#dff3ff",
+          "accent_soft": "#173347",
+          "secondary": "#ff9f43",
+          "completed": "#55b8ff",
+          "muted": "#576d7b",
+          "surface": "#09151d",
+          "surface_active": "#17384d",
+          "surface_completed": "#123045",
+          "surface_upcoming": "#101b22",
+          "pattern": "linear-gradient(90deg, transparent 48%, rgba(85,184,255,.045) 49%, rgba(85,184,255,.045) 51%, transparent 52%)"
+        }
+      }
+    }
+  },
+  "profiles": {
+    "local": {
+      "routing": {
+        "defaults": {
+          "fast": "mock.offline",
+          "coding": "mock.offline",
+          "reasoning": "mock.offline",
+          "security": "mock.offline",
+          "vision": "mock.offline"
+        },
+        "fallback_chains": {
+          "fast": [
+            "mock.offline",
+            "mock.reviewer"
+          ],
+          "coding": [
+            "mock.offline",
+            "mock.reviewer"
+          ],
+          "reasoning": [
+            "mock.offline",
+            "mock.reviewer"
+          ],
+          "security": [
+            "mock.offline",
+            "mock.reviewer"
+          ],
+          "vision": [
+            "mock.offline",
+            "mock.reviewer"
+          ]
+        },
+        "budgets": {
+          "per_job_usd": 0.0
+        }
+      },
+      "plugins": {
+        "tracker": {
+          "dry_run": true
+        },
+        "vcs": {
+          "dry_run": true
+        },
+        "test_runner": {
+          "dry_run": true
+        },
+        "e2e_runner": {
+          "dry_run": true
+        },
+        "sast": {
+          "dry_run": true
+        },
+        "sca": {
+          "dry_run": true
+        },
+        "secrets": {
+          "dry_run": true
+        },
+        "dast": {
+          "dry_run": true
+        },
+        "notifier": {
+          "dry_run": true
+        },
+        "dashboard": {
+          "dry_run": true
+        }
+      },
+      "observability": {
+        "log_level": "INFO"
+      }
+    },
+    "hybrid": {
+      "routing": {
+        "defaults": {
+          "fast": "local.ollama.qwen",
+          "coding": "paid.anthropic.sonnet",
+          "reasoning": "cloud.bedrock.sonnet",
+          "security": "cloud.bedrock.sonnet",
+          "vision": "paid.openai.gpt"
+        },
+        "budgets": {
+          "per_job_usd": 6.0
+        }
+      }
+    },
+    "devtool": {
+      "backends": {
+        "devtool.cursor": {
+          "enabled": true
+        }
+      },
+      "routing": {
+        "steps": {
+          "12": {
+            "capability": "coding",
+            "backend": "devtool.cursor"
+          }
+        }
+      }
+    },
+    "production": {
+      "routing": {
+        "defaults": {
+          "fast": "paid.openai.gpt",
+          "coding": "paid.anthropic.sonnet",
+          "reasoning": "paid.anthropic.opus",
+          "security": "cloud.bedrock.sonnet",
+          "vision": "paid.openai.gpt"
+        },
+        "budgets": {
+          "per_job_usd": 25.0
+        }
+      },
+      "policy": {
+        "quality_thresholds": {
+          "min_changed_line_coverage_pct": 95
+        }
+      },
+      "observability": {
+        "log_level": "INFO",
+        "trace_sink": {
+          "enabled": true
+        }
+      },
+      "secrets": {
+        "provider": "vault",
+        "vault": {
+          "enabled": true
+        }
+      }
+    },
+    "docker": {
+      "app": {
+        "paths": {
+          "artifacts": "/data/artifacts/{job_id}",
+          "runs": "/data/runs/{job_id}",
+          "workspace": "/workspace",
+          "prompts": "/app/config/prompts",
+          "schema_registry": "/app/config/schemas"
+        },
+        "project": {
+          "path": "/workspace"
+        }
+      },
+      "routing": {
+        "defaults": {
+          "fast": "mock.offline",
+          "coding": "mock.offline",
+          "reasoning": "mock.offline",
+          "security": "mock.offline",
+          "vision": "mock.offline"
+        },
+        "fallback_chains": {
+          "fast": [
+            "mock.offline",
+            "mock.reviewer"
+          ],
+          "coding": [
+            "mock.offline",
+            "mock.reviewer"
+          ],
+          "reasoning": [
+            "mock.offline",
+            "mock.reviewer"
+          ],
+          "security": [
+            "mock.offline",
+            "mock.reviewer"
+          ],
+          "vision": [
+            "mock.offline",
+            "mock.reviewer"
+          ]
+        },
+        "budgets": {
+          "per_job_usd": 0.0
+        }
+      },
+      "plugins": {
+        "tracker": {
+          "driver": "file",
+          "stories_dir": "/stories",
+          "dry_run": false
+        },
+        "vcs": {
+          "dry_run": true
+        },
+        "test_runner": {
+          "dry_run": false
+        },
+        "e2e_runner": {
+          "dry_run": true
+        },
+        "sast": {
+          "dry_run": true
+        },
+        "sca": {
+          "dry_run": true
+        },
+        "secrets": {
+          "dry_run": true
+        },
+        "dast": {
+          "dry_run": true
+        },
+        "notifier": {
+          "dry_run": true
+        },
+        "dashboard": {
+          "driver": "fastapi",
+          "dry_run": false
+        }
+      },
+      "policy": {
+        "write_scope": {
+          "deny_globs": [
+            "**/.env*",
+            "**/*.pem",
+            "**/secrets/**",
+            "**/.git/**",
+            "media/**"
+          ],
+          "max_changed_files": 12,
+          "max_changed_loc": 400,
+          "migrations_require_human_signoff": true
+        }
+      },
+      "observability": {
+        "log_level": "INFO"
+      }
+    },
+    "docker-ollama": {
+      "app": {
+        "paths": {
+          "artifacts": "/data/artifacts/{job_id}",
+          "runs": "/data/runs/{job_id}",
+          "workspace": "/workspace",
+          "prompts": "/app/config/prompts",
+          "schema_registry": "/app/config/schemas"
+        }
+      },
+      "routing": {
+        "defaults": {
+          "fast": "local.ollama.qwen",
+          "coding": "local.ollama.qwen",
+          "reasoning": "local.ollama.deepseek",
+          "security": "local.ollama.deepseek",
+          "vision": "mock.offline"
+        },
+        "fallback_chains": {
+          "fast": [
+            "local.ollama.qwen",
+            "local.ollama.deepseek"
+          ],
+          "coding": [
+            "local.ollama.qwen",
+            "local.ollama.deepseek"
+          ],
+          "reasoning": [
+            "local.ollama.deepseek",
+            "local.ollama.qwen"
+          ],
+          "security": [
+            "local.ollama.deepseek",
+            "local.ollama.qwen"
+          ],
+          "vision": [
+            "mock.offline"
+          ]
+        },
+        "budgets": {
+          "per_job_usd": 0.0
+        }
+      },
+      "plugins": {
+        "tracker": {
+          "driver": "file",
+          "stories_dir": "/stories",
+          "dry_run": false
+        },
+        "vcs": {
+          "dry_run": true
+        },
+        "test_runner": {
+          "dry_run": false
+        },
+        "e2e_runner": {
+          "dry_run": true
+        },
+        "sast": {
+          "dry_run": true
+        },
+        "sca": {
+          "dry_run": true
+        },
+        "secrets": {
+          "dry_run": true
+        },
+        "dast": {
+          "dry_run": true
+        },
+        "notifier": {
+          "dry_run": true
+        },
+        "dashboard": {
+          "driver": "fastapi",
+          "dry_run": false
+        }
+      },
+      "policy": {
+        "write_scope": {
+          "deny_globs": [
+            "**/.env*",
+            "**/*.pem",
+            "**/secrets/**",
+            "**/.git/**",
+            "media/**"
+          ],
+          "max_changed_files": 12,
+          "max_changed_loc": 400,
+          "migrations_require_human_signoff": true
+        }
+      },
+      "observability": {
+        "log_level": "INFO"
+      },
+      "backends": {
+        "local.ollama.qwen": {
+          "base_url": "http://host.docker.internal:11434",
+          "capabilities": [
+            "fast",
+            "coding"
+          ],
+          "enabled": true
+        },
+        "local.ollama.deepseek": {
+          "base_url": "http://host.docker.internal:11434",
+          "capabilities": [
+            "coding",
+            "reasoning",
+            "security"
+          ],
+          "enabled": true
+        }
+      }
+    },
+    "docker-cloud": {
+      "app": {
+        "paths": {
+          "artifacts": "/data/artifacts/{job_id}",
+          "runs": "/data/runs/{job_id}",
+          "workspace": "/workspace",
+          "prompts": "/app/config/prompts",
+          "schema_registry": "/app/config/schemas"
+        }
+      },
+      "routing": {
+        "defaults": {
+          "fast": "paid.openai.gpt",
+          "coding": "paid.anthropic.sonnet",
+          "reasoning": "paid.anthropic.opus",
+          "security": "paid.anthropic.opus",
+          "vision": "paid.anthropic.sonnet"
+        },
+        "fallback_chains": {
+          "fast": [
+            "paid.openai.gpt",
+            "mock.offline"
+          ],
+          "coding": [
+            "paid.anthropic.sonnet",
+            "paid.anthropic.opus"
+          ],
+          "reasoning": [
+            "paid.anthropic.opus",
+            "paid.anthropic.sonnet"
+          ],
+          "security": [
+            "paid.anthropic.opus",
+            "paid.anthropic.sonnet"
+          ],
+          "vision": [
+            "paid.anthropic.sonnet"
+          ]
+        },
+        "budgets": {
+          "per_job_usd": 5.0,
+          "on_exceed": "halt_and_notify"
+        }
+      },
+      "plugins": {
+        "tracker": {
+          "driver": "file",
+          "stories_dir": "/stories",
+          "dry_run": false
+        },
+        "vcs": {
+          "dry_run": true
+        },
+        "test_runner": {
+          "dry_run": false
+        },
+        "e2e_runner": {
+          "dry_run": true
+        },
+        "sast": {
+          "dry_run": true
+        },
+        "sca": {
+          "dry_run": true
+        },
+        "secrets": {
+          "dry_run": true
+        },
+        "dast": {
+          "dry_run": true
+        },
+        "notifier": {
+          "dry_run": true
+        },
+        "dashboard": {
+          "driver": "fastapi",
+          "dry_run": false
+        }
+      },
+      "policy": {
+        "write_scope": {
+          "deny_globs": [
+            "**/.env*",
+            "**/*.pem",
+            "**/secrets/**",
+            "**/.git/**",
+            "media/**"
+          ],
+          "max_changed_files": 12,
+          "max_changed_loc": 400,
+          "migrations_require_human_signoff": true
+        }
+      },
+      "observability": {
+        "log_level": "INFO"
+      }
+    }
+  }
+}

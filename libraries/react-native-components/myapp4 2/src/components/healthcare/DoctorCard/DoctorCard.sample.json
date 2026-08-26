@@ -1,0 +1,70 @@
+{
+  "$comment": "Dummy provider directory. Insurance status is computed by an eligibility service — 'unknown' renders as 'not confirmed', never as covered.",
+  "doctors": [
+    {
+      "id": "dr-1",
+      "name": "Dr. Priya Shah",
+      "credentials": "MBBS, MD (Dermatology)",
+      "specialty": "Dermatology",
+      "subSpecialty": "Paediatric dermatology",
+      "avatar": { "uri": "https://example.invalid/dr-shah.jpg", "alt": "Dr. Priya Shah, dermatologist" },
+      "rating": { "average": 4.8, "count": 412 },
+      "experienceYears": 14,
+      "fee": { "minorUnits": 90000, "currency": "INR" },
+      "consultationModes": ["video", "inPerson"],
+      "nextAvailable": "2026-08-19T16:30:00.000Z",
+      "verification": "verified",
+      "insuranceStatus": "accepted",
+      "acceptingNewPatients": true,
+      "languages": ["English", "Hindi", "Gujarati"],
+      "locations": [
+        { "id": "loc-1", "name": "Skin & Care Clinic, Indiranagar", "addressLines": ["12 100ft Road"], "city": "Bengaluru", "distanceLabel": "2.4 km" },
+        { "id": "loc-2", "name": "Apollo Clinic, Koramangala", "addressLines": ["5th Block"], "city": "Bengaluru" }
+      ]
+    },
+    {
+      "id": "dr-2",
+      "name": "Dr. Aravind Venkataraman Krishnamurthy",
+      "credentials": "MBBS, MD, DM (Cardiology)",
+      "specialty": "Cardiology",
+      "rating": { "average": 4.6, "count": 7 },
+      "experienceYears": 22,
+      "fee": { "minorUnits": 150000, "currency": "INR" },
+      "consultationModes": ["video", "audio", "inPerson"],
+      "nextAvailable": "2026-08-21T10:00:00.000Z",
+      "verification": "verified",
+      "insuranceStatus": "checking",
+      "acceptingNewPatients": true,
+      "languages": ["English", "Tamil"]
+    },
+    {
+      "id": "dr-3",
+      "name": "Dr. Meera Nair",
+      "specialty": "General Medicine",
+      "rating": { "average": 4.2, "count": 189 },
+      "experienceYears": 8,
+      "consultationModes": ["video"],
+      "nextAvailable": "2026-08-19T14:15:00.000Z",
+      "verification": "unverified",
+      "insuranceStatus": "notAccepted",
+      "acceptingNewPatients": true,
+      "online": true,
+      "languages": ["English", "Malayalam"]
+    },
+    {
+      "id": "dr-4",
+      "name": "Dr. Rohit Malhotra",
+      "credentials": "MBBS, MS (Orthopaedics)",
+      "specialty": "Orthopaedics",
+      "rating": { "average": 4.9, "count": 1204 },
+      "experienceYears": 19,
+      "fee": { "minorUnits": 120000, "currency": "INR" },
+      "consultationModes": ["inPerson"],
+      "verification": "verified",
+      "insuranceStatus": "unknown",
+      "acceptingNewPatients": false,
+      "languages": ["English", "Hindi"],
+      "locations": [{ "id": "loc-3", "name": "Ortho Centre, Whitefield", "addressLines": ["Plot 8, ITPL Road"], "city": "Bengaluru", "distanceLabel": "14 km" }]
+    }
+  ]
+}

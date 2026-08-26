@@ -1,0 +1,7 @@
+{
+  "agents": [
+    { "id": "ag-1", "name": "Rohan Mehta", "agency": "Prestige Realty", "role": "agent", "verified": true, "ratingLabel": "4.8 rating", "responseTimeLabel": "Usually replies within 1 hour", "phoneAvailable": true, "whatsappAvailable": true },
+    { "id": "ag-2", "name": "Sanjana Iyer", "role": "owner", "responseTimeLabel": "Usually replies within a day", "phoneAvailable": true, "whatsappAvailable": false },
+    { "id": "ag-3", "name": "Palm Residency Sales Team", "agency": "Palm Residency Towers", "role": "builder", "verified": true, "phoneAvailable": true, "whatsappAvailable": true }
+  ]
+}

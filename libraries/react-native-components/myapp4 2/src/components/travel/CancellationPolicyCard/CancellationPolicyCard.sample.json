@@ -1,0 +1,32 @@
+{
+  "policies": [
+    {
+      "type": "free",
+      "deadline": "2026-08-20T18:00:00+05:30",
+      "timezone": "Asia/Kolkata",
+      "summary": "Free cancellation until 20 Aug, 6:00 PM",
+      "refundRules": [
+        { "id": "r-1", "fromLabel": "Before 20 Aug, 6:00 PM", "refundPercent": 100 },
+        { "id": "r-2", "fromLabel": "After 20 Aug, 6:00 PM", "refundPercent": 0, "note": "1 night charged as cancellation fee" }
+      ],
+      "details": "Taxes and fees are refunded in full when the cancellation is made before the deadline. No-shows are treated as a cancellation after the deadline."
+    },
+    {
+      "type": "partialRefund",
+      "deadline": "2026-08-19T12:00:00+05:30",
+      "timezone": "Asia/Kolkata",
+      "summary": "Free cancellation until 19 Aug, then 50% refund",
+      "refundRules": [
+        { "id": "r-3", "fromLabel": "Before 19 Aug, 12:00 PM", "refundPercent": 100 },
+        { "id": "r-4", "fromLabel": "19 Aug – 24 Aug", "refundPercent": 50 },
+        { "id": "r-5", "fromLabel": "After 24 Aug", "refundPercent": 0 }
+      ]
+    },
+    {
+      "type": "nonRefundable",
+      "timezone": "Asia/Kolkata",
+      "summary": "Nonrefundable",
+      "refundRules": [{ "id": "r-6", "fromLabel": "Any time", "refundPercent": 0, "note": "This rate is discounted in exchange for no refund" }]
+    }
+  ]
+}

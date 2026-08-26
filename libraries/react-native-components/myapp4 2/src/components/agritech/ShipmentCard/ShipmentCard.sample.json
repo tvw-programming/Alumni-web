@@ -1,0 +1,47 @@
+{
+  "shipments": [
+    {
+      "id": "ship-1",
+      "consignmentId": "123456789",
+      "origin": "Delhi",
+      "destination": "Bengaluru",
+      "status": "inTransit",
+      "eta": "24 Aug",
+      "lastLocation": "Hyderabad hub",
+      "lastUpdatedAt": "2 hours ago",
+      "carrier": "Delhivery"
+    },
+    {
+      "id": "ship-2",
+      "consignmentId": "998877665",
+      "origin": "Mumbai",
+      "destination": "Pune",
+      "status": "outForDelivery",
+      "eta": "today",
+      "lastLocation": "Pune delivery center",
+      "lastUpdatedAt": "20 minutes ago",
+      "carrier": "Delhivery"
+    },
+    {
+      "id": "ship-3",
+      "consignmentId": "554433221",
+      "origin": "Chennai",
+      "destination": "Coimbatore",
+      "status": "rto",
+      "lastLocation": "Coimbatore hub",
+      "lastUpdatedAt": "1 day ago",
+      "carrier": "Delhivery",
+      "exception": "Delivery delayed — address could not be located"
+    },
+    {
+      "id": "ship-4",
+      "consignmentId": "112233445",
+      "origin": "Ahmedabad",
+      "destination": "Surat",
+      "status": "delivered",
+      "lastLocation": "Surat",
+      "lastUpdatedAt": "yesterday",
+      "carrier": "Delhivery"
+    }
+  ]
+}

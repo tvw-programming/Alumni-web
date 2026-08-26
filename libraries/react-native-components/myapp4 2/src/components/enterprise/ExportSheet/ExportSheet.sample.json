@@ -1,0 +1,12 @@
+{
+  "formats": [
+    { "id": "csv", "label": "CSV", "description": "Spreadsheet-friendly, no formatting", "available": true },
+    { "id": "xlsx", "label": "Excel (XLSX)", "description": "Formatted spreadsheet with headers", "available": true },
+    { "id": "pdf", "label": "PDF", "description": "Print-ready summary report", "available": true },
+    { "id": "json", "label": "JSON", "description": "Raw structured data for developers", "available": false }
+  ],
+  "scopeOptions": [
+    { "id": "current-view", "label": "Current view" },
+    { "id": "all-records", "label": "All records" }
+  ]
+}

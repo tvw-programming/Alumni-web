@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Per-job scratch checkouts. The sample project the pipeline edits lives in
+# sample-project/ and is tracked; this is only ever throwaway.
+workspace/*
+!workspace/.gitkeep
+
+# artifacts/ and runs/ are tracked: the sample run data that ships with the
+# repo is what the dashboard renders before you start a run of your own.

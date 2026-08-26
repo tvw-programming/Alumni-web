@@ -1,14 +1,38 @@
 # Project Structure Guide
 
 ## Core Workflow
-- **Location**: `core/`
-- **Type**: Python + React
-- **Purpose**: 24-step AI workflow engine
+
+The 24-step workflow is two projects that talk over HTTP.
+
+### Core Backend
+- **Location**: `core/backend/`
+- **Type**: Python 3.11+ (FastAPI + Pydantic)
+- **Purpose**: pipeline runner, two mandatory human gates, gate API, CLI
+- **Port**: 8000
 - **Key Files**:
-  - `core/python/agents/` (workflow logic)
-  - `core/python/services/` (service modules)
-  - `core/react/src/App.tsx` (UI)
-  - `core/python/requirements.txt` (dependencies)
+  - `src/codegen_core/orchestrator/runner.py` (the run loop)
+  - `src/codegen_core/steps/` (the 24 steps, one module each)
+  - `src/codegen_core/core/config.py` (typed config loader and safety invariants)
+  - `src/codegen_core/dashboard/api.py` (the API the dashboard reads)
+  - `src/codegen_core/tools/file_write_guard.py` (what keeps step 12 in scope)
+  - `config/config.json` (models, prompts, budgets, gates, remediation edges)
+  - `sample-project/` (the FastAPI service the pipeline implements against)
+  - `stories/` (drop a `.md` file here to make it runnable)
+- **Ignore**: `__pycache__`, `.venv`, `workspace/`
+
+### Core Frontend
+- **Location**: `core/frontend/`
+- **Type**: React 19 + MUI + Vite
+- **Purpose**: run monitor — watch every step, inspect its input and output,
+  approve or reject at the two human gates
+- **Port**: 5173
+- **Key Files**:
+  - `src/App.tsx` (routes)
+  - `src/api/httpApi.ts` (the live backend client)
+  - `src/api/mockApi.ts` (the offline fixture the dashboard falls back to)
+  - `src/types/workflow.ts` (the shared run/step/gate contract)
+  - `src/pages/DashboardPage.tsx`
+- **Ignore**: `node_modules`, `dist`, `dist-smoke`
 
 ## Libraries
 

@@ -1,0 +1,13 @@
+{
+  "streakCount": 6,
+  "days": [
+    { "day": 1, "reward": { "label": "Coins", "quantity": 50 }, "status": "claimed" },
+    { "day": 2, "reward": { "label": "Coins", "quantity": 60 }, "status": "claimed" },
+    { "day": 3, "reward": { "label": "Gems", "quantity": 5 }, "status": "missed" },
+    { "day": 4, "reward": { "label": "Coins", "quantity": 80 }, "status": "protected" },
+    { "day": 5, "reward": { "label": "Coins", "quantity": 90 }, "status": "claimed" },
+    { "day": 6, "reward": { "label": "Chest", "quantity": 1 }, "status": "available" },
+    { "day": 7, "reward": { "label": "Legendary crate", "quantity": 1 }, "status": "locked" }
+  ],
+  "claimReward": { "label": "Chest", "quantity": 1 }
+}

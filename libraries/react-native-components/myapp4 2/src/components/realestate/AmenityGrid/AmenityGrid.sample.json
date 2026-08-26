@@ -1,0 +1,14 @@
+{
+  "amenities": [
+    { "id": "a-1", "label": "Parking", "icon": "parking", "status": "included", "scope": "property" },
+    { "id": "a-2", "label": "Lift", "icon": "elevator-passenger-outline", "status": "included", "scope": "property" },
+    { "id": "a-3", "label": "Power backup", "icon": "flash-outline", "status": "included", "scope": "property" },
+    { "id": "a-4", "label": "Gym", "icon": "dumbbell", "status": "included", "scope": "project" },
+    { "id": "a-5", "label": "Swimming pool", "icon": "pool", "status": "included", "scope": "project" },
+    { "id": "a-6", "label": "Clubhouse", "icon": "domain", "status": "paid", "scope": "project" },
+    { "id": "a-7", "label": "24-hour security", "icon": "shield-outline", "status": "included", "scope": "property" },
+    { "id": "a-8", "label": "Pet friendly", "icon": "paw-outline", "status": "unavailable", "scope": "property" },
+    { "id": "a-9", "label": "Wheelchair accessible", "icon": "wheelchair-accessibility", "status": "unknown", "scope": "property" },
+    { "id": "a-10", "label": "Modular kitchen", "icon": "stove", "status": "included", "scope": "unit" }
+  ]
+}

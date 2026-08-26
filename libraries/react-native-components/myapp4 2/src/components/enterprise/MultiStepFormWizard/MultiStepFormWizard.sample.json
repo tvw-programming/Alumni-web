@@ -1,0 +1,8 @@
+{
+  "steps": [
+    { "id": "s-1", "title": "Basics", "description": "Tell us about the project" },
+    { "id": "s-2", "title": "Team", "description": "Who's working on this?" },
+    { "id": "s-3", "title": "Budget", "description": "Set a budget and timeline", "optional": true },
+    { "id": "s-4", "title": "Review", "description": "Confirm everything looks right" }
+  ]
+}

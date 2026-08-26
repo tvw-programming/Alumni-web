@@ -1,0 +1,70 @@
+{
+  "$comment": "Dummy cart covering marketplace sellers, grocery substitutions, out-of-stock lines and estimated tax. Totals are server-authoritative in production — never recomputed on the client before payment.",
+  "lines": [
+    {
+      "id": "line-1",
+      "productId": "sku-1",
+      "variantId": "sku-1-9uk-slate",
+      "brand": "Aurora",
+      "title": "Aurora Cloudrunner Running Shoes",
+      "image": { "uri": "https://example.invalid/shoe.jpg", "alt": "Aurora Cloudrunner running shoe in slate blue" },
+      "variantSummary": "Size 9 UK · Slate",
+      "quantity": { "value": 1, "min": 1, "max": 3, "step": 1, "disabledReason": "Only 3 available" },
+      "unitPrice": { "minorUnits": 649900, "currency": "INR" },
+      "compareAtUnitPrice": { "minorUnits": 999900, "currency": "INR" },
+      "lineTotal": { "minorUnits": 649900, "currency": "INR" },
+      "availability": "available",
+      "fulfillment": { "sellerName": "Aurora Official Store", "deliveryLabel": "Free delivery by Sat, 23 Aug" }
+    },
+    {
+      "id": "line-2",
+      "productId": "sku-3",
+      "title": "Fresh Tomatoes — Locally Sourced",
+      "image": { "uri": "https://example.invalid/tomato.jpg", "alt": "Loose red tomatoes in a crate" },
+      "quantity": { "value": 1.5, "min": 0.25, "max": 5, "step": 0.25, "unit": "kg" },
+      "unitPrice": { "minorUnits": 9000, "currency": "INR" },
+      "lineTotal": { "minorUnits": 13500, "currency": "INR" },
+      "availability": "substitutionRequired",
+      "substitution": { "title": "Organic Roma Tomatoes 1 kg", "accepted": false },
+      "fulfillment": { "deliveryLabel": "Arrives in 12 minutes" }
+    },
+    {
+      "id": "line-3",
+      "productId": "sku-4",
+      "brand": "Vertex",
+      "title": "Vertex Noise-Cancelling Headphones",
+      "image": { "uri": "https://example.invalid/headphones.jpg", "alt": "Vertex over-ear headphones in matte black" },
+      "quantity": { "value": 2, "min": 1, "max": 10, "step": 1, "updateState": "loading" },
+      "unitPrice": { "minorUnits": 1899900, "currency": "INR" },
+      "lineTotal": { "minorUnits": 3799800, "currency": "INR" },
+      "availability": "limited",
+      "fulfillment": { "sellerName": "SoundHub Retail", "deliveryLabel": "Ships separately · arrives Mon, 25 Aug" }
+    },
+    {
+      "id": "line-4",
+      "productId": "sku-5",
+      "brand": "Atelier",
+      "title": "Limited Edition Screen Print",
+      "image": { "alt": "Abstract limited-edition screen print" },
+      "quantity": { "value": 1, "min": 1, "max": 1, "step": 1 },
+      "unitPrice": { "minorUnits": 450000, "currency": "INR" },
+      "lineTotal": { "minorUnits": 450000, "currency": "INR" },
+      "availability": "outOfStock"
+    }
+  ],
+  "totals": {
+    "subtotal": { "minorUnits": 4913200, "currency": "INR" },
+    "discounts": { "minorUnits": 350000, "currency": "INR" },
+    "shipping": { "minorUnits": 0, "currency": "INR" },
+    "serviceFee": { "minorUnits": 4900, "currency": "INR" },
+    "tax": { "minorUnits": 82500, "currency": "INR" },
+    "credits": { "minorUnits": 20000, "currency": "INR" },
+    "total": { "minorUnits": 4630600, "currency": "INR" },
+    "savings": { "minorUnits": 350000, "currency": "INR" },
+    "estimatedNote": "Estimated — confirmed at payment"
+  },
+  "emptyTotals": {
+    "subtotal": { "minorUnits": 0, "currency": "INR" },
+    "total": { "minorUnits": 0, "currency": "INR" }
+  }
+}

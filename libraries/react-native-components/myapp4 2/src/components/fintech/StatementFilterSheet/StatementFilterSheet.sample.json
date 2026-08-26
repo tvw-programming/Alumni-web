@@ -1,0 +1,40 @@
+{
+  "$comment": "Dummy filter dimensions plus a pre-applied filter set, as it would arrive from navigation state or a deep link.",
+  "types": [
+    { "key": "card", "label": "Card payments", "icon": "credit-card-outline" },
+    { "key": "transfer", "label": "Transfers", "icon": "bank-transfer" },
+    { "key": "cash", "label": "Cash", "icon": "cash" },
+    { "key": "directDebit", "label": "Direct debits", "icon": "calendar-sync" },
+    { "key": "fee", "label": "Fees", "icon": "receipt" },
+    { "key": "refund", "label": "Refunds", "icon": "cash-refund" }
+  ],
+  "statuses": [
+    { "key": "completed", "label": "Completed" },
+    { "key": "pending", "label": "Pending" },
+    { "key": "failed", "label": "Failed" },
+    { "key": "declined", "label": "Declined" },
+    { "key": "reversed", "label": "Reversed" }
+  ],
+  "accounts": [
+    { "key": "acc-main", "label": "Everyday account" },
+    { "key": "acc-savings", "label": "Savings" },
+    { "key": "card-4821", "label": "Visa •••• 4821" },
+    { "key": "card-2299", "label": "Mastercard •••• 2299" }
+  ],
+  "categories": [
+    { "key": "food", "label": "Eating out", "count": 34 },
+    { "key": "groceries", "label": "Groceries", "count": 12 },
+    { "key": "transport", "label": "Transport", "count": 46 },
+    { "key": "shopping", "label": "Shopping", "count": 9 },
+    { "key": "bills", "label": "Bills", "count": 6 },
+    { "key": "health", "label": "Health", "count": 3 },
+    { "key": "subs", "label": "Subscriptions", "count": 7 }
+  ],
+  "restoredFilters": {
+    "$comment": "What a deep link or restored navigation state looks like.",
+    "date": { "preset": "thisMonth" },
+    "types": ["card"],
+    "statuses": ["completed", "pending"],
+    "accountIds": ["card-4821"]
+  }
+}
