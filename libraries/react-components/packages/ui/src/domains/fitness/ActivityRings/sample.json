@@ -1,0 +1,30 @@
+{
+  "syncedFrom": "Apple Watch",
+  "updatedAt": "2026-08-21T09:40:00Z",
+  "goals": [
+    {
+      "id": "move",
+      "label": "Move",
+      "current": 420,
+      "goal": 600,
+      "unit": "kcal",
+      "colour": "#fb2576"
+    },
+    {
+      "id": "exercise",
+      "label": "Exercise",
+      "current": 32,
+      "goal": 30,
+      "unit": "min",
+      "colour": "#a3e635"
+    },
+    {
+      "id": "stand",
+      "label": "Stand",
+      "current": 9,
+      "goal": 12,
+      "unit": "hours",
+      "colour": "#38bdf8"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "lines": [
+    {
+      "label": "1 × Aurora Running Shoe",
+      "amount": { "amountMinor": "899500", "currency": "INR" }
+    },
+    { "label": "2 × Trail socks", "amount": { "amountMinor": "89800", "currency": "INR" } },
+    { "label": "Monsoon offer", "amount": { "amountMinor": "-20000", "currency": "INR" } },
+    {
+      "label": "Delivery",
+      "amount": { "amountMinor": "9900", "currency": "INR" },
+      "note": "Free over ₹1,500"
+    },
+    { "label": "GST (18%)", "amount": { "amountMinor": "17874", "currency": "INR" } }
+  ],
+  "total": { "amountMinor": "997074", "currency": "INR" },
+  "footnote": "Includes ₹178.74 GST. No fees are added at payment."
+}

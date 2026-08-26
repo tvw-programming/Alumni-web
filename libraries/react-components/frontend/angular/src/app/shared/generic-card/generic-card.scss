@@ -1,0 +1,25 @@
+.card { width: 100%; height: 100%; display: flex; flex-direction: column; }
+.card--subtle { background: var(--mat-sys-surface-container); }
+.card--accent {
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+.card--compact .card__content { padding: 8px 16px; }
+.card--expanded { min-height: 320px; }
+.card--disabled { opacity: 0.55; pointer-events: none; }
+
+.card__content { flex: 1 1 auto; }
+.card__metric { font: var(--mat-sys-headline-medium); margin: 0 0 8px; }
+.card__header-actions { margin-left: auto; }
+.card__actions:empty { display: none; }
+
+.card__state {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  color: var(--mat-sys-on-surface-variant);
+}
+.card__state--empty { flex-direction: column; text-align: center; padding: 24px 0; }
+.card__state--error { color: var(--mat-sys-error); }
+.card__state-title { font-weight: 600; margin: 0; }

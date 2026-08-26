@@ -1,0 +1,252 @@
+{
+  "submitLabel": "Create product",
+  "fields": [
+    {
+      "name": "productId",
+      "label": "Product ID",
+      "type": "text",
+      "placeholder": "Enter product ID",
+      "validation": {
+        "minLength": 3,
+        "maxLength": 15,
+        "required": true
+      }
+    },
+    {
+      "name": "productName",
+      "label": "Product Name",
+      "type": "text",
+      "placeholder": "Enter product name",
+      "validation": {
+        "minLength": 2,
+        "maxLength": 100,
+        "required": true
+      }
+    },
+    {
+      "name": "description",
+      "label": "Product Description",
+      "type": "textarea",
+      "placeholder": "Enter product description",
+      "rows": 5,
+      "validation": {
+        "maxLength": 500,
+        "required": true
+      }
+    },
+    {
+      "name": "price",
+      "label": "Price",
+      "type": "number",
+      "placeholder": "Enter price",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "name": "rating",
+      "label": "Product Rating",
+      "type": "rating",
+      "validation": {
+        "required": true,
+        "max": 5
+      }
+    },
+    {
+      "name": "productImage",
+      "label": "Product Image",
+      "type": "file",
+      "validation": {
+        "required": true
+      },
+      "accept": "image/*",
+      "hint": "PNG, JPG or WEBP, up to 10 MB"
+    },
+    {
+      "name": "productDocuments",
+      "label": "Supporting Documents",
+      "type": "file",
+      "multiple": true,
+      "accept": ".pdf,.txt,.csv,.md",
+      "hint": "Optional. PDF, TXT, CSV or MD"
+    },
+    {
+      "name": "comments",
+      "label": "Comments",
+      "type": "textarea",
+      "placeholder": "Enter comment",
+      "rows": 4
+    },
+    {
+      "name": "releaseDate",
+      "label": "Release Date",
+      "type": "date",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "name": "supportEmail",
+      "label": "Support Email",
+      "type": "email",
+      "placeholder": "support@example.com"
+    },
+    {
+      "name": "supportPhone",
+      "label": "Support Phone",
+      "type": "tel",
+      "placeholder": "+1 555 0100"
+    },
+    {
+      "name": "productUrl",
+      "label": "Product Page",
+      "type": "url",
+      "placeholder": "https://example.com/product"
+    },
+    {
+      "name": "themeColor",
+      "label": "Theme Colour",
+      "type": "color"
+    },
+    {
+      "name": "condition",
+      "label": "Condition",
+      "type": "radio",
+      "options": [
+        {
+          "value": "new",
+          "label": "New"
+        },
+        {
+          "value": "refurbished",
+          "label": "Refurbished"
+        },
+        {
+          "value": "used",
+          "label": "Used"
+        }
+      ],
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "name": "availability",
+      "label": "Availability",
+      "type": "toggle",
+      "options": [
+        {
+          "value": "inStock",
+          "label": "In stock"
+        },
+        {
+          "value": "preorder",
+          "label": "Pre-order"
+        },
+        {
+          "value": "discontinued",
+          "label": "Discontinued"
+        }
+      ]
+    },
+    {
+      "name": "tags",
+      "label": "Tags",
+      "type": "autocomplete",
+      "placeholder": "Type to search or add your own",
+      "options": [
+        {
+          "value": "bestseller",
+          "label": "Bestseller"
+        },
+        {
+          "value": "eco",
+          "label": "Eco friendly"
+        },
+        {
+          "value": "sale",
+          "label": "On sale"
+        },
+        {
+          "value": "limited",
+          "label": "Limited edition"
+        }
+      ]
+    },
+    {
+      "name": "shippingRegions",
+      "label": "Shipping Regions",
+      "type": "checkboxGroup",
+      "options": [
+        {
+          "value": "na",
+          "label": "North America"
+        },
+        {
+          "value": "eu",
+          "label": "Europe"
+        },
+        {
+          "value": "apac",
+          "label": "Asia Pacific"
+        },
+        {
+          "value": "latam",
+          "label": "Latin America"
+        }
+      ],
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "name": "warrantyMonths",
+      "label": "Warranty Period",
+      "type": "slider",
+      "validation": {
+        "min": 0,
+        "max": 120
+      },
+      "hint": "0\u2013120 months"
+    },
+    {
+      "name": "isPublished",
+      "label": "Publish immediately",
+      "type": "switch"
+    },
+    {
+      "name": "acceptTerms",
+      "label": "I confirm this product complies with store policy",
+      "type": "checkbox",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "name": "category",
+      "label": "Category",
+      "type": "select",
+      "options": [
+        {
+          "value": "electronics",
+          "label": "Electronics"
+        },
+        {
+          "value": "clothing",
+          "label": "Clothing"
+        },
+        {
+          "value": "books",
+          "label": "Books"
+        },
+        {
+          "value": "home",
+          "label": "Home & Garden"
+        }
+      ],
+      "validation": {
+        "required": true
+      }
+    }
+  ]
+}

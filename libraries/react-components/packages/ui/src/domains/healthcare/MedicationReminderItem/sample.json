@@ -1,0 +1,10 @@
+{
+  "dose": {
+    "id": "dose_8891",
+    "medication": "Metformin",
+    "strength": "500 mg",
+    "instruction": "With or just after food",
+    "scheduledAt": "2026-08-06T13:00:00Z",
+    "state": "due"
+  }
+}

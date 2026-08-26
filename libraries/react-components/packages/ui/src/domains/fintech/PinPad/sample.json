@@ -1,0 +1,8 @@
+{
+  "length": 6,
+  "value": "1234",
+  "prompt": "Enter your 6-digit UPI PIN",
+  "attemptsRemaining": 2,
+  "shuffle": true,
+  "errorMessage": null
+}

@@ -1,0 +1,15 @@
+{
+  "value": "Sending the updated deck now — the pricing slide changed.",
+  "attachments": [
+    { "id": "att_1", "name": "pricing-v3.pdf", "progress": 62 },
+    { "id": "att_2", "name": "notes.txt" }
+  ],
+  "replyTo": {
+    "id": "msg_5510",
+    "sender": { "id": "u_9", "name": "Meera" },
+    "body": "Can you share the latest version?",
+    "sentAt": "2026-08-06T09:38:00Z",
+    "direction": "received",
+    "status": "read"
+  }
+}

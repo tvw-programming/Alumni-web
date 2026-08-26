@@ -1,0 +1,17 @@
+{
+  "title": "Revenue",
+  "summary": "Revenue increased from ₹4.2M to ₹4.8M over the last 30 days, a rise of 14.3%.",
+  "activeRange": "30d",
+  "updatedAt": "2026-08-21T10:32:00Z",
+  "ranges": [
+    { "id": "7d", "label": "7D" },
+    { "id": "30d", "label": "30D" },
+    { "id": "90d", "label": "90D" }
+  ],
+  "points": [
+    { "label": "Week 1", "value": 4200000 },
+    { "label": "Week 2", "value": 4350000 },
+    { "label": "Week 3", "value": 4310000 },
+    { "label": "Week 4", "value": 4800000 }
+  ]
+}

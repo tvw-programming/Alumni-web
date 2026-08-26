@@ -1,0 +1,15 @@
+{
+  "exercise": {
+    "id": "ex_db_press",
+    "name": "Dumbbell bench press",
+    "sets": [
+      { "reps": 10, "weightLabel": "20 kg" },
+      { "reps": 10, "weightLabel": "20 kg" },
+      { "reps": 8, "weightLabel": "22.5 kg" }
+    ],
+    "restSeconds": 90,
+    "thumbnailUri": "/domain-components/_samples/fitness-0.svg",
+    "instructions": "Lie flat with feet planted. Hold the dumbbells above your chest, elbows at about 45 degrees. Lower until your upper arms are level with the bench, then press up without locking out.",
+    "completed": false
+  }
+}

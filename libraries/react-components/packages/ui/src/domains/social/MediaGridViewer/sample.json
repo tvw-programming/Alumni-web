@@ -1,0 +1,34 @@
+{
+  "media": [
+    {
+      "id": "m_1",
+      "uri": "/domain-components/_samples/social-0.svg",
+      "alt": "A line chart showing sign-ups rising after the pricing change",
+      "kind": "image"
+    },
+    {
+      "id": "m_2",
+      "uri": "/domain-components/_samples/social-1.svg",
+      "alt": "A dashboard on a laptop screen, showing four KPI tiles",
+      "kind": "image"
+    },
+    {
+      "id": "m_3",
+      "uri": "/domain-components/_samples/social-2.svg",
+      "alt": "A whiteboard covered in sticky notes from the pricing workshop",
+      "kind": "image"
+    },
+    {
+      "id": "m_4",
+      "uri": "/domain-components/_samples/social-0.svg",
+      "alt": "Four people around a table reviewing printed page designs",
+      "kind": "image"
+    },
+    {
+      "id": "m_5",
+      "uri": "/domain-components/_samples/social-1.svg",
+      "alt": "A close-up of the final pricing page on a phone",
+      "kind": "image"
+    }
+  ]
+}

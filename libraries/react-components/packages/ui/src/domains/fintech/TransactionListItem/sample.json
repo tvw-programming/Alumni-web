@@ -1,0 +1,11 @@
+{
+  "transaction": {
+    "id": "txn_98211",
+    "merchant": "Blue Tokai Coffee",
+    "amount": { "amountMinor": "45000", "currency": "INR" },
+    "direction": "debit",
+    "status": "pending",
+    "date": "2026-08-06T09:15:00Z",
+    "category": "Food & drink"
+  }
+}

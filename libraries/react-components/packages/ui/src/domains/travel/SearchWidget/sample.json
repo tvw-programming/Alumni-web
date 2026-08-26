@@ -1,0 +1,19 @@
+{
+  "initial": {
+    "tripType": "return",
+    "from": "BLR",
+    "to": "BOM",
+    "departOn": "2026-09-12",
+    "returnOn": "2026-09-10",
+    "travellers": 2,
+    "cabin": "economy"
+  },
+  "recentSearches": ["BLR → DEL, 3 Sep", "BOM → GOI, 21 Sep"],
+  "places": [
+    { "code": "BLR", "label": "Bengaluru" },
+    { "code": "BOM", "label": "Mumbai" },
+    { "code": "DEL", "label": "Delhi" },
+    { "code": "GOI", "label": "Goa" },
+    { "code": "MAA", "label": "Chennai" }
+  ]
+}

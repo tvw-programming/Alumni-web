@@ -1,0 +1,62 @@
+{
+  "submitLabel": "Create Order",
+  "fields": [
+    {
+      "name": "orderId",
+      "label": "Order ID",
+      "type": "text",
+      "placeholder": "ORD-10001",
+      "validation": { "required": true, "minLength": 5, "maxLength": 20 }
+    },
+    {
+      "name": "customerName",
+      "label": "Customer name",
+      "type": "text",
+      "placeholder": "Ada Lovelace",
+      "validation": { "required": true, "minLength": 2, "maxLength": 100 }
+    },
+    {
+      "name": "customerEmail",
+      "label": "Customer email",
+      "type": "email",
+      "validation": { "required": true }
+    },
+    {
+      "name": "orderDate",
+      "label": "Order date",
+      "type": "date",
+      "validation": { "required": true }
+    },
+    {
+      "name": "totalAmount",
+      "label": "Total amount (USD)",
+      "type": "number",
+      "validation": { "required": true, "min": 0, "max": 1000000 }
+    },
+    {
+      "name": "status",
+      "label": "Order status",
+      "type": "select",
+      "validation": { "required": true },
+      "options": [
+        { "value": "pending", "label": "Pending" },
+        { "value": "processing", "label": "Processing" },
+        { "value": "shipped", "label": "Shipped" },
+        { "value": "delivered", "label": "Delivered" }
+      ]
+    },
+    {
+      "name": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "rows": 3,
+      "hint": "Optional. Up to 500 characters.",
+      "validation": { "maxLength": 500 }
+    },
+    {
+      "name": "expedited",
+      "label": "Expedited shipping",
+      "type": "switch"
+    }
+  ]
+}

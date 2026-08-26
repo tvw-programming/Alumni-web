@@ -1,0 +1,70 @@
+{
+  "fields": [
+    {
+      "name": "orderId",
+      "label": "Order ID",
+      "type": "text",
+      "placeholder": "Enter order ID",
+      "required": true,
+      "validation": {
+        "minLength": 5,
+        "maxLength": 20
+      }
+    },
+    {
+      "name": "customerName",
+      "label": "Customer Name",
+      "type": "text",
+      "placeholder": "Enter customer name",
+      "required": true,
+      "validation": {
+        "minLength": 2,
+        "maxLength": 100
+      },
+      "customOverride": {
+        "styling": {
+          "backgroundColor": "#e3f2fd",
+          "borderRadius": "8px",
+          "padding": "8px",
+          "border": "2px solid #2196F3"
+        },
+        "htmlAttributes": {
+          "autoComplete": "name",
+          "data-testid": "customer-name-field",
+          "maxLength": 100
+        },
+        "validation": "nameValidation",
+        "onCustomChange": "handleCustomerNameChange",
+        "onCustomBlur": "handleCustomerNameBlur"
+      }
+    },
+    {
+      "name": "orderDate",
+      "label": "Order Date",
+      "type": "text",
+      "placeholder": "YYYY-MM-DD",
+      "required": true
+    },
+    {
+      "name": "totalAmount",
+      "label": "Total Amount",
+      "type": "number",
+      "placeholder": "Enter total amount",
+      "required": true
+    },
+    {
+      "name": "status",
+      "label": "Order Status",
+      "type": "select",
+      "required": true,
+      "options": [
+        { "value": "pending", "label": "Pending" },
+        { "value": "processing", "label": "Processing" },
+        { "value": "shipped", "label": "Shipped" },
+        { "value": "delivered", "label": "Delivered" }
+      ]
+    }
+  ],
+  "onSubmit": "handleOrderSubmit",
+  "onError": "handleOrderError"
+}

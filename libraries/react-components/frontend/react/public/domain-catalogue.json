@@ -1,0 +1,749 @@
+{
+  "domains": [
+    {
+      "id": "ecommerce",
+      "label": "E-commerce",
+      "description": "Catalogue, cart, checkout and orders."
+    },
+    {
+      "id": "fintech",
+      "label": "FinTech",
+      "description": "Balances, transactions, payments and KYC."
+    },
+    {
+      "id": "healthcare",
+      "label": "Healthcare",
+      "description": "Appointments, vitals, medication and consent."
+    },
+    {
+      "id": "social",
+      "label": "Social & Messaging",
+      "description": "Feeds, reactions, chat and mentions."
+    },
+    {
+      "id": "dashboard",
+      "label": "Dashboard & Analytics",
+      "description": "Tables, KPIs, filters and exports."
+    },
+    {
+      "id": "collaboration",
+      "label": "Task & Collaboration",
+      "description": "Tasks, boards, approvals and teams."
+    },
+    {
+      "id": "iot",
+      "label": "IoT & Smart Home",
+      "description": "Devices, scenes, automations and pairing."
+    },
+    {
+      "id": "travel",
+      "label": "Travel & Booking",
+      "description": "Search, fares, bookings and rides."
+    },
+    {
+      "id": "media",
+      "label": "Media & OTT",
+      "description": "Catalogue, player, downloads and plans."
+    },
+    {
+      "id": "fitness",
+      "label": "Fitness & Wellness",
+      "description": "Workouts, activity, meals and sleep."
+    }
+  ],
+  "components": [
+    {
+      "id": "fitness/ActivityRings",
+      "name": "ActivityRings",
+      "domainId": "fitness",
+      "summary": "Concentric progress rings.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "ecommerce/AddressPicker",
+      "name": "AddressPicker",
+      "domainId": "ecommerce",
+      "summary": "Delivery address selection.",
+      "surfaceTier": "surface-nested"
+    },
+    {
+      "id": "ecommerce/AddToCartButton",
+      "name": "AddToCartButton",
+      "domainId": "ecommerce",
+      "summary": "The single place \"add to cart\" is expressed, so no screen invents its own.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "fintech/AmountKeypad",
+      "name": "AmountKeypad",
+      "domainId": "fintech",
+      "summary": "A numeric pad for entering an amount.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "healthcare/AppointmentCard",
+      "name": "AppointmentCard",
+      "domainId": "healthcare",
+      "summary": "An upcoming or past appointment.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "healthcare/AppointmentSlotGrid",
+      "name": "AppointmentSlotGrid",
+      "domainId": "healthcare",
+      "summary": "Pick a day, then a time.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "collaboration/ApprovalRequestCard",
+      "name": "ApprovalRequestCard",
+      "domainId": "collaboration",
+      "summary": "An approval waiting on the viewer.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "dashboard/AuditLogRow",
+      "name": "AuditLogRow",
+      "domainId": "dashboard",
+      "summary": "One audit entry, expandable to the field-level diff.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "iot/AutomationRuleCard",
+      "name": "AutomationRuleCard",
+      "domainId": "iot",
+      "summary": "One automation.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "fintech/BalanceCard",
+      "name": "BalanceCard",
+      "domainId": "fintech",
+      "summary": "An account balance, masked by default.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "travel/BookingSummaryCard",
+      "name": "BookingSummaryCard",
+      "domainId": "travel",
+      "summary": "The review-and-confirm step.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "travel/BookingTicketCard",
+      "name": "BookingTicketCard",
+      "domainId": "travel",
+      "summary": "The boarding pass.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "ecommerce/CartLineItem",
+      "name": "CartLineItem",
+      "domainId": "ecommerce",
+      "summary": "One cart line, with an optimistic quantity.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "ecommerce/CartSummary",
+      "name": "CartSummary",
+      "domainId": "ecommerce",
+      "summary": "The money panel. Every figure here is the server's.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "social/ChatBubble",
+      "name": "ChatBubble",
+      "domainId": "social",
+      "summary": "One message.",
+      "surfaceTier": "surface-nested"
+    },
+    {
+      "id": "social/ChatInputBar",
+      "name": "ChatInputBar",
+      "domainId": "social",
+      "summary": "The composer.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "social/CommentInputBar",
+      "name": "CommentInputBar",
+      "domainId": "social",
+      "summary": "The comment composer.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "healthcare/ConsentDialog",
+      "name": "ConsentDialog",
+      "domainId": "healthcare",
+      "summary": "Informed consent.",
+      "surfaceTier": "portal"
+    },
+    {
+      "id": "media/ContentCarousel",
+      "name": "ContentCarousel",
+      "domainId": "media",
+      "summary": "A titled rail.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "media/ContentPosterCard",
+      "name": "ContentPosterCard",
+      "domainId": "media",
+      "summary": "A poster tile.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "media/ContinueWatchingCard",
+      "name": "ContinueWatchingCard",
+      "domainId": "media",
+      "summary": "A resume tile.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "social/ConversationListItem",
+      "name": "ConversationListItem",
+      "domainId": "social",
+      "summary": "One conversation in the list.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "ecommerce/CouponInput",
+      "name": "CouponInput",
+      "domainId": "ecommerce",
+      "summary": "Promo code entry.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "dashboard/DashboardChartCard",
+      "name": "DashboardChartCard",
+      "domainId": "dashboard",
+      "summary": "A chart with a mandatory text summary and a table view.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "dashboard/DataTableWrapper",
+      "name": "DataTableWrapper",
+      "domainId": "dashboard",
+      "summary": "A controlled table.",
+      "surfaceTier": "surface-nested"
+    },
+    {
+      "id": "iot/DeviceCard",
+      "name": "DeviceCard",
+      "domainId": "iot",
+      "summary": "A device tile.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "iot/DevicePairingWizard",
+      "name": "DevicePairingWizard",
+      "domainId": "iot",
+      "summary": "Adding a device.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "iot/DeviceToggleTile",
+      "name": "DeviceToggleTile",
+      "domainId": "iot",
+      "summary": "A large press-anywhere tile, for a wall panel or a phone home screen.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "healthcare/DoctorCard",
+      "name": "DoctorCard",
+      "domainId": "healthcare",
+      "summary": "A clinician in a search result.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "media/DownloadStatusButton",
+      "name": "DownloadStatusButton",
+      "domainId": "media",
+      "summary": "The download control for one title.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "travel/DriverCard",
+      "name": "DriverCard",
+      "domainId": "travel",
+      "summary": "The assigned driver and vehicle.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "healthcare/EmergencyContactCard",
+      "name": "EmergencyContactCard",
+      "domainId": "healthcare",
+      "summary": "Emergency contacts and the local emergency number.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "media/EpisodeListItem",
+      "name": "EpisodeListItem",
+      "domainId": "media",
+      "summary": "One episode in a season list.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "fitness/ExerciseListItem",
+      "name": "ExerciseListItem",
+      "domainId": "fitness",
+      "summary": "One exercise in a workout.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "dashboard/ExportSheet",
+      "name": "ExportSheet",
+      "domainId": "dashboard",
+      "summary": "Choose format and scope _before_ generating.",
+      "surfaceTier": "portal"
+    },
+    {
+      "id": "travel/FareBreakdown",
+      "name": "FareBreakdown",
+      "domainId": "travel",
+      "summary": "The fare, with a price-change notice.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "collaboration/FileAttachmentItem",
+      "name": "FileAttachmentItem",
+      "domainId": "collaboration",
+      "summary": "One attachment.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "dashboard/FilterToolbar",
+      "name": "FilterToolbar",
+      "domainId": "dashboard",
+      "summary": "Search plus dropdown filters, with the active ones shown as removable chips.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "iot/FirmwareUpdateCard",
+      "name": "FirmwareUpdateCard",
+      "domainId": "iot",
+      "summary": "Firmware for one device.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "travel/FlightResultCard",
+      "name": "FlightResultCard",
+      "domainId": "travel",
+      "summary": "One flight offer.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "fitness/HabitCheckRow",
+      "name": "HabitCheckRow",
+      "domainId": "fitness",
+      "summary": "One habit, its streak and the last seven days.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "healthcare/HealthQuestionnaireForm",
+      "name": "HealthQuestionnaireForm",
+      "domainId": "healthcare",
+      "summary": "A schema-driven clinical questionnaire with branching.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "media/HeroBanner",
+      "name": "HeroBanner",
+      "domainId": "media",
+      "summary": "The featured title at the top of a catalogue.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "travel/HotelCard",
+      "name": "HotelCard",
+      "domainId": "travel",
+      "summary": "A hotel search result.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "collaboration/KanbanCard",
+      "name": "KanbanCard",
+      "domainId": "collaboration",
+      "summary": "A board card.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "collaboration/KanbanColumn",
+      "name": "KanbanColumn",
+      "domainId": "collaboration",
+      "summary": "One board column.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "dashboard/KPIStatCard",
+      "name": "KPIStatCard",
+      "domainId": "dashboard",
+      "summary": "A single metric.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "fintech/KYCUpload",
+      "name": "KYCUpload",
+      "domainId": "fintech",
+      "summary": "One identity document.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "fitness/MealCard",
+      "name": "MealCard",
+      "domainId": "fitness",
+      "summary": "One meal and its food entries.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "social/MediaGridViewer",
+      "name": "MediaGridViewer",
+      "domainId": "social",
+      "summary": "A media grid that opens into a lightbox.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "healthcare/MedicationReminderItem",
+      "name": "MedicationReminderItem",
+      "domainId": "healthcare",
+      "summary": "One scheduled dose.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "fitness/MeditationPlayerCard",
+      "name": "MeditationPlayerCard",
+      "domainId": "fitness",
+      "summary": "A guided session.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "social/MentionTextInput",
+      "name": "MentionTextInput",
+      "domainId": "social",
+      "summary": "A text input that suggests people after @.",
+      "surfaceTier": "surface-nested"
+    },
+    {
+      "id": "media/MiniPlayerBar",
+      "name": "MiniPlayerBar",
+      "domainId": "media",
+      "summary": "The docked player.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "dashboard/MultiStepFormWizard",
+      "name": "MultiStepFormWizard",
+      "domainId": "dashboard",
+      "summary": "A stepped form.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "dashboard/NotificationListItem",
+      "name": "NotificationListItem",
+      "domainId": "dashboard",
+      "summary": "One notification.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "ecommerce/OrderStatusTimeline",
+      "name": "OrderStatusTimeline",
+      "domainId": "ecommerce",
+      "summary": "Order progress as an ordered list.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "fintech/PaymentConfirmation",
+      "name": "PaymentConfirmation",
+      "domainId": "fintech",
+      "summary": "The last screen before money moves.",
+      "surfaceTier": "portal"
+    },
+    {
+      "id": "fintech/PaymentMethodSelector",
+      "name": "PaymentMethodSelector",
+      "domainId": "fintech",
+      "summary": "Choosing how to pay.",
+      "surfaceTier": "surface-nested"
+    },
+    {
+      "id": "fitness/PersonalRecordCard",
+      "name": "PersonalRecordCard",
+      "domainId": "fitness",
+      "summary": "A personal best.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "fintech/PinPad",
+      "name": "PinPad",
+      "domainId": "fintech",
+      "summary": "PIN entry.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "media/PlayerControlsOverlay",
+      "name": "PlayerControlsOverlay",
+      "domainId": "media",
+      "summary": "The player overlay.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "social/PostCard",
+      "name": "PostCard",
+      "domainId": "social",
+      "summary": "A feed post.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "healthcare/PrescriptionCard",
+      "name": "PrescriptionCard",
+      "domainId": "healthcare",
+      "summary": "A prescription, rendered in full.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "ecommerce/PriceBreakdown",
+      "name": "PriceBreakdown",
+      "domainId": "ecommerce",
+      "summary": "Read-only money list, shared by cart, checkout, booking and fare screens.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "ecommerce/ProductCard",
+      "name": "ProductCard",
+      "domainId": "ecommerce",
+      "summary": "A catalogue tile in three densities: grid, list, compact.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "ecommerce/ProductVariantSelector",
+      "name": "ProductVariantSelector",
+      "domainId": "ecommerce",
+      "summary": "Size, colour and the rest, as radio groups.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "social/ReactionBar",
+      "name": "ReactionBar",
+      "domainId": "social",
+      "summary": "Reactions, optimistically.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "social/ReportBlockSheet",
+      "name": "ReportBlockSheet",
+      "domainId": "social",
+      "summary": "Report, and optionally block.",
+      "surfaceTier": "portal"
+    },
+    {
+      "id": "fitness/RestTimerCircle",
+      "name": "RestTimerCircle",
+      "domainId": "fitness",
+      "summary": "The rest countdown between sets.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "ecommerce/ReviewSummary",
+      "name": "ReviewSummary",
+      "domainId": "ecommerce",
+      "summary": "Rating average plus the histogram.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "travel/RideStatusBottomSheet",
+      "name": "RideStatusBottomSheet",
+      "domainId": "travel",
+      "summary": "The trip sheet.",
+      "surfaceTier": "portal"
+    },
+    {
+      "id": "iot/SceneCard",
+      "name": "SceneCard",
+      "domainId": "iot",
+      "summary": "A scene, and the button that runs it.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "iot/ScheduleTimerRow",
+      "name": "ScheduleTimerRow",
+      "domainId": "iot",
+      "summary": "One schedule entry.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "travel/SearchWidget",
+      "name": "SearchWidget",
+      "domainId": "travel",
+      "summary": "The search form.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "media/SeasonSelector",
+      "name": "SeasonSelector",
+      "domainId": "media",
+      "summary": "Season picker.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "iot/SensorReadingCard",
+      "name": "SensorReadingCard",
+      "domainId": "iot",
+      "summary": "A sensor value, with its age.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "fitness/SleepSummaryCard",
+      "name": "SleepSummaryCard",
+      "domainId": "fitness",
+      "summary": "Last night's sleep.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "iot/SliderControl",
+      "name": "SliderControl",
+      "domainId": "iot",
+      "summary": "A committed slider: brightness, volume, fan speed.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "travel/SlotBookingCalendar",
+      "name": "SlotBookingCalendar",
+      "domainId": "travel",
+      "summary": "A month grid with prices.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "fintech/StatementFilterSheet",
+      "name": "StatementFilterSheet",
+      "domainId": "fintech",
+      "summary": "Statement filters, applied as a batch.",
+      "surfaceTier": "portal"
+    },
+    {
+      "id": "social/StoryTray",
+      "name": "StoryTray",
+      "domainId": "social",
+      "summary": "The horizontal story rail.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "media/SubscriptionPlanCard",
+      "name": "SubscriptionPlanCard",
+      "domainId": "media",
+      "summary": "One plan in a comparison.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "collaboration/TaskListItem",
+      "name": "TaskListItem",
+      "domainId": "collaboration",
+      "summary": "One task.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "collaboration/TeamMemberRow",
+      "name": "TeamMemberRow",
+      "domainId": "collaboration",
+      "summary": "One person in a team list.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "iot/ThermostatDial",
+      "name": "ThermostatDial",
+      "domainId": "iot",
+      "summary": "A thermostat.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "collaboration/TimelineActivityFeed",
+      "name": "TimelineActivityFeed",
+      "domainId": "collaboration",
+      "summary": "Grouped activity, with per-entry and bulk read state.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "fintech/TransactionListItem",
+      "name": "TransactionListItem",
+      "domainId": "fintech",
+      "summary": "One row of a statement.",
+      "surfaceTier": "list-row"
+    },
+    {
+      "id": "fintech/TransactionStatusSheet",
+      "name": "TransactionStatusSheet",
+      "domainId": "fintech",
+      "summary": "The receipt.",
+      "surfaceTier": "portal"
+    },
+    {
+      "id": "travel/TravellerDetailsForm",
+      "name": "TravellerDetailsForm",
+      "domainId": "travel",
+      "summary": "Passenger details.",
+      "surfaceTier": "surface-nested"
+    },
+    {
+      "id": "travel/TripSummaryCard",
+      "name": "TripSummaryCard",
+      "domainId": "travel",
+      "summary": "The completed trip: fare, rating and tip.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "collaboration/UserRoleChip",
+      "name": "UserRoleChip",
+      "domainId": "collaboration",
+      "summary": "A role, and — when the viewer may change it — the control that changes it.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "healthcare/VideoCallControls",
+      "name": "VideoCallControls",
+      "domainId": "healthcare",
+      "summary": "The control bar for a consultation.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "healthcare/VitalsCard",
+      "name": "VitalsCard",
+      "domainId": "healthcare",
+      "summary": "A single vital reading.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "media/WatchlistToggle",
+      "name": "WatchlistToggle",
+      "domainId": "media",
+      "summary": "Add to / remove from the watchlist.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "fitness/WaterIntakeTracker",
+      "name": "WaterIntakeTracker",
+      "domainId": "fitness",
+      "summary": "Water intake for the day.",
+      "surfaceTier": "no-surface"
+    },
+    {
+      "id": "fitness/WeightLogChart",
+      "name": "WeightLogChart",
+      "domainId": "fitness",
+      "summary": "A weight trend with a table view.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "fitness/WorkoutCard",
+      "name": "WorkoutCard",
+      "domainId": "fitness",
+      "summary": "A workout in a plan or catalogue.",
+      "surfaceTier": "surface-root"
+    },
+    {
+      "id": "fitness/WorkoutPlanTimeline",
+      "name": "WorkoutPlanTimeline",
+      "domainId": "fitness",
+      "summary": "A week of a training plan.",
+      "surfaceTier": "no-surface"
+    }
+  ]
+}

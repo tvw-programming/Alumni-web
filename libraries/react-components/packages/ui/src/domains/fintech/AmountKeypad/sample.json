@@ -1,0 +1,7 @@
+{
+  "value": "125000",
+  "currency": "INR",
+  "min": { "amountMinor": "100", "currency": "INR" },
+  "max": { "amountMinor": "10000000", "currency": "INR" },
+  "helperText": "Daily limit ₹1,00,000"
+}

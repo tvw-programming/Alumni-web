@@ -1,0 +1,46 @@
+<div class="shell">
+  <a class="shell__skip" href="#admin-main">Skip to content</a>
+
+  <mat-toolbar color="primary" class="shell__bar">
+    <span class="shell__brand">Admin</span>
+
+    <nav class="shell__nav" aria-label="Admin">
+      @for (item of items; track item.path) {
+        <a
+          mat-button
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: !!item.exact }"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <span class="shell__spacer"></span>
+
+    <app-mic-toggle-button />
+
+    <button
+      matIconButton
+      [attr.aria-label]="theme.isDark() ? 'Switch to light theme' : 'Switch to dark theme'"
+      (click)="theme.toggle()"
+    >
+      <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
+    <button matButton="outlined" routerLink="/login">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </mat-toolbar>
+
+  <main id="admin-main" class="shell__main" tabindex="-1">
+    <!--
+      Above the outlet, so every admin page gets a trail without opting in —
+      including the section layouts, whose own sidebars start below this.
+    -->
+    <app-breadcrumbs />
+    <router-outlet />
+  </main>
+</div>

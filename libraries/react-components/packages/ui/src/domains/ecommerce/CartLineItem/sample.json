@@ -1,0 +1,12 @@
+{
+  "item": {
+    "id": "cli_4410",
+    "title": "Aurora Running Shoe — Trail Edition",
+    "imageUri": "/domain-components/_samples/ecommerce-0.svg",
+    "variantLabel": "Black · UK 8",
+    "unitPrice": { "amountMinor": "899500", "currency": "INR" },
+    "maxQuantity": 5
+  },
+  "quantity": 2,
+  "updateState": "idle"
+}

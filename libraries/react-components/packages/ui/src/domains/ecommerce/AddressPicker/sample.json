@@ -1,0 +1,39 @@
+{
+  "addresses": [
+    {
+      "id": "adr_home",
+      "name": "Tejasvi W.",
+      "line1": "402, Sunrise Residency",
+      "line2": "Baner Road",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "postalCode": "411045",
+      "country": "IN",
+      "phone": "+91 98765 43210",
+      "label": "home",
+      "isDefault": true
+    },
+    {
+      "id": "adr_work",
+      "name": "Tejasvi W. (office)",
+      "line1": "Tower B, Cyber Park",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "postalCode": "411014",
+      "country": "IN",
+      "label": "work"
+    },
+    {
+      "id": "adr_old",
+      "name": "Parents",
+      "line1": "12 Lake View",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "postalCode": "440010",
+      "country": "IN",
+      "label": "other",
+      "unavailableReason": "We cannot deliver this item to 440010."
+    }
+  ],
+  "selectedId": "adr_home"
+}

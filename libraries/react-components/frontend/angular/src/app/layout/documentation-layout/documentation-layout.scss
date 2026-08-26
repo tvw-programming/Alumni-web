@@ -1,0 +1,63 @@
+/**
+ * Same height plumbing as `master-data-layout.scss`: a routed component is a
+ * sibling of the outlet, not a child, so it inherits no height from the shell's
+ * flex column and the sidenav container would otherwise collapse to its content.
+ */
+:host {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.docs {
+  flex: 1 1 auto;
+  min-height: 0;
+  background: transparent;
+}
+
+.docs__sidebar {
+  // 232px: two short labels, and no ordinal gutter to reserve.
+  width: 232px;
+  border-right: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface);
+}
+
+.docs__heading {
+  margin: 0;
+  padding: 16px 16px 4px;
+  font: var(--mat-sys-label-small);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.docs__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: transparent;
+}
+
+.docs__outlet {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 24px;
+}
+
+.docs__mobile-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px 0;
+  font: var(--mat-sys-title-medium);
+}
+
+a.active {
+  background: var(--mat-sys-secondary-container);
+
+  .mat-mdc-list-item-title {
+    font-weight: 600;
+  }
+}

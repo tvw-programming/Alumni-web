@@ -1,0 +1,11 @@
+{
+  "document": {
+    "id": "kyc_pan",
+    "label": "PAN card",
+    "guidance": "Photograph all four corners in daylight. No glare, no cropping, no screenshots.",
+    "state": "rejected",
+    "rejectionReason": "The bottom-right corner was cut off. Please retake the photo showing the whole card.",
+    "acceptedTypes": ["image/jpeg", "image/png", "application/pdf"],
+    "maxSizeBytes": 5242880
+  }
+}

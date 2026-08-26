@@ -1,0 +1,18 @@
+{
+  "event": {
+    "id": "ae_9912",
+    "actor": "Mehul Shah",
+    "action": "updated",
+    "resourceType": "invoice",
+    "resourceId": "1002",
+    "at": "2026-08-21T09:14:00Z",
+    "ipAddress": "203.0.113.42",
+    "requestId": "c1f4a8b2-77de-4c2a-9c31-0f7ab2c4de91",
+    "outcome": "success",
+    "changes": [
+      { "field": "status", "from": "sent", "to": "overdue" },
+      { "field": "dueDate", "from": "2026-07-30", "to": "2026-08-15" },
+      { "field": "note", "from": null, "to": "Chased by phone" }
+    ]
+  }
+}

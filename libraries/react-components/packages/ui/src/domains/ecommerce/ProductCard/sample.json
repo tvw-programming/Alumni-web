@@ -1,0 +1,16 @@
+{
+  "product": {
+    "id": "prd_7f3a91",
+    "title": "Aurora Running Shoe — Trail Edition",
+    "imageUri": "/domain-components/_samples/ecommerce-0.svg",
+    "brand": "Northwind",
+    "price": { "amountMinor": "899500", "currency": "INR" },
+    "compareAtPrice": { "amountMinor": "1199500", "currency": "INR" },
+    "rating": 4.4,
+    "reviewCount": 1284,
+    "availability": "lowStock",
+    "badges": ["New"]
+  },
+  "variant": "grid",
+  "saved": false
+}

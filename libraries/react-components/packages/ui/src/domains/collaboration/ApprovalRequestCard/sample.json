@@ -1,0 +1,15 @@
+{
+  "request": {
+    "id": "apr_3312",
+    "title": "Travel budget — Bengaluru offsite",
+    "requester": { "name": "Mehul Shah" },
+    "submittedAt": "2026-08-20T11:20:00Z",
+    "summary": "Three-day offsite for the growth team, including flights and accommodation for 8 people.",
+    "status": "pending",
+    "details": [
+      { "label": "Amount", "value": "₹4,20,000" },
+      { "label": "Cost centre", "value": "GROWTH-2026" },
+      { "label": "Dates", "value": "12–14 Sep 2026" }
+    ]
+  }
+}

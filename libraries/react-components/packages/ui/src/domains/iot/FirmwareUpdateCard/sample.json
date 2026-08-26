@@ -1,0 +1,9 @@
+{
+  "update": {
+    "deviceName": "Living room hub",
+    "currentVersion": "2.4.1",
+    "availableVersion": "2.5.0",
+    "releaseNotes": "Faster local control, fixes a bug where schedules skipped a day after a power cut.",
+    "phase": "installing"
+  }
+}

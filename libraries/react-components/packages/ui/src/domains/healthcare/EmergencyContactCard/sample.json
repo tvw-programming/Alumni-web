@@ -1,0 +1,15 @@
+{
+  "emergencyNumber": "112",
+  "emergencyLabel": "Emergency services",
+  "medicalNotes": ["Blood group O+", "Allergic to penicillin", "Type 2 diabetes"],
+  "contacts": [
+    {
+      "id": "ec_1",
+      "name": "Meera Iyer",
+      "relationship": "Spouse",
+      "phone": "+91 98765 43210",
+      "isPrimary": true
+    },
+    { "id": "ec_2", "name": "Dr Ananya Rao", "relationship": "GP", "phone": "+91 80 4123 9000" }
+  ]
+}

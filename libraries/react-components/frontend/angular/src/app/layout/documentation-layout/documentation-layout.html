@@ -1,0 +1,38 @@
+<mat-sidenav-container class="docs" [hasBackdrop]="!isDesktop()">
+  <mat-sidenav
+    class="docs__sidebar"
+    [mode]="isDesktop() ? 'side' : 'over'"
+    [opened]="isDesktop() || drawerOpen()"
+    (closedStart)="drawerOpen.set(false)"
+  >
+    <p class="docs__heading">Documentation</p>
+    <mat-nav-list aria-label="Documentation sections">
+      @for (item of items; track item.path) {
+        <a
+          mat-list-item
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          (click)="closeDrawerOnMobile()"
+        >
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <span matListItemTitle>{{ item.label }}</span>
+        </a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="docs__content">
+    @if (!isDesktop()) {
+      <div class="docs__mobile-bar">
+        <button matIconButton aria-label="Open documentation menu" (click)="toggleDrawer()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Documentation</span>
+      </div>
+    }
+
+    <div class="docs__outlet">
+      <router-outlet />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

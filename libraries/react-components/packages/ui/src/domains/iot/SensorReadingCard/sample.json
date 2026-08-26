@@ -1,0 +1,12 @@
+{
+  "reading": {
+    "id": "sen_garage_temp",
+    "label": "Temperature",
+    "room": "Garage",
+    "value": 31.4,
+    "unit": "°C",
+    "measuredAt": "2026-08-21T07:05:00Z",
+    "staleAfterMinutes": 30,
+    "batteryPercent": 12
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "value": "Great work on this @me",
+  "label": "Add a comment",
+  "candidates": [
+    { "id": "u_9", "name": "Meera Iyer", "handle": "meera" },
+    { "id": "u_4", "name": "Mehul Shah", "handle": "mehul" },
+    { "id": "u_7", "name": "Menaka R", "handle": "menaka" }
+  ],
+  "loading": false
+}

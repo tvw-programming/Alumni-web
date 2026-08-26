@@ -1,0 +1,29 @@
+{
+  "prescription": {
+    "id": "rx_77120",
+    "prescriber": "Dr Ananya Rao",
+    "registrationNumber": "KMC/12345/2014",
+    "issuedAt": "2026-08-01T11:05:00Z",
+    "validUntil": "2026-09-01T00:00:00Z",
+    "dispensed": false,
+    "items": [
+      {
+        "id": "rx_item_1",
+        "drug": "Metformin",
+        "strength": "500 mg",
+        "dose": "1 tablet",
+        "frequency": "Twice daily",
+        "durationDays": 30,
+        "instruction": "With or just after food"
+      },
+      {
+        "id": "rx_item_2",
+        "drug": "Atorvastatin",
+        "strength": "10 mg",
+        "dose": "1 tablet",
+        "frequency": "At night",
+        "durationDays": 30
+      }
+    ]
+  }
+}

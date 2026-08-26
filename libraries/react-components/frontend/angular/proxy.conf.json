@@ -1,0 +1,12 @@
+{
+  "/__run-unit-tests": {
+    "target": "http://127.0.0.1:4300",
+    "secure": false,
+    "logLevel": "warn"
+  },
+  "/test-report.json": {
+    "target": "http://127.0.0.1:4300",
+    "secure": false,
+    "logLevel": "warn"
+  }
+}

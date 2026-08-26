@@ -1,0 +1,12 @@
+{
+  "notification": {
+    "id": "ntf_5521",
+    "title": "Invoice 1002 is overdue",
+    "body": "Contoso Ltd · ₹86,500 · 22 days past due",
+    "category": "Billing",
+    "at": "2026-08-21T08:05:00Z",
+    "read": false,
+    "actorName": "Billing bot",
+    "severity": "warning"
+  }
+}

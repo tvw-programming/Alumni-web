@@ -1,0 +1,37 @@
+{
+  "rows": [
+    {
+      "id": "inv_1001",
+      "customer": "Northwind Traders",
+      "amount": "₹1,24,000",
+      "status": "Paid",
+      "due": "2026-08-12"
+    },
+    {
+      "id": "inv_1002",
+      "customer": "Contoso Ltd",
+      "amount": "₹86,500",
+      "status": "Overdue",
+      "due": "2026-07-30"
+    },
+    {
+      "id": "inv_1003",
+      "customer": "Fabrikam",
+      "amount": "₹2,10,000",
+      "status": "Sent",
+      "due": "2026-08-28"
+    },
+    {
+      "id": "inv_1004",
+      "customer": "Adventure Works",
+      "amount": "₹45,900",
+      "status": "Draft",
+      "due": "2026-09-04"
+    }
+  ],
+  "sort": { "columnId": "due", "direction": "asc" },
+  "page": 0,
+  "pageSize": 25,
+  "total": 128,
+  "selectedIds": ["inv_1002"]
+}

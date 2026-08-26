@@ -1,0 +1,50 @@
+{
+  "planName": "8-week strength base",
+  "weekLabel": "Week 3 of 8",
+  "days": [
+    {
+      "id": "d1",
+      "dayLabel": "Mon",
+      "title": "Upper body A",
+      "kind": "workout",
+      "durationLabel": "42 min",
+      "completed": true
+    },
+    { "id": "d2", "dayLabel": "Tue", "title": "Rest", "kind": "rest", "completed": true },
+    {
+      "id": "d3",
+      "dayLabel": "Wed",
+      "title": "Lower body A",
+      "kind": "workout",
+      "durationLabel": "48 min",
+      "completed": true
+    },
+    {
+      "id": "d4",
+      "dayLabel": "Thu",
+      "title": "Mobility",
+      "kind": "workout",
+      "durationLabel": "20 min",
+      "completed": false,
+      "isToday": true
+    },
+    {
+      "id": "d5",
+      "dayLabel": "Fri",
+      "title": "Upper body B",
+      "kind": "workout",
+      "durationLabel": "45 min",
+      "completed": false
+    },
+    {
+      "id": "d6",
+      "dayLabel": "Sat",
+      "title": "Long walk or ride",
+      "kind": "workout",
+      "durationLabel": "60 min",
+      "completed": false,
+      "locked": true
+    },
+    { "id": "d7", "dayLabel": "Sun", "title": "Rest", "kind": "rest", "completed": false }
+  ]
+}

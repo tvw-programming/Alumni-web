@@ -1,0 +1,17 @@
+{
+  "hotel": {
+    "id": "htl_4412",
+    "name": "The Bangalore Courtyard",
+    "imageUri": "/domain-components/_samples/travel-0.svg",
+    "areaLabel": "Indiranagar",
+    "distanceLabel": "1.2 km from centre",
+    "starRating": 4,
+    "reviewScore": 8.6,
+    "reviewCount": 1249,
+    "nightlyPrice": { "amountMinor": "420000", "currency": "INR" },
+    "totalPrice": { "amountMinor": "1932000", "currency": "INR" },
+    "nights": 4,
+    "freeCancellationUntil": "10 Sep",
+    "roomsLeft": 2
+  }
+}

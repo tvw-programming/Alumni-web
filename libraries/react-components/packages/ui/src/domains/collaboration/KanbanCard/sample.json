@@ -1,0 +1,16 @@
+{
+  "card": {
+    "id": "tsk_5510",
+    "title": "Rewrite the onboarding email sequence",
+    "columnId": "col_progress",
+    "labels": ["Growth", "Copy"],
+    "dueDate": "2026-08-25T17:00:00Z",
+    "assignee": { "id": "u_4", "name": "Mehul" },
+    "blocked": "waiting on legal review"
+  },
+  "moveTargets": [
+    { "id": "col_todo", "label": "To do" },
+    { "id": "col_review", "label": "In review" },
+    { "id": "col_done", "label": "Done" }
+  ]
+}

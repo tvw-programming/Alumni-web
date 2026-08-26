@@ -1,0 +1,61 @@
+{
+  "schema": {
+    "id": "pre-consult-intake",
+    "version": "3.2.0",
+    "sections": [
+      {
+        "id": "symptoms",
+        "title": "Your symptoms",
+        "questions": [
+          {
+            "id": "primary",
+            "kind": "single",
+            "label": "What brings you in today?",
+            "required": true,
+            "options": [
+              { "value": "pain", "label": "Pain" },
+              { "value": "fever", "label": "Fever" },
+              { "value": "review", "label": "Routine review" },
+              { "value": "decline", "label": "Prefer not to answer" }
+            ]
+          },
+          {
+            "id": "painSite",
+            "kind": "text",
+            "label": "Where is the pain?",
+            "helperText": "Shown only when you selected Pain."
+          },
+          {
+            "id": "duration",
+            "kind": "number",
+            "label": "How many days has this lasted?",
+            "unit": "days",
+            "required": true
+          }
+        ]
+      },
+      {
+        "id": "history",
+        "title": "Background",
+        "questions": [
+          {
+            "id": "conditions",
+            "kind": "multiple",
+            "label": "Do any of these apply?",
+            "options": [
+              { "value": "diabetes", "label": "Diabetes" },
+              { "value": "hypertension", "label": "High blood pressure" },
+              { "value": "asthma", "label": "Asthma" },
+              { "value": "none", "label": "None of these" },
+              { "value": "unsure", "label": "Not sure" }
+            ]
+          }
+        ]
+      }
+    ],
+    "branchingRules": [
+      { "questionId": "primary", "equals": "pain", "showQuestionIds": ["painSite"] }
+    ]
+  },
+  "initialValues": { "primary": "pain" }
+}

@@ -1,0 +1,21 @@
+{
+  "methods": [
+    { "id": "pm_upi", "kind": "upi", "label": "UPI · HDFC", "hint": "tejasvi@okhdfc" },
+    {
+      "id": "pm_card",
+      "kind": "card",
+      "label": "Visa Signature",
+      "hint": "•••• 4821",
+      "expiresOn": "09/28"
+    },
+    {
+      "id": "pm_wallet",
+      "kind": "wallet",
+      "label": "Wallet",
+      "hint": "Prepaid balance",
+      "balance": { "amountMinor": "34500", "currency": "INR" },
+      "unavailableReason": "Balance is lower than this payment."
+    }
+  ],
+  "selectedId": "pm_upi"
+}

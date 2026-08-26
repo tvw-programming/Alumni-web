@@ -1,0 +1,11 @@
+{
+  "vital": {
+    "type": "bloodPressure",
+    "values": { "systolic": 128, "diastolic": 82 },
+    "unit": "mmHg",
+    "measuredAt": "2026-08-06T07:20:00Z",
+    "source": "Omron M7 · Bluetooth",
+    "trend": "up",
+    "interpretation": "outsideRange"
+  }
+}

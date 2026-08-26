@@ -1,0 +1,8 @@
+{
+  "outcome": "pending",
+  "amount": { "amountMinor": "1250000", "currency": "INR" },
+  "recipient": "Meera Iyer · meera@okhdfc",
+  "reference": "UPI/2026080610421/882314",
+  "completedAt": "2026-08-06T10:42:31Z",
+  "failureReason": null
+}

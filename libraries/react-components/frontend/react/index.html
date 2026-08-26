@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idol-Promo</title>
+    <link
+      rel="icon"
+      id="favicon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='20' fill='%231976d2'/%3E%3Ctext x='32' y='34' font-family='sans-serif' font-size='24' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3EA%3C/text%3E%3C/svg%3E"
+    />
+    <script>
+      // Animated favicon: browsers can't run CSS animations inside a favicon,
+      // so we redraw frames on a canvas and swap the <link> href. A ripple ring
+      // expands out of the "A" badge and fades, looping every 1.6s. Background
+      // tabs throttle setInterval to ~1fps automatically, which is fine here.
+      (function () {
+        var link = document.getElementById('favicon');
+        var SIZE = 64;
+        var DURATION = 1600; // ms per ripple loop
+        var canvas = document.createElement('canvas');
+        canvas.width = canvas.height = SIZE;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        // One expanding ring, drawn thick so it survives the 16px downscale.
+        function ripple(t) {
+          if (t <= 0 || t >= 1) return;
+          ctx.beginPath();
+          ctx.arc(32, 32, 17 + t * 13, 0, Math.PI * 2); // badge edge → canvas edge
+          ctx.strokeStyle = 'rgba(66, 165, 245, ' + (0.95 * (1 - t)).toFixed(3) + ')';
+          ctx.lineWidth = 8 - t * 4; // starts fat, thins as it travels
+          ctx.stroke();
+        }
+
+        function draw(now) {
+          var t = (now % DURATION) / DURATION; // 0 → 1 over one loop
+          ctx.clearRect(0, 0, SIZE, SIZE);
+
+          // Two staggered ripples so a ring is always mid-flight.
+          ripple(t);
+          ripple((t + 0.5) % 1);
+
+          // Badge "breathes" with the ripple: biggest as a ring launches.
+          var pulse = 16.5 + 2.5 * Math.abs(Math.sin(t * Math.PI * 2));
+          ctx.beginPath();
+          ctx.arc(32, 32, pulse, 0, Math.PI * 2);
+          ctx.fillStyle = '#1976d2';
+          ctx.fill();
+
+          // Letter.
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 22px system-ui, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('A', 32, 33);
+
+          link.setAttribute('href', canvas.toDataURL('image/png'));
+        }
+
+        draw(Date.now());
+        setInterval(function () {
+          draw(Date.now());
+        }, 100); // ~10fps — smooth enough for a 16px icon, cheap to render
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

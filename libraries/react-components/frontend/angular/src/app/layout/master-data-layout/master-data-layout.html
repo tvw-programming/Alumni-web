@@ -1,0 +1,54 @@
+<mat-sidenav-container class="master-data" [hasBackdrop]="!isDesktop()">
+  <mat-sidenav
+    class="master-data__sidebar"
+    [mode]="isDesktop() ? 'side' : 'over'"
+    [opened]="isDesktop() || drawerOpen()"
+    (closedStart)="drawerOpen.set(false)"
+  >
+    <mat-nav-list aria-label="Master data sections">
+      @for (item of items; track item.path; let i = $index) {
+        <a
+          mat-list-item
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          (click)="closeDrawerOnMobile()"
+        >
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <span matListItemTitle>{{ item.label }}</span>
+          <!--
+            `matListItemMeta` is the trailing slot. A plain span is not one of
+            the slots `mat-list-item` knows about, so it lands in the unscoped
+            content area and renders *below* the label instead of beside it.
+
+            The gutter is always in the layout and only its contents fade, so
+            turning ordinals on or off cannot reflow a single row — removing the
+            element instead would move every label sideways.
+          -->
+          <span
+            matListItemMeta
+            class="master-data__ordinal"
+            aria-hidden="true"
+            [class.is-visible]="showOrdinals()"
+          >
+            {{ i + 1 }}
+          </span>
+        </a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="master-data__content">
+    @if (!isDesktop()) {
+      <div class="master-data__mobile-bar">
+        <button matIconButton aria-label="Open master data menu" (click)="toggleDrawer()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Master Data</span>
+      </div>
+    }
+
+    <div class="master-data__outlet">
+      <router-outlet />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

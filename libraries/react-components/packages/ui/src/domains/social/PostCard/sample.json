@@ -1,0 +1,25 @@
+{
+  "post": {
+    "id": "p_1",
+    "author": { "id": "u_9", "name": "Meera Iyer", "handle": "@meera", "avatarUri": null },
+    "body": "Shipped the new pricing page today. Three weeks of work, and the whole thing came down to deleting a step.",
+    "createdAt": "2026-08-06T06:30:00Z",
+    "edited": true,
+    "visibility": "Public",
+    "commentCount": 34,
+    "reactions": { "counts": { "like": 128, "celebrate": 14, "insightful": 7 }, "mine": "like" },
+    "media": [
+      {
+        "id": "m_1",
+        "uri": "/domain-components/_samples/social-0.svg",
+        "alt": "A line chart showing sign-ups rising after the pricing change",
+        "kind": "image"
+      }
+    ]
+  },
+  "reactionOptions": [
+    { "key": "like", "glyph": "👍", "label": "Like" },
+    { "key": "celebrate", "glyph": "🎉", "label": "Celebrate" },
+    { "key": "insightful", "glyph": "💡", "label": "Insightful" }
+  ]
+}

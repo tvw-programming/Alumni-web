@@ -1,0 +1,40 @@
+<div class="public">
+  <a class="public__skip" href="#public-main">Skip to content</a>
+
+  <mat-toolbar color="primary" class="public__bar">
+    <span class="public__brand">Idol-Promo</span>
+
+    <nav class="public__nav" aria-label="Primary">
+      @for (item of items; track item.path) {
+        <a
+          mat-button
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: !!item.exact }"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <span class="public__spacer"></span>
+
+    <app-mic-toggle-button />
+
+    <button
+      matIconButton
+      [attr.aria-label]="theme.isDark() ? 'Switch to light theme' : 'Switch to dark theme'"
+      (click)="theme.toggle()"
+    >
+      <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <main id="public-main" class="public__main" tabindex="-1">
+    <!-- Renders nothing on the home page, which has nothing above it. -->
+    <app-breadcrumbs />
+    <router-outlet />
+  </main>
+
+  <footer class="public__footer">© {{ year }} Idol-Promo</footer>
+</div>

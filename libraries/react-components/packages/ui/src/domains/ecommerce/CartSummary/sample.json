@@ -1,0 +1,12 @@
+{
+  "totals": {
+    "subtotal": { "amountMinor": "179900", "currency": "INR" },
+    "discounts": { "amountMinor": "-20000", "currency": "INR" },
+    "shipping": { "amountMinor": "9900", "currency": "INR" },
+    "tax": { "amountMinor": "30582", "currency": "INR" },
+    "total": { "amountMinor": "200382", "currency": "INR" }
+  },
+  "itemCount": 3,
+  "recalculating": false,
+  "changedNotice": null
+}

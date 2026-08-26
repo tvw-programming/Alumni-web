@@ -1,0 +1,281 @@
+name: idol-promo
+
+# Shared log rotation for every long-running container.
+x-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "5"
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-items_app}
+      POSTGRES_USER: ${POSTGRES_USER:-items_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+    networks:
+      - backend
+
+    shm_size: 128mb
+
+    security_opt:
+      - no-new-privileges:true
+
+    logging: *default-logging
+
+  api:
+    # Local/default image name; deployment overlay replaces this.
+    image: ${API_IMAGE:-idol-promo-api:latest}
+
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+    init: true
+    stop_grace_period: 15s
+
+    environment:
+      LISTEN_ADDRESS: :8080
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB:-items_app}
+      DB_USER: ${POSTGRES_USER:-items_user}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      DB_SSLMODE: disable
+      DB_MAX_OPEN_CONNS: ${DB_MAX_OPEN_CONNS:-10}
+      DB_MAX_IDLE_CONNS: ${DB_MAX_IDLE_CONNS:-5}
+      DB_CONN_MAX_LIFETIME: ${DB_CONN_MAX_LIFETIME:-30m}
+      REQUEST_TIMEOUT: ${REQUEST_TIMEOUT:-5s}
+      MAX_REQUEST_BODY_SIZE: ${MAX_REQUEST_BODY_SIZE:-33554432}
+      APP_ENV: ${APP_ENV:-development}
+      AUTH_JWT_SECRET: ${AUTH_JWT_SECRET:-}
+      AUTH_SECURE_COOKIES: ${AUTH_SECURE_COOKIES:-false}
+      AUTH_RESET_URL: ${AUTH_RESET_URL:-http://localhost:8090/reset-password}
+      BACKGROUND_JOBS_ENABLED: ${BACKGROUND_JOBS_ENABLED:-true}
+      BACKGROUND_JOB_POLL_INTERVAL: ${BACKGROUND_JOB_POLL_INTERVAL:-1s}
+      BACKGROUND_JOB_TIMEOUT: ${BACKGROUND_JOB_TIMEOUT:-30s}
+      BACKGROUND_MAINTENANCE_INTERVAL: ${BACKGROUND_MAINTENANCE_INTERVAL:-1h}
+      OTEL_ENABLED: ${OTEL_ENABLED:-false}
+      OTEL_SERVICE_NAME: ${OTEL_SERVICE_NAME:-idol-promo-api}
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-}
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    expose:
+      - "8080"
+
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -q
+        - --spider
+        - http://127.0.0.1:8080/readyz
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+    networks:
+      - backend
+      - frontend
+
+    read_only: true
+
+    volumes:
+      # Uploaded files must outlive the container. The root is read-write while
+      # the rest of the filesystem stays read-only.
+      - api_uploads:/var/lib/idol-promo/uploads
+
+    tmpfs:
+      - /tmp
+
+    security_opt:
+      - no-new-privileges:true
+
+    logging: *default-logging
+
+  api-spring:
+    # The simplest Spring Boot port of the Go API, on the same database.
+    # Behind a profile, so it is opt-in:
+    #     docker compose --profile spring up -d --build api-spring
+    # Both APIs can run at once; this one owns no schema and runs no migrations.
+    image: ${API_SPRING_IMAGE:-idol-promo-api-spring:latest}
+
+    profiles:
+      - spring
+
+    build:
+      context: ./api-spring
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+    init: true
+
+    environment:
+      PORT: 8080
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB:-items_app}
+      DB_USER: ${POSTGRES_USER:-items_user}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      UPLOAD_DIR: /app/uploads
+      JWT_SECRET: ${AUTH_JWT_SECRET:-dev-only-insecure-secret-change-me-0123456789}
+      COOKIE_SECURE: ${AUTH_SECURE_COOKIES:-false}
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    networks:
+      # `frontend` as well as `backend` for the same reason the Go API has it:
+      # `backend` is `internal: true`, and Docker silently ignores a published
+      # port on a container attached only to an internal network. The port
+      # itself is published by the dev overlay, not here.
+      - backend
+      - frontend
+
+    volumes:
+      - api_spring_uploads:/app/uploads
+
+    logging: *default-logging
+
+  frontend:
+    # Static Vite build served by unprivileged Nginx. This is the deployed
+    # frontend; `frontend-angular` below is the same product on Angular, behind
+    # a profile so it is opt-in.
+    image: ${FRONTEND_IMAGE:-idol-promo-frontend:latest}
+
+    build:
+      context: ./frontend/react
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+    init: true
+
+    depends_on:
+      api:
+        condition: service_healthy
+
+    expose:
+      - "8080"
+
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -q
+        - --spider
+        - http://127.0.0.1:8080/health
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+    networks:
+      - frontend
+
+    read_only: true
+
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+      - /var/run
+
+    security_opt:
+      - no-new-privileges:true
+
+    logging: *default-logging
+
+  frontend-angular:
+    # The Angular implementation of the same product.
+    #
+    # Behind a profile, so `docker compose up` is unchanged and the edge proxy
+    # keeps pointing at one unambiguous `frontend`. Bring it up deliberately:
+    #
+    #   docker compose --profile angular up frontend-angular
+    #
+    # It publishes on the host rather than joining the edge, because two
+    # services both claiming to be "the frontend" behind one proxy is a routing
+    # question this stack has no answer for yet.
+    #
+    # 8092, not 8090: the dev overlay publishes the React frontend on 8090, and
+    # the two would collide the moment anyone ran `make dev` with this profile.
+    profiles:
+      - angular
+
+    image: ${FRONTEND_ANGULAR_IMAGE:-idol-promo-frontend-angular:latest}
+
+    build:
+      context: ./frontend/angular
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+    init: true
+
+    depends_on:
+      api:
+        condition: service_healthy
+
+    ports:
+      - "127.0.0.1:${ANGULAR_PORT:-8092}:8080"
+
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -q
+        - --spider
+        - http://127.0.0.1:8080/health
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+    networks:
+      - frontend
+
+    read_only: true
+
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+      - /var/run
+
+    security_opt:
+      - no-new-privileges:true
+
+    logging: *default-logging
+
+networks:
+  # Database cannot access or be accessed from external networks.
+  backend:
+    internal: true
+
+  # Frontend, API, edge Nginx and monitoring communicate here.
+  frontend:
+
+volumes:
+  api_spring_uploads:
+  postgres_data:
+  api_uploads:

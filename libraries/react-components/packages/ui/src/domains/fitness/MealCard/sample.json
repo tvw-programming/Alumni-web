@@ -1,0 +1,34 @@
+{
+  "mealName": "Lunch",
+  "targetCalories": 700,
+  "entries": [
+    {
+      "id": "fd_1",
+      "name": "Grilled chicken breast",
+      "portion": "150 g",
+      "calories": 248,
+      "proteinG": 46,
+      "carbsG": 0,
+      "fatG": 5
+    },
+    {
+      "id": "fd_2",
+      "name": "Brown rice",
+      "portion": "1 cup cooked",
+      "calories": 216,
+      "proteinG": 5,
+      "carbsG": 45,
+      "fatG": 2
+    },
+    {
+      "id": "fd_3",
+      "name": "Mixed salad with olive oil",
+      "portion": "1 bowl",
+      "calories": 120,
+      "proteinG": 2,
+      "carbsG": 6,
+      "fatG": 10,
+      "pending": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# Not declaring a real workspace — this file carries the build-script allow-list,
+# which pnpm 11 reads only from here.
+#
+# pnpm blocks dependency install scripts by default, and `pnpm install` fails
+# with ERR_PNPM_IGNORED_BUILDS in CI when a package wants one. Allowing a build
+# script means agreeing to run third-party code at install time, so the list is
+# explicit rather than a blanket opt-out. Each of these ships a native binary
+# the Angular builder needs (`@parcel/watcher` is dev-only file watching).
+#
+# Same mechanism as frontend/react/pnpm-workspace.yaml, which allows `esbuild`.
+packages:
+  - '.'
+
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true

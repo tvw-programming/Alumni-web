@@ -1,0 +1,86 @@
+# HTTPS edge configuration — activate only AFTER a certificate exists.
+#
+#   Internet → this TLS nginx → frontend:8080 → api:8080
+#
+# Activation on the VPS:
+#   cd /opt/idol-promo
+#   docker compose -f docker-compose.yaml -f docker-compose.production.yaml \
+#     --profile certbot run --rm certbot certonly \
+#     --webroot --webroot-path=/var/www/certbot -d promo.example.com
+#   cp ops/nginx/tls.conf.example ops/nginx/default.conf
+#   sed -i 's/promo.example.com/your-real-domain/g' ops/nginx/default.conf
+#   docker compose -f docker-compose.yaml -f docker-compose.production.yaml \
+#     up -d --force-recreate edge
+#
+# nginx must not be started with this file before the certificate files
+# exist — it fails to load and the edge container will not become healthy.
+#
+# Renewal is handled by the `certbot` profile container:
+#   docker compose -f docker-compose.yaml -f docker-compose.production.yaml \
+#     --profile certbot run --rm certbot
+#   docker compose -f docker-compose.yaml -f docker-compose.production.yaml \
+#     exec edge nginx -s reload
+# Put those two commands in a twice-daily cron job on the VPS.
+
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+server {
+    listen 80;
+    server_name promo.example.com;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location = /edge-health {
+        access_log off;
+        default_type text/plain;
+        return 200 "ok\n";
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name promo.example.com;
+
+    ssl_certificate     /etc/letsencrypt/live/promo.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/promo.example.com/privkey.pem;
+
+    client_max_body_size 10m;
+
+    add_header Strict-Transport-Security "max-age=31536000" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # The edge container's healthcheck probes plain HTTP on 127.0.0.1, which
+    # the redirect above answers with a 301 — wget treats that as success.
+    location = /edge-health {
+        access_log off;
+        default_type text/plain;
+        return 200 "ok\n";
+    }
+
+    location / {
+        proxy_pass http://frontend:8080;
+        proxy_http_version 1.1;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Request-ID $request_id;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+
+        proxy_connect_timeout 5s;
+        proxy_read_timeout 30s;
+    }
+}

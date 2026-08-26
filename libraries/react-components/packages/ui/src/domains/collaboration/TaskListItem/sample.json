@@ -1,0 +1,12 @@
+{
+  "task": {
+    "id": "tsk_4410",
+    "title": "Prepare quarterly report",
+    "completed": false,
+    "status": "In progress",
+    "priority": "high",
+    "dueDate": "2026-08-19T17:00:00Z",
+    "assignee": { "id": "u_9", "name": "Maya" },
+    "subtaskProgress": { "completed": 3, "total": 5 }
+  }
+}

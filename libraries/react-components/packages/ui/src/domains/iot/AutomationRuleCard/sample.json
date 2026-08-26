@@ -1,0 +1,10 @@
+{
+  "rule": {
+    "id": "aut_hallway",
+    "name": "Hallway at night",
+    "summary": "If motion is detected after sunset, turn on hallway lights at 30% for 5 minutes.",
+    "enabled": true,
+    "lastRunAt": "2026-08-20T22:14:00Z",
+    "pausedReason": null
+  }
+}
