@@ -1,0 +1,51 @@
+{
+  "$comment": "One key per state a search-results list actually produces.",
+  "availableToday": {
+    "id": "d-1", "displayName": "Dr Ananya Rao",
+    "avatarUrl": "https://example.invalid/ananya.jpg",
+    "specialties": ["Cardiology", "Internal Medicine"],
+    "qualifications": ["MBBS", "MD (Cardiology)"],
+    "yearsOfExperience": 14, "languages": ["English", "Hindi", "Kannada"],
+    "rating": { "average": 4.8, "count": 1243 },
+    "consultationFeeMinor": 80000, "currency": "INR",
+    "nextAvailable": "2026-08-26T16:30:00+05:30",
+    "modes": ["video", "audio", "inPerson"], "verified": true
+  },
+  "tomorrowOnly": {
+    "id": "d-2", "displayName": "Dr Imran Sheikh",
+    "specialties": ["Dermatology"], "qualifications": ["MBBS", "DDVL"],
+    "yearsOfExperience": 8, "languages": ["English", "Marathi"],
+    "rating": { "average": 4.5, "count": 312 },
+    "consultationFeeMinor": 60000, "currency": "INR",
+    "nextAvailable": "2026-08-27T10:00:00+05:30",
+    "modes": ["video", "chat"], "verified": true
+  },
+  "noSlotsPublished": {
+    "$comment": "Book is disabled and the card says why, rather than offering a dead button.",
+    "id": "d-3", "displayName": "Dr Priya Menon",
+    "specialties": ["Endocrinology"], "yearsOfExperience": 21,
+    "rating": { "average": 4.9, "count": 88 },
+    "modes": ["inPerson"], "verified": true
+  },
+  "noAvatarNoRating": {
+    "$comment": "New clinician: initials stand in for a photo, and no rating is shown rather than a fabricated zero.",
+    "id": "d-4", "displayName": "Dr Samuel Okoye",
+    "specialties": ["General Physician"], "yearsOfExperience": 2,
+    "consultationFeeMinor": 30000, "currency": "INR",
+    "nextAvailable": "2026-08-26T19:15:00+05:30",
+    "modes": ["video", "audio", "chat"], "verified": false
+  },
+  "longEverything": {
+    "$comment": "Long name, many specialties and languages — must not push the Book button off the card.",
+    "id": "d-5",
+    "displayName": "Dr Chandrasekaran Venkataraghavan Balasubramanian",
+    "specialties": ["Paediatric Neurology", "Developmental Paediatrics", "Epileptology"],
+    "qualifications": ["MBBS", "MD (Paediatrics)", "DM (Neurology)", "Fellowship in Epilepsy"],
+    "yearsOfExperience": 27,
+    "languages": ["English", "Tamil", "Telugu", "Malayalam", "Hindi", "Kannada"],
+    "rating": { "average": 4.7, "count": 5219 },
+    "consultationFeeMinor": 150000, "currency": "INR",
+    "nextAvailable": "2026-09-02T11:45:00+05:30",
+    "modes": ["video", "inPerson"], "verified": true
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$comment": "Bands come from the server in every case — the card never derives them.",
+  "bloodPressureNormal": {
+    "kind": "bloodPressure", "label": "Blood pressure", "unit": "mmHg", "source": "device",
+    "targetLabel": "under 130/80",
+    "latest": { "at": "2026-09-03T08:15:00+05:30", "value": 118, "secondaryValue": 76, "band": "normal" },
+    "history": [
+      { "at": "2026-08-28T08:00:00+05:30", "value": 124, "secondaryValue": 80, "band": "normal" },
+      { "at": "2026-08-30T08:00:00+05:30", "value": 121, "secondaryValue": 78, "band": "normal" },
+      { "at": "2026-09-01T08:00:00+05:30", "value": 119, "secondaryValue": 77, "band": "normal" },
+      { "at": "2026-09-03T08:15:00+05:30", "value": 118, "secondaryValue": 76, "band": "normal" }
+    ]
+  },
+  "bloodPressureHigh": {
+    "kind": "bloodPressure", "label": "Blood pressure", "unit": "mmHg", "source": "manual",
+    "targetLabel": "under 130/80",
+    "latest": { "at": "2026-09-03T07:50:00+05:30", "value": 152, "secondaryValue": 96, "band": "high" },
+    "history": [
+      { "at": "2026-08-30T08:00:00+05:30", "value": 138, "secondaryValue": 88, "band": "elevated" },
+      { "at": "2026-09-01T08:00:00+05:30", "value": 145, "secondaryValue": 92, "band": "high" },
+      { "at": "2026-09-03T07:50:00+05:30", "value": 152, "secondaryValue": 96, "band": "high" }
+    ]
+  },
+  "spo2Critical": {
+    "$comment": "Critical draws a heavier border as well as the word — two signals, not one colour.",
+    "kind": "spo2", "label": "Oxygen saturation", "unit": "%", "source": "device",
+    "latest": { "at": "2026-09-03T09:40:00+05:30", "value": 88, "band": "critical" },
+    "history": [
+      { "at": "2026-09-03T08:00:00+05:30", "value": 96, "band": "normal" },
+      { "at": "2026-09-03T09:00:00+05:30", "value": 92, "band": "low" },
+      { "at": "2026-09-03T09:40:00+05:30", "value": 88, "band": "critical" }
+    ]
+  },
+  "heartRateFlat": {
+    "$comment": "A constant series — the sparkline must not divide by zero; it draws down the middle.",
+    "kind": "heartRate", "label": "Resting heart rate", "unit": "bpm", "source": "device",
+    "latest": { "at": "2026-09-03T06:00:00+05:30", "value": 68, "band": "normal" },
+    "history": [
+      { "at": "2026-09-01T06:00:00+05:30", "value": 68, "band": "normal" },
+      { "at": "2026-09-02T06:00:00+05:30", "value": 68, "band": "normal" },
+      { "at": "2026-09-03T06:00:00+05:30", "value": 68, "band": "normal" }
+    ]
+  },
+  "singleReadingNoTrend": {
+    "$comment": "One point is not a direction — no sparkline, no trend sentence.",
+    "kind": "weight", "label": "Weight", "unit": "kg", "source": "clinic",
+    "latest": { "at": "2026-08-20T11:00:00+05:30", "value": 72.4, "band": "normal" }
+  },
+  "notAssessed": {
+    "$comment": "Band unknown — the card says so rather than implying normal.",
+    "kind": "bloodGlucose", "label": "Blood glucose", "unit": "mg/dL", "source": "manual",
+    "latest": { "at": "2026-09-02T21:30:00+05:30", "value": 141, "band": "unknown" }
+  }
+}

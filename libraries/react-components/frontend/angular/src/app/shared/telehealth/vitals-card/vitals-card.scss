@@ -1,0 +1,112 @@
+:host { display: block; }
+
+.vital {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.875rem;
+  min-height: 9rem;
+}
+
+.vital__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+.vital__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.vital__flag { font-size: 1rem; width: 1rem; height: 1rem; color: var(--mat-sys-error); }
+
+.vital__value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  margin: 0.125rem 0 0;
+}
+
+.vital__number {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1;
+  // Readings are compared down a column of tiles.
+  font-variant-numeric: tabular-nums;
+}
+
+.vital__unit { font-size: 0.8125rem; color: var(--mat-sys-on-surface-variant); }
+
+.vital__band {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.vital__target,
+.vital__foot {
+  margin: 0;
+  font-size: 0.6875rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.vital__foot { margin-top: auto; }
+.vital__source { opacity: 0.85; }
+
+.vital__spark {
+  width: 100%;
+  height: 2rem;
+  margin: 0.25rem 0;
+  color: var(--mat-sys-outline);
+}
+
+// Band drives colour, but the word above always carries the same meaning, so
+// nothing depends on hue alone.
+:host([data-band='normal']) .vital__band { color: var(--mat-sys-primary); }
+:host([data-band='normal']) .vital__spark { color: var(--mat-sys-primary); }
+
+:host([data-band='elevated']) .vital__band { color: var(--mat-sys-tertiary); }
+:host([data-band='elevated']) .vital__spark { color: var(--mat-sys-tertiary); }
+
+:host([data-band='high']) .vital__band,
+:host([data-band='low']) .vital__band { color: var(--mat-sys-error); }
+:host([data-band='high']) .vital__spark,
+:host([data-band='low']) .vital__spark { color: var(--mat-sys-error); }
+
+:host([data-band='critical']) .vital { border-color: var(--mat-sys-error); border-width: 2px; }
+:host([data-band='critical']) .vital__band { color: var(--mat-sys-error); }
+
+:host([data-band='unknown']) .vital__band { color: var(--mat-sys-on-surface-variant); }
+
+.vital__more {
+  position: absolute;
+  inset-block-start: 0.5rem;
+  inset-inline-end: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--mat-sys-on-surface-variant);
+  cursor: pointer;
+
+  &:hover { background: var(--mat-sys-surface-container-high); }
+  &:focus-visible { outline: 2px solid var(--mat-sys-primary); outline-offset: 2px; }
+}
+
+.vital__sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

@@ -1,0 +1,18 @@
+{
+  "$comment": "A whole thread — render in order to see grouping, delivery ticks and recovery.",
+  "thread": [
+    { "id": "m1", "author": "system", "body": "Secure conversation started. Messages are part of your medical record.", "sentAt": "2026-09-03T09:00:00+05:30", "delivery": "delivered" },
+    { "id": "m2", "author": "patient", "body": "Good morning doctor, the rash on my forearm has spread since Tuesday.", "sentAt": "2026-09-03T09:01:00+05:30", "delivery": "read" },
+    { "id": "m3", "author": "patient", "body": "Photo attached.", "sentAt": "2026-09-03T09:01:30+05:30", "delivery": "read",
+      "attachments": [{ "id": "f1", "name": "forearm-2026-09-03.jpg", "mimeType": "image/jpeg", "sizeBytes": 842000, "scanStatus": "clean" }] },
+    { "id": "m4", "author": "clinician", "authorName": "Dr Imran Sheikh", "body": "Thank you. Is it itchy or painful, and have you started any new medication in the last fortnight?", "sentAt": "2026-09-03T09:14:00+05:30", "delivery": "delivered" },
+    { "id": "m5", "author": "patient", "body": "Itchy, not painful. No new medication.", "sentAt": "2026-09-03T09:15:00+05:30", "delivery": "delivered" },
+    { "id": "m6", "author": "patient", "body": "Here is the second photo.", "sentAt": "2026-09-03T09:16:00+05:30", "delivery": "sent",
+      "attachments": [{ "id": "f2", "name": "forearm-closeup.heic", "mimeType": "image/heic", "sizeBytes": 3100000, "scanStatus": "pending" }] },
+    { "id": "m7", "author": "patient", "body": "And one more.", "sentAt": "2026-09-03T09:17:00+05:30", "delivery": "failed",
+      "attachments": [{ "id": "f3", "name": "scan.exe", "mimeType": "application/octet-stream", "sizeBytes": 220000, "scanStatus": "blocked" }] },
+    { "id": "m8", "author": "clinician", "authorName": "Dr Imran Sheikh", "body": "That message was withdrawn.", "sentAt": "2026-09-03T09:20:00+05:30", "delivery": "delivered", "redacted": true },
+    { "id": "m9", "author": "patient", "body": "Sending now", "sentAt": "2026-09-03T09:21:00+05:30", "delivery": "sending" },
+    { "id": "m10", "author": "clinician", "authorName": "Dr Imran Sheikh", "body": "Understood. A very long clinical note follows to check wrapping behaviour: contact dermatitis is most likely given the distribution and the absence of systemic symptoms, however if you develop fever, facial swelling or difficulty breathing you should attend an emergency department immediately rather than waiting for our next scheduled consultation.", "sentAt": "2026-09-03T09:24:00+05:30", "delivery": "delivered" }
+  ]
+}

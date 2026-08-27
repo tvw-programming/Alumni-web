@@ -1,0 +1,74 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stepper__controls {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 999px;
+  background: var(--mat-sys-surface);
+}
+
+// Compact on screen, generous to the finger. The brief asks for exactly this
+// split: small visual bounds, hit area never below the 44px guidance.
+.stepper__button {
+  --mat-icon-button-state-layer-size: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.stepper__value {
+  min-width: 2.5rem;
+  padding: 0 0.25rem;
+  text-align: center;
+  font-weight: 600;
+  // Quantity sits between two fixed buttons; proportional digits make the
+  // whole control resize as the number changes.
+  font-variant-numeric: tabular-nums;
+}
+
+.stepper__input {
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  width: 3rem;
+
+  &:focus-visible {
+    outline: 2px solid var(--mat-sys-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.stepper__value--busy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper__limit {
+  margin: 0;
+  padding-inline: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.stepper__limit--error { color: var(--mat-sys-error); }
+
+:host(.stepper--compact) .stepper__button {
+  --mat-icon-button-state-layer-size: 32px;
+  min-width: 32px;
+  min-height: 32px;
+}
+:host(.stepper--compact) .stepper__value { min-width: 2rem; font-size: 0.875rem; }
+
+:host(.stepper--large) .stepper__button {
+  --mat-icon-button-state-layer-size: 48px;
+  min-width: 48px;
+  min-height: 48px;
+}
+:host(.stepper--large) .stepper__value { min-width: 3rem; font-size: 1.125rem; }

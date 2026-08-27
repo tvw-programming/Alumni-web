@@ -1,0 +1,65 @@
+.consent__content {
+  // Consent text is long by nature; a fixed max height keeps the actions
+  // visible so the patient always knows the dialog has a way out.
+  max-height: 60vh;
+}
+
+.consent__intro {
+  margin: 0 0 1rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.consent__section { margin-bottom: 1.25rem; }
+
+.consent__heading {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.consent__clause {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+  &:last-child { border-bottom: none; }
+}
+
+.consent__clause-title { font-weight: 500; }
+
+.consent__body {
+  margin: 0.25rem 0 0 2.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--mat-sys-on-surface-variant);
+  // Consent prose is read, not scanned; a measure this wide is the readable one.
+  max-width: 60ch;
+}
+
+.consent__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 2.25rem;
+  font-size: 0.8125rem;
+  color: var(--mat-sys-primary);
+
+  mat-icon { font-size: 0.875rem; width: 0.875rem; height: 0.875rem; }
+}
+
+.consent__error {
+  margin: 0.75rem 0 0;
+  padding: 0.625rem 0.75rem;
+  border-radius: 8px;
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+  font-size: 0.8125rem;
+}
+
+.consent__version {
+  margin: 1rem 0 0;
+  font-size: 0.6875rem;
+  color: var(--mat-sys-on-surface-variant);
+}

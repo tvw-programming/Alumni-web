@@ -1,0 +1,40 @@
+<mat-card class="vital" appearance="outlined" [attr.aria-label]="announcement()" role="group">
+  <div class="vital__head" aria-hidden="true">
+    <span class="vital__label">{{ vital().label }}</span>
+    @if (needsAttention()) {
+      <mat-icon class="vital__flag">priority_high</mat-icon>
+    }
+  </div>
+
+  <p class="vital__value" aria-hidden="true">
+    <span class="vital__number">{{ valueText() }}</span>
+    <span class="vital__unit">{{ vital().unit }}</span>
+  </p>
+
+  <!-- The band in words, not only as a colour. -->
+  <p class="vital__band" aria-hidden="true">{{ bandWord() }}</p>
+
+  @if (vital().targetLabel; as target) {
+    <p class="vital__target" aria-hidden="true">Target {{ target }}</p>
+  }
+
+  @if (hasTrend()) {
+    <!-- Decorative: the trend is stated as text in the card's aria-label. -->
+    <svg class="vital__spark" viewBox="0 0 100 32" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path [attr.d]="sparkline()" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  }
+
+  <p class="vital__foot" aria-hidden="true">
+    <span>{{ measuredLabel() }}</span>
+    @if (sourceLabel(); as source) {
+      <span class="vital__source">· {{ source }}</span>
+    }
+  </p>
+
+  <button type="button" class="vital__more" (click)="openHistory.emit(vital())">
+    <span class="vital__sr-only">View {{ vital().label }} history</span>
+    <mat-icon aria-hidden="true">chevron_right</mat-icon>
+  </button>
+</mat-card>

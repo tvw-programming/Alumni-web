@@ -1,0 +1,54 @@
+<div class="stepper__controls">
+  <button
+    matIconButton
+    type="button"
+    class="stepper__button"
+    [disabled]="!canDecrease()"
+    [attr.aria-label]="decreaseLabel()"
+    (click)="onDecrease()"
+  >
+    <mat-icon aria-hidden="true">{{ config().value <= config().min ? 'delete_outline' : 'remove' }}</mat-icon>
+  </button>
+
+  @if (busy()) {
+    <span class="stepper__value stepper__value--busy">
+      <mat-progress-spinner mode="indeterminate" diameter="18" aria-label="Updating quantity" />
+    </span>
+  } @else if (readOnly()) {
+    <span class="stepper__value">{{ display() }}</span>
+  } @else {
+    <!-- Editable: the brief's "direct entry" case. inputmode keeps a mobile
+         keyboard numeric without forbidding a fractional weight. -->
+    <input
+      class="stepper__value stepper__input"
+      type="text"
+      inputmode="decimal"
+      [value]="display()"
+      [attr.aria-label]="'Quantity of ' + itemName()"
+      (change)="onInput($any($event.target).value)"
+    />
+  }
+
+  <button
+    matIconButton
+    type="button"
+    class="stepper__button"
+    [disabled]="!canIncrease()"
+    [attr.aria-label]="increaseLabel()"
+    (click)="onIncrease()"
+  >
+    <mat-icon aria-hidden="true">add</mat-icon>
+  </button>
+</div>
+
+<!-- Announced, not merely displayed: the reason a limit was hit is exactly what
+     a disabled button fails to convey. -->
+@if (limitMessage(); as message) {
+  <p class="stepper__limit" role="status">{{ message }}</p>
+}
+
+@if (config().updateState === 'error') {
+  <p class="stepper__limit stepper__limit--error" role="alert">
+    Could not update quantity. Try again.
+  </p>
+}

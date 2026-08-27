@@ -1,0 +1,158 @@
+<form class="quiz" (ngSubmit)="onSubmit()" novalidate>
+  <header class="quiz__head">
+    <h2 class="quiz__title">{{ questionnaire().title }}</h2>
+    <p class="quiz__progress-text">{{ progress() }}% complete</p>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="progress()"
+      [attr.aria-label]="'Questionnaire ' + progress() + ' percent complete'"
+    />
+  </header>
+
+  @for (section of questionnaire().sections; track section.id) {
+    <fieldset class="quiz__section">
+      <legend class="quiz__legend">{{ section.title }}</legend>
+      @if (section.description) {
+        <p class="quiz__section-desc">{{ section.description }}</p>
+      }
+
+      @for (question of section.questions; track question.id) {
+        @if (isVisible(question)) {
+          <div
+            class="quiz__question"
+            [class.quiz__question--error]="attempted() && question.required && !hasAnswer(question.id)"
+            [attr.id]="'q-' + question.id"
+          >
+            <p class="quiz__label">
+              {{ question.label }}
+              @if (question.required) {
+                <span class="quiz__required" aria-hidden="true">*</span>
+              }
+            </p>
+            @if (question.help) {
+              <p class="quiz__help">{{ question.help }}</p>
+            }
+
+            @switch (question.kind) {
+              @case ('singleChoice') {
+                <mat-radio-group
+                  class="quiz__radios"
+                  [attr.aria-label]="question.label"
+                  [value]="answerOf(question.id)"
+                  (change)="setAnswer(question, $any($event).value)"
+                >
+                  @for (option of question.options; track option.value) {
+                    <mat-radio-button [value]="option.value">{{ option.label }}</mat-radio-button>
+                  }
+                </mat-radio-group>
+              }
+              @case ('boolean') {
+                <mat-radio-group
+                  class="quiz__radios"
+                  [attr.aria-label]="question.label"
+                  [value]="answerOf(question.id)"
+                  (change)="setAnswer(question, $any($event).value)"
+                >
+                  <mat-radio-button value="yes">Yes</mat-radio-button>
+                  <mat-radio-button value="no">No</mat-radio-button>
+                </mat-radio-group>
+              }
+              @case ('multiChoice') {
+                <div class="quiz__checks" role="group" [attr.aria-label]="question.label">
+                  @for (option of question.options; track option.value) {
+                    <mat-checkbox
+                      [checked]="isChecked(question.id, option.value)"
+                      (change)="toggleMulti(question, option.value, $any($event).checked)"
+                    >
+                      {{ option.label }}
+                    </mat-checkbox>
+                  }
+                </div>
+              }
+              @case ('scale') {
+                <div class="quiz__scale">
+                  <mat-slider
+                    [min]="question.min ?? 0"
+                    [max]="question.max ?? 10"
+                    step="1"
+                    discrete
+                  >
+                    <input
+                      matSliderThumb
+                      [value]="$any(answerOf(question.id)) ?? question.min ?? 0"
+                      [attr.aria-label]="question.label"
+                      (valueChange)="setAnswer(question, $any($event))"
+                    />
+                  </mat-slider>
+                  <span class="quiz__scale-value">
+                    {{ answerOf(question.id) ?? '—' }}{{ question.unit ? ' ' + question.unit : '' }}
+                  </span>
+                </div>
+              }
+              @case ('number') {
+                <mat-form-field appearance="outline" class="quiz__field">
+                  <mat-label>{{ question.label }}</mat-label>
+                  <input
+                    matInput
+                    type="number"
+                    [min]="question.min ?? null"
+                    [max]="question.max ?? null"
+                    [value]="answerOf(question.id) ?? ''"
+                    (change)="setAnswer(question, $any($event.target).valueAsNumber)"
+                  />
+                  @if (question.unit) {
+                    <span matTextSuffix>{{ question.unit }}</span>
+                  }
+                </mat-form-field>
+              }
+              @case ('date') {
+                <mat-form-field appearance="outline" class="quiz__field">
+                  <mat-label>{{ question.label }}</mat-label>
+                  <input
+                    matInput
+                    type="date"
+                    [value]="answerOf(question.id) ?? ''"
+                    (change)="setAnswer(question, $any($event.target).value)"
+                  />
+                </mat-form-field>
+              }
+              @default {
+                <mat-form-field appearance="outline" class="quiz__field">
+                  <mat-label>{{ question.label }}</mat-label>
+                  <textarea
+                    matInput
+                    rows="3"
+                    [value]="answerOf(question.id) ?? ''"
+                    (change)="setAnswer(question, $any($event.target).value)"
+                  ></textarea>
+                </mat-form-field>
+              }
+            }
+
+            @if (attempted() && question.required && !hasAnswer(question.id)) {
+              <p class="quiz__error">This question needs an answer.</p>
+            }
+          </div>
+        }
+      }
+    </fieldset>
+  }
+
+  @if (attempted() && !canSubmit()) {
+    <!-- Named and linked, not just "please complete the form". -->
+    <div class="quiz__summary" role="alert" tabindex="-1">
+      <h3>{{ missing().length }} {{ missing().length === 1 ? 'question needs' : 'questions need' }} an answer</h3>
+      <ul>
+        @for (question of missing(); track question.id) {
+          <li><a [href]="'#q-' + question.id">{{ question.label }}</a></li>
+        }
+      </ul>
+    </div>
+  }
+
+  <div class="quiz__actions">
+    <button matButton="filled" type="submit" [disabled]="submitting()">
+      {{ submitting() ? 'Submitting…' : 'Submit answers' }}
+    </button>
+  </div>
+</form>

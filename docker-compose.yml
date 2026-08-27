@@ -14,3 +14,7 @@ name: codegen
 include:
   - path: core/docker-compose.yml
     project_directory: core
+  # The Alumni sample app — http://localhost:5174. Runs on fixture data until
+  # its Go gateway compiles; see apps/react-web/README.md.
+  - path: apps/react-web/docker-compose.yml
+    project_directory: apps/react-web

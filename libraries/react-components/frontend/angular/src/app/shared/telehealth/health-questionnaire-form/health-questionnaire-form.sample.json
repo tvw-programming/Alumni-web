@@ -1,0 +1,53 @@
+{
+  "$comment": "One questionnaire exercising branching, red flags and every question kind.",
+  "preConsultIntake": {
+    "id": "q-intake-v3",
+    "title": "Before your consultation",
+    "version": "3.1",
+    "sections": [
+      {
+        "id": "sec-main",
+        "title": "Your symptoms",
+        "description": "This helps your clinician prepare. It takes about two minutes.",
+        "questions": [
+          { "id": "primary", "kind": "text", "label": "What is the main problem you would like help with today?", "required": true, "help": "In your own words." },
+          { "id": "duration", "kind": "number", "label": "How long have you had this?", "required": true, "unit": "days", "min": 0, "max": 3650 },
+          { "id": "severity", "kind": "scale", "label": "How severe is it right now?", "required": true, "min": 0, "max": 10, "help": "0 is no problem at all, 10 is the worst you can imagine." },
+          { "id": "chestPain", "kind": "boolean", "label": "Do you have chest pain or pressure?", "required": true,
+            "redFlagValues": ["yes"] },
+          { "id": "chestPainRadiates", "kind": "singleChoice", "label": "Does the pain spread to your arm, jaw or back?", "required": true,
+            "dependsOn": { "questionId": "chestPain", "equals": "yes" },
+            "options": [
+              { "value": "yes", "label": "Yes" },
+              { "value": "no", "label": "No" },
+              { "value": "unsure", "label": "I am not sure" }
+            ],
+            "redFlagValues": ["yes"] },
+          { "id": "breathing", "kind": "boolean", "label": "Are you having difficulty breathing?", "required": true,
+            "redFlagValues": ["yes"] },
+          { "id": "associated", "kind": "multiChoice", "label": "Have you noticed any of these?", "required": false,
+            "options": [
+              { "value": "fever", "label": "Fever" },
+              { "value": "rash", "label": "Rash" },
+              { "value": "vomiting", "label": "Vomiting" },
+              { "value": "fainting", "label": "Fainting or blackouts" },
+              { "value": "none", "label": "None of these" }
+            ],
+            "redFlagValues": ["fainting"] }
+        ]
+      },
+      {
+        "id": "sec-history",
+        "title": "Background",
+        "questions": [
+          { "id": "onMedication", "kind": "boolean", "label": "Are you currently taking any medication?", "required": true },
+          { "id": "medicationList", "kind": "text", "label": "Which medicines are you taking?", "required": true,
+            "dependsOn": { "questionId": "onMedication", "equals": "yes" },
+            "help": "Include the dose if you know it." },
+          { "id": "allergies", "kind": "text", "label": "Any allergies we should know about?", "required": false },
+          { "id": "lastSeen", "kind": "date", "label": "When did you last see a clinician about this?", "required": false }
+        ]
+      }
+    ]
+  }
+}

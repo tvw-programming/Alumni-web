@@ -1,0 +1,83 @@
+<mat-card class="appt" appearance="outlined" [attr.data-tone]="tone()">
+  <div class="appt__row">
+    <div class="appt__main">
+      <div class="appt__head">
+        <h3 class="appt__provider">{{ appointment().doctorName }}</h3>
+        <!-- Text, not a colour swatch: the status must survive greyscale. -->
+        <span class="appt__status" [attr.data-tone]="tone()">{{ statusLabel() }}</span>
+      </div>
+
+      @if (appointment().specialty; as specialty) {
+        <p class="appt__specialty">{{ specialty }}</p>
+      }
+
+      <p class="appt__when">
+        <mat-icon aria-hidden="true">schedule</mat-icon>
+        <!-- time carries the machine-readable value for assistive tech and
+             copy-paste; the visible text stays human. -->
+        <time [attr.datetime]="appointment().startsAt">{{ whenLabel() }}</time>
+      </p>
+
+      <p class="appt__mode">
+        <mat-icon aria-hidden="true">
+          {{ appointment().mode === 'inPerson' ? 'location_on' : 'videocam' }}
+        </mat-icon>
+        {{ modeLabel() }}
+        @if (appointment().locationLabel; as place) {
+          <span class="appt__place">· {{ place }}</span>
+        }
+      </p>
+
+      @if (joinHint(); as hint) {
+        <p class="appt__hint">{{ hint }}</p>
+      }
+    </div>
+
+    <div class="appt__actions">
+      @if (canJoin()) {
+        <button
+          matButton="filled"
+          type="button"
+          [attr.aria-label]="'Join ' + modeLabel() + ' with ' + appointment().doctorName"
+          (click)="join.emit(appointment())"
+        >
+          <mat-icon aria-hidden="true">videocam</mat-icon>
+          Join now
+        </button>
+      }
+
+      @if (canReschedule()) {
+        <button
+          matButton="outlined"
+          type="button"
+          [attr.aria-label]="'Reschedule appointment with ' + appointment().doctorName"
+          (click)="reschedule.emit(appointment())"
+        >
+          Reschedule
+        </button>
+      }
+
+      @if (canCancel()) {
+        <button
+          matButton
+          type="button"
+          [attr.aria-label]="'Cancel appointment with ' + appointment().doctorName"
+          (click)="cancelAppointment.emit(appointment())"
+        >
+          Cancel
+        </button>
+      }
+
+      @if (tone() === 'done' || tone() === 'cancelled') {
+        <button
+          matButton
+          type="button"
+          [attr.aria-label]="'View details of appointment with ' + appointment().doctorName"
+          (click)="viewDetails.emit(appointment())"
+        >
+          View details
+        </button>
+      }
+    </div>
+  </div>
+</mat-card>

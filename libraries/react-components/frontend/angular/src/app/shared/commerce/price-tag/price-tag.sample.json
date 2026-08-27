@@ -1,0 +1,55 @@
+{
+  "$comment": "Sample data for PriceTag. Each key is a scenario the component must handle; the brief lists them under Feature Reference. Feed one into [price] to see that case.",
+  "standard": {
+    "sellingPrice": { "amountMinor": 149900, "currency": "INR" },
+    "taxMode": "included"
+  },
+  "saleWithMrp": {
+    "sellingPrice": { "amountMinor": 149900, "currency": "INR" },
+    "compareAtPrice": { "amountMinor": 249900, "currency": "INR" },
+    "taxMode": "included"
+  },
+  "mrpEqualsSelling": {
+    "$comment": "No strikethrough and no 0% badge — equal prices mean no discount.",
+    "sellingPrice": { "amountMinor": 199900, "currency": "INR" },
+    "compareAtPrice": { "amountMinor": 199900, "currency": "INR" }
+  },
+  "discountBelowOnePercent": {
+    "$comment": "Floored to null rather than shown as '0% OFF'.",
+    "sellingPrice": { "amountMinor": 199500, "currency": "INR" },
+    "compareAtPrice": { "amountMinor": 199900, "currency": "INR" }
+  },
+  "memberPrice": {
+    "sellingPrice": { "amountMinor": 129900, "currency": "INR" },
+    "compareAtPrice": { "amountMinor": 249900, "currency": "INR" },
+    "qualifiers": ["Member price"],
+    "discount": { "type": "percentage", "value": 48, "label": "48% OFF", "applied": "automatic" }
+  },
+  "couponDependent": {
+    "$comment": "Outlined badge: the money has not come off yet.",
+    "sellingPrice": { "amountMinor": 179900, "currency": "INR" },
+    "compareAtPrice": { "amountMinor": 199900, "currency": "INR" },
+    "discount": { "type": "amount", "value": 20000, "label": "₹200 with SAVE200", "applied": "coupon" },
+    "qualifiers": ["Apply coupon at checkout"]
+  },
+  "cashback": {
+    "$comment": "Cashback is not a price reduction and must not read as one.",
+    "sellingPrice": { "amountMinor": 249900, "currency": "INR" },
+    "discount": { "type": "amount", "value": 25000, "label": "₹250 cashback", "applied": "cashback" }
+  },
+  "unitPricing": {
+    "sellingPrice": { "amountMinor": 12000, "currency": "INR" },
+    "unitPrice": { "amountMinor": 24000, "currency": "INR" },
+    "unitLabel": "kg",
+    "taxMode": "included"
+  },
+  "taxExclusive": {
+    "sellingPrice": { "amountMinor": 899900, "currency": "INR" },
+    "taxMode": "excluded"
+  },
+  "zeroDecimalCurrency": {
+    "$comment": "JPY has no minor unit — 4980 is ¥4,980, not ¥49.80.",
+    "sellingPrice": { "amountMinor": 4980, "currency": "JPY" },
+    "compareAtPrice": { "amountMinor": 7980, "currency": "JPY" }
+  }
+}

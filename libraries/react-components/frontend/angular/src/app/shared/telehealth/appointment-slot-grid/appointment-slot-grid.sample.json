@@ -1,0 +1,42 @@
+{
+  "$comment": "Each key is a whole `days` array — pass one to [days].",
+  "typicalWeek": [
+    { "date": "2026-08-26", "label": "Today, 26 Aug", "slots": [
+      { "id": "s1", "startsAt": "2026-08-26T09:00:00+05:30", "endsAt": "2026-08-26T09:15:00+05:30", "availability": "past" },
+      { "id": "s2", "startsAt": "2026-08-26T16:30:00+05:30", "endsAt": "2026-08-26T16:45:00+05:30", "availability": "available" },
+      { "id": "s3", "startsAt": "2026-08-26T17:00:00+05:30", "endsAt": "2026-08-26T17:15:00+05:30", "availability": "few" },
+      { "id": "s4", "startsAt": "2026-08-26T17:30:00+05:30", "endsAt": "2026-08-26T17:45:00+05:30", "availability": "full", "disabledReason": "Fully booked" }
+    ]},
+    { "date": "2026-08-27", "label": "Tomorrow, 27 Aug", "slots": [
+      { "id": "s5", "startsAt": "2026-08-27T10:00:00+05:30", "endsAt": "2026-08-27T10:15:00+05:30", "availability": "available" },
+      { "id": "s6", "startsAt": "2026-08-27T10:30:00+05:30", "endsAt": "2026-08-27T10:45:00+05:30", "availability": "available" },
+      { "id": "s7", "startsAt": "2026-08-27T11:00:00+05:30", "endsAt": "2026-08-27T11:15:00+05:30", "availability": "available" }
+    ]},
+    { "date": "2026-08-28", "label": "Fri, 28 Aug", "slots": [
+      { "id": "s8", "startsAt": "2026-08-28T12:00:00+05:30", "endsAt": "2026-08-28T12:15:00+05:30", "availability": "blocked", "disabledReason": "Clinic closed" }
+    ]}
+  ],
+  "everythingBooked": [
+    { "$comment": "Days exist but nothing is bookable — a different message from 'no data'.", "date": "2026-08-26", "label": "Today, 26 Aug", "slots": [
+      { "id": "b1", "startsAt": "2026-08-26T09:00:00+05:30", "endsAt": "2026-08-26T09:15:00+05:30", "availability": "full", "disabledReason": "Fully booked" },
+      { "id": "b2", "startsAt": "2026-08-26T09:30:00+05:30", "endsAt": "2026-08-26T09:45:00+05:30", "availability": "full", "disabledReason": "Fully booked" }
+    ]}
+  ],
+  "busyClinicDay": [
+    { "$comment": "24 slots in one day — collapses to 8 with a Show more toggle.", "date": "2026-08-27", "label": "Tomorrow, 27 Aug", "slots": [
+      { "id": "c1", "startsAt": "2026-08-27T09:00:00+05:30", "endsAt": "2026-08-27T09:15:00+05:30", "availability": "available" },
+      { "id": "c2", "startsAt": "2026-08-27T09:15:00+05:30", "endsAt": "2026-08-27T09:30:00+05:30", "availability": "available" },
+      { "id": "c3", "startsAt": "2026-08-27T09:30:00+05:30", "endsAt": "2026-08-27T09:45:00+05:30", "availability": "full" },
+      { "id": "c4", "startsAt": "2026-08-27T09:45:00+05:30", "endsAt": "2026-08-27T10:00:00+05:30", "availability": "available" },
+      { "id": "c5", "startsAt": "2026-08-27T10:00:00+05:30", "endsAt": "2026-08-27T10:15:00+05:30", "availability": "available" },
+      { "id": "c6", "startsAt": "2026-08-27T10:15:00+05:30", "endsAt": "2026-08-27T10:30:00+05:30", "availability": "few" },
+      { "id": "c7", "startsAt": "2026-08-27T10:30:00+05:30", "endsAt": "2026-08-27T10:45:00+05:30", "availability": "available" },
+      { "id": "c8", "startsAt": "2026-08-27T10:45:00+05:30", "endsAt": "2026-08-27T11:00:00+05:30", "availability": "available" },
+      { "id": "c9", "startsAt": "2026-08-27T11:00:00+05:30", "endsAt": "2026-08-27T11:15:00+05:30", "availability": "available" },
+      { "id": "c10", "startsAt": "2026-08-27T11:15:00+05:30", "endsAt": "2026-08-27T11:30:00+05:30", "availability": "available" },
+      { "id": "c11", "startsAt": "2026-08-27T11:30:00+05:30", "endsAt": "2026-08-27T11:45:00+05:30", "availability": "full" },
+      { "id": "c12", "startsAt": "2026-08-27T11:45:00+05:30", "endsAt": "2026-08-27T12:00:00+05:30", "availability": "available" }
+    ]}
+  ],
+  "noSlotsAtAll": []
+}

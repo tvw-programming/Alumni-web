@@ -1,0 +1,78 @@
+@if (loading()) {
+  <!-- Skeleton keeps the column geometry, so nothing jumps when times arrive. -->
+  <div class="slots__days" aria-busy="true" aria-label="Loading available times">
+    @for (column of [0, 1, 2]; track column) {
+      <div class="slots__day">
+        <div class="slots__skeleton slots__skeleton--head"></div>
+        @for (cell of [0, 1, 2, 3, 4]; track cell) {
+          <div class="slots__skeleton"></div>
+        }
+      </div>
+    }
+  </div>
+} @else if (!hasAnySlot()) {
+  <p class="slots__empty">
+    No times published for this clinician yet.
+    <button matButton type="button" (click)="requestMoreDays.emit()">Check later dates</button>
+  </p>
+} @else {
+  <!-- One radiogroup for the whole picker: arrow keys move between times, and
+       the group is announced once rather than per cell. -->
+  <div class="slots__days" role="radiogroup" aria-label="Available appointment times">
+    @for (day of visibleDays(); track day.date) {
+      <section class="slots__day">
+        <h4 class="slots__day-label">
+          {{ day.label }}
+          <span class="slots__day-count">
+            {{ day.slots.length }} {{ day.slots.length === 1 ? 'time' : 'times' }}
+          </span>
+        </h4>
+
+        @if (day.visibleSlots.length === 0) {
+          <p class="slots__none">Fully booked</p>
+        }
+
+        @for (slot of day.visibleSlots; track slot.id) {
+          <button
+            type="button"
+            role="radio"
+            class="slots__slot"
+            [class.slots__slot--selected]="slot.id === selectedSlotId()"
+            [class.slots__slot--few]="slot.availability === 'few'"
+            [attr.aria-checked]="slot.id === selectedSlotId()"
+            [attr.aria-label]="slotLabel(day, slot)"
+            [disabled]="!isBookable(slot)"
+            (click)="onSelect(slot)"
+          >
+            <span class="slots__time">{{ timeLabel(slot) }}</span>
+            @if (slot.availability === 'few') {
+              <span class="slots__scarcity">Few left</span>
+            }
+            @if (!isBookable(slot)) {
+              <span class="slots__scarcity">{{ unavailableWord(slot) }}</span>
+            }
+          </button>
+        }
+
+        @if (day.hiddenCount > 0) {
+          <button matButton type="button" class="slots__more" (click)="toggleDay(day.date)">
+            Show {{ day.hiddenCount }} more
+          </button>
+        } @else if (day.isExpanded && day.slots.length > collapsedCount()) {
+          <button matButton type="button" class="slots__more" (click)="toggleDay(day.date)">
+            Show fewer
+          </button>
+        }
+      </section>
+    }
+  </div>
+
+  <!-- Distinguishes "we have days but nothing bookable" from "no data", which
+       need different next actions. -->
+  @if (!hasAnyBookable()) {
+    <p class="slots__empty" role="status">
+      Every published time is taken.
+      <button matButton type="button" (click)="requestMoreDays.emit()">Check later dates</button>
+    </p>
+  }
+}

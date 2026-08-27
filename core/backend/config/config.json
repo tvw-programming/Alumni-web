@@ -1310,7 +1310,9 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "/workspace"
+          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "must_exist": true,
+          "must_be_writable": true
         }
       },
       "routing": {
@@ -1408,6 +1410,11 @@
           "workspace": "/workspace",
           "prompts": "/app/config/prompts",
           "schema_registry": "/app/config/schemas"
+        },
+        "project": {
+          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "must_exist": true,
+          "must_be_writable": true
         }
       },
       "routing": {
@@ -1523,6 +1530,11 @@
           "workspace": "/workspace",
           "prompts": "/app/config/prompts",
           "schema_registry": "/app/config/schemas"
+        },
+        "project": {
+          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "must_exist": true,
+          "must_be_writable": true
         }
       },
       "routing": {
@@ -1620,32 +1632,37 @@
           "workspace": "/workspace",
           "prompts": "/app/config/prompts",
           "schema_registry": "/app/config/schemas"
+        },
+        "project": {
+          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "must_exist": true,
+          "must_be_writable": true
         }
       },
       "routing": {
         "defaults": {
-          "fast": "local.lmstudio.qwen3coder",
-          "coding": "local.lmstudio.qwen3coder",
-          "reasoning": "local.lmstudio.qwen3coder",
-          "security": "local.lmstudio.qwen3coder",
+          "fast": "local.lmstudio.qwen35",
+          "coding": "local.lmstudio.qwen35",
+          "reasoning": "local.lmstudio.qwen35",
+          "security": "local.lmstudio.qwen35",
           "vision": "free.freebuff.minimax"
         },
         "fallback_chains": {
           "fast": [
-            "local.lmstudio.qwen3coder",
-            "local.lmstudio.qwen35"
+            "local.lmstudio.qwen35",
+            "local.lmstudio.qwen3coder"
           ],
           "coding": [
-            "local.lmstudio.qwen3coder",
-            "local.lmstudio.qwen35"
+            "local.lmstudio.qwen35",
+            "local.lmstudio.qwen3coder"
           ],
           "reasoning": [
-            "local.lmstudio.qwen3coder",
-            "local.lmstudio.qwen35"
+            "local.lmstudio.qwen35",
+            "local.lmstudio.qwen3coder"
           ],
           "security": [
-            "local.lmstudio.qwen3coder",
-            "local.lmstudio.qwen35"
+            "local.lmstudio.qwen35",
+            "local.lmstudio.qwen3coder"
           ],
           "vision": [
             "free.freebuff.minimax"
@@ -1716,6 +1733,11 @@
           "workspace": "/workspace",
           "prompts": "/app/config/prompts",
           "schema_registry": "/app/config/schemas"
+        },
+        "project": {
+          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "must_exist": true,
+          "must_be_writable": true
         }
       },
       "routing": {

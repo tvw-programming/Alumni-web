@@ -1,0 +1,145 @@
+:host { display: block; }
+
+.doctor__card { padding: 1rem; }
+
+.doctor__row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.doctor__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex: none;
+  background: var(--mat-sys-surface-container);
+}
+
+.doctor__avatar--initials {
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.doctor__info { flex: 1; min-width: 0; }
+
+.doctor__name {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin: 0 0 0.125rem;
+  font-size: 1rem;
+  font-weight: 600;
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--mat-sys-primary); outline-offset: 2px; border-radius: 4px; }
+}
+
+.doctor__verified {
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+  color: var(--mat-sys-primary);
+}
+
+.doctor__specialty {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--mat-sys-on-surface);
+}
+
+.doctor__qualifications,
+.doctor__languages {
+  margin: 0.125rem 0 0;
+  font-size: 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.doctor__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.375rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.doctor__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+
+  mat-icon { font-size: 0.9375rem; width: 0.9375rem; height: 0.9375rem; color: var(--mat-sys-tertiary); }
+}
+
+.doctor__modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doctor__mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 999px;
+  font-size: 0.75rem;
+
+  mat-icon { font-size: 0.875rem; width: 0.875rem; height: 0.875rem; }
+}
+
+.doctor__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex: none;
+}
+
+.doctor__next {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0;
+  text-align: end;
+}
+
+.doctor__next-caption {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.doctor__next-value { font-size: 0.875rem; font-weight: 600; }
+
+// Availability today is the strongest signal in a results list, so it gets
+// emphasis — carried by weight and a label, never colour alone.
+.doctor__next--today .doctor__next-value { color: var(--mat-sys-primary); }
+.doctor__next--none { font-size: 0.8125rem; color: var(--mat-sys-on-surface-variant); }
+
+// Narrow / compact: stack, because a 64px avatar plus two columns does not fit
+// a phone without truncating the name.
+:host(.doctor--compact) .doctor__avatar { width: 44px; height: 44px; }
+:host(.doctor--compact) .doctor__modes,
+:host(.doctor--compact) .doctor__qualifications,
+:host(.doctor--compact) .doctor__languages { display: none; }
+
+:host(.doctor--grid) .doctor__row { flex-direction: column; align-items: stretch; }
+:host(.doctor--grid) .doctor__actions { align-items: stretch; }
+:host(.doctor--grid) .doctor__next { align-items: flex-start; text-align: start; }
+
+@container (max-width: 26rem) {
+  .doctor__row { flex-wrap: wrap; }
+  .doctor__actions { width: 100%; align-items: stretch; }
+}

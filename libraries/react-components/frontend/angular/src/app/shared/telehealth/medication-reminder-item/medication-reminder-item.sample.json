@@ -1,0 +1,51 @@
+{
+  "$comment": "One key per dose state.",
+  "dueNow": {
+    "id": "d-1", "medicationName": "Metformin", "strength": "500 mg", "form": "tablet",
+    "instructions": "Take with food", "scheduledAt": "2026-09-03T08:00:00+05:30",
+    "status": "due", "streakDays": 12,
+    "imageUrl": "https://example.invalid/metformin.png",
+    "cautions": ["Do not take on an empty stomach"]
+  },
+  "takenWithUndo": {
+    "id": "d-2", "medicationName": "Atorvastatin", "strength": "20 mg", "form": "tablet",
+    "scheduledAt": "2026-09-02T21:00:00+05:30", "takenAt": "2026-09-02T21:12:00+05:30",
+    "status": "taken", "streakDays": 30
+  },
+  "missed": {
+    "$comment": "Reported, not scolded — the Taken action is still available.",
+    "id": "d-3", "medicationName": "Levothyroxine", "strength": "75 mcg", "form": "tablet",
+    "instructions": "30 minutes before breakfast", "scheduledAt": "2026-09-03T06:30:00+05:30",
+    "status": "missed",
+    "cautions": ["Do not take with calcium or iron supplements"]
+  },
+  "upcoming": {
+    "id": "d-4", "medicationName": "Amlodipine", "strength": "5 mg", "form": "tablet",
+    "scheduledAt": "2026-09-03T21:00:00+05:30", "status": "upcoming", "streakDays": 5
+  },
+  "snoozed": {
+    "id": "d-5", "medicationName": "Vitamin D3", "strength": "60000 IU", "form": "sachet",
+    "instructions": "Once weekly, with milk", "scheduledAt": "2026-09-03T09:00:00+05:30",
+    "status": "snoozed"
+  },
+  "skipped": {
+    "id": "d-6", "medicationName": "Ibuprofen", "strength": "400 mg", "form": "tablet",
+    "scheduledAt": "2026-09-02T14:00:00+05:30", "status": "skipped"
+  },
+  "noStreakNoImage": {
+    "$comment": "New prescription: streak below 3 is not shown, and no pill photograph exists.",
+    "id": "d-7", "medicationName": "Cetirizine", "strength": "10 mg", "form": "tablet",
+    "scheduledAt": "2026-09-03T22:00:00+05:30", "status": "upcoming", "streakDays": 1
+  },
+  "manyCautions": {
+    "$comment": "Safety text always visible, never behind a tooltip.",
+    "id": "d-8", "medicationName": "Warfarin", "strength": "5 mg", "form": "tablet",
+    "instructions": "Same time each evening", "scheduledAt": "2026-09-03T20:00:00+05:30",
+    "status": "due", "streakDays": 64,
+    "cautions": [
+      "Avoid sudden changes in leafy green vegetables",
+      "Tell any clinician you are taking this before a procedure",
+      "Report unusual bruising or bleeding immediately"
+    ]
+  }
+}

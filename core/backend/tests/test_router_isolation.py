@@ -83,3 +83,39 @@ def test_every_backend_failing_is_a_backend_error_not_a_config_error(cfg, ctx, m
         )
     with pytest.raises(BackendError, match="every backend failed"):
         r.complete(2, "sys", "usr")
+
+
+def test_a_failing_reviewer_never_falls_back_to_the_author_model(cfg, ctx, monkeypatch):
+    """Isolation constrains the whole chain, not just its head.
+
+    A reviewer step whose backend dies must fail loudly rather than retry on the
+    model that wrote the code — that fallback would be recorded as an
+    independent review.
+    """
+    from codegen_core.llm import router as router_mod
+
+    monkeypatch.setattr(router_mod, "BACKEND_BACKOFF_S", 0)
+    r = _router(cfg, ctx)
+    author = r.backend_for(12)
+    ctx.journal._append(
+        {"type": "step", "step": 12, "status": "OK",
+         "provenance": {"model_id": author.model_id, "backend_id": author.id}}
+    )
+
+    reviewer = r.backend_for(23)
+    assert reviewer.model_id != author.model_id
+
+    # The reviewer's own backend dies; the author's is healthy and would answer.
+    monkeypatch.setattr(
+        reviewer, "complete",
+        lambda *a, **k: (_ for _ in ()).throw(BackendError("terminated")),
+    )
+    answered: list[str] = []
+    monkeypatch.setattr(
+        author, "complete",
+        lambda *a, **k: answered.append("author") or Completion("{}", 1, 1),
+    )
+
+    with pytest.raises(BackendError, match="every backend failed"):
+        r.complete(23, "sys", "usr")
+    assert answered == [], "the author's model answered a reviewer step"

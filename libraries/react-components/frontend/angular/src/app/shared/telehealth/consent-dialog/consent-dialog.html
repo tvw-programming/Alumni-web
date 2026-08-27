@@ -1,0 +1,75 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<mat-dialog-content class="consent__content">
+  @if (data.intro) {
+    <p class="consent__intro">{{ data.intro }}</p>
+  }
+
+  @if (requiredClauses().length) {
+    <section class="consent__section">
+      <h3 class="consent__heading">Required to continue</h3>
+      @for (clause of requiredClauses(); track clause.id) {
+        <div class="consent__clause">
+          <mat-checkbox
+            [checked]="isGranted(clause.id)"
+            (change)="toggle(clause.id, $event.checked)"
+          >
+            <span class="consent__clause-title">{{ clause.title }}</span>
+          </mat-checkbox>
+          <p class="consent__body">{{ clause.body }}</p>
+          @if (clause.moreInfoUrl) {
+            <a class="consent__more" [href]="clause.moreInfoUrl" target="_blank" rel="noopener">
+              Read the full document
+              <mat-icon aria-hidden="true">open_in_new</mat-icon>
+            </a>
+          }
+        </div>
+      }
+    </section>
+  }
+
+  @if (optionalClauses().length) {
+    <section class="consent__section">
+      <!-- Said out loud, because a list of checkboxes reads as all-or-nothing
+           unless it is stated otherwise. -->
+      <h3 class="consent__heading">Optional — you can continue without these</h3>
+      @for (clause of optionalClauses(); track clause.id) {
+        <div class="consent__clause">
+          <mat-checkbox
+            [checked]="isGranted(clause.id)"
+            (change)="toggle(clause.id, $event.checked)"
+          >
+            <span class="consent__clause-title">{{ clause.title }}</span>
+          </mat-checkbox>
+          <p class="consent__body">{{ clause.body }}</p>
+        </div>
+      }
+    </section>
+  }
+
+  @if (attempted() && !canAccept()) {
+    <!-- Names what is still missing rather than saying "please accept". -->
+    <p class="consent__error" role="alert">
+      To continue, please agree to
+      @for (clause of missingRequired(); track clause.id; let last = $last) {
+        <strong>{{ clause.title }}</strong>{{ last ? '.' : ', ' }}
+      }
+    </p>
+  }
+
+  <p class="consent__version">Document version {{ data.documentVersion }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button matButton type="button" (click)="onDecline()">
+    {{ data.declineLabel ?? 'Decline' }}
+  </button>
+  <button
+    matButton="filled"
+    type="button"
+    [disabled]="!canAccept()"
+    (click)="onAccept()"
+  >
+    {{ data.acceptLabel ?? 'Agree and continue' }}
+  </button>
+</mat-dialog-actions>

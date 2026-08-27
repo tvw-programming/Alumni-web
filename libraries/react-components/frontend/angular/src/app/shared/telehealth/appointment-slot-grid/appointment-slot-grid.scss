@@ -1,0 +1,117 @@
+:host { display: block; }
+
+.slots__days {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(8.5rem, 1fr);
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  // Day columns snap, so a swipe lands on a whole day rather than half of two.
+  scroll-snap-type: x mandatory;
+}
+
+.slots__day {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  scroll-snap-align: start;
+}
+
+.slots__day-label {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: var(--mat-sys-surface);
+  padding-bottom: 0.25rem;
+}
+
+.slots__day-count {
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.slots__slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.0625rem;
+  padding: 0.5rem 0.25rem;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 8px;
+  background: var(--mat-sys-surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  // Times line up in a column; proportional digits make them ragged.
+  font-variant-numeric: tabular-nums;
+  min-height: 44px;
+
+  &:hover:not(:disabled) { border-color: var(--mat-sys-primary); }
+
+  &:focus-visible {
+    outline: 2px solid var(--mat-sys-primary);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--mat-sys-on-surface-variant);
+    background: var(--mat-sys-surface-container);
+    // Struck through as well as dimmed: dimming alone is not enough contrast
+    // to read as "unavailable" for everyone.
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+}
+
+// Selection is border weight plus a filled surface plus aria-checked — three
+// signals, none of which is colour on its own.
+.slots__slot--selected {
+  border-color: var(--mat-sys-primary);
+  border-width: 2px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  font-weight: 600;
+}
+
+.slots__time { font-size: 0.875rem; }
+
+.slots__scarcity {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.slots__slot--few .slots__scarcity { color: var(--mat-sys-tertiary); font-weight: 600; }
+
+.slots__none,
+.slots__empty {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.slots__empty { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+
+.slots__more { align-self: stretch; font-size: 0.75rem; }
+
+.slots__skeleton {
+  height: 44px;
+  border-radius: 8px;
+  background: var(--mat-sys-surface-container);
+  animation: slots-pulse 1.4s ease-in-out infinite;
+}
+
+.slots__skeleton--head { height: 1.5rem; width: 70%; }
+
+@keyframes slots-pulse { 50% { opacity: 0.55; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .slots__skeleton { animation: none; }
+}

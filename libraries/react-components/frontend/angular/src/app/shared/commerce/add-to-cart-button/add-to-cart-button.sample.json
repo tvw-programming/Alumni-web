@@ -1,0 +1,19 @@
+{
+  "$comment": "The state machine, one key per state. `state` is an input — the button never infers success from a click.",
+  "idle": { "state": "idle", "productTitle": "Nike Air Max 90" },
+  "loading": { "state": "loading", "productTitle": "Nike Air Max 90" },
+  "added": { "state": "added", "productTitle": "Nike Air Max 90" },
+  "chooseOptions": {
+    "$comment": "Size required — click routes to the variant selector rather than adding a default size.",
+    "state": "chooseOptions", "productTitle": "Nike Air Max 90"
+  },
+  "outOfStock": { "state": "outOfStock", "productTitle": "Nike Air Max 90" },
+  "error": {
+    "$comment": "Cart mutation failed; context preserved and the click retries.",
+    "state": "error", "productTitle": "Nike Air Max 90"
+  },
+  "disabled": {
+    "$comment": "Not purchasable here at all — age-restricted, or undeliverable to this pincode.",
+    "state": "disabled", "productTitle": "Nike Air Max 90"
+  }
+}

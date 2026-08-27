@@ -1,0 +1,71 @@
+<div class="report" [attr.aria-label]="announcement()" role="group">
+  <span class="report__icon" aria-hidden="true">
+    @if (report().status === 'pending') {
+      <mat-progress-spinner mode="indeterminate" diameter="20" />
+    } @else {
+      <mat-icon>{{ icon() }}</mat-icon>
+    }
+  </span>
+
+  <div class="report__body" aria-hidden="true">
+    <h3 class="report__title">{{ report().title }}</h3>
+    <p class="report__meta">
+      <span>{{ report().category }}</span>
+      @if (dateLabel()) {
+        <span>· {{ dateLabel() }}</span>
+      }
+      @if (report().orderedBy; as clinician) {
+        <span>· Ordered by {{ clinician }}</span>
+      }
+    </p>
+
+    <p class="report__status">
+      {{ statusWord() }}
+      @if (needsAttention()) {
+        <!-- Word plus icon: "abnormal" must not depend on a red dot. -->
+        <span class="report__flag">
+          <mat-icon aria-hidden="true">flag</mat-icon>
+          @if (report().status === 'amended') {
+            Corrected — please re-read
+          } @else {
+            Findings outside the reference range
+          }
+        </span>
+      }
+    </p>
+
+    @if (held()) {
+      <!-- The result exists; the wait is explained rather than hidden. -->
+      <p class="report__held">
+        Your clinician is reviewing this result and will release it with an explanation.
+      </p>
+    }
+  </div>
+
+  <div class="report__actions">
+    @if (openable()) {
+      <button
+        matButton="outlined"
+        type="button"
+        [attr.aria-label]="'View ' + report().title"
+        (click)="view.emit(report())"
+      >
+        View
+      </button>
+
+      @if (report().documentUrl) {
+        <button
+          matButton
+          type="button"
+          [attr.aria-label]="'Download ' + report().title + (sizeLabel() ? ', ' + sizeLabel() : '')"
+          (click)="download.emit(report())"
+        >
+          <mat-icon aria-hidden="true">download</mat-icon>
+          @if (sizeLabel(); as size) {
+            <span class="report__size">{{ size }}</span>
+          }
+        </button>
+      }
+    }
+  </div>
+</div>

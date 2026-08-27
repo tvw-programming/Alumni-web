@@ -34,6 +34,22 @@ class LLMRouter:
         self.journal = journal
 
     # ------------------------------------------------------------------ #
+    def forbidden_models(self, step: int) -> set[str]:
+        """Models this step may not run on, read from the journal.
+
+        Separate from backend_for because the answer is needed twice: once to
+        choose the backend, and again to filter the fallback chain if that
+        backend fails. Skipping the second use is how a reviewer quietly ends up
+        on the author's model.
+        """
+        out: set[str] = set()
+        for rule in self.cfg.routing.isolation:
+            if step in rule.reviewer_steps:
+                used = {self.journal.model_used(s) for s in rule.must_differ_from}
+                used.discard(None)
+                out |= used
+        return out
+
     def backend_for(self, step: int) -> BaseBackend:
         route = self.cfg.route(step)
         cap = route.capability
@@ -42,12 +58,13 @@ class LLMRouter:
             raise ConfigError(f"step {step:02d}: no enabled backend for capability '{cap}'")
         backend = self.backends[bid]
 
-        for rule in self.cfg.routing.isolation:
-            if step in rule.reviewer_steps:
-                used = {self.journal.model_used(s) for s in rule.must_differ_from}
-                used.discard(None)
-                if backend.model_id in used:
-                    backend = self._fallback(cap, exclude_models=used, rule_id=rule.rule_id)
+        forbidden = self.forbidden_models(step)
+        if forbidden and backend.model_id in forbidden:
+            rule_id = next(
+                (r.rule_id for r in self.cfg.routing.isolation if step in r.reviewer_steps),
+                "isolation",
+            )
+            backend = self._fallback(cap, exclude_models=forbidden, rule_id=rule_id)
         return backend
 
     def _fallback(self, cap: str, exclude_models: set[str], rule_id: str) -> BaseBackend:
@@ -72,10 +89,16 @@ class LLMRouter:
         backend = self.backend_for(step)
         params = {**self.cfg.route(step).params, **kw}
         tried: list[str] = []
+        # Reviewer isolation constrains the whole chain, not just its head. A
+        # reviewer step that fails over to the model which wrote the code is a
+        # self-review, and it would be recorded as an independent one.
+        forbidden = self.forbidden_models(step)
         chain = [backend] + [
             self.backends[b]
             for b in self.cfg.routing.fallback_chains.get(self.cfg.route(step).capability, [])
-            if b in self.backends and self.backends[b] is not backend
+            if b in self.backends
+            and self.backends[b] is not backend
+            and self.backends[b].model_id not in forbidden
         ]
         last: Exception | None = None
         for b in chain:

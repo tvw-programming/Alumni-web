@@ -1,0 +1,72 @@
+{
+  "$comment": "Pair each appointment with the `now` the card should be rendered against — the join window is time-based, so a fixture without a reference clock is untestable.",
+  "joinableNow": {
+    "now": "2026-09-03T14:25:00.000Z",
+    "appointment": {
+      "id": "a-1", "doctorId": "d-1", "doctorName": "Dr Priya Sharma",
+      "specialty": "Internal Medicine", "status": "confirmed", "mode": "video",
+      "startsAt": "2026-09-03T14:30:00.000Z", "endsAt": "2026-09-03T14:50:00.000Z",
+      "cancellable": true, "reschedulable": true
+    }
+  },
+  "tooEarlyToJoin": {
+    "$comment": "Three weeks out. The source scaffold showed Join here — this one explains when the room opens instead.",
+    "now": "2026-08-26T09:00:00.000Z",
+    "appointment": {
+      "id": "a-2", "doctorId": "d-1", "doctorName": "Dr Priya Sharma",
+      "specialty": "Internal Medicine", "status": "booked", "mode": "video",
+      "startsAt": "2026-09-16T10:00:00.000Z", "cancellable": true, "reschedulable": true
+    }
+  },
+  "sameDayNotYetOpen": {
+    "now": "2026-09-03T11:00:00.000Z",
+    "appointment": {
+      "id": "a-3", "doctorId": "d-2", "doctorName": "Dr Imran Sheikh",
+      "specialty": "Dermatology", "status": "confirmed", "mode": "video",
+      "startsAt": "2026-09-03T14:30:00.000Z", "cancellable": true, "reschedulable": true
+    }
+  },
+  "serverSaysJoinable": {
+    "$comment": "Clinician started early. Server `joinable` overrides the time window — only the backend knows the room is live.",
+    "now": "2026-09-03T13:00:00.000Z",
+    "appointment": {
+      "id": "a-4", "doctorId": "d-2", "doctorName": "Dr Imran Sheikh",
+      "status": "inProgress", "mode": "video",
+      "startsAt": "2026-09-03T14:30:00.000Z", "joinable": true
+    }
+  },
+  "inClinic": {
+    "$comment": "No Join at all, and a location instead.",
+    "now": "2026-09-03T08:00:00.000Z",
+    "appointment": {
+      "id": "a-5", "doctorId": "d-3", "doctorName": "Dr Ananya Rao",
+      "specialty": "Cardiology", "status": "confirmed", "mode": "inPerson",
+      "startsAt": "2026-09-03T16:00:00.000Z", "locationLabel": "City Health Clinic, Level 2",
+      "cancellable": true, "reschedulable": true
+    }
+  },
+  "cancelled": {
+    "now": "2026-09-04T10:00:00.000Z",
+    "appointment": {
+      "id": "a-6", "doctorId": "d-1", "doctorName": "Dr Priya Sharma",
+      "status": "cancelled", "mode": "video", "startsAt": "2026-09-03T14:30:00.000Z"
+    }
+  },
+  "missed": {
+    "$comment": "`noShow` rendered as 'Missed' — the raw enum in a status chip reads as a system error.",
+    "now": "2026-09-04T10:00:00.000Z",
+    "appointment": {
+      "id": "a-7", "doctorId": "d-2", "doctorName": "Dr Imran Sheikh",
+      "status": "noShow", "mode": "video", "startsAt": "2026-09-03T09:00:00.000Z"
+    }
+  },
+  "nonCancellable": {
+    "$comment": "Inside the clinic's cancellation window — actions withheld rather than shown and then rejected.",
+    "now": "2026-09-03T13:00:00.000Z",
+    "appointment": {
+      "id": "a-8", "doctorId": "d-3", "doctorName": "Dr Ananya Rao",
+      "status": "confirmed", "mode": "inPerson", "startsAt": "2026-09-03T16:00:00.000Z",
+      "locationLabel": "City Health Clinic", "cancellable": false, "reschedulable": false
+    }
+  }
+}

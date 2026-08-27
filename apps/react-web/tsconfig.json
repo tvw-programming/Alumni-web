@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    // Must mirror vite.config.ts exactly. `@/*` deliberately points into the
+    // library, not this app — its components resolve their own imports through
+    // it. This app's own code is `~/*`.
+    "paths": {
+      "~/*": ["./src/*"],
+      "@ui/*": ["../../libraries/react-components/frontend/react/src/*"],
+      "@/*": ["../../libraries/react-components/frontend/react/src/*"]
+    },
+    "types": ["vite/client"]
+  },
+  "include": ["src", "vite.config.ts"]
+}
