@@ -215,6 +215,14 @@ class RetryCfg(Frozen):
 class StepCfg(Frozen):
     enabled: bool = True
     component: Literal["agent", "tool", "plugin", "gate"] = "agent"
+    #: What this step may do. Deny by default: an empty list means read-only,
+    #: so a step whose profile is forgotten fails safe rather than silently
+    #: inheriting write access. See docs/11-mutation-inventory.md.
+    allowed_actions: list[str] = Field(default_factory=list)
+    #: Named tools this step may never invoke, whatever the allowlist says.
+    #: Enforced again at the gateway (ADR 0004) — this copy is the fast one.
+    prohibited_tools: list[str] = Field(default_factory=list)
+    risk_level: Literal["low", "medium", "high", "critical"] = "low"
     binding: str | list[str] | None = None
     prompt: str | None = None
     rubric: str | None = None
@@ -223,6 +231,23 @@ class StepCfg(Frozen):
     render_documents: list[str] = Field(default_factory=list)
     locked: bool = False
     on_ambiguity: str | None = None
+
+
+class GatewaySection(Frozen):
+    """Rollout state for the MCP execution gateway (ADR 0004).
+
+    `direct` is today's behaviour: writes go through the in-process GuardedFS.
+    `shadow` runs every gateway check and journals the verdict without writing,
+    so the two paths can be compared before anything depends on the new one.
+    `mcp` makes the gateway the only writer — and refuses any backend that
+    writes to disk itself, because such a backend would step around it.
+    """
+
+    mode: Literal["direct", "shadow", "mcp"] = "direct"
+    url: str = "http://127.0.0.1:8081/mcp"
+    #: Refuse rather than fall back if the gateway is unreachable. A bypass that
+    #: activates under failure is not a boundary.
+    fail_closed: bool = True
 
 
 class ArtifactsSection(Frozen):
@@ -392,6 +417,7 @@ class AppConfig(Frozen):
     pipeline: PipelineSection = PipelineSection()
     steps: dict[str, StepCfg]
     artifacts: ArtifactsSection = ArtifactsSection()
+    gateway: GatewaySection = GatewaySection()
     policy: PolicySection = PolicySection()
     gates: dict[str, GateCfg] = Field(default_factory=dict)
     plugins: dict[str, PluginCfg] = Field(default_factory=dict)
@@ -500,6 +526,24 @@ class AppConfig(Frozen):
                 raise ConfigError(
                     f"isolation rule '{rule.rule_id}' is unsatisfiable: "
                     "fewer than two distinct enabled backends available"
+                )
+
+        # 3b. every declared action is one the pipeline knows, and only the
+        #     steps the inventory sanctions may mutate
+        known = {"read", "create_artifact", "apply_patch", "run_test", "run_scan",
+                 "publish", "approve"}
+        mutating = {"apply_patch", "publish"}
+        for skey, scfg in self.steps.items():
+            unknown = set(scfg.allowed_actions) - known
+            if unknown:
+                raise ConfigError(
+                    f"step {skey}: unknown action(s) {sorted(unknown)}; "
+                    f"allowed: {sorted(known)}"
+                )
+            if set(scfg.allowed_actions) & mutating and scfg.risk_level == "low":
+                raise ConfigError(
+                    f"step {skey} may mutate ({sorted(set(scfg.allowed_actions) & mutating)}) "
+                    f"but declares risk_level 'low'; a mutating step is at least 'medium'"
                 )
 
         # 4. the two human gates cannot be turned off by any config path

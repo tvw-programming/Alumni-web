@@ -41,6 +41,34 @@ class PolicyEngine:
             )
         self.assert_budget()
 
+    def assert_action(self, step: int, action: str) -> None:
+        """Refuse an action the step's profile does not grant.
+
+        Deny by default: a step with no `allowed_actions` may only read. That
+        way a profile someone forgot to write fails closed, which is the
+        opposite of the usual configuration accident.
+
+        This runs in-process and is therefore advisory for a backend that shells
+        out — see ADR 0004. The gateway enforces the same list where it can
+        actually bind.
+        """
+        cfg = self.cfg.step_cfg(step)
+        allowed = set(cfg.allowed_actions) or {"read"}
+
+        if action not in allowed:
+            raise PolicyViolation(
+                f"step {step:02d} is not permitted to {action}; "
+                f"its profile allows {sorted(allowed)}"
+            )
+
+    def assert_tool(self, step: int, tool: str) -> None:
+        """Refuse a tool the step's profile names as prohibited."""
+        prohibited = set(self.cfg.step_cfg(step).prohibited_tools)
+        if tool in prohibited:
+            raise PolicyViolation(
+                f"step {step:02d} is prohibited from using {tool!r}"
+            )
+
     def _gate_approved(self, step: int) -> bool:
         """The *latest* decision on a gate, not any decision it ever carried.
 

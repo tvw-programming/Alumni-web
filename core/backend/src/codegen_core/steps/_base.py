@@ -19,6 +19,7 @@ from typing import Any
 from ..core.component import Agent
 from ..core.envelope import Envelope
 from ..core.parts import structured
+from ..core.tasks import TaskTracker
 from ..schemas import REGISTRY
 
 SCHEMA_INSTRUCTION = """
@@ -108,26 +109,47 @@ class JsonAgentStep(Agent):
     # ------------------------------------------------------------------ #
     def handle(self, env: Envelope, ctx: Any) -> Envelope:
         step_cfg = ctx.cfg.step_cfg(self.step)
-        system = ctx.prompts.load(step_cfg.prompt)
-        user = self.build_user_prompt(env, ctx)
 
-        completion, backend = ctx.router.complete(self.step, system, user)
-        payload = completion.as_json()
+        # The four things every agent step does. Declared before any of them
+        # runs, so the monitor can draw the whole checklist rather than growing
+        # it a row at a time.
+        tracker = TaskTracker(ctx.journal, self.step)
+        gather, generate, validate, persist = tracker.declare(
+            [
+                f"Gather inputs ({', '.join(self.consumes) or 'none'})",
+                f"Generate {self.emits} with the routed model",
+                f"Validate against {self.emits}",
+                f"Write artifact {self.slug}",
+            ]
+        )
 
-        model_cls = REGISTRY.get(self.emits)
-        if model_cls is not None and ctx.cfg.a2a.strict_schema_validation:
-            payload = model_cls.model_validate(payload).model_dump(mode="json")
+        with tracker.run(gather):
+            system = ctx.prompts.load(step_cfg.prompt)
+            user = self.build_user_prompt(env, ctx)
 
-        payload = self.post_process(payload, ctx)
-        ctx.remember(self.emits, payload)
+        with tracker.run(generate) as task:
+            completion, backend = ctx.router.complete(self.step, system, user)
+            task.detail = f"{backend.model_id}"
 
-        if self.ext == "json":
-            uri = ctx.artifacts.write(self.step, self.slug, payload, ext="json")
-        else:
-            uri = ctx.artifacts.write(
-                self.step, self.slug, self.render_markdown(payload), ext="md",
-                output_class="specification",
-            )
+        with tracker.run(validate) as task:
+            payload = completion.as_json()
+            model_cls = REGISTRY.get(self.emits)
+            if model_cls is not None and ctx.cfg.a2a.strict_schema_validation:
+                payload = model_cls.model_validate(payload).model_dump(mode="json")
+            else:
+                task.detail = "strict_schema_validation off"
+            payload = self.post_process(payload, ctx)
+            ctx.remember(self.emits, payload)
+
+        with tracker.run(persist) as task:
+            if self.ext == "json":
+                uri = ctx.artifacts.write(self.step, self.slug, payload, ext="json")
+            else:
+                uri = ctx.artifacts.write(
+                    self.step, self.slug, self.render_markdown(payload), ext="md",
+                    output_class="specification",
+                )
+            task.detail = uri.rsplit("/", 1)[-1] if isinstance(uri, str) else None
 
         prov = ctx.provenance_for(self.step, prompt=system + user, usage=completion.usage)
         prov = prov.model_copy(update={"backend_id": backend.id, "model_id": backend.model_id})

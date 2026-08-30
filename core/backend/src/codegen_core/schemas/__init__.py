@@ -6,6 +6,7 @@ here. Rules:
   * schema_id in a JsonPart is the class name, so receivers can validate.
 """
 
+from .action import ActionIntentV1, IntentViolation, validate_intent
 from .analysis import AmbiguityReportV1, StoryAnalysisV1
 from .brd import ApprovalRecordV1, BrdV1
 from .impact import ChangePlanV1, ImpactManifestV1
@@ -21,8 +22,8 @@ REGISTRY = {
         JiraStoryV1, StoryAnalysisV1, AmbiguityReportV1, ProjectContextV1, BrdV1,
         ApprovalRecordV1, TestDesignV1, RepoUnderstandingV1, ImpactManifestV1,
         FeatureSpecV1, ChangePlanV1, RequirementCoverageV1, TestReportV1, CoverageV1,
-        SastReportV1, DastReportV1, AiReviewV1,
+        SastReportV1, DastReportV1, AiReviewV1, ActionIntentV1,
     )
 }
 
-__all__ = ["REGISTRY", *REGISTRY]
+__all__ = ["REGISTRY", "IntentViolation", "validate_intent", *REGISTRY]

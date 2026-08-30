@@ -12,6 +12,11 @@ openai = ["langchain-openai>=0.3"]
 ollama = ["langchain-ollama>=0.2"]
 bedrock = ["langchain-aws>=0.2"]
 dashboard = ["fastapi>=0.115", "uvicorn>=0.30"]
+tracing = ["opentelemetry-sdk>=1.27", "opentelemetry-exporter-otlp-proto-http>=1.27"]
+# Semantic validators only. Structure is pydantic's job; see core/guardrails.py.
+guardrails = ["guardrails-ai>=0.5"]
+# The MCP execution gateway. A separate process; see docs/adr/0004.
+gateway = ["mcp>=2.1"]
 # Reading a .pdf or .docx a reviewer uploads at a gate. Optional: without them
 # those uploads are refused with a message, and .md keeps working.
 documents = ["pymupdf>=1.24", "python-docx>=1.1"]
@@ -21,6 +26,7 @@ dev = ["pytest>=8", "pytest-cov", "ruff", "mypy", "fastapi", "httpx"]
 [project.scripts]
 codegen-core = "codegen_core.cli:main"
 codegen-core-monitor = "codegen_core.dashboard.api:main"
+codegen-core-gateway = "codegen_core.gateway.server:main"
 
 [build-system]
 requires = ["hatchling"]

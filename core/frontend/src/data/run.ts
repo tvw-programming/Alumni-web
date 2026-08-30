@@ -1,4 +1,4 @@
-import type { Run, RunStep, StepStatus, Artifact } from '../types/workflow';
+import type { Run, RunStep, StepStatus, TaskStatus, Artifact } from '../types/workflow';
 import { stepDefinitions } from './steps';
 import { payloads } from './payloads';
 
@@ -96,6 +96,26 @@ function buildStep(index: number): RunStep {
     startedAt: started,
     durationMs: durations[n] ?? null,
     attempt: n === 12 ? 2 : 1,
+    // Only step 12 declares an intent today; the rest are read-only or
+    // artifact-producing, and a fabricated justification would misrepresent
+    // what the pipeline actually records.
+    actionIntent:
+      n === 12
+        ? {
+            action: 'apply_patch',
+            justification:
+              'Change app/services/exporter.py and app/api/users.py to satisfy AC-1, ' +
+              'bounded by the step-09 Impact Manifest (2 files, 300 LOC budget).',
+            targetFiles: ['app/services/exporter.py', 'app/api/users.py'],
+            riskLevel: 'critical',
+          }
+        : null,
+    riskLevel: RISK_BY_STEP[n] ?? 'low',
+    // Mirrors what JsonAgentStep declares, with progress consistent with the
+    // step's own status — a completed step showing half-done tasks would be a
+    // fixture teaching the wrong thing about the component.
+    tasks: buildTasks(n, status),
+    allowedActions: n === 12 ? ['read', 'create_artifact', 'apply_patch'] : ['read', 'create_artifact'],
     provenance: {
       backendId: m?.backend ?? null,
       modelId: m?.model ?? null,
@@ -167,6 +187,33 @@ function buildStep(index: number): RunStep {
   }
 
   return step;
+}
+
+/** Mirrors config.steps.NN.risk_level; see docs/11-mutation-inventory.md. */
+const RISK_BY_STEP: Record<number, RunStep['riskLevel']> = {
+  9: 'medium', 12: 'critical', 13: 'medium', 15: 'high',
+  16: 'medium', 17: 'medium', 19: 'medium', 21: 'high', 22: 'high', 23: 'medium',
+};
+
+/** The four tasks every agent step declares, in the state its status implies. */
+function buildTasks(step: number, status: StepStatus): RunStep['tasks'] {
+  const titles = ['Gather inputs', 'Generate with the routed model', 'Validate schema', 'Write artifact'];
+  const finished = status === 'SUCCESS' || status === 'APPROVED';
+  const activeIndex = status === 'RUNNING' ? 1 : status === 'FAILED' ? 2 : -1;
+
+  return titles.map((title, i): RunStep['tasks'][number] => {
+    let taskStatus: TaskStatus = 'pending';
+    if (finished || i < activeIndex) taskStatus = 'done';
+    else if (i === activeIndex) taskStatus = status === 'FAILED' ? 'failed' : 'running';
+
+    return {
+      id: `${String(step).padStart(2, '0')}.${i + 1}`,
+      title,
+      status: taskStatus,
+      detail: null,
+      durationMs: finished ? 400 + i * 210 : null,
+    };
+  });
 }
 
 export function buildRun(): Run {

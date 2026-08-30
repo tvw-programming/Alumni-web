@@ -730,7 +730,11 @@
       "retry": {
         "max_attempts": 3,
         "backoff_s": 5
-      }
+      },
+      "risk_level": "low",
+      "allowed_actions": [
+        "read"
+      ]
     },
     "02": {
       "enabled": true,
@@ -741,20 +745,35 @@
       "retry": {
         "max_attempts": 2,
         "backoff_s": 10
-      }
+      },
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "03": {
       "enabled": true,
       "component": "agent",
       "prompt": "03_gap_detection.system.md",
       "timeout_s": 300,
-      "on_ambiguity": "halt_and_ticket"
+      "on_ambiguity": "halt_and_ticket",
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "04": {
       "enabled": true,
       "component": "agent",
       "prompt": "04_project_context.system.md",
-      "timeout_s": 600
+      "timeout_s": 600,
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "05": {
       "enabled": true,
@@ -763,43 +782,77 @@
       "timeout_s": 600,
       "render_documents": [
         "pdf"
+      ],
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
       ]
     },
     "06": {
       "enabled": true,
       "component": "gate",
       "locked": true,
-      "timeout_s": 604800
+      "timeout_s": 604800,
+      "risk_level": "low",
+      "allowed_actions": [
+        "approve"
+      ]
     },
     "07": {
       "enabled": true,
       "component": "agent",
       "prompt": "07_test_design.system.md",
-      "timeout_s": 600
+      "timeout_s": 600,
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "08": {
       "enabled": true,
       "component": "agent",
       "prompt": "08_repo_understanding.system.md",
-      "timeout_s": 900
+      "timeout_s": 900,
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "09": {
       "enabled": true,
       "component": "agent",
       "prompt": "09_impact_analysis.system.md",
-      "timeout_s": 600
+      "timeout_s": 600,
+      "risk_level": "medium",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "10": {
       "enabled": true,
       "component": "agent",
       "prompt": "10_feature_spec.system.md",
-      "timeout_s": 600
+      "timeout_s": 600,
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "11": {
       "enabled": true,
       "component": "agent",
       "prompt": "11_change_plan.system.md",
-      "timeout_s": 300
+      "timeout_s": 300,
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "12": {
       "enabled": true,
@@ -809,36 +862,82 @@
       "retry": {
         "max_attempts": 2,
         "backoff_s": 15
-      }
+      },
+      "risk_level": "critical",
+      "allowed_actions": [
+        "read",
+        "create_artifact",
+        "apply_patch"
+      ],
+      "prohibited_tools": [
+        "shell.execute",
+        "release.deploy"
+      ]
     },
     "13": {
       "enabled": true,
       "component": "agent",
       "prompt": "13_verification.system.md",
-      "timeout_s": 600
+      "timeout_s": 600,
+      "risk_level": "medium",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ],
+      "prohibited_tools": [
+        "apply_patch",
+        "shell.execute"
+      ]
     },
     "14": {
       "enabled": true,
       "component": "tool",
-      "timeout_s": 600
+      "timeout_s": 600,
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ]
     },
     "15": {
       "enabled": true,
       "component": "agent",
       "prompt": "15_test_sync.system.md",
-      "timeout_s": 900
+      "timeout_s": 900,
+      "risk_level": "high",
+      "allowed_actions": [
+        "read",
+        "create_artifact",
+        "apply_patch"
+      ],
+      "prohibited_tools": [
+        "shell.execute",
+        "release.deploy"
+      ]
     },
     "16": {
       "enabled": true,
       "component": "plugin",
       "binding": "test_runner",
-      "timeout_s": 1800
+      "timeout_s": 1800,
+      "risk_level": "medium",
+      "allowed_actions": [
+        "read",
+        "create_artifact",
+        "run_test"
+      ]
     },
     "17": {
       "enabled": true,
       "component": "plugin",
       "binding": "e2e_runner",
-      "timeout_s": 3600
+      "timeout_s": 3600,
+      "risk_level": "medium",
+      "allowed_actions": [
+        "read",
+        "create_artifact",
+        "run_test"
+      ]
     },
     "18": {
       "enabled": true,
@@ -848,14 +947,26 @@
         "sca",
         "secrets"
       ],
-      "timeout_s": 1800
+      "timeout_s": 1800,
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact",
+        "run_scan"
+      ]
     },
     "19": {
       "enabled": true,
       "component": "plugin",
       "binding": "dast",
       "timeout_s": 3600,
-      "prompt": "19_dast_triage.system.md"
+      "prompt": "19_dast_triage.system.md",
+      "risk_level": "medium",
+      "allowed_actions": [
+        "read",
+        "create_artifact",
+        "run_scan"
+      ]
     },
     "20": {
       "enabled": true,
@@ -864,38 +975,75 @@
       "timeout_s": 900,
       "render_documents": [
         "pdf"
+      ],
+      "risk_level": "low",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
       ]
     },
     "21": {
       "enabled": true,
       "component": "agent",
       "prompt": "21_docs_update.system.md",
-      "timeout_s": 600
+      "timeout_s": 600,
+      "risk_level": "high",
+      "allowed_actions": [
+        "read",
+        "create_artifact",
+        "apply_patch"
+      ],
+      "prohibited_tools": [
+        "shell.execute",
+        "release.deploy"
+      ]
     },
     "22": {
       "enabled": true,
       "component": "plugin",
       "binding": "vcs",
-      "timeout_s": 300
+      "timeout_s": 300,
+      "risk_level": "high",
+      "allowed_actions": [
+        "read",
+        "create_artifact",
+        "publish"
+      ]
     },
     "23": {
       "enabled": true,
       "component": "agent",
       "prompt": "23_ai_pr_review.system.md",
-      "timeout_s": 900
+      "timeout_s": 900,
+      "risk_level": "medium",
+      "allowed_actions": [
+        "read",
+        "create_artifact"
+      ],
+      "prohibited_tools": [
+        "apply_patch",
+        "shell.execute"
+      ]
     },
     "24": {
       "enabled": true,
       "component": "gate",
       "locked": true,
-      "timeout_s": 1209600
+      "timeout_s": 1209600,
+      "risk_level": "low",
+      "allowed_actions": [
+        "approve"
+      ]
     }
   },
   "artifacts": {
     "naming_template": "{step:02d}_{slug}{variant_suffix}__{job_id}__v{version}.{ext}",
     "variant_suffix_template": "__{variant}",
     "extension_rules": {
-      "structured": ["json", "diff"],
+      "structured": [
+        "json",
+        "diff"
+      ],
       "document": [
         "pdf",
         "docx"

@@ -24,6 +24,7 @@ import RunHeader from '../components/dashboard/RunHeader';
 import StartRunDialog from '../components/dashboard/StartRunDialog';
 import PhaseStepper from '../components/dashboard/PhaseStepper';
 import RunSpine from '../components/dashboard/RunSpine';
+import { focusedStep } from '../hooks/useKeepStepInView';
 import StepDialog from '../components/step/StepDialog';
 import RevisionDialog from '../components/step/RevisionDialog';
 import ArtifactsDialog from '../components/artifacts/ArtifactsDialog';
@@ -192,6 +193,9 @@ export default function DashboardPage({ controller }: Props) {
   }
 
   const blocked = run.blockedAt === null ? null : run.steps.find((s) => s.step === run.blockedAt);
+  // The step the run is on. Same helper the view-centring uses, so the row that
+  // scrolls into view is the row showing its tasks.
+  const currentStep = focusedStep(run.steps)?.step ?? null;
 
   return (
     <Box sx={{ px: { xs: 2, md: 3 }, py: { xs: 2.5, md: 3.5 }, width: '100%' }}>
@@ -317,6 +321,7 @@ export default function DashboardPage({ controller }: Props) {
 
       <StepDialog
         step={selected}
+        isCurrent={selected !== null && selected.step === currentStep}
         open={selected !== null}
         busy={loading}
         onClose={() => setSelected(null)}

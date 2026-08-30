@@ -40,13 +40,19 @@ class Telemetry:
     def __init__(self, cfg: Any, journal: Any) -> None:
         self.cfg = cfg
         self.journal = journal
+        # Inert unless observability.trace_sink is enabled and the SDK is
+        # installed; see core/tracing.py.
+        from .tracing import Tracing
+
+        self.tracing = Tracing(cfg)
 
     @contextmanager
-    def step_timer(self, step: int, name: str):
+    def step_timer(self, step: int, name: str, kind: str = "agent", risk: str = "low"):
         start = time.monotonic()
         log.info("step start", extra={"extra_fields": {"step": step, "component": name}})
         try:
-            yield
+            with self.tracing.step_span(step, name, kind, risk):
+                yield
         finally:
             elapsed = round(time.monotonic() - start, 3)
             log.info("step end", extra={"extra_fields": {"step": step, "latency_s": elapsed}})
@@ -62,3 +68,11 @@ class Telemetry:
         }
         wanted = self.cfg.observability.emit_per_step or list(fields)
         log.info("step metrics", extra={"extra_fields": {k: v for k, v in fields.items() if k in wanted or k == "step"}})
+
+        # Same values, exported rather than re-measured: the span and
+        # journal.total_cost_usd() read from one Provenance.
+        if self.tracing.enabled:
+            from opentelemetry import trace
+
+            span = trace.get_current_span()
+            self.tracing.record_generation(span, env.provenance)

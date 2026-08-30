@@ -6,6 +6,8 @@ import LaunchIcon from '@mui/icons-material/OpenInNew';
 import type { RunStep, StepAction } from '../../types/workflow';
 import { fonts, kindMeta, statusMeta, tokens } from '../../theme';
 import { StatusDot } from './StatusChip';
+import StepTasks from './StepTasks';
+import { focusedStep } from '../../hooks/useKeepStepInView';
 import { availableActions, isInspectable, rerunHint } from './ActionButtons';
 
 interface Props {
@@ -22,6 +24,8 @@ interface Row {
   kind: RunStep['kind'];
   status: RunStep['status'];
   model: string;
+  risk: RunStep['riskLevel'];
+  tasks: RunStep['tasks'];
   durationMs: number | null;
   costUsd: number;
   artifacts: number;
@@ -30,6 +34,16 @@ interface Row {
 
 /** The same 24 steps as a sortable, filterable table for people who scan rather than read. */
 export default function StepTable({ steps, onInspect, onAction, busy }: Props) {
+  /**
+   * Tasks belong to the step being watched, and nowhere else.
+   *
+   * A completed step's four ticks are noise: the step's own status already says
+   * it finished, and twenty-four rows of them bury the one row that is moving.
+   * Same `focusedStep` the view-centering uses, so "current" means one thing in
+   * this app.
+   */
+  const currentStep = useMemo(() => focusedStep(steps)?.step ?? null, [steps]);
+
   const rows: Row[] = useMemo(
     () =>
       steps.map((s) => ({
@@ -39,6 +53,8 @@ export default function StepTable({ steps, onInspect, onAction, busy }: Props) {
         kind: s.kind,
         status: s.status,
         model: s.provenance.modelId ?? '—',
+        risk: s.riskLevel,
+        tasks: s.tasks,
         durationMs: s.durationMs,
         costUsd: s.provenance.costUsd,
         artifacts: s.artifacts.length,
@@ -72,6 +88,45 @@ export default function StepTable({ steps, onInspect, onAction, busy }: Props) {
       ),
     },
     { field: 'title', headerName: 'Step', flex: 1, minWidth: 210 },
+    {
+      field: 'tasks',
+      headerName: 'Tasks',
+      width: 120,
+      sortable: false,
+      // Pips plus a count; the titles and timings live on the tooltip so the
+      // row stays scannable.
+      renderCell: (p: GridRenderCellParams<Row>) =>
+        p.row.step === currentStep ? (
+          <Stack sx={{ height: '100%', justifyContent: 'center' }}>
+            {/* Every task of this step, whatever its status — the checklist is
+                only meaningful whole. */}
+            <StepTasks tasks={p.row.tasks} dense />
+          </Stack>
+        ) : null,
+    },
+    {
+      field: 'risk',
+      headerName: 'Risk',
+      width: 96,
+      // A word, not a colour: the four levels have to survive greyscale and a
+      // printed run report.
+      renderCell: (p: GridRenderCellParams<Row>) => (
+        <Typography
+          sx={{
+            fontSize: 11.5,
+            fontWeight: p.row.risk === 'critical' || p.row.risk === 'high' ? 600 : 400,
+            color:
+              p.row.risk === 'critical' || p.row.risk === 'high'
+                ? tokens.fail
+                : p.row.risk === 'medium'
+                  ? tokens.signal
+                  : 'text.secondary',
+          }}
+        >
+          {p.row.risk}
+        </Typography>
+      ),
+    },
     {
       field: 'kind',
       headerName: 'Kind',

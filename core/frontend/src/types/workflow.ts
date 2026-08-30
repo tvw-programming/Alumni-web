@@ -118,6 +118,37 @@ export interface GateRevision {
   } | null;
 }
 
+/**
+ * Why a step acted, declared before it acted.
+ *
+ * Provenance answers which model produced an artifact; this answers why these
+ * files. Null until the step declares one — a step that failed before
+ * declaring has none, which is itself informative.
+ */
+export interface ActionIntent {
+  action: string;
+  justification: string;
+  targetFiles: string[];
+  riskLevel: 'low' | 'medium' | 'high' | 'critical';
+}
+
+export type TaskStatus = 'pending' | 'running' | 'done' | 'failed' | 'skipped';
+
+/**
+ * One unit of work inside a step.
+ *
+ * A step is what the pipeline resumes from; a task is what a person watches.
+ * Between "step 12 running" and "step 12 finished" there is a minute of nothing
+ * otherwise.
+ */
+export interface StepTask {
+  id: string;
+  title: string;
+  status: TaskStatus;
+  detail: string | null;
+  durationMs: number | null;
+}
+
 /** Live state of one step within a run. */
 export interface RunStep extends StepDefinition {
   status: StepStatus;
@@ -125,6 +156,12 @@ export interface RunStep extends StepDefinition {
   durationMs: number | null;
   attempt: number;
   provenance: Provenance;
+  /** Why the step acted, declared before it did. Null until it declares one. */
+  actionIntent: ActionIntent | null;
+  /** Declared upfront, so the checklist is whole from the start. */
+  tasks: StepTask[];
+  riskLevel: 'low' | 'medium' | 'high' | 'critical';
+  allowedActions: string[];
   artifacts: Artifact[];
   input: unknown;
   output: unknown;

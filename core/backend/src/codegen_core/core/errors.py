@@ -17,6 +17,15 @@ class BackendError(CodeGenCoreError):
     """An LLM backend failed or is misconfigured."""
 
 
+class GatewayUnavailable(CodeGenCoreError):
+    """The MCP gateway could not be reached.
+
+    Distinct from PolicyViolation: that means policy refused the request, this
+    means we do not know what policy would have said. The run halts either way,
+    but only one of them is a decision.
+    """
+
+
 class UnsupportedModality(CodeGenCoreError):
     """A2A part could not be adapted to anything the recipient accepts."""
 

@@ -23,6 +23,7 @@ import NorthIcon from '@mui/icons-material/NorthEast';
 import DescriptionIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import type { RunStep, StepAction } from '../../types/workflow';
 import type { DecisionOptions } from '../../hooks/useRun';
+import StepTasks from '../dashboard/StepTasks';
 import { fonts, kindMeta, statusMeta, tokens } from '../../theme';
 import StatusChip from '../dashboard/StatusChip';
 import ActionButtons, { awaitingDocument } from '../dashboard/ActionButtons';
@@ -33,6 +34,14 @@ import JsonView from './JsonView';
 
 interface Props {
   step: RunStep | null;
+  /**
+   * Whether this is the step the run is on. Tasks show only then — a finished
+   * step's checklist restates what its status already said.
+   *
+   * Passed in rather than derived here: the dialog holds one step, and the rule
+   * needs the whole list to decide.
+   */
+  isCurrent?: boolean;
   open: boolean;
   onClose: () => void;
   onAction: (step: RunStep, action: StepAction, decision?: DecisionOptions) => void;
@@ -54,7 +63,7 @@ function Meta({ label, value }: { label: string; value: React.ReactNode }) {
   );
 }
 
-export default function StepDialog({ step, open, onClose, onAction, busy }: Props) {
+export default function StepDialog({ step, isCurrent = false, open, onClose, onAction, busy }: Props) {
   // A gate is a decision about a document, so it opens on the document (tab 2)
   // rather than on the request that named it. Set on the first render as well as
   // on reopen, or a gate flashes the Input tab before the effect corrects it.
@@ -269,6 +278,38 @@ export default function StepDialog({ step, open, onClose, onAction, busy }: Prop
               p: 2,
             }}
           >
+            {isCurrent && step.tasks.length > 0 && (
+              <Box sx={{ gridColumn: '1 / -1', mb: 1.5 }}>
+                <StepTasks tasks={step.tasks} />
+              </Box>
+            )}
+
+            {step.actionIntent && (
+              <Box sx={{ gridColumn: '1 / -1', mb: 1 }}>
+                <Typography
+                  sx={{
+                    fontFamily: fonts.mono,
+                    fontSize: 10.5,
+                    letterSpacing: '.08em',
+                    textTransform: 'uppercase',
+                    color: 'text.secondary',
+                  }}
+                >
+                  Why this step acted
+                </Typography>
+                <Typography sx={{ fontSize: 13.5, mt: 0.5 }}>
+                  {step.actionIntent.justification}
+                </Typography>
+                {step.actionIntent.targetFiles.length > 0 && (
+                  <Typography
+                    sx={{ fontFamily: fonts.mono, fontSize: 11.5, color: 'text.secondary', mt: 0.5 }}
+                  >
+                    {step.actionIntent.action} · {step.actionIntent.targetFiles.join(', ')}
+                  </Typography>
+                )}
+              </Box>
+            )}
+            <Meta label="Risk" value={step.riskLevel} />
             <Meta label="Backend" value={step.provenance.backendId ?? '—'} />
             <Meta label="Model" value={step.provenance.modelId ?? 'no model — deterministic'} />
             <Meta label="Attempt" value={step.attempt} />

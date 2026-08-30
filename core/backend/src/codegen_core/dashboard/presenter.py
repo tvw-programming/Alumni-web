@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any
 
 from ..core.component import Component
+from ..core.tasks import tasks_for_step
 from ..orchestrator.gate_revision import REVISION_EVENT, GateRevisionService
 
 #: Which phase each step belongs to, for the coarse progress read.
@@ -415,6 +416,18 @@ class RunPresenter:
             }
         return None
 
+    def _action_intent(self, step: int) -> dict | None:
+        """The step's declared intent, if it got as far as declaring one."""
+        for entry in reversed(self.journal.entries()):
+            if entry.get("event") == "action_intent" and entry.get("step") == step:
+                return {
+                    "action": entry.get("action"),
+                    "justification": entry.get("justification"),
+                    "targetFiles": entry.get("target_files", []),
+                    "riskLevel": entry.get("risk_level"),
+                }
+        return None
+
     # ------------------------------------------------------------------ #
     def step_payload(self, step: int, component: Component) -> dict:
         records = self._step_records(step)
@@ -449,6 +462,15 @@ class RunPresenter:
                 "tokensOut": prov.get("tokens_out", 0),
                 "costUsd": prov.get("cost_usd", 0.0),
             },
+            # Why the step did it, beside what it cost. Read from the journal
+            # event rather than the artifact so it is present even when the step
+            # failed after declaring its intent.
+            # Sub-step progress, rebuilt from the journal so a resumed run shows
+            # what it already did rather than an empty checklist.
+            "tasks": tasks_for_step(self.journal, step),
+            "actionIntent": self._action_intent(step),
+            "riskLevel": getattr(step_cfg, "risk_level", "low") if step_cfg else "low",
+            "allowedActions": list(getattr(step_cfg, "allowed_actions", []) or []) if step_cfg else [],
             "artifacts": self._artifacts(step),
             "input": self._input_for(component),
             "output": self._read_json_artifact(step),
