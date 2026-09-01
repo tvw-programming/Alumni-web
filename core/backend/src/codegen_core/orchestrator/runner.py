@@ -135,9 +135,13 @@ class PipelineRunner:
             env_out = self._execute(component, ctx, force=True)
         except (PipelineHalted, BudgetExceeded) as exc:
             return self._halt(ctx, step, str(exc))
-        except CodeGenCoreError as exc:
-            ctx.journal.append_event("step_error", step=step, error=str(exc))
-            return self._halt(ctx, step, f"retry of step {step:02d} failed: {exc}")
+        # Same breadth as the run loop, for the same reason: a retry that dies
+        # on an unexpected exception must leave the step recorded as failed, not
+        # as though it had never been attempted.
+        except Exception as exc:  # noqa: BLE001 - recorded, then halted
+            detail = self._describe(exc)
+            ctx.journal.append_event("step_error", step=step, error=detail)
+            return self._halt(ctx, step, f"retry of step {step:02d} failed: {detail}")
 
         if env_out.failed:
             return self._halt(ctx, step, f"retry of step {step:02d} failed with {env_out.status}")
@@ -167,8 +171,18 @@ class PipelineRunner:
                 env_out = self._execute(step, ctx)
             except (PipelineHalted, BudgetExceeded) as exc:
                 return self._halt(ctx, n, str(exc))
-            except CodeGenCoreError as exc:
-                ctx.journal.append_event("step_error", step=n, error=str(exc))
+            # Anything else the step raised. Deliberately `Exception` and not
+            # `CodeGenCoreError`: a pydantic ValidationError is a ValueError, so
+            # the narrower clause let it escape the loop and kill the process
+            # *before* the journal record was written at the end of _execute.
+            # A step that leaves no record is indistinguishable from one still
+            # working, so the monitor showed it as RUNNING for as long as anyone
+            # cared to look. Recording the failure is what makes it a failure a
+            # person can see, and retry.
+            except Exception as exc:  # noqa: BLE001 - recorded, then routed
+                ctx.journal.append_event(
+                    "step_error", step=n, error=self._describe(exc)
+                )
                 try:
                     n = self.remediation.next_step(n, "FAILED", ctx)
                     continue
@@ -298,6 +312,26 @@ class PipelineRunner:
             ctx, step.step, fingerprint, schemas,
             payload=ctx.recall(schemas[0]) if len(schemas) == 1 else None,
         )
+
+    @staticmethod
+    def _describe(exc: Exception) -> str:
+        """A one-line reason a reader can act on.
+
+        `str(exc)` alone is enough for the errors this codebase raises: they are
+        written to be read, and prefixing them with a class name would only add
+        noise to a sentence that already reads as one. It is not enough for the
+        ones this codebase merely propagates — a bare pydantic ValidationError
+        prints a multi-line report whose first line does not name the exception,
+        and an IndexError prints nothing at all. Those get their type in front,
+        so the journal says what kind of thing went wrong even when the message
+        is empty.
+        """
+        text = " ".join(str(exc).split())
+        if isinstance(exc, CodeGenCoreError):
+            return text
+        if not text:
+            return type(exc).__name__
+        return f"{type(exc).__name__}: {text[:500]}"
 
     def _halt(self, ctx: Any, step: int, reason: str) -> RunResult:
         ctx.journal.append_event("run_halted", step=step, reason=reason)

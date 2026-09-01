@@ -66,7 +66,7 @@ def test_every_step_carries_the_fields_the_ui_renders(client, completed_job):
     required = {
         "step", "name", "title", "category", "kind", "phase", "consumes", "produces",
         "rationale", "status", "startedAt", "durationMs", "attempt", "provenance",
-        "artifacts", "input", "output",
+        "artifacts", "input", "output", "tasks", "riskLevel", "allowedActions",
     }
     for step in run["steps"]:
         missing = required - set(step)
@@ -74,6 +74,28 @@ def test_every_step_carries_the_fields_the_ui_renders(client, completed_job):
         assert step["phase"] in set(PHASE_BY_STEP.values())
         assert step["kind"] in {"AGENT", "TOOL", "PLUGIN", "GATE"}
         assert set(step["provenance"]) >= {"backendId", "modelId", "tokensIn", "tokensOut", "costUsd"}
+
+
+def test_agent_steps_report_the_tasks_they_ran(client, completed_job):
+    """The per-step checklist the monitor draws under a running step.
+
+    Pinned because it is rebuilt from journal entries rather than stored: the
+    presenter reads the entries it cached at construction, and a refactor that
+    reaches for a journal attribute instead breaks every run page at once.
+    """
+    run = client.get(f"/api/runs/{completed_job.job_id}").json()
+
+    agent_steps = [s for s in run["steps"] if s["kind"] == "AGENT" and s["tasks"]]
+    assert agent_steps, "no step reported any task"
+
+    for step in agent_steps:
+        for task in step["tasks"]:
+            assert set(task) == {"id", "title", "status", "detail", "durationMs"}
+            assert task["id"].startswith(f"{step['step']:02d}.")
+            assert task["status"] in {"pending", "running", "done", "failed", "skipped"}
+        # A finished run must not leave anything mid-flight: a task stuck at
+        # "running" is indistinguishable in the UI from a slow one.
+        assert not [t for t in step["tasks"] if t["status"] == "running"]
 
 
 def test_rationale_explains_the_component_choice(client, completed_job):

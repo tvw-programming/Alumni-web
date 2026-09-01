@@ -112,16 +112,20 @@ class TaskTracker:
         )
 
 
-def tasks_for_step(journal: Any, step: int) -> list[dict[str, Any]]:
-    """Rebuild a step's task list from the journal.
+def tasks_for_step(entries: list[dict[str, Any]], step: int) -> list[dict[str, Any]]:
+    """Rebuild a step's task list from journal entries.
 
-    Last write wins per task id: the journal holds every transition, and what a
+    Takes the entries rather than the journal: a caller rendering all 24 steps
+    would otherwise re-read the file 24 times per request, and the presenter
+    already holds them.
+
+    Last write wins per task id — the journal holds every transition, and what a
     reader wants is the current state of each task in declaration order.
     """
     latest: dict[str, dict[str, Any]] = {}
     order: list[str] = []
 
-    for entry in journal.entries():
+    for entry in entries:
         if entry.get("event") != EVENT or entry.get("step") != step:
             continue
         task_id = entry.get("task_id")

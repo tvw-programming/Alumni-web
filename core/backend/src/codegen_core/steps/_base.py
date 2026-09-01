@@ -29,27 +29,74 @@ never invent content that is not supported by the inputs you were given.
 """.strip()
 
 
-def _json_type(prop: dict[str, Any], defs: dict[str, Any]) -> str:
+def _json_type(prop: dict[str, Any], defs: dict[str, Any], depth: int = 0) -> str:
     """The JSON type a field wants, phrased the way a prompt can state it.
 
-    A nested model is named by its keys rather than left as "object": the one
-    place that detail is load-bearing is AmbiguityReportV1.questions_for_human,
-    whose `blocks_step` decides whether the run halts for a human.
+    A nested model is described by its keys *and their types*: the one place
+    that detail is load-bearing is AmbiguityReportV1.questions_for_human, whose
+    `blocks_step` decides whether the run halts for a human.
+
+    Naming the keys without their types is what this used to do, and it left the
+    model to guess both of them. It guessed the way anyone would — `id: 1`,
+    because questions number from one, and `blocks_step: "backend"`, because the
+    name reads as "what does this block" and `backend` is a key of the analysis
+    the step was handed. Both are rejected by strict validation, and the step
+    dies on output it was never told how to shape.
+
+    `depth` stops a self-referential schema from recursing forever; one level of
+    nesting is also as much as a prompt line can carry legibly.
     """
     if "$ref" in prop:
         nested = defs.get(prop["$ref"].rsplit("/", 1)[-1], {})
-        keys = ", ".join(nested.get("properties", {}))
-        return f"object with keys: {keys}" if keys else "object"
+        props = nested.get("properties", {})
+        if not props:
+            return "object"
+        if depth >= 1:
+            return f"object with keys: {', '.join(props)}"
+        required = set(nested.get("required", []))
+        # Everything about one key stays inside that key's brackets. Trailing
+        # the optional marker outside them reads as another key entirely, which
+        # is the opposite of what a spec this fussy is for.
+        keys = ", ".join(
+            f"{name} ({_describe_field(spec, defs, depth + 1)}"
+            + ("" if name in required else "; optional")
+            + ")"
+            for name, spec in props.items()
+        )
+        return f"object with keys: {keys}"
     if "anyOf" in prop:
-        named = [_json_type(o, defs) for o in prop["anyOf"] if o.get("type") != "null"]
-        return named[0] if named else "any"
+        options = [o for o in prop["anyOf"] if o.get("type") != "null"]
+        nullable = len(options) != len(prop["anyOf"])
+        named = [_json_type(o, defs, depth) for o in options]
+        if not named:
+            return "any"
+        # "number or null" rather than "number": a field that may be omitted is
+        # one the model is otherwise tempted to fill with something wrong.
+        return f"{named[0]} or null" if nullable else named[0]
     kind = prop.get("type")
     if kind == "array":
-        return f"array of {_json_type(prop.get('items', {}), defs)}"
+        return f"array of {_json_type(prop.get('items', {}), defs, depth)}"
     if kind == "object":
         values = prop.get("additionalProperties")
-        return f"object of {_json_type(values, defs)}" if isinstance(values, dict) else "object"
+        return (
+            f"object of {_json_type(values, defs, depth)}"
+            if isinstance(values, dict)
+            else "object"
+        )
     return {"integer": "number", "boolean": "true or false"}.get(kind, kind or "any")
+
+
+def _describe_field(prop: dict[str, Any], defs: dict[str, Any], depth: int = 0) -> str:
+    """A field's type, plus whatever the schema says it means.
+
+    A type alone fixes the shape but not the sense: told only that `blocks_step`
+    is a number, a model still has to guess which numbering. The description is
+    where the schema already answers that, so it goes in the prompt rather than
+    staying in the source for people to read.
+    """
+    kind = _json_type(prop, defs, depth)
+    note = " ".join(str(prop.get("description", "")).split())
+    return f"{kind} — {note}" if note else kind
 
 
 def field_spec(schema_id: str) -> str:
@@ -67,7 +114,8 @@ def field_spec(schema_id: str) -> str:
     defs = schema.get("$defs", {})
     required = set(schema.get("required", []))
     lines = [
-        f"- {name}: {_json_type(prop, defs)}" + (" (required)" if name in required else "")
+        f"- {name}: {_describe_field(prop, defs)}"
+        + (" (required)" if name in required else "")
         for name, prop in schema.get("properties", {}).items()
     ]
     return f"### {schema_id} fields\n" + "\n".join(lines) if lines else ""

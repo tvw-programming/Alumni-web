@@ -11,9 +11,11 @@ interface Props {
   tasks: StepTask[];
   /** Compact hides titles and shows only the pips — for a dense table row. */
   dense?: boolean;
+  /** Dense only: drop the n/m text where the row has no width for it. */
+  hideCount?: boolean;
 }
 
-const STATUS_LABEL: Record<TaskStatus, string> = {
+export const TASK_STATUS_LABEL: Record<TaskStatus, string> = {
   pending: 'Not started',
   running: 'Running',
   done: 'Done',
@@ -21,7 +23,7 @@ const STATUS_LABEL: Record<TaskStatus, string> = {
   skipped: 'Skipped',
 };
 
-function statusColor(status: TaskStatus): string {
+export function statusColor(status: TaskStatus): string {
   switch (status) {
     case 'done':
       return tokens.pass;
@@ -48,7 +50,7 @@ function statusColor(status: TaskStatus): string {
  * scanned for *where it is*, and four numbers in the row defeat that. The
  * detail is one hover away for whoever needs it.
  */
-export default function StepTasks({ tasks, dense = false }: Props) {
+export default function StepTasks({ tasks, dense = false, hideCount = false }: Props) {
   const { done, total, running } = useMemo(() => {
     const finished = tasks.filter((t) => t.status === 'done' || t.status === 'skipped').length;
     return {
@@ -102,16 +104,18 @@ export default function StepTasks({ tasks, dense = false }: Props) {
               }}
             />
           ))}
-          <Typography
-            sx={{
-              ml: 0.5,
-              fontSize: 11,
-              color: 'text.secondary',
-              fontVariantNumeric: 'tabular-nums',
-            }}
-          >
-            {done}/{total}
-          </Typography>
+          {!hideCount && (
+            <Typography
+              sx={{
+                ml: 0.5,
+                fontSize: 11,
+                color: 'text.secondary',
+                fontVariantNumeric: 'tabular-nums',
+              }}
+            >
+              {done}/{total}
+            </Typography>
+          )}
         </Stack>
       </Tooltip>
     );
@@ -193,7 +197,7 @@ export default function StepTasks({ tasks, dense = false }: Props) {
 }
 
 /** Shape as well as colour, so status survives greyscale. */
-function TaskGlyph({ status }: { status: TaskStatus }) {
+export function TaskGlyph({ status }: { status: TaskStatus }) {
   const color = statusColor(status);
 
   if (status === 'done') {
@@ -207,7 +211,7 @@ function TaskGlyph({ status }: { status: TaskStatus }) {
   }
   return (
     <Box
-      aria-label={STATUS_LABEL[status]}
+      aria-label={TASK_STATUS_LABEL[status]}
       sx={{
         width: 10,
         height: 10,

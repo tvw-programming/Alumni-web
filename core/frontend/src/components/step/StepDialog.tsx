@@ -21,6 +21,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import SouthIcon from '@mui/icons-material/SouthEast';
 import NorthIcon from '@mui/icons-material/NorthEast';
 import DescriptionIcon from '@mui/icons-material/InsertDriveFileOutlined';
+import HelpIcon from '@mui/icons-material/HelpOutlineOutlined';
 import type { RunStep, StepAction } from '../../types/workflow';
 import type { DecisionOptions } from '../../hooks/useRun';
 import StepTasks from '../dashboard/StepTasks';
@@ -183,9 +184,58 @@ export default function StepDialog({ step, isCurrent = false, open, onClose, onA
       </Box>
 
       <DialogContent sx={{ px: 3, py: 2.5 }}>
+        {/* The questions come before the error, because on a NEEDS_INPUT step
+            they *are* the finding: the error line says the run stopped, and
+            these say what it is waiting to be told. Reading them in the other
+            order makes a reader hunt for the actionable half. */}
+        {step.blockingQuestions && step.blockingQuestions.length > 0 && (
+          <Alert
+            severity="warning"
+            variant="outlined"
+            icon={<HelpIcon fontSize="inherit" />}
+            sx={{ mb: 2.5, borderColor: alpha(tokens.signal, 0.4), '& .MuiAlert-message': { width: '100%' } }}
+          >
+            <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
+              {step.blockingQuestions.length} question
+              {step.blockingQuestions.length === 1 ? '' : 's'} must be answered before the run
+              continues
+            </Typography>
+            <Stack spacing={1}>
+              {step.blockingQuestions.map((q) => (
+                <Stack key={q.id} direction="row" spacing={1.25} sx={{ alignItems: 'baseline' }}>
+                  <Typography
+                    sx={{ fontFamily: fonts.mono, fontSize: 11, color: tokens.signal, flexShrink: 0 }}
+                  >
+                    {q.id}
+                  </Typography>
+                  <Typography variant="body2" sx={{ flex: 1 }}>
+                    {q.text}
+                  </Typography>
+                  {q.blocksStep !== null && (
+                    <Typography
+                      sx={{ fontFamily: fonts.mono, fontSize: 10.5, color: 'text.secondary', flexShrink: 0 }}
+                    >
+                      blocks {String(q.blocksStep).padStart(2, '0')}
+                    </Typography>
+                  )}
+                </Stack>
+              ))}
+            </Stack>
+            <Typography
+              variant="body2"
+              sx={{ mt: 1.5, fontSize: 12, color: 'text.secondary' }}
+            >
+              Answering these means starting a run from a ticket that says more — re-running this
+              step reads the same ticket and asks the same questions.
+            </Typography>
+          </Alert>
+        )}
+
         {step.error && (
           <Alert
-            severity={step.status === 'BLOCKED' ? 'warning' : 'error'}
+            severity={
+              step.status === 'BLOCKED' || step.status === 'NEEDS_INPUT' ? 'warning' : 'error'
+            }
             variant="outlined"
             sx={{ mb: 2.5, borderColor: alpha(meta.color, 0.4), '& .MuiAlert-message': { width: '100%' } }}
           >

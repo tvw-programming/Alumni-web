@@ -215,7 +215,9 @@ export default function RunHeader({
                     ? 'AWAITING_APPROVAL'
                     : run.status === 'COMPLETED'
                       ? 'SUCCESS'
-                      : 'RUNNING'
+                      : run.status === 'STALLED'
+                        ? 'STALLED'
+                        : 'RUNNING'
               }
             />
             <Typography variant="caption" sx={{ color: 'text.secondary' }}>

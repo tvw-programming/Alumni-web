@@ -20,11 +20,23 @@ class ImpactManifestV1(BaseModel):
 
 
 class OrderedChange(BaseModel):
-    seq: int
-    layer: str              # schema | repository | service | api | ui | tests
-    file: str
-    action: str             # create | modify | delete
-    rationale: str = ""
+    """One edit in the plan step 12 works through.
+
+    `layer` is a closed vocabulary and step 11 sorts on it. A value outside the
+    list does not fail — it sorts to the end — so a model inventing "frontend"
+    for "ui" quietly reorders the build instead of stopping it. That silence is
+    why the permitted values are stated here rather than left to a comment.
+    """
+
+    seq: int = Field(description="1-based position in the build order")
+    layer: str = Field(
+        description=(
+            "exactly one of: schema, migration, repository, service, api, ui, tests, docs"
+        )
+    )
+    file: str = Field(description="repository-relative path of the file to change")
+    action: str = Field(description="exactly one of: create, modify, delete")
+    rationale: str = Field(default="", description="why this change is needed")
 
 
 class ChangePlanV1(BaseModel):

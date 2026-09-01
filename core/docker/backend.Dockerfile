@@ -34,6 +34,9 @@ COPY backend/pyproject.toml ./
 # Every wheel below publishes manylinux_aarch64, so none of this compiles.
 # pymupdf and python-docx are what let a reviewer answer a rejected gate with a
 # .pdf or .docx; without them that upload is refused and .md still works.
+# guardrails-ai is not optional here despite being an extra: step 12 refuses to
+# write generated code when it is absent, so a container without it fails the
+# run at step 12 rather than degrading.
 RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked \
     pip install --upgrade pip setuptools wheel \
  && pip install \
@@ -44,7 +47,9 @@ RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked \
       "pytest>=8" "pytest-cov" "pytest-json-report" \
       "reportlab" "pillow" \
       "pymupdf" "python-docx" \
-      "langchain-openai>=0.3"
+      "langchain-openai>=0.3" \
+      "guardrails-ai>=0.5" \
+      "opentelemetry-sdk>=1.27" "opentelemetry-exporter-otlp-proto-http>=1.27"
 
 
 # --- runtime ----------------------------------------------------------------

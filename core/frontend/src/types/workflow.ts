@@ -14,7 +14,20 @@ export type StepStatus =
   | 'AWAITING_APPROVAL'
   | 'APPROVED'
   | 'REJECTED'
-  | 'SKIPPED';
+  | 'SKIPPED'
+  /**
+   * Next in line, but nothing is executing it. The run process died without
+   * writing a record — a killed container, an uncaught crash — so the step has
+   * no result and never will until someone re-runs it.
+   */
+  | 'STALLED'
+  /**
+   * The step ran, succeeded, and found the inputs underspecified. Step 03 does
+   * this by design: it halts rather than inventing an answer. Distinct from
+   * FAILED because nothing is broken — it is a question, and it is cleared by
+   * answering it rather than by retrying.
+   */
+  | 'NEEDS_INPUT';
 
 /** A step is not necessarily an agent — the kind tells you whether it costs money. */
 export type ComponentKind = 'AGENT' | 'TOOL' | 'PLUGIN' | 'GATE';
@@ -141,6 +154,14 @@ export type TaskStatus = 'pending' | 'running' | 'done' | 'failed' | 'skipped';
  * Between "step 12 running" and "step 12 finished" there is a minute of nothing
  * otherwise.
  */
+/** One thing a halted step is waiting to have answered. */
+export interface BlockingQuestion {
+  id: string;
+  text: string;
+  /** The step that cannot proceed until this is answered. */
+  blocksStep: number | null;
+}
+
 export interface StepTask {
   id: string;
   title: string;
@@ -167,6 +188,8 @@ export interface RunStep extends StepDefinition {
   output: unknown;
   /** Present when status is FAILED or BLOCKED. */
   error?: { code: string; message: string; detail?: string };
+  /** Present when status is NEEDS_INPUT: what the step is waiting to be told. */
+  blockingQuestions?: BlockingQuestion[];
   /** Set on gate steps only. */
   approval?: Approval;
   requiredRoles?: string[];
@@ -192,7 +215,7 @@ export interface Run {
   jiraId: string;
   title: string;
   profile: string;
-  status: 'RUNNING' | 'HALTED' | 'COMPLETED' | 'AWAITING_APPROVAL';
+  status: 'RUNNING' | 'HALTED' | 'COMPLETED' | 'AWAITING_APPROVAL' | 'STALLED';
   /**
    * The step holding the run up, if one is. A failed step blocks everything
    * behind it until a human resolves it, so the run names it rather than

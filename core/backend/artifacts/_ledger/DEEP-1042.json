@@ -1,0 +1,1011 @@
+{
+  "2": {
+    "input_sha": "a96058c838cd1728ae5df2799c6eba929dd22ff289d054364e71e3e87a9901d2",
+    "schemas": [
+      "StoryAnalysisV1"
+    ],
+    "payload": {
+      "ui": [
+        "Render export button on the account page"
+      ],
+      "backend": [
+        "POST /api/v1/users/{id}/export returns a job id"
+      ],
+      "database": [
+        "No schema change; read-only over users and orders"
+      ],
+      "security": [
+        "Export must be authorised for the owning user only"
+      ],
+      "integration": [
+        "Publishes to the existing notification queue"
+      ],
+      "non_functional": [
+        "Export completes within 30s for 10k rows"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 2,
+        "slug": "story_analysis",
+        "variant": null,
+        "file": "02_story_analysis__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 442,
+        "sha256": "88cef15fd542046b3a85fb9e094d190d811722770e8e848d5a05bd90b2e2419c"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.468797+00:00"
+  },
+  "3": {
+    "input_sha": "1108d429b7219dd088d2c401ea93bc60dee2814c3eae058ad5f0df08251a8f4f",
+    "schemas": [
+      "AmbiguityReportV1"
+    ],
+    "payload": {
+      "gaps": [],
+      "contradictions": [],
+      "unclear_behaviour": [],
+      "unavailable_data": [],
+      "edge_cases": [],
+      "questions_for_human": [],
+      "blocking": false
+    },
+    "artifacts": [
+      {
+        "step": 3,
+        "slug": "ambiguity_report",
+        "variant": null,
+        "file": "03_ambiguity_report__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 163,
+        "sha256": "441d0379af9c84742afc102e4908b72c03b47e3026b2af9a6a04cd2c13fa985d"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.471384+00:00"
+  },
+  "4": {
+    "input_sha": "1108d429b7219dd088d2c401ea93bc60dee2814c3eae058ad5f0df08251a8f4f",
+    "schemas": [
+      "ProjectContextV1"
+    ],
+    "payload": {
+      "architecture": "Layered FastAPI service with SQLAlchemy over Postgres",
+      "frameworks": [
+        "fastapi",
+        "sqlalchemy",
+        "pytest"
+      ],
+      "conventions": [
+        "snake_case modules",
+        "one router per resource"
+      ],
+      "folder_structure": [
+        "app/api",
+        "app/services",
+        "app/repositories",
+        "app/models"
+      ],
+      "reusable_components": [
+        "app/services/exporter.py"
+      ],
+      "api_conventions": [],
+      "db_conventions": []
+    },
+    "artifacts": [
+      {
+        "step": 4,
+        "slug": "project_context",
+        "variant": null,
+        "file": "04_project_context__DEEP-1042-6e7bfa__v1.md",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 402,
+        "sha256": "dbce59ca307a933c80f9cde683b0692481dbbe6e595b2abc067de11c04b79fa7"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.473392+00:00"
+  },
+  "5": {
+    "input_sha": "52e8bc3f041dcb8bcf89ff9aa97c7003935870b094898ef7814c9601a01f94fc",
+    "schemas": [
+      "BrdV1"
+    ],
+    "payload": {
+      "title": "User data export",
+      "background": "Users need a self-service export of their own data.",
+      "objectives": [
+        "Self-service export",
+        "No support ticket required"
+      ],
+      "scope_in": [
+        "CSV export of profile and orders"
+      ],
+      "scope_out": [
+        "PDF export",
+        "Bulk admin export"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-1",
+          "text": "An authenticated user can request an export of their own data"
+        },
+        {
+          "id": "AC-2",
+          "text": "The export contains profile and order history as CSV"
+        },
+        {
+          "id": "AC-3",
+          "text": "A user cannot request an export for another user"
+        }
+      ],
+      "risks": [
+        "PII handling in the generated file"
+      ],
+      "assumptions": []
+    },
+    "artifacts": [
+      {
+        "step": 5,
+        "slug": "brd",
+        "variant": null,
+        "file": "05_brd__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 733,
+        "sha256": "bfdb1432adf492aceee3ff0673bc344c179e627c736eb0b91bea9d01bf8c1622"
+      },
+      {
+        "step": 5,
+        "slug": "brd",
+        "variant": null,
+        "file": "05_brd__DEEP-1042-6e7bfa__v1.md",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 584,
+        "sha256": "6ff3b48a79023a878bdaf4ce95f75717669f0b1aab3aa3a3ba49a922cb00e35b"
+      },
+      {
+        "step": 5,
+        "slug": "brd",
+        "variant": null,
+        "file": "05_brd__DEEP-1042-6e7bfa__v1.pdf",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "pdf",
+        "output_class": "document",
+        "bytes": 1391,
+        "sha256": "851da9f3955aac79a363e8caefddb19c9937a06c4e0ce745d9ea5186497dfb50"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.476451+00:00"
+  },
+  "7": {
+    "input_sha": "e033ab41bd6a0733e8c593e1f64c6b65e5ba45bfdd676fb327386b5c84d2f15b",
+    "schemas": [
+      "TestDesignV1"
+    ],
+    "payload": {
+      "unit": [
+        {
+          "id": "UT-1",
+          "target": "ExportService.build",
+          "covers": [
+            "AC-2"
+          ],
+          "given": "a user with two orders",
+          "expect": "csv with three rows"
+        },
+        {
+          "id": "UT-2",
+          "target": "ExportService.authorise",
+          "covers": [
+            "AC-3"
+          ],
+          "given": "a mismatched user id",
+          "expect": "PermissionError"
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "AT-1",
+          "covers": [
+            "AC-1",
+            "AC-2"
+          ],
+          "scenario": "user requests export and downloads the file"
+        }
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 7,
+        "slug": "test_design",
+        "variant": null,
+        "file": "07_test_design__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 579,
+        "sha256": "7b03f6c5617ce7b2d5aa5d9fb09a6c132825e0bfa0ee3fe9828bf76249bfb479"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.480327+00:00"
+  },
+  "8": {
+    "input_sha": "6e0c9ec631e6bb6cfb1eb5ae4f6c5b3226a4edd57ac6380a7685b821e2e24242",
+    "schemas": [
+      "RepoUnderstandingV1"
+    ],
+    "payload": {
+      "modules": [
+        "app/api",
+        "app/services",
+        "app/repositories"
+      ],
+      "entry_points": [
+        "app/main.py"
+      ],
+      "ci_jobs": [
+        "lint",
+        "test"
+      ],
+      "integration_touchpoints": [
+        "notification queue"
+      ],
+      "related_implementations": [
+        "app/services/report.py"
+      ],
+      "dependency_graph": {}
+    },
+    "artifacts": [
+      {
+        "step": 8,
+        "slug": "repo_understanding",
+        "variant": null,
+        "file": "08_repo_understanding__DEEP-1042-6e7bfa__v1.md",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 252,
+        "sha256": "28b254c6f5f227216416bad6fa2bfbbd87459daf7c0eab9424fdb11abf03edb1"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.483343+00:00"
+  },
+  "9": {
+    "input_sha": "c57e143b44ac8b94d7c297493a82f69d677663b32453be41e39a5b936d8a1f56",
+    "schemas": [
+      "ImpactManifestV1"
+    ],
+    "payload": {
+      "files_to_modify": [
+        "app/api/users.py"
+      ],
+      "files_to_create": [
+        "app/services/exporter.py",
+        "tests/test_exporter.py"
+      ],
+      "allowed_paths": [
+        "app/api/*",
+        "app/services/*",
+        "tests/*"
+      ],
+      "loc_budget": 300,
+      "impacted_components": [],
+      "apis": [
+        "POST /api/v1/users/{id}/export"
+      ],
+      "db_entities": [],
+      "config_changes": [],
+      "tests": [],
+      "docs": [
+        "README.md"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 9,
+        "slug": "impact_manifest",
+        "variant": null,
+        "file": "09_impact_manifest__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 418,
+        "sha256": "002e7bd00a5865442e1304dc3685a90d821743569739896e2acb552719d5db1d"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.485863+00:00"
+  },
+  "10": {
+    "input_sha": "5abbdd11eb1971f56009e629279d545fe8c81e2848d046ac936a856186743b06",
+    "schemas": [
+      "FeatureSpecV1"
+    ],
+    "payload": {
+      "summary": "Self-service CSV export of a user's own data",
+      "api_contracts": [
+        {
+          "method": "POST",
+          "path": "/api/v1/users/{id}/export",
+          "returns": "202 {job_id}",
+          "auth": ""
+        }
+      ],
+      "data_model": [],
+      "validation": [
+        "id must equal the authenticated subject"
+      ],
+      "errors": [
+        {
+          "code": 403,
+          "when": "id != subject"
+        }
+      ],
+      "ui_states": [
+        "idle",
+        "requested",
+        "ready",
+        "failed"
+      ],
+      "state_management": [],
+      "accessibility": [
+        "button has an accessible name"
+      ],
+      "security": [
+        "ownership check before any read"
+      ],
+      "acceptance_criteria": [
+        "AC-1",
+        "AC-2",
+        "AC-3"
+      ],
+      "implementation_boundaries": [
+        "Only these paths may be touched: ['app/api/*', 'app/services/*', 'tests/*']",
+        "Total changed lines must stay under 300",
+        "No refactoring unrelated to the acceptance criteria"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 10,
+        "slug": "feature_spec",
+        "variant": null,
+        "file": "10_feature_spec__DEEP-1042-6e7bfa__v1.md",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 649,
+        "sha256": "114ad598a1c9b649e0961024666de579b11daa42fab2948fe157e9a70b68333e"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.488579+00:00"
+  },
+  "11": {
+    "input_sha": "13ca9d3c4c8a21d61e8d33daf69cdf333e9f5520628f3a810a540024ba9f13f7",
+    "schemas": [
+      "ChangePlanV1"
+    ],
+    "payload": {
+      "ordered_changes": [
+        {
+          "seq": 1,
+          "layer": "service",
+          "file": "app/services/exporter.py",
+          "action": "create",
+          "rationale": ""
+        },
+        {
+          "seq": 2,
+          "layer": "api",
+          "file": "app/api/users.py",
+          "action": "modify",
+          "rationale": ""
+        },
+        {
+          "seq": 3,
+          "layer": "tests",
+          "file": "tests/test_exporter.py",
+          "action": "create",
+          "rationale": ""
+        }
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 11,
+        "slug": "change_plan",
+        "variant": null,
+        "file": "11_change_plan__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 448,
+        "sha256": "8a336d931ff02cd6a2c2d4a9291301e4e4a1235872f542a7eb9053d73a8f43c8"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.491216+00:00"
+  },
+  "12": {
+    "input_sha": "8e2f507e009d0b58a3f5f78a0eaa72beee147b83c0a8b2b292043702c9e23fd3",
+    "schemas": [
+      "CodeChangesetV1"
+    ],
+    "payload": {
+      "changed_files": [
+        "core/backend/config/config.json",
+        "M core/backend/config/prompts/07_test_design.system.md",
+        "core/backend/src/codegen_core/core/tasks.py",
+        "core/backend/src/codegen_core/dashboard/presenter.py",
+        "core/backend/src/codegen_core/orchestrator/retry.py",
+        "core/backend/src/codegen_core/orchestrator/runner.py",
+        "core/backend/src/codegen_core/schemas/analysis.py",
+        "M core/backend/src/codegen_core/schemas/brd.py",
+        "M core/backend/src/codegen_core/schemas/impact.py",
+        "M core/backend/src/codegen_core/schemas/spec.py",
+        "M core/backend/src/codegen_core/schemas/testing.py",
+        "core/backend/src/codegen_core/steps/_base.py",
+        "M core/backend/src/codegen_core/steps/design/07_test_case_design.py",
+        "core/backend/tests/test_dashboard_api.py",
+        "core/docker-compose.yml",
+        "core/docker/backend.Dockerfile",
+        "core/frontend/src/components/dashboard/ActionButtons.tsx",
+        "core/frontend/src/components/dashboard/RunHeader.tsx",
+        "core/frontend/src/components/dashboard/StepTasks.tsx",
+        "M core/frontend/src/components/step/StepDialog.tsx",
+        "core/frontend/src/components/visual/TruckCard.tsx",
+        "core/frontend/src/components/visual/routeStatus.ts",
+        "core/frontend/src/pages/DashboardPage.tsx",
+        "core/frontend/src/theme.ts",
+        "core/frontend/src/types/workflow.ts"
+      ],
+      "created_files": [
+        "core/backend/artifacts/DEEP-1042-19a169/index.json",
+        "core/backend/artifacts/DEEP-1042-1a1957/index.json",
+        "core/backend/artifacts/DEEP-1042-1fe471/index.json",
+        "core/backend/artifacts/DEEP-1042-319244/index.json",
+        "core/backend/artifacts/DEEP-1042-3505cf/index.json",
+        "core/backend/artifacts/DEEP-1042-356ddd/index.json",
+        "core/backend/artifacts/DEEP-1042-407c67/index.json",
+        "core/backend/artifacts/DEEP-1042-463973/index.json",
+        "core/backend/artifacts/DEEP-1042-5272f7/index.json",
+        "core/backend/artifacts/DEEP-1042-58e92a/index.json",
+        "core/backend/artifacts/DEEP-1042-77fdb0/index.json",
+        "core/backend/artifacts/DEEP-1042-79977f/index.json",
+        "core/backend/artifacts/DEEP-1042-859bb4/index.json",
+        "core/backend/artifacts/DEEP-1042-8e2dd7/index.json",
+        "core/backend/artifacts/DEEP-1042-b17141/index.json",
+        "core/backend/artifacts/DEEP-1042-b26b88/index.json",
+        "core/backend/artifacts/DEEP-1042-ba9d73/index.json",
+        "core/backend/artifacts/DEEP-1042-bc927e/index.json",
+        "core/backend/artifacts/DEEP-1042-c6c811/index.json",
+        "core/backend/artifacts/DEEP-1042-c71100/index.json",
+        "core/backend/artifacts/DEEP-1042-ca2b85/index.json",
+        "core/backend/artifacts/DEEP-1042-cd0e17/index.json",
+        "core/backend/artifacts/DEEP-1042-ce194d/index.json",
+        "core/backend/artifacts/DEEP-1042-ded6f1/index.json",
+        "core/backend/artifacts/DEEP-1042-e5f43b/index.json",
+        "core/backend/artifacts/DEEP-1042-f1151b/index.json",
+        "core/backend/artifacts/DEEP-1042-f9be86/index.json",
+        "core/backend/runs/DEEP-1042-19a169/journal.ndjson",
+        "core/backend/runs/DEEP-1042-1a1957/journal.ndjson",
+        "core/backend/runs/DEEP-1042-1fe471/journal.ndjson",
+        "core/backend/runs/DEEP-1042-319244/journal.ndjson",
+        "core/backend/runs/DEEP-1042-3505cf/journal.ndjson",
+        "core/backend/runs/DEEP-1042-356ddd/journal.ndjson",
+        "core/backend/runs/DEEP-1042-407c67/journal.ndjson",
+        "core/backend/runs/DEEP-1042-463973/journal.ndjson",
+        "core/backend/runs/DEEP-1042-5272f7/journal.ndjson",
+        "core/backend/runs/DEEP-1042-58e92a/journal.ndjson",
+        "core/backend/runs/DEEP-1042-77fdb0/journal.ndjson",
+        "core/backend/runs/DEEP-1042-79977f/journal.ndjson",
+        "core/backend/runs/DEEP-1042-859bb4/journal.ndjson",
+        "core/backend/runs/DEEP-1042-8e2dd7/journal.ndjson",
+        "core/backend/runs/DEEP-1042-b17141/journal.ndjson",
+        "core/backend/runs/DEEP-1042-b26b88/journal.ndjson",
+        "core/backend/runs/DEEP-1042-ba9d73/journal.ndjson",
+        "core/backend/runs/DEEP-1042-bc927e/journal.ndjson",
+        "core/backend/runs/DEEP-1042-c6c811/journal.ndjson",
+        "core/backend/runs/DEEP-1042-c71100/journal.ndjson",
+        "core/backend/runs/DEEP-1042-ca2b85/journal.ndjson",
+        "core/backend/runs/DEEP-1042-cd0e17/journal.ndjson",
+        "core/backend/runs/DEEP-1042-ce194d/journal.ndjson",
+        "core/backend/runs/DEEP-1042-ded6f1/journal.ndjson",
+        "core/backend/runs/DEEP-1042-e5f43b/journal.ndjson",
+        "core/backend/runs/DEEP-1042-f1151b/journal.ndjson",
+        "core/backend/runs/DEEP-1042-f9be86/journal.ndjson",
+        "core/backend/tests/test_crash_visibility.py",
+        "core/backend/tests/test_field_spec.py",
+        "core/frontend/src/components/dashboard/StepTaskPanel.tsx",
+        "docs/pipeline-24-steps.html",
+        "docs/pipeline-24-steps.png",
+        "core/backend/artifacts/DEEP-1042-1d16fc/",
+        "core/backend/artifacts/DEEP-1042-343e39/",
+        "core/backend/artifacts/DEEP-1042-6e7bfa/",
+        "core/backend/artifacts/DEEP-1042-818601/",
+        "core/backend/artifacts/DEEP-1042-904c9e/",
+        "core/backend/artifacts/DEEP-1042-9643d8/",
+        "core/backend/artifacts/DEEP-1042-c78d3b/",
+        "core/backend/artifacts/_ledger/",
+        "core/backend/runs/DEEP-1042-1d16fc/",
+        "core/backend/runs/DEEP-1042-343e39/",
+        "core/backend/runs/DEEP-1042-6e7bfa/",
+        "core/backend/runs/DEEP-1042-818601/",
+        "core/backend/runs/DEEP-1042-904c9e/",
+        "core/backend/runs/DEEP-1042-9643d8/",
+        "core/backend/runs/DEEP-1042-c78d3b/"
+      ],
+      "changed_loc": 1703,
+      "commits": [],
+      "policy_violations": [],
+      "transcript_excerpt": "{\n  \"mock\": true,\n  \"digest\": \"19267bc4\",\n  \"note\": \"no stub matched\"\n}",
+      "action_intent": {
+        "step": 12,
+        "agent": "code_update",
+        "action": "apply_patch",
+        "justification": "Change app/api/users.py, app/services/exporter.py, tests/test_exporter.py to satisfy AC-1. Scope is bounded by the step-09 Impact Manifest (3 file(s), 300 LOC budget); nothing outside that whitelist is writable.",
+        "target_files": [
+          "app/api/users.py",
+          "app/services/exporter.py",
+          "tests/test_exporter.py"
+        ],
+        "expected_outcome": "The whitelisted files implement the specified change and the acceptance criteria become verifiable at step 13.",
+        "validation_plan": [
+          "step 14 static quality validation (ruff, mypy)",
+          "step 16 pytest unit test execution",
+          "step 18 sast and dependency scan"
+        ],
+        "risk_level": "critical",
+        "requires_human_approval": true
+      },
+      "guardrails": []
+    },
+    "artifacts": [
+      {
+        "step": 12,
+        "slug": "diff",
+        "variant": null,
+        "file": "12_diff__DEEP-1042-6e7bfa__v1.diff",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "diff",
+        "output_class": "structured",
+        "bytes": 110382,
+        "sha256": "68c680d9cb8d6515bf78f498fdf07d5e6958430f8cbbc5505c36da2f22ea6847"
+      },
+      {
+        "step": 12,
+        "slug": "code_changeset",
+        "variant": null,
+        "file": "12_code_changeset__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 6433,
+        "sha256": "20abc6927a2d4d7f715170fc95b6e4aa22772a8606202ac08c6bc5f9fa0e9c0b"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.638138+00:00"
+  },
+  "13": {
+    "input_sha": "da8832e82bcf2923739f64045aece9ad3f6a33d5baf6bbfc930ceff7f1785820",
+    "schemas": [
+      "RequirementCoverageV1"
+    ],
+    "payload": {
+      "covered": [
+        "AC-1",
+        "AC-2",
+        "AC-3"
+      ],
+      "missing": [],
+      "unrelated_changes": [],
+      "hallucinated_functionality": [],
+      "verdict": "PASSED"
+    },
+    "artifacts": [
+      {
+        "step": 13,
+        "slug": "requirement_coverage",
+        "variant": null,
+        "file": "13_requirement_coverage__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 160,
+        "sha256": "bbd569879978d629740eb0a3dc05810afd264cef6fe84199094d6b7ca68134d3"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.643487+00:00"
+  },
+  "14": {
+    "input_sha": "7cf5650b85386fc96c269320ec3e73024893facebbd621aabec70d4416d57334",
+    "schemas": [
+      "StaticAnalysisV1"
+    ],
+    "payload": {
+      "checks": {
+        "compile": {
+          "ok": true,
+          "skipped": "tool not installed"
+        },
+        "lint": {
+          "ok": true,
+          "skipped": "tool not installed"
+        },
+        "format": {
+          "ok": true,
+          "skipped": "tool not installed"
+        },
+        "types": {
+          "ok": true,
+          "skipped": "tool not installed"
+        },
+        "forbidden_dependencies": {
+          "ok": true,
+          "found": []
+        }
+      },
+      "passed": true
+    },
+    "artifacts": [
+      {
+        "step": 14,
+        "slug": "static_analysis",
+        "variant": null,
+        "file": "14_static_analysis__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 427,
+        "sha256": "a03b53ec958773f7a69b7fd887b97755c345bf54c0d9f81216079e395c491132"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.656717+00:00"
+  },
+  "15": {
+    "input_sha": "325ce5eb4f49a67f917fa99439e7e5c77db7c2de1891d21dd529c1e5400fb221",
+    "schemas": [
+      "TestSyncV1"
+    ],
+    "payload": {
+      "created": [
+        "tests/test_exporter.py"
+      ],
+      "updated": [],
+      "removed": [],
+      "unimplementable": []
+    },
+    "artifacts": [
+      {
+        "step": 15,
+        "slug": "test_sync",
+        "variant": null,
+        "file": "15_test_sync__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 110,
+        "sha256": "8ab0f5b3755831f529d74ac62240473eac3f11461647fea09ce0352dcc526a3a"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.659292+00:00"
+  },
+  "16": {
+    "input_sha": "75440d34bc90bbb7d5433e4034804418eadf0a15aa7e082ce427ca580be73dfd",
+    "schemas": [
+      "TestReportV1"
+    ],
+    "payload": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "duration_s": 3.4,
+      "failures": [],
+      "coverage": {
+        "line_pct": 91.2,
+        "uncovered_files": [],
+        "changed_line_pct": 100.0
+      },
+      "coverage_ok": true
+    },
+    "artifacts": [
+      {
+        "step": 16,
+        "slug": "unit_test_report",
+        "variant": null,
+        "file": "16_unit_test_report__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 211,
+        "sha256": "fc70cf89404b2271dc8facdf45ac25143788525a56cb58e35f69be6365ba9de1"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.661107+00:00"
+  },
+  "17": {
+    "input_sha": "fcc59d371b4809c564609b2c3d0b9a2e8d08d0db0f0c2c12f4e609f7e7a6a59d",
+    "schemas": [
+      "E2EReportV1"
+    ],
+    "payload": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration_s": 22.1,
+      "failures": [],
+      "screenshots": []
+    },
+    "artifacts": [
+      {
+        "step": 17,
+        "slug": "e2e_report",
+        "variant": null,
+        "file": "17_e2e_report__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 109,
+        "sha256": "a48e77ad440f0faa73f2cd1425de940cab764da31249c86a0370779f38a268f2"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.662767+00:00"
+  },
+  "18": {
+    "input_sha": "04b4a71667c685ea208bf3099bfc3fbf9de4ea7a0fc6eafde148797ceb9331ea",
+    "schemas": [
+      "SecurityScanV1"
+    ],
+    "payload": {
+      "reports": {
+        "sast": {
+          "scanner": "semgrep",
+          "findings": []
+        },
+        "sca": {
+          "scanner": "trivy",
+          "findings": []
+        },
+        "secrets": {
+          "scanner": "gitleaks",
+          "findings": []
+        }
+      },
+      "blocking_findings": []
+    },
+    "artifacts": [
+      {
+        "step": 18,
+        "slug": "sast",
+        "variant": null,
+        "file": "18_sast__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 44,
+        "sha256": "36117edee1a5adfe3344d56f9e1a2c864429e6d67eb55b2da832c8653d013640"
+      },
+      {
+        "step": 18,
+        "slug": "sca",
+        "variant": null,
+        "file": "18_sca__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 42,
+        "sha256": "773e88cf03f71c1c5a13cca6e0639009ffea13c33042d39356356d9f01eca422"
+      },
+      {
+        "step": 18,
+        "slug": "secrets",
+        "variant": null,
+        "file": "18_secrets__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 45,
+        "sha256": "79013da48aa8a3ac673885addef69cae0fe1a073dcabc6f762e5691476d30d8b"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.665194+00:00"
+  },
+  "19": {
+    "input_sha": "a21df571a3bc201dfc41b0bd100c8a109cb195331a7900a1e91395e51d3419c3",
+    "schemas": [
+      "DastReportV1"
+    ],
+    "payload": {
+      "target": "dry-run",
+      "scanner": "zap",
+      "findings": [],
+      "evidence": []
+    },
+    "artifacts": [
+      {
+        "step": 19,
+        "slug": "dast_report",
+        "variant": null,
+        "file": "19_dast_report__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 81,
+        "sha256": "bb8c9b6a6fda0e1aa4967cf3debc54e55022ff0265725e3a964779e1725c55d9"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.667064+00:00"
+  },
+  "20": {
+    "input_sha": "813c8d6f2b3c1247584d1d7b68e47f3325f185ec624760a5eeeede2a6148e129",
+    "schemas": [
+      "TechnicalDesignV1"
+    ],
+    "payload": {
+      "architecture": "One new service class behind the existing users router",
+      "sequence": [
+        "client -> api -> service -> repository -> csv"
+      ],
+      "apis": [
+        "POST /api/v1/users/{id}/export"
+      ],
+      "db_changes": [],
+      "impacted_files": [
+        "app/api/users.py",
+        "app/services/exporter.py"
+      ],
+      "decisions": [
+        "synchronous export for v1; async job if rows exceed 50k"
+      ],
+      "security_considerations": [
+        "ownership check",
+        "no PII in logs"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 20,
+        "slug": "tdd",
+        "variant": null,
+        "file": "20_tdd__DEEP-1042-6e7bfa__v1.md",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 476,
+        "sha256": "bbd6e81c9370c5c366fac31ae84ae3b55db3d58546f664a2cf63630c20cda4e8"
+      },
+      {
+        "step": 20,
+        "slug": "tdd",
+        "variant": null,
+        "file": "20_tdd__DEEP-1042-6e7bfa__v1.pdf",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "pdf",
+        "output_class": "document",
+        "bytes": 1283,
+        "sha256": "5f669683f01dccc7e24e64f1d00e83df188502e9d9f8a2081beda2b687c45d79"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.669888+00:00"
+  },
+  "21": {
+    "input_sha": "6624ee5bc56288e5a042e55e0fdcdc0c7113a527968985516fa99e9e79e7f362",
+    "schemas": [
+      "DocUpdateV1"
+    ],
+    "payload": {
+      "readme": true,
+      "openapi": true,
+      "developer_docs": false,
+      "changed": [
+        "README.md",
+        "openapi.yaml"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 21,
+        "slug": "doc_updates",
+        "variant": null,
+        "file": "21_doc_updates__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 122,
+        "sha256": "a3be8769a8f9eeefc7f21015cd02da8c529c967a43993fadcaec0c7eed775dfe"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.672140+00:00"
+  },
+  "22": {
+    "input_sha": "f21c86ce273fa81c84ef70144ba833b5f0303fab5e06018e2dadf32f1fa51547",
+    "schemas": [
+      "PullRequestV1"
+    ],
+    "payload": {
+      "number": 0,
+      "url": "https://github.com/dry-run/pull/0",
+      "head": "codegen/DEEP-1042-user-data-export",
+      "base": "main",
+      "draft": true,
+      "dry_run": true,
+      "title": "DEEP-1042: User data export"
+    },
+    "artifacts": [
+      {
+        "step": 22,
+        "slug": "pull_request",
+        "variant": null,
+        "file": "22_pull_request__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 207,
+        "sha256": "334910598384c41f2b739787741e4dbf07d4086752c6221ef9d7432577a8ee83"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.674465+00:00"
+  },
+  "23": {
+    "input_sha": "353e29b31038715eac7a848b3e87ffee9ddd4a30412e3d9e3e9d256ee542e957",
+    "schemas": [
+      "AiReviewV1"
+    ],
+    "payload": {
+      "requirement_compliance": "PASSED",
+      "bugs": [],
+      "regression_risk": "low",
+      "security": [],
+      "performance": [],
+      "architecture": [],
+      "maintainability": [
+        "consider extracting the CSV writer"
+      ],
+      "test_quality": [],
+      "verdict": "APPROVED",
+      "reviewer_model_id": "mock-reviewer-1"
+    },
+    "artifacts": [
+      {
+        "step": 23,
+        "slug": "ai_review",
+        "variant": null,
+        "file": "23_ai_review__DEEP-1042-6e7bfa__v1.json",
+        "dir": "DEEP-1042-allow-users-to",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 301,
+        "sha256": "70c50572779fbdb56fba4a1a85bd34efd0ddb15ea5cf4c3ba5f96f45dfaa5288"
+      }
+    ],
+    "job_id": "DEEP-1042-6e7bfa",
+    "at": "2026-08-31T21:50:05.681261+00:00"
+  }
+}

@@ -72,6 +72,9 @@ services:
       # Writes are still confined to the configured project: GuardedFS roots
       # itself at that path, so a step cannot wander into a sibling app.
       - ../apps:/projects
+      # The component library the pipeline implements user stories against —
+      # app.project.path in backend/config/config.json points here.
+      - ../libraries:/libraries
       # The original demo target, kept so config.json can point back at it.
       - ./backend/sample-project:/workspace
       # Drop a .md file in here and it becomes a runnable story.

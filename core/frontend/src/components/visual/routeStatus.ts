@@ -21,6 +21,11 @@ const BY_STATUS: Record<StepStatus, RouteStatus> = {
   REJECTED: 'failed',
   PENDING: 'upcoming',
   SKIPPED: 'upcoming',
+  // Waiting, not failed: the freight has not broken down, it has been left
+  // standing, and what it needs is someone to start it moving again.
+  STALLED: 'waiting',
+  // Waiting on a person, exactly as a gate is.
+  NEEDS_INPUT: 'waiting',
 };
 
 export function routeStatus(step: RunStep): RouteStatus {

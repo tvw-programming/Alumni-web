@@ -7,6 +7,7 @@ import type { RunStep, StepAction } from '../../types/workflow';
 import type { VisualVariant } from '../../data/visualVariants';
 import { fonts, statusMeta, tokens } from '../../theme';
 import ActionButtons, { isInspectable } from '../dashboard/ActionButtons';
+import StepTasks from '../dashboard/StepTasks';
 import { routeColor, routeFill, routeStatus } from './routeStatus';
 
 interface Props {
@@ -230,9 +231,15 @@ export default function TruckCard({ step, variant, orientation, onInspect, onAct
             </Typography>
           </Stack>
         ) : (
-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            {statusMeta[step.status].label}
-          </Typography>
+          // Status and the task pips share one line: the trailer has no room for
+          // a second, and the pips are only the shape of progress anyway — the
+          // checklist itself lives in the panel below the route.
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
+            <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+              {statusMeta[step.status].label}
+            </Typography>
+            {step.tasks.length > 0 && <StepTasks tasks={step.tasks} dense hideCount={horizontal} />}
+          </Stack>
         )}
 
         {!horizontal && (

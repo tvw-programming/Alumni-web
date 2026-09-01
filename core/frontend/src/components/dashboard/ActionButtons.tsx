@@ -64,7 +64,11 @@ export function availableActions(step: RunStep): Record<StepAction, { enabled: b
   // tokens reproducing a document that is already correct, and everything
   // after it is built on the version that exists.
   const failed = step.status === 'FAILED';
-  const rerunnable = step.status === 'FAILED' || step.status === 'REJECTED';
+  // A stalled step is rerunnable for the same reason a failed one is: it has no
+  // result, and re-running is the only thing that produces one. It is not
+  // `failed`, though — it never got far enough to fail.
+  const rerunnable =
+    step.status === 'FAILED' || step.status === 'REJECTED' || step.status === 'STALLED';
 
   const owedReason = 'This gate was rejected. Supply a replacement document and it re-opens against it';
   const spentReason = `All ${step.revision?.maxRevisions ?? 0} replacement documents have been used; this needs an escalation, not another draft`;

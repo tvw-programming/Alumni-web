@@ -1,0 +1,23 @@
+{
+  "key": "DEEP-1042",
+  "title": "Allow users to export their own data",
+  "description": "As a signed-in user I want to export my profile and order history so that I can keep my own records.\n\nAcceptance Criteria:\n- AC-1 An authenticated user can request an export of their own data\n- AC-2 The export contains profile and order history as CSV\n- AC-3 A user cannot request an export for another user\n",
+  "acceptance_criteria": [
+    "AC-1 An authenticated user can request an export of their own data",
+    "AC-2 The export contains profile and order history as CSV",
+    "AC-3 A user cannot request an export for another user"
+  ],
+  "priority": "High",
+  "labels": [
+    "self-service",
+    "privacy"
+  ],
+  "components": [
+    "api",
+    "web"
+  ],
+  "dependencies": [],
+  "attachments": [],
+  "reporter": "fixture",
+  "source_checksum": "7d5f8b3af49104ee6cf5d278d511a71a00a43e48edb3f62d3ab85340d5321386"
+}

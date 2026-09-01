@@ -15,9 +15,25 @@ class StoryAnalysisV1(BaseModel):
 
 
 class Question(BaseModel):
-    id: str
-    text: str
-    blocks_step: int | None = None
+    """One thing the ticket does not answer, addressed to a person.
+
+    The descriptions are prompt material, not commentary: they are rendered into
+    the field spec the model is given, and they exist because a model asked for
+    a `Question` with types alone still has to guess *which* numbering
+    `blocks_step` uses, and answered with the name of a concern from its own
+    input ("backend") the last time it was left to.
+    """
+
+    id: str = Field(description='a short quoted identifier such as "Q1" - a string, not a bare number')
+    text: str = Field(description="the question, phrased for a human to answer")
+    blocks_step: int | None = Field(
+        default=None,
+        description=(
+            "the pipeline step number from 1 to 24 that cannot proceed until this "
+            "is answered, or null if it blocks nothing - never a step name or a "
+            "concern such as backend or ui"
+        ),
+    )
 
 
 class AmbiguityReportV1(BaseModel):

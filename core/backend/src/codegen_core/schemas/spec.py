@@ -27,10 +27,16 @@ class RepoUnderstandingV1(BaseModel):
 
 
 class ApiContract(BaseModel):
-    method: str
-    path: str
-    returns: str = ""
-    auth: str = ""
+    """One endpoint step 12 has to build to."""
+
+    method: str = Field(description="HTTP method in upper case, e.g. GET, POST")
+    path: str = Field(description='route path beginning with "/", e.g. /admin/export')
+    returns: str = Field(
+        default="", description="the success response: status code and body shape"
+    )
+    auth: str = Field(
+        default="", description="who may call this, e.g. the role required, or none"
+    )
 
 
 class FeatureSpecV1(BaseModel):

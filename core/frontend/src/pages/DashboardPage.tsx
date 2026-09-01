@@ -24,6 +24,7 @@ import RunHeader from '../components/dashboard/RunHeader';
 import StartRunDialog from '../components/dashboard/StartRunDialog';
 import PhaseStepper from '../components/dashboard/PhaseStepper';
 import RunSpine from '../components/dashboard/RunSpine';
+import StepTaskPanel from '../components/dashboard/StepTaskPanel';
 import { focusedStep } from '../hooks/useKeepStepInView';
 import StepDialog from '../components/step/StepDialog';
 import RevisionDialog from '../components/step/RevisionDialog';
@@ -310,6 +311,11 @@ export default function DashboardPage({ controller }: Props) {
               />
             </Suspense>
           )}
+
+          {/* The route says where the run is; this says what it is doing there.
+              A container of its own rather than more height on every card —
+              see StepTaskPanel for why. */}
+          <StepTaskPanel steps={run.steps} onInspect={inspect} />
         </Box>
       </Stack>
 

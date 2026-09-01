@@ -44,6 +44,11 @@ export const statusMeta: Record<
   BLOCKED: { label: 'Blocked', color: tokens.signal, short: 'BLK' },
   AWAITING_APPROVAL: { label: 'Awaiting you', color: tokens.signal, short: 'YOU' },
   PENDING: { label: 'Pending', color: tokens.idle, short: '—' },
+  // Amber rather than rose: nothing is broken, but it needs a person to
+  // restart it — the same thing amber means at a gate.
+  STALLED: { label: 'Stalled', color: tokens.signal, short: 'STL' },
+  // Amber, like a gate: the run is waiting on a person, not on a fix.
+  NEEDS_INPUT: { label: 'Needs your input', color: tokens.signal, short: 'ASK' },
   SKIPPED: { label: 'Skipped', color: tokens.faint, short: 'SKP' },
 };
 

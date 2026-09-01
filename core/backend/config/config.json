@@ -757,6 +757,10 @@
       "component": "agent",
       "prompt": "03_gap_detection.system.md",
       "timeout_s": 300,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "on_ambiguity": "halt_and_ticket",
       "risk_level": "low",
       "allowed_actions": [
@@ -769,6 +773,10 @@
       "component": "agent",
       "prompt": "04_project_context.system.md",
       "timeout_s": 600,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "low",
       "allowed_actions": [
         "read",
@@ -780,6 +788,10 @@
       "component": "agent",
       "prompt": "05_brd.system.md",
       "timeout_s": 600,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "render_documents": [
         "pdf"
       ],
@@ -804,6 +816,10 @@
       "component": "agent",
       "prompt": "07_test_design.system.md",
       "timeout_s": 600,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "low",
       "allowed_actions": [
         "read",
@@ -815,6 +831,10 @@
       "component": "agent",
       "prompt": "08_repo_understanding.system.md",
       "timeout_s": 900,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "low",
       "allowed_actions": [
         "read",
@@ -826,6 +846,10 @@
       "component": "agent",
       "prompt": "09_impact_analysis.system.md",
       "timeout_s": 600,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "medium",
       "allowed_actions": [
         "read",
@@ -837,6 +861,10 @@
       "component": "agent",
       "prompt": "10_feature_spec.system.md",
       "timeout_s": 600,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "low",
       "allowed_actions": [
         "read",
@@ -848,6 +876,10 @@
       "component": "agent",
       "prompt": "11_change_plan.system.md",
       "timeout_s": 300,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "low",
       "allowed_actions": [
         "read",
@@ -879,6 +911,10 @@
       "component": "agent",
       "prompt": "13_verification.system.md",
       "timeout_s": 600,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "medium",
       "allowed_actions": [
         "read",
@@ -904,6 +940,10 @@
       "component": "agent",
       "prompt": "15_test_sync.system.md",
       "timeout_s": 900,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "high",
       "allowed_actions": [
         "read",
@@ -973,6 +1013,10 @@
       "component": "agent",
       "prompt": "20_tdd.system.md",
       "timeout_s": 900,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "render_documents": [
         "pdf"
       ],
@@ -987,6 +1031,10 @@
       "component": "agent",
       "prompt": "21_docs_update.system.md",
       "timeout_s": 600,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "high",
       "allowed_actions": [
         "read",
@@ -1015,6 +1063,10 @@
       "component": "agent",
       "prompt": "23_ai_pr_review.system.md",
       "timeout_s": 900,
+      "retry": {
+        "max_attempts": 2,
+        "backoff_s": 10
+      },
       "risk_level": "medium",
       "allowed_actions": [
         "read",
@@ -1458,7 +1510,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
           "must_exist": true,
           "must_be_writable": true
         }
@@ -1560,7 +1612,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
           "must_exist": true,
           "must_be_writable": true
         }
@@ -1680,7 +1732,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
           "must_exist": true,
           "must_be_writable": true
         }
@@ -1782,7 +1834,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
           "must_exist": true,
           "must_be_writable": true
         }
@@ -1883,7 +1935,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
           "must_exist": true,
           "must_be_writable": true
         }

@@ -6,8 +6,18 @@ from pydantic import BaseModel, Field
 
 
 class AcceptanceCriterion(BaseModel):
-    id: str
-    text: str
+    """One testable condition of done.
+
+    The id is the join key for the rest of the run: step 07 designs a test
+    against it, step 13 checks the code covers it, step 22 lists it in the pull
+    request. Nothing enforces the "AC-n" spelling, but everything downstream
+    reads better when it holds, so the model is asked for it explicitly.
+    """
+
+    id: str = Field(description='a short id of the form "AC-1", numbered from 1')
+    text: str = Field(
+        description="one testable condition of done, stated so a test can assert it"
+    )
 
 
 class BrdV1(BaseModel):

@@ -12,8 +12,9 @@ client; everything inside the package stays snake_case.
 from __future__ import annotations
 
 import json
+import os
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +35,26 @@ PHASES: dict[str, tuple[int, ...]] = {
 
 PHASE_BY_STEP = {step: phase for phase, steps in PHASES.items() for step in steps}
 
+#: How long a run may go without writing anything before the step it is on is
+#: reported as stalled rather than running.
+#:
+#: Anchored to the watcher's own resume timeout, which is the longest a run is
+#: allowed to take before it is killed: past that point nothing is executing,
+#: because the thing that would execute it has already given up. The default
+#: therefore cannot be shorter than the slowest legitimate step, which is what
+#: makes it safe to treat silence as death.
+STALL_AFTER_S = int(
+    os.getenv("CODEGEN_STALL_AFTER_S") or os.getenv("CODEGEN_RESUME_TIMEOUT") or "900"
+)
+
+#: Events that mean a run process was alive and working at that moment.
+LIVE_EVENTS = ("run_started", "retry_started", "task")
+
+#: Events a run writes when it stops on purpose. Their presence is the
+#: difference between a run that ended and one that was killed: a stall is
+#: defined by the absence of any of these.
+FINISHED_EVENTS = ("run_completed", "run_halted", "gate_waiting")
+
 #: Journal statuses are orchestrator vocabulary; the UI has its own.
 STATUS_MAP = {
     "OK": "SUCCESS",
@@ -45,7 +66,11 @@ STATUS_MAP = {
     "BLOCKING_FINDINGS": "FAILED",
     "CHANGES_REQUESTED": "FAILED",
     "POLICY_VIOLATION": "FAILED",
-    "AMBIGUOUS": "FAILED",
+    # Not a failure. Step 03 succeeded — it read the ticket and found it
+    # underspecified, which is the one job it has, and the run stopped to ask
+    # rather than to invent. Painting that red tells a reader something broke
+    # and sends them looking for a defect that is not there.
+    "AMBIGUOUS": "NEEDS_INPUT",
     "PENDING": "AWAITING_APPROVAL",
     "TIMEOUT": "FAILED",
 }
@@ -360,8 +385,69 @@ class RunPresenter:
             if e.get("type") == "step" and e.get("status") in ("OK", "APPROVED", "PASSED")
         }
         if all(s in completed for s in range(1, step)):
-            return "RUNNING" if component.kind.value != "GATE" else "AWAITING_APPROVAL"
+            if component.kind.value == "GATE":
+                return "AWAITING_APPROVAL"
+            # Next in line is not the same as under way. This branch used to
+            # return RUNNING on the strength of the *previous* steps having
+            # finished, which says nothing about whether a process is still
+            # alive to run this one — a run killed mid-step left its successor
+            # displayed as RUNNING indefinitely, with no failure for anyone to
+            # retry.
+            #
+            # Three outcomes, not two. A run that ended on purpose — completed,
+            # halted, parked at a gate — leaves this step simply not yet asked
+            # for, which is what PENDING has always meant. Only a run that went
+            # silent without saying anything is a stall.
+            state = self._run_state()
+            if state == "live":
+                return "RUNNING"
+            return "STALLED" if state == "stalled" else "PENDING"
         return "PENDING"
+
+    def _run_state(self) -> str:
+        """Whether a run process is working on this job: live, ended, stalled.
+
+        Two questions, in order, because they fail differently:
+
+        **Did it stop on purpose?** A run that completed, halted, or parked at a
+        gate wrote an event saying so. Nothing is running, and no amount of
+        recency changes that — but nothing is wrong either, so this is `ended`.
+
+        **Has it gone quiet?** A killed process writes nothing at all — no halt,
+        no error, no record for the step it died on. Silence is the only trace
+        it leaves, so the age of the newest entry is the only evidence there is.
+
+        Erring towards `live` on an unparseable or missing timestamp is
+        deliberate: showing a working run as stalled is the more misleading of
+        the two mistakes, and it resolves itself the moment the step lands.
+        """
+        for entry in reversed(self._entries):
+            event = entry.get("event")
+            if event in FINISHED_EVENTS:
+                return "ended"
+            if event in LIVE_EVENTS or entry.get("type") == "step":
+                break
+        else:
+            # Nothing has ever been written, so nothing was ever started.
+            return "ended"
+
+        age = self._age_seconds(self._entries[-1].get("at"))
+        return "live" if age is None or age < STALL_AFTER_S else "stalled"
+
+    @staticmethod
+    def _age_seconds(stamp: Any) -> float | None:
+        """Seconds since an ISO-8601 journal timestamp, or None if unreadable."""
+        if not stamp:
+            return None
+        try:
+            when = datetime.fromisoformat(str(stamp))
+        except ValueError:
+            return None
+        # The orchestrator writes aware timestamps; a naive one from an older
+        # journal is read as UTC rather than thrown away.
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=timezone.utc)
+        return (datetime.now(timezone.utc) - when).total_seconds()
 
     def _pending_gate(self, step: int) -> bool:
         gate_dir = Path(self.ctx.journal.root) / "gates"
@@ -411,14 +497,65 @@ class RunPresenter:
             return {
                 "code": status,
                 "message": f"Step finished with status {status}",
-                "detail": "Consult the artifacts for this step; the orchestrator routed it "
-                "through the remediation edge declared for this status.",
+                "detail": self._outcome_detail(step, status, records[-1]),
             }
         return None
 
+    def _outcome_detail(self, step: int, status: str, record: dict) -> str:
+        """What the orchestrator actually did about this status.
+
+        This used to assert, for every non-OK status, that the run had been
+        "routed through the remediation edge declared for this status". Edges
+        are declared for eight (step, status) pairs and no others, so for
+        everything else the sentence described a route that does not exist — and
+        it said so most confidently exactly where a reader was most stuck, on a
+        step whose run had halted.
+
+        The journal knows which of the two happened, so it is asked rather than
+        assumed.
+        """
+        edge = next(
+            (
+                e
+                for e in self.cfg.pipeline.remediation_edges
+                if e.from_step == step and e.on == status
+            ),
+            None,
+        )
+        if edge is not None:
+            # Loops are journalled as their own record type, not as events.
+            loops = sum(
+                1
+                for e in self._entries
+                if e.get("type") == "loop" and e.get("from") == step and e.get("on") == status
+            )
+            return (
+                f"The orchestrator routed this back to step {edge.to_step:02d} "
+                f"(loop {min(loops, edge.max_loops)} of {edge.max_loops}). "
+                "The run continues from there."
+            )
+
+        halt = next(
+            (
+                e
+                for e in reversed(self._entries)
+                if e.get("event") == "run_halted" and e.get("step") == step
+            ),
+            None,
+        )
+        if halt is not None:
+            return (
+                f"The run halted here: {halt.get('reason') or 'no reason recorded'}. "
+                "Nothing downstream has run."
+            )
+        return (
+            f"No remediation edge is declared for status {status} at this step, "
+            "so the run stops here until a person resolves it."
+        )
+
     def _action_intent(self, step: int) -> dict | None:
         """The step's declared intent, if it got as far as declaring one."""
-        for entry in reversed(self.journal.entries()):
+        for entry in reversed(self._entries):
             if entry.get("event") == "action_intent" and entry.get("step") == step:
                 return {
                     "action": entry.get("action"),
@@ -467,7 +604,7 @@ class RunPresenter:
             # failed after declaring its intent.
             # Sub-step progress, rebuilt from the journal so a resumed run shows
             # what it already did rather than an empty checklist.
-            "tasks": tasks_for_step(self.journal, step),
+            "tasks": tasks_for_step(self._entries, step),
             "actionIntent": self._action_intent(step),
             "riskLevel": getattr(step_cfg, "risk_level", "low") if step_cfg else "low",
             "allowedActions": list(getattr(step_cfg, "allowed_actions", []) or []) if step_cfg else [],
@@ -479,6 +616,10 @@ class RunPresenter:
         error = self._error(step)
         if error:
             payload["error"] = error
+
+        questions = self._blocking_questions(step, payload["status"])
+        if questions:
+            payload["blockingQuestions"] = questions
 
         approval = self._approval(step)
         if approval:
@@ -497,6 +638,32 @@ class RunPresenter:
 
         return payload
 
+    def _blocking_questions(self, step: int, status: str) -> list[dict] | None:
+        """The questions a halted step is waiting to have answered.
+
+        They already exist in the step's artifact, which is precisely where a
+        reader stuck on "why has this stopped" will not look. A run held up by
+        five questions should show the five questions.
+
+        Only while the step is actually holding the run: the same artifact is
+        still on disk once the questions have been answered and the run has
+        moved on, and showing them then would read as an outstanding demand.
+        """
+        if status != "NEEDS_INPUT":
+            return None
+        payload = self._read_json_artifact(step)
+        if not isinstance(payload, dict):
+            return None
+        questions = [q for q in payload.get("questions_for_human", []) if isinstance(q, dict)]
+        return [
+            {
+                "id": str(q.get("id", "")),
+                "text": str(q.get("text", "")),
+                "blocksStep": q.get("blocks_step"),
+            }
+            for q in questions
+        ] or None
+
     # ------------------------------------------------------------------ #
     @staticmethod
     def _blocked_step(steps: list[dict]) -> int | None:
@@ -506,8 +673,18 @@ class RunPresenter:
         from an earlier pass rather than the current obstruction — the run never
         got past the first one.
         """
-        failed = [s["step"] for s in steps if s["status"] == "FAILED"]
-        return min(failed) if failed else None
+        # A stalled step obstructs exactly as a failed one does: no result, and
+        # nothing after it can run. Naming it here is what puts it behind the
+        # header's Retry button, which is the whole point of telling the two
+        # apart from RUNNING.
+        # NEEDS_INPUT obstructs too: the run stopped there and nothing after it
+        # runs. It differs from the other two only in what clears it — answering
+        # the questions rather than pressing Retry — which is the step dialog's
+        # business, not this function's.
+        blocking = [
+            s["step"] for s in steps if s["status"] in ("FAILED", "STALLED", "NEEDS_INPUT")
+        ]
+        return min(blocking) if blocking else None
 
     def run_payload(self) -> dict:
         steps = [self.step_payload(n, c) for n, c in sorted(self.registry.items())]
@@ -517,6 +694,8 @@ class RunPresenter:
         )
         halted = any(e.get("event") == "run_halted" for e in self._entries)
         blocked = self._blocked_step(steps)
+        stalled = any(s["status"] == "STALLED" for s in steps)
+        needs_input = any(s["status"] == "NEEDS_INPUT" for s in steps)
         completed = any(e.get("event") == "run_completed" for e in self._entries)
         awaiting = any(s["status"] == "AWAITING_APPROVAL" for s in steps)
 
@@ -532,10 +711,18 @@ class RunPresenter:
             # since been answered with a new document has stopped being a halt —
             # in both cases saying anything else tells the reviewer there is
             # nothing to do when there is.
+            # A run holding questions ranks with an open gate: both are the
+            # pipeline waiting on a person, and both are cleared by one.
             "status": "AWAITING_APPROVAL"
-            if awaiting
+            if awaiting or needs_input
             else "HALTED"
             if halted
+            # Below a clean halt, because a halt was recorded on purpose and
+            # says why; a stall is the absence of any such record. Above
+            # RUNNING, because saying a run is running when nothing is running
+            # is the failure this whole distinction exists to fix.
+            else "STALLED"
+            if stalled
             else "COMPLETED"
             if completed
             else "RUNNING",
