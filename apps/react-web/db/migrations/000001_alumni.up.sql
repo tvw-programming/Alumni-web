@@ -1,6 +1,6 @@
 -- Alumni Management — baseline schema.
 --
--- Follows the conventions already set by libraries/react-components/api:
+-- Follows the conventions already set by libraries/archive/react-components/api:
 -- golang-migrate pairs, TIMESTAMPTZ everywhere, CITEXT for anything compared
 -- case-insensitively, named CHECK constraints so a violation names itself in
 -- the error, and pg_trgm for the fuzzy search the admin grid needs.

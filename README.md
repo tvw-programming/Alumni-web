@@ -1,8 +1,8 @@
 # CodeGen — AI Workflow Monorepo
 
-Unified AI platform with a 24-step development workflow, multiple frontends
-(React, Angular, React Native, Kotlin), and code explainers (Python, Java, Go,
-Express, .NET).
+**CodeGen Core** turns a Jira story into a reviewed change set in 24 steps, with
+two mandatory human gates (BRD approval and merge). The engine and its dashboard
+live entirely under `core/`.
 
 ## Quick Start
 
@@ -11,79 +11,86 @@ bash scripts/install.sh
 npm run dev:core
 ```
 
-Then open the dashboard at http://localhost:5173 and press **Start a run**.
+Open the dashboard at http://localhost:5173 and press **Start a run**.
+
+## Actual stack (what exists)
+
+| Path | Role |
+|------|------|
+| `core/backend/` | Python 3.11+ pipeline (`codegen_core`): orchestrator, GuardedFS, gates, FastAPI dashboard API, CLI |
+| `core/frontend/` | React 19 + MUI + Vite run monitor |
+| `core/backend/sample-project/` | **Primary pipeline target** — FastAPI sample service the agent edits |
+| `apps/react-web/` | Optional sample Alumni UI (consumes archived component lib; not required for Core) |
+
+## What is NOT in this repo
+
+These names appear in older docs or empty folders. They are **not** shipped products:
+
+- Angular web, React Native, Kotlin mobile apps (empty reserved dirs under `apps/`)
+- Explainer services (`python-explainer`, `express-explainer`, `springboot-explainer`, etc.) — empty
+- Hollow `packages/shared-types`, `packages/design-tokens`, `packages/shared-utils`
+- Large UI showcases formerly under `libraries/` — quarantined to `libraries/archive/`
+
+Do not expect Nx/Turborepo to build those stubs.
+
+## Storage budget
+
+`apps/`, `libraries/`, `services/`, and `packages/` are **workspace reserved capacity**.
+The 24-step engine, tests, config, and safety contracts live only under **`core/`**.
+Archived trees under `libraries/archive/` (~420 MB) are kept for history, not for CI.
+
+See `.workspace-root` and `core/README.md`.
 
 ## Structure
 
-- **core/**: the 24-step AI workflow
-  - `core/backend/` — Python pipeline runner, two mandatory human gates, gate API and CLI
-  - `core/frontend/` — React 19 + MUI run monitor dashboard
-- **apps/**: frontend applications (React, Angular, React Native, Kotlin)
-- **libraries/**: reusable component libraries
-- **services/**: backend code explainers
-- **packages/**: shared utilities, types, design tokens
+```
+core/                 ← canonical product (pipeline + dashboard + sample-project)
+apps/                 ← reserved; only react-web has real code
+libraries/archive/    ← quarantined showcases / empty stubs
+services/             ← reserved empty explainer slots
+packages/             ← reserved empty shared-package slots
+```
 
-## Services
+## Services (running)
 
-- Core API (backend): http://localhost:8000
-- Core dashboard (frontend): http://localhost:5173
-- React Web: http://localhost:3000
-- Angular Web: http://localhost:4200
+- Core API: http://localhost:8000
+- Core dashboard: http://localhost:5173
+
+Optional: `npm run dev:react` for `apps/react-web` on :3000 (independent of the pipeline).
 
 ## The core workflow
 
 `core/` runs a story from a Jira ticket to a reviewed pull request in 24 steps,
-stopping twice for a person: once to approve the business requirements document
-(step 06) and once to approve the merge (step 24). Steps are configuration, not
-code paths — `core/backend/config/config.json` names the model, prompt, budget
-and retry policy for each one.
-
-Nothing starts on its own. A run begins when someone presses **Start a run** in
-the dashboard or runs `npm run cli:core -- run <JIRA-ID>`.
-
-Out of the box every model is a deterministic mock, so the whole pipeline runs
-offline with no API keys and no cost. Switch profiles in `core/.env` to use
-Ollama on your machine or the Anthropic/OpenAI APIs.
-
-Useful commands:
+stopping twice for a person: BRD gate (06) and merge gate (24). Models, prompts,
+budgets and remediation edges are declared in `core/backend/config/config.json`.
 
 ```bash
 npm run dev:core                        # backend :8000 + dashboard :5173
-npm run test:core                       # the backend test suite
-npm run cli:core -- config validate     # check the config invariants
-npm run cli:core -- steps list          # the 24 steps
-npm run docker:up                       # the whole stack in Docker
+npm run test:core                       # backend pytest suite
+npm run cli:core -- config validate
+npm run cli:core -- steps list
+npm run docker:up                       # core stack via Docker
 ```
 
-`core/README.md` covers the workflow in depth; `core/backend/docs/` holds the
-architecture, safety model and step reference.
-
-## Project Map
-
-See `.ai-context.json` for project organization and which files to pass to Claude.
+`core/README.md` is the deep guide; `core/backend/docs/` covers architecture and safety.
 
 ## Installation
 
 1. Clone the repository
-2. Run: `bash scripts/install.sh`
-3. Start development: `npm run dev:core`
+2. `bash scripts/install.sh`
+3. `npm run dev:core`
 
-## Docker Setup
+## Docker
 
 ```bash
 npm run docker:up
 npm run docker:down
 ```
 
-The root `docker-compose.yml` includes `core/docker-compose.yml`, so this brings
-up the core backend and dashboard together. `cd core && make up` does the same
-thing with health checks and opens the browser.
+Or `cd core && make up` (health checks + browser).
 
-## For AI Integration
+## For AI tools
 
-When working with Claude or other AI tools:
-1. Reference `.ai-context.json` to know which files are relevant
-2. Pass only the specific folder/file path you're working on
-3. Example: "Working on: /core/backend"
-
-This minimizes token usage and keeps context focused.
+1. Prefer `.ai-context.json` and **`core/`** as the working set
+2. Pass only the folder you are changing (e.g. `core/backend`)
+3. Treat `libraries/archive/` as read-only historical material

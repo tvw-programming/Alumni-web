@@ -1,5 +1,10 @@
 # CodeGen Core
 
+> **Canonical workspace.** All 24-step pipeline logic, tests, configuration, and
+> safety contracts live here. Outer folders (`apps/`, `libraries/`, `services/`,
+> `packages/`) are reserved capacity or archives — see repo-root `.workspace-root`
+> and `libraries/archive/README.md`.
+
 The 24-stage AI development workflow at the centre of this monorepo: two
 mandatory human gates, plus the dashboard for watching it and deciding at those
 gates. Runs natively on Apple Silicon.
@@ -8,6 +13,7 @@ Two projects:
 
 - `backend/` — the pipeline runner, the gate API and the CLI (Python)
 - `frontend/` — the run monitor dashboard (React 19 + MUI)
+- `backend/sample-project/` — **the primary artifact the agent edits** (FastAPI)
 
 From the repo root, `npm run dev:core` starts both without Docker.
 

@@ -1,7 +1,7 @@
 {
   "monorepo": {
     "name": "CodeGen",
-    "description": "Unified AI platform with multiple services and UIs"
+    "description": "CodeGen Core 24-step AI workflow — product lives under core/"
   },
   "projects": [
     {
@@ -15,6 +15,7 @@
         "core/backend/src/codegen_core/dashboard/api.py",
         "core/backend/src/codegen_core/tools/file_write_guard.py",
         "core/backend/config/config.json",
+        "core/backend/sample-project/",
         "core/backend/pyproject.toml"
       ],
       "language": "python",
@@ -36,56 +37,38 @@
       "ignore": ["node_modules", "dist", "dist-smoke"]
     },
     {
-      "name": "react-components",
-      "path": "libraries/react-components/",
-      "description": "Reusable React component library",
-      "key-files": [
-        "src/components/",
-        "src/hooks/",
-        "src/types/index.ts",
-        "package.json"
-      ],
-      "language": "javascript",
-      "ignore": ["node_modules", "dist"]
-    },
-    {
-      "name": "python-explainer",
-      "path": "services/python-explainer/",
-      "description": "Convert Python code to video",
-      "key-files": [
-        "src/main.py",
-        "src/video_generator.py",
-        "requirements.txt"
-      ],
+      "name": "sample-project",
+      "path": "core/backend/sample-project/",
+      "description": "Primary FastAPI service the pipeline edits",
       "language": "python",
-      "ignore": ["__pycache__", "venv"]
+      "ignore": ["__pycache__", ".venv"]
     },
     {
       "name": "react-web",
       "path": "apps/react-web/",
-      "description": "Main React UI for workflow",
+      "description": "Optional Alumni sample UI (not required for Core)",
       "key-files": [
-        "src/App.tsx",
-        "src/components/",
-        "src/pages/",
-        "package.json"
+        "apps/react-web/src/",
+        "apps/react-web/package.json"
       ],
       "language": "javascript",
       "ignore": ["node_modules", "dist"]
     }
   ],
-  "shared": [
-    "packages/shared-types/src/index.ts",
-    "packages/design-tokens/index.ts",
-    "packages/shared-utils/src/"
+  "archive": [
+    "libraries/archive/react-components/",
+    "libraries/archive/myapp4-2/"
   ],
+  "shared": [],
   "ignore-globally": [
     "node_modules",
     "dist",
+    "dist-smoke",
     "build",
     ".git",
     "__pycache__",
     ".venv",
-    "venv"
+    "venv",
+    "libraries/archive"
   ]
 }

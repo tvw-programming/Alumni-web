@@ -97,7 +97,7 @@ services:
       - ./tsconfig.json:/app/tsconfig.json
       # The shared library, inside /app so its own imports resolve against
       # /app/node_modules. Read-only: this app consumes it, never edits it.
-      - ../../libraries/react-components/frontend/react/src:/app/.library:ro
+      - ../../libraries/archive/react-components/frontend/react/src:/app/.library:ro
       # Keep the image's node_modules. A bind mount from macOS would shadow it
       # with host-built binaries that are not the ones this arm64 image needs.
       - /app/node_modules
