@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
+from typing import Any
+
+from pydantic import BaseModel, Field, field_validator
 
 
 class ProjectContextV1(BaseModel):
@@ -23,7 +25,39 @@ class RepoUnderstandingV1(BaseModel):
     ci_jobs: list[str] = Field(default_factory=list)
     integration_touchpoints: list[str] = Field(default_factory=list)
     related_implementations: list[str] = Field(default_factory=list)
+    #: module → imported modules. Models often emit `[]` for "empty"; coerce.
     dependency_graph: dict[str, list[str]] = Field(default_factory=dict)
+
+    @field_validator("dependency_graph", mode="before")
+    @classmethod
+    def _coerce_dependency_graph(cls, value: Any) -> Any:
+        if value is None or value == []:
+            return {}
+        if isinstance(value, dict):
+            return value
+        if isinstance(value, list):
+            out: dict[str, list[str]] = {}
+            for item in value:
+                if isinstance(item, (list, tuple)) and len(item) == 2:
+                    key, deps = item
+                    out[str(key)] = (
+                        [str(d) for d in deps] if isinstance(deps, list) else [str(deps)]
+                    )
+                elif isinstance(item, dict):
+                    key = item.get("module") or item.get("name") or item.get("from")
+                    deps = (
+                        item.get("depends_on")
+                        or item.get("imports")
+                        or item.get("to")
+                        or []
+                    )
+                    if key is None:
+                        continue
+                    out[str(key)] = (
+                        [str(d) for d in deps] if isinstance(deps, list) else [str(deps)]
+                    )
+            return out
+        return value
 
 
 class ApiContract(BaseModel):

@@ -37,8 +37,17 @@ class RepoUnderstanding(JsonAgentStep):
         }
         return (
             f"## GroundTruthRepositoryFacts\n```json\n{json.dumps(facts, indent=2)}\n```\n\n"
-            "Describe only what these facts support.\n\n" + super().build_user_prompt(env, ctx)
+            "Describe only what these facts support.\n"
+            "`dependency_graph` must be a JSON object (map of module → imports), "
+            "never an array — use {} when empty.\n\n"
+            + super().build_user_prompt(env, ctx)
         )
+
+    def post_process(self, payload: dict, ctx: Any) -> dict:
+        """Prefer the deterministic import graph over whatever the model invented."""
+        graph = dict(list(python_dependency_graph(ctx.workspace).items())[:120])
+        payload["dependency_graph"] = graph
+        return payload
 
     def render_markdown(self, payload: dict) -> str:
         return (
