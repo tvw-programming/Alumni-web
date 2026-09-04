@@ -191,6 +191,11 @@ export async function fetchVisualVariants(): Promise<VisualVariants> {
   }
 }
 
-export async function health(): Promise<{ ok: boolean; profile: string; steps: number }> {
+export async function health(): Promise<{
+  ok: boolean;
+  profile: string;
+  steps: number;
+  projectUi?: { url: string; label: string } | null;
+}> {
   return request('/api/health');
 }

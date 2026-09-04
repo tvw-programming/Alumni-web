@@ -340,12 +340,22 @@ def create_app(config_path: str | None = None, cors_origins: list[str] | None = 
 
     @app.get("/api/health", summary="Liveness and configuration summary")
     def health() -> dict:
+        project = cfg.app.project
+        ui_url = (project.ui_url or "").strip()
         return {
             "ok": True,
             "profile": cfg.active_profile,
             "steps": len(registry),
             "gates": sorted(cfg.gates),
             "backends": sorted(b for b, c in cfg.backends.items() if c.enabled),
+            "projectUi": (
+                {
+                    "url": ui_url,
+                    "label": (project.ui_label or "Product UI").strip() or "Product UI",
+                }
+                if ui_url
+                else None
+            ),
         }
 
     return app

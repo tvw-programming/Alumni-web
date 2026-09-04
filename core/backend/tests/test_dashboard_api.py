@@ -42,6 +42,10 @@ def test_health_reports_the_active_configuration(client, cfg):
     assert body["steps"] == 24
     assert body["gates"] == ["06", "24"]
     assert body["profile"] == cfg.active_profile
+    # Product UI link comes from app.project.ui_url (Alumni sample by default).
+    assert body["projectUi"] is not None
+    assert body["projectUi"]["url"].startswith("http")
+    assert body["projectUi"]["label"]
 
 
 def test_run_payload_has_every_field_the_ui_requires(client, completed_job, cfg):
