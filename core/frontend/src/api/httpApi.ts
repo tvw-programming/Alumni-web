@@ -118,6 +118,24 @@ export async function rerunFromStep(step: number): Promise<ActionResult> {
 }
 
 /**
+ * Answer blocking questions on a NEEDS_INPUT step.
+ *
+ * Appends clarifications to story_input.json, invalidates steps 01..step, and
+ * asks the watcher to resume. The dialog collects one answer per question.
+ */
+export async function submitClarification(
+  step: number,
+  answers: { id: string; answer: string }[],
+  answeredBy: string,
+): Promise<ActionResult> {
+  const id = await jobId();
+  return request<ActionResult>(`/api/runs/${id}/steps/${step}/clarify`, {
+    method: 'POST',
+    body: JSON.stringify({ answers, answeredBy }),
+  });
+}
+
+/**
  * Start a run at step 01.
  *
  * The only way the dashboard begins a pipeline — nothing schedules one, and

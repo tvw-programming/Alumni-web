@@ -253,6 +253,84 @@ def test_a_decision_reaches_the_journal_with_the_real_approver(cfg, ctx, client,
 
 
 # --------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
+def test_clarify_writes_story_input_and_requests_resume(client, cfg, ctx, monkeypatch):
+    """Answering Q&A on the Ambiguous dialog updates the story and resumes."""
+    from codegen_core.core import story_input
+
+    monkeypatch.setenv("CODEGEN_AUTO_APPROVE", "1")
+    story_input.save(
+        ctx,
+        {
+            "key": ctx.jira_id,
+            "title": "Export profile data",
+            "description": "Users can export their profile.",
+            "acceptance_criteria": ["AC-1 export returns JSON"],
+            "entered_by": "tester",
+        },
+    )
+    runner = PipelineRunner(cfg)
+    runner.prepare(ctx)
+    runner.run(ctx, start=1, stop=2)
+
+    report = {
+        "gaps": ["format unspecified"],
+        "questions_for_human": [
+            {"id": "Q1", "text": "What file format?", "blocks_step": 12},
+            {"id": "Q2", "text": "Which rows?", "blocks_step": None},
+        ],
+        "blocking": True,
+    }
+    ctx.artifacts.write(3, "ambiguity_report", report, ext="json")
+    ctx.journal._append(
+        {"type": "step", "step": 3, "component": "gap_ambiguity_detection", "status": "AMBIGUOUS"}
+    )
+    # Spend the ambiguity loop budget so a re-check without reset would halt.
+    ctx.journal._append({"type": "loop", "from": 3, "to": 2, "on": "CLASS:AMBIGUITY"})
+    ctx.journal._append({"type": "loop", "from": 3, "to": 2, "on": "CLASS:AMBIGUITY"})
+
+    monkeypatch.setattr("codegen_core.dashboard.api.ConfigLoader.load", lambda *a, **k: cfg)
+    local = TestClient(create_app())
+
+    r = local.post(
+        f"/api/runs/{ctx.job_id}/steps/3/clarify",
+        json={
+            "answeredBy": "tejas.waghulde",
+            "answers": [
+                {"id": "Q1", "answer": "JSON only"},
+                {"id": "Q2", "answer": "The signed-in user's own row"},
+            ],
+        },
+    )
+    assert r.status_code == 200, r.text
+    body = r.json()
+    assert "Q1" in body["message"] and "Q2" in body["message"]
+
+    typed = story_input.load(ctx)
+    assert typed is not None
+    assert "Clarifications from run monitor" in typed.description
+    assert "JSON only" in typed.description
+    assert typed.entered_by == "tejas.waghulde"
+
+    events = [e for e in ctx.journal.entries() if e.get("type") == "event"]
+    assert any(e.get("event") == "ambiguity_clarified" for e in events)
+    assert any(e.get("event") == "clarification_requested" for e in events)
+    assert any(e.get("event") == "steps_invalidated" for e in events)
+
+    # Fresh remediation budget after clarification.
+    assert ctx.journal.class_loop_count("AMBIGUITY") == 0
+
+    # Incomplete answers are refused.
+    bad = local.post(
+        f"/api/runs/{ctx.job_id}/steps/3/clarify",
+        json={"answeredBy": "x", "answers": [{"id": "Q1", "answer": "only one"}]},
+    )
+    # Step is no longer NEEDS_INPUT after invalidate... actually after clarify,
+    # step 3 is still AMBIGUOUS in the journal until resume; status is still
+    # NEEDS_INPUT. Missing answer should 409.
+    assert bad.status_code == 409
+
+
 def test_artifacts_cannot_be_read_outside_the_job_directory(client, completed_job):
     job = completed_job.job_id
     assert client.get(f"/api/runs/{job}/artifacts/../../../etc/passwd").status_code == 404

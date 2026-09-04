@@ -311,6 +311,51 @@ export function submitRevision(step: number, upload: RevisionUpload): Promise<Ac
   });
 }
 
+/**
+ * Mock: clear NEEDS_INPUT by marking the step successful and advancing.
+ * Live mode writes story_input and resumes via the watcher.
+ */
+export function submitClarification(
+  step: number,
+  answers: { id: string; answer: string }[],
+  _answeredBy: string,
+): Promise<ActionResult> {
+  const target = find(current, step);
+  if (!target) return Promise.reject(new Error(`No step ${step} in this run`));
+  if (target.status !== 'NEEDS_INPUT') {
+    return Promise.reject(new Error(`Step ${step} is not waiting on answers`));
+  }
+  const needed = target.blockingQuestions ?? [];
+  const byId = Object.fromEntries(answers.map((a) => [a.id, a.answer.trim()]));
+  const missing = needed.filter((q) => !byId[q.id]);
+  if (missing.length > 0) {
+    return Promise.reject(
+      new Error(
+        `Every blocking question needs an answer. Still empty: ${missing.map((q) => q.id).join(', ')}`,
+      ),
+    );
+  }
+
+  const now = new Date().toISOString();
+  target.status = 'SUCCESS';
+  target.blockingQuestions = undefined;
+  target.error = undefined;
+  const next = current.steps.find((s) => s.step > step && s.status === 'PENDING');
+  if (next) {
+    next.status = 'RUNNING';
+    next.startedAt = now;
+    next.durationMs = 0;
+  }
+  current.status = 'RUNNING';
+  current.blockedAt = null;
+  current.updatedAt = now;
+
+  return delay({
+    run: clone(current),
+    message: `Recorded answers for ${answers.map((a) => a.id).join(', ')}. The run continues.`,
+  });
+}
+
 export function rerunFromStep(step: number): Promise<ActionResult> {
   return submitAction(step, 'retry');
 }

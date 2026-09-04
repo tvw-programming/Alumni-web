@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   Alert,
   Box,
+  Button,
   Chip,
   Dialog,
   DialogContent,
@@ -22,6 +23,7 @@ import SouthIcon from '@mui/icons-material/SouthEast';
 import NorthIcon from '@mui/icons-material/NorthEast';
 import DescriptionIcon from '@mui/icons-material/InsertDriveFileOutlined';
 import HelpIcon from '@mui/icons-material/HelpOutlineOutlined';
+import SendIcon from '@mui/icons-material/SendRounded';
 import type { RunStep, StepAction } from '../../types/workflow';
 import type { DecisionOptions } from '../../hooks/useRun';
 import StepTasks from '../dashboard/StepTasks';
@@ -46,6 +48,12 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onAction: (step: RunStep, action: StepAction, decision?: DecisionOptions) => void;
+  /** Persist answers for a NEEDS_INPUT step and resume the run. */
+  onClarify?: (
+    step: RunStep,
+    answers: { id: string; answer: string }[],
+    answeredBy: string,
+  ) => Promise<void>;
   busy?: boolean;
 }
 
@@ -64,7 +72,15 @@ function Meta({ label, value }: { label: string; value: React.ReactNode }) {
   );
 }
 
-export default function StepDialog({ step, isCurrent = false, open, onClose, onAction, busy }: Props) {
+export default function StepDialog({
+  step,
+  isCurrent = false,
+  open,
+  onClose,
+  onAction,
+  onClarify,
+  busy,
+}: Props) {
   // A gate is a decision about a document, so it opens on the document (tab 2)
   // rather than on the request that named it. Set on the first render as well as
   // on reopen, or a gate flashes the Input tab before the effect corrects it.
@@ -73,6 +89,9 @@ export default function StepDialog({ step, isCurrent = false, open, onClose, onA
   const [openFile, setOpenFile] = useState<string | null>(null);
   const [role, setRole] = useState('');
   const [approver, setApprover] = useState(storedApprover);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [clarifyError, setClarifyError] = useState<string | null>(null);
+  const [clarifying, setClarifying] = useState(false);
 
   useEffect(() => {
     if (open) {
@@ -81,14 +100,48 @@ export default function StepDialog({ step, isCurrent = false, open, onClose, onA
       setOpenFile(null);
       setRole(step?.requiredRoles?.[0] ?? '');
       setApprover(storedApprover());
+      setClarifyError(null);
+      setClarifying(false);
+      const next: Record<string, string> = {};
+      for (const q of step?.blockingQuestions ?? []) {
+        next[q.id] = '';
+      }
+      setAnswers(next);
     }
-  }, [open, step?.step, step?.kind]);
+  }, [open, step?.step, step?.kind, step?.blockingQuestions]);
 
   if (!step) return null;
   const meta = statusMeta[step.status];
   const isGate = step.kind === 'GATE';
   const roles = step.requiredRoles ?? [];
   const decidable = isGate && (step.status === 'AWAITING_APPROVAL' || step.status === 'PENDING');
+  const needsAnswers =
+    step.status === 'NEEDS_INPUT' && (step.blockingQuestions?.length ?? 0) > 0 && Boolean(onClarify);
+  const allAnswered =
+    needsAnswers &&
+    (step.blockingQuestions ?? []).every((q) => (answers[q.id] ?? '').trim().length > 0);
+
+  async function submitClarifications() {
+    if (!step || !onClarify || !allAnswered) return;
+    setClarifying(true);
+    setClarifyError(null);
+    const named = approver.trim() || 'dashboard-user';
+    rememberApprover(named);
+    try {
+      await onClarify(
+        step,
+        (step.blockingQuestions ?? []).map((q) => ({
+          id: q.id,
+          answer: (answers[q.id] ?? '').trim(),
+        })),
+        named,
+      );
+    } catch (err) {
+      setClarifyError(err instanceof Error ? err.message : 'Could not save answers.');
+    } finally {
+      setClarifying(false);
+    }
+  }
 
   // A gate writes only its own decision record, so the document under review
   // belongs to an earlier step. Reading it is the whole point of the gate, so
@@ -200,34 +253,89 @@ export default function StepDialog({ step, isCurrent = false, open, onClose, onA
               {step.blockingQuestions.length === 1 ? '' : 's'} must be answered before the run
               continues
             </Typography>
-            <Stack spacing={1}>
+            <Stack spacing={2}>
               {step.blockingQuestions.map((q) => (
-                <Stack key={q.id} direction="row" spacing={1.25} sx={{ alignItems: 'baseline' }}>
-                  <Typography
-                    sx={{ fontFamily: fonts.mono, fontSize: 11, color: tokens.signal, flexShrink: 0 }}
-                  >
-                    {q.id}
-                  </Typography>
-                  <Typography variant="body2" sx={{ flex: 1 }}>
-                    {q.text}
-                  </Typography>
-                  {q.blocksStep !== null && (
+                <Box key={q.id}>
+                  <Stack direction="row" spacing={1.25} sx={{ alignItems: 'baseline', mb: 1 }}>
                     <Typography
-                      sx={{ fontFamily: fonts.mono, fontSize: 10.5, color: 'text.secondary', flexShrink: 0 }}
+                      sx={{ fontFamily: fonts.mono, fontSize: 11, color: tokens.signal, flexShrink: 0 }}
                     >
-                      blocks {String(q.blocksStep).padStart(2, '0')}
+                      {q.id}
                     </Typography>
+                    <Typography variant="body2" sx={{ flex: 1 }}>
+                      {q.text}
+                    </Typography>
+                    {q.blocksStep !== null && (
+                      <Typography
+                        sx={{
+                          fontFamily: fonts.mono,
+                          fontSize: 10.5,
+                          color: 'text.secondary',
+                          flexShrink: 0,
+                        }}
+                      >
+                        blocks {String(q.blocksStep).padStart(2, '0')}
+                      </Typography>
+                    )}
+                  </Stack>
+                  {needsAnswers && (
+                    <TextField
+                      fullWidth
+                      size="small"
+                      multiline
+                      minRows={2}
+                      placeholder="Your answer"
+                      value={answers[q.id] ?? ''}
+                      onChange={(e) =>
+                        setAnswers((prev) => ({ ...prev, [q.id]: e.target.value }))
+                      }
+                      disabled={busy || clarifying}
+                    />
                   )}
-                </Stack>
+                </Box>
               ))}
             </Stack>
-            <Typography
-              variant="body2"
-              sx={{ mt: 1.5, fontSize: 12, color: 'text.secondary' }}
-            >
-              Answering these means starting a run from a ticket that says more — re-running this
-              step reads the same ticket and asks the same questions.
-            </Typography>
+            {needsAnswers ? (
+              <Stack spacing={1.5} sx={{ mt: 2 }}>
+                <TextField
+                  size="small"
+                  label="Your name"
+                  placeholder="firstname.lastname"
+                  value={approver}
+                  onChange={(e) => setApprover(e.target.value)}
+                  sx={{ maxWidth: 280 }}
+                />
+                {clarifyError && (
+                  <Typography variant="body2" sx={{ color: 'error.main' }}>
+                    {clarifyError}
+                  </Typography>
+                )}
+                <Box>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    startIcon={<SendIcon />}
+                    disabled={!allAnswered || busy || clarifying}
+                    onClick={() => void submitClarifications()}
+                    sx={{ textTransform: 'none' }}
+                  >
+                    {clarifying ? 'Saving…' : 'Save answers & continue'}
+                  </Button>
+                </Box>
+                <Typography variant="body2" sx={{ fontSize: 12, color: 'text.secondary' }}>
+                  Answers are written into this run&apos;s story, steps 01–{String(step.step).padStart(2, '0')}{' '}
+                  re-run, and the pipeline continues from there.
+                </Typography>
+              </Stack>
+            ) : (
+              <Typography
+                variant="body2"
+                sx={{ mt: 1.5, fontSize: 12, color: 'text.secondary' }}
+              >
+                Answering these means starting a run from a ticket that says more — re-running this
+                step reads the same ticket and asks the same questions.
+              </Typography>
+            )}
           </Alert>
         )}
 

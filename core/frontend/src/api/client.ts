@@ -15,6 +15,7 @@ const api = isLive ? http : mock;
 export const fetchRun = api.fetchRun;
 export const submitAction = api.submitAction;
 export const submitRevision = api.submitRevision;
+export const submitClarification = api.submitClarification;
 export const rerunFromStep = api.rerunFromStep;
 export const startRun = api.startRun;
 export const fetchArtifactText = api.fetchArtifactText;

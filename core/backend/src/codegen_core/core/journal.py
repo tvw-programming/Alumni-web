@@ -103,17 +103,36 @@ class Journal:
         )
 
     def class_loop_count(self, failure_class: str) -> int:
+        """Loops for a failure class, since the last human clarification if any.
+
+        Answering ambiguity questions on the dashboard writes
+        `ambiguity_clarified`. Counting only loops after that event gives the
+        run a fresh remediation budget — otherwise a ticket that already spent
+        its loops would halt again on the first re-check.
+        """
+        entries = self.entries()
+        start = 0
+        if failure_class == "AMBIGUITY":
+            for i, e in enumerate(entries):
+                if e.get("type") == "event" and e.get("event") == "ambiguity_clarified":
+                    start = i + 1
         return sum(
             1
-            for e in self.entries()
+            for e in entries[start:]
             if e.get("type") == "loop"
             and e.get("on") == f"CLASS:{failure_class}"
         )
 
     def class_then_count(self, failure_class: str) -> int:
+        entries = self.entries()
+        start = 0
+        if failure_class == "AMBIGUITY":
+            for i, e in enumerate(entries):
+                if e.get("type") == "event" and e.get("event") == "ambiguity_clarified":
+                    start = i + 1
         return sum(
             1
-            for e in self.entries()
+            for e in entries[start:]
             if e.get("type") == "loop"
             and e.get("on") == f"CLASS:{failure_class}:THEN"
         )

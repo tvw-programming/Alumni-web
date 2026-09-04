@@ -7,6 +7,7 @@ import {
   rerunFromStep,
   startRun,
   submitAction,
+  submitClarification,
   submitRevision,
 } from '../api/client';
 import type { RevisionUpload } from '../api/client';
@@ -27,6 +28,12 @@ interface UseRunResult {
   rerunFrom: (step: number) => Promise<string>;
   /** Replace the document a gate rejected; the gate re-opens against it. */
   revise: (step: number, upload: RevisionUpload) => Promise<RevisionResult>;
+  /** Answer blocking questions on a NEEDS_INPUT step and resume. */
+  clarify: (
+    step: number,
+    answers: { id: string; answer: string }[],
+    answeredBy: string,
+  ) => Promise<string>;
   /** Begin a run at step 01. Nothing else starts one. */
   start: (request: NewRunRequest) => Promise<string>;
   /** No run exists yet — not a failure, just nothing started. */
@@ -151,6 +158,24 @@ export function useRun(): UseRunResult {
     }
   }, []);
 
+  const clarify = useCallback(
+    async (step: number, answers: { id: string; answer: string }[], answeredBy: string) => {
+      setLoading(true);
+      try {
+        const result = await submitClarification(step, answers, answeredBy);
+        setRun(result.run);
+        setError(null);
+        setSecondsUntilRefresh(REFRESH_INTERVAL_MS / 1000);
+        return result.message;
+      } catch (err) {
+        throw err instanceof Error ? err : new Error('Those answers could not be saved.');
+      } finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
+
   const start = useCallback(async (request: NewRunRequest) => {
     setLoading(true);
     try {
@@ -192,6 +217,7 @@ export function useRun(): UseRunResult {
     act,
     rerunFrom,
     revise,
+    clarify,
     start,
     empty,
   };

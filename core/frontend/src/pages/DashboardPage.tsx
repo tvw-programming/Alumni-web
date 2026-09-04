@@ -49,7 +49,7 @@ interface Props {
 }
 
 export default function DashboardPage({ controller }: Props) {
-  const { run, loading, error, empty, act, rerunFrom, revise, start } = controller;
+  const { run, loading, error, empty, act, rerunFrom, revise, clarify, start } = controller;
   // Visual is the default view: the route reads at a glance, and the spine and
   // table stay one click away.
   const [view, setView] = useState<View>('visual');
@@ -114,6 +114,16 @@ export default function DashboardPage({ controller }: Props) {
       text: warnings.length > 0 ? `${message} ${warnings.join(' ')}` : message,
       severity: warnings.length > 0 ? 'warning' : 'success',
     });
+  };
+
+  const handleClarify = async (
+    step: RunStep,
+    answers: { id: string; answer: string }[],
+    answeredBy: string,
+  ) => {
+    const message = await clarify(step.step, answers, answeredBy);
+    setSelected(null);
+    setToast({ text: message, severity: 'success' });
   };
 
   const handleStart = async (request: NewRunRequest) => {
@@ -332,6 +342,7 @@ export default function DashboardPage({ controller }: Props) {
         busy={loading}
         onClose={() => setSelected(null)}
         onAction={(s, a, d) => void handleAction(s, a, d)}
+        onClarify={handleClarify}
       />
 
       {/* The way past a rejected gate. Opened by Rerun, from whichever view the

@@ -23,6 +23,7 @@ from ..core.context import JobContext
 from ..core.errors import CodeGenCoreError, DocumentRejected, RevisionNotAllowed
 from ..orchestrator.gates import GateService
 from ..steps._loader import load_steps
+from .ambiguity_clarify import ClarificationError, clarify
 from .presenter import RunPresenter
 
 
@@ -73,6 +74,18 @@ class RevisionUpload(BaseModel):
     uploadedBy: str
     uploadedRole: str
     comment: str = ""
+
+
+class ClarificationAnswer(BaseModel):
+    id: str
+    answer: str
+
+
+class ClarifyRequest(BaseModel):
+    """Answers typed on the Ambiguous step dialog."""
+
+    answers: list[ClarificationAnswer]
+    answeredBy: str = "dashboard-user"
 
 
 def create_app(config_path: str | None = None, cors_origins: list[str] | None = None) -> Any:
@@ -311,6 +324,45 @@ def create_app(config_path: str | None = None, cors_origins: list[str] | None = 
             "message": (
                 f"Step {step:02d} is running again from the beginning. "
                 "The run continues from there once it clears."
+            ),
+        }
+
+    @app.post(
+        "/api/runs/{job_id}/steps/{step}/clarify",
+        summary="Answer ambiguity questions and resume from step 01",
+    )
+    def clarify_step(job_id: str, step: int, body: ClarifyRequest) -> dict:
+        """The on-screen answer path for a NEEDS_INPUT (AMBIGUOUS) step.
+
+        Writes the answers into story_input.json, invalidates steps 01..step,
+        and records clarification_requested so the watcher resumes the run.
+        """
+        ctx = ctx_for(job_id)
+        component = registry.get(step)
+        if component is None:
+            raise HTTPException(404, f"Step {step:02d} is not in this pipeline")
+
+        presenter = RunPresenter(cfg, ctx, registry)
+        try:
+            record = clarify(
+                ctx,
+                step=step,
+                answers=[a.model_dump() for a in body.answers],
+                answered_by=body.answeredBy,
+                presenter=presenter,
+                component=component,
+            )
+        except ClarificationError as exc:
+            raise HTTPException(409, str(exc)) from exc
+        except CodeGenCoreError as exc:
+            raise HTTPException(422, str(exc)) from exc
+
+        return {
+            "run": RunPresenter(cfg, ctx, registry).run_payload(),
+            "message": (
+                f"Recorded answers for {', '.join(record['questionIds'])}. "
+                f"Steps {', '.join(f'{s:02d}' for s in record['invalidated']) or 'none'} "
+                "will re-run with the clarified story."
             ),
         }
 

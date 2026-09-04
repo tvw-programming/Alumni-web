@@ -11,6 +11,7 @@ picked up, each in a subprocess:
     gate decision the journal has not absorbed  ->  codegen-core resume <job>
     retry_requested for a failed step           ->  codegen-core retry  <job> <step>
     run_requested on a fresh job                ->  codegen-core resume <job>
+    clarification_requested after ambiguity Q&A ->  codegen-core resume <job>
 
 It is deliberately dumb — one job at a time, no queue, no retries beyond the
 next tick — because the failure mode of a clever supervisor is a run that
@@ -95,7 +96,7 @@ def pending_request(job: Path) -> tuple[str, dict] | None:
         if event.get("type") != "event":
             continue
         kind = event.get("event")
-        if kind not in ("retry_requested", "run_requested"):
+        if kind not in ("retry_requested", "run_requested", "clarification_requested"):
             continue
         stamp = str(event.get("at") or "")
         step = event.get("step")
@@ -103,7 +104,7 @@ def pending_request(job: Path) -> tuple[str, dict] | None:
             str(e.get("at") or "") > stamp
             and (
                 # The retry ran, or the run started, after the ask.
-                (e.get("type") == "step" and (step is None or e.get("step") == step))
+                (e.get("type") == "step" and (step is None or e.get("step") == step or kind == "clarification_requested"))
                 or (e.get("type") == "event" and e.get("event") in ("retry_started", "run_started"))
             )
             for e in entries
@@ -167,6 +168,13 @@ def poll(job: Path, seen: set[tuple[str, str, str]]) -> None:
         step = int(event.get("step", 0))
         who = event.get("requested_by", "someone")
         execute(job.name, ["retry", job.name, str(step)], f"retrying step {step:02d} for {who}")
+    elif kind == "clarification_requested":
+        who = event.get("answered_by", "someone")
+        execute(
+            job.name,
+            ["resume", job.name],
+            f"resuming after ambiguity answers from {who}",
+        )
     else:
         execute(job.name, ["resume", job.name], "starting the run")
 
