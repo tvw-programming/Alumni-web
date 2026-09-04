@@ -7,7 +7,7 @@ import { defineConfig } from 'vite';
  * Alumni web app.
  *
  * The shared components are consumed as *source*, not as a built package:
- * `libraries/react-components/frontend/react` is private and publishes no dist.
+ * `libraries/archive/react-components/frontend/react` is private and publishes no dist.
  * That has one consequence worth stating plainly, because it is the thing that
  * breaks first for anyone wiring this up again —
  *
@@ -32,7 +32,7 @@ import { defineConfig } from 'vite';
  */
 const library =
   process.env.ALUMNI_LIB_SRC ??
-  fileURLToPath(new URL('../../libraries/react-components/frontend/react/src', import.meta.url));
+  fileURLToPath(new URL('../../libraries/archive/react-components/frontend/react/src', import.meta.url));
 
 export default defineConfig({
   plugins: [react()],

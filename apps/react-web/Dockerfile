@@ -3,7 +3,7 @@
 #
 # The build context is the repository root, not this directory. That is forced
 # by the alias in vite.config.ts: this app imports the shared components as
-# source from libraries/react-components/frontend/react/src, so a context of
+# source from libraries/archive/react-components/frontend/react/src, so a context of
 # apps/react-web alone cannot see half of what it compiles.
 #
 # Only package.json is copied for the install layer; the source arrives by bind

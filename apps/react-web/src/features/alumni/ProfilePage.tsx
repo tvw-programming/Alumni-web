@@ -2,7 +2,7 @@
  * Profile screen — the Education section rendered by the shared schema form.
  *
  * This is the screen that proves the library integration works: SchemaFormWrapper
- * comes from libraries/react-components and resolves its own `@/` imports through
+ * comes from libraries/archive/react-components and resolves its own `@/` imports through
  * the alias in vite.config.ts. If that alias is wrong, this is the page that
  * fails to load.
  */

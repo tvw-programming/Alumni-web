@@ -81,13 +81,13 @@ npm run docker:down
 ## Using with Claude/AI Tools
 
 ### When You Need Help:
-1. **Specify the project**: "Working on: /libraries/react-components"
+1. **Specify the project**: "Working on: /core/backend"
 2. **Mention the file**: "File: src/components/BaseForm.tsx"
 3. **Paste relevant code**: (50-100 lines max)
 
 ### Example:
 ```
-Working on: /libraries/react-components
+Working on: /core/backend
 File: src/components/Button.tsx
 Task: Add async validation support
 
@@ -181,7 +181,7 @@ pnpm install
 Change ports in the respective app configs:
 - Core backend / dashboard: `core/.env` (`CODEGEN_API_PORT`, `CODEGEN_FRONTEND_PORT`)
 - React: `apps/react-web/.env`
-- Angular: `apps/angular-web/angular.json`
+- Angular: `core/frontend/package.json`
 
 ## Support
 

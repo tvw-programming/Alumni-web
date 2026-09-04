@@ -9,13 +9,13 @@ apps/react-web/
   src/          React app (Vite, port 5174 — 5173 is the core run monitor)
   api/          Go Fiber gateway
   db/
-    migrations/ golang-migrate pairs, same convention as libraries/react-components/api
+    migrations/ golang-migrate pairs, same convention as libraries/archive/react-components/api
     queries/    raw SQL, kept as .sql so EXPLAIN works without running the API
 ```
 
 ## The shared components are consumed as source
 
-`libraries/react-components/frontend/react` is private and publishes no `dist`,
+`libraries/archive/react-components/frontend/react` is private and publishes no `dist`,
 so this app imports its `src` directly. That has one consequence that breaks
 first for anyone wiring it up again: those components import each other through
 the library's own `@/` alias. Aliasing `@ui` alone gets you a module that fails

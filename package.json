@@ -3,9 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "workspaces": [
-    "packages/*",
-    "apps/*",
-    "libraries/*"
+    "apps/react-web",
+    "core/frontend"
   ],
   "scripts": {
     "install:all": "bash scripts/install.sh",

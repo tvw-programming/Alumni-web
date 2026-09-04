@@ -1,15 +1,37 @@
 node_modules/
 dist/
+dist-smoke/
 # Packaging output at repo root only — do not ignore **/steps/build/.
 /build/
 .DS_Store
 *.log
 .env
 .env.local
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
 .venv/
 venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Go (if/when present outside core)
+*.exe
+*.test
+*.out
+testsuite.test
+_test/
+
+# Local pipeline checkouts / scratch (core/backend also ignores workspace/*)
+workspace/
+**/workspace/*
+!**/workspace/.gitkeep
+
+# Editors / OS / JVM
 .gradle/
 .idea/
 target/

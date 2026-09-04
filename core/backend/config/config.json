@@ -1533,7 +1533,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/workspace}",
           "must_exist": true,
           "must_be_writable": true
         }
@@ -1635,7 +1635,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/workspace}",
           "must_exist": true,
           "must_be_writable": true
         }
@@ -1755,7 +1755,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/workspace}",
           "must_exist": true,
           "must_be_writable": true
         }
@@ -1857,7 +1857,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/workspace}",
           "must_exist": true,
           "must_be_writable": true
         }
@@ -1958,7 +1958,7 @@
           "schema_registry": "/app/config/schemas"
         },
         "project": {
-          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+          "path": "${env:CODEGEN_PROJECT_PATH:-/workspace}",
           "must_exist": true,
           "must_be_writable": true
         }

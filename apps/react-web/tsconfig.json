@@ -19,8 +19,8 @@
     // it. This app's own code is `~/*`.
     "paths": {
       "~/*": ["./src/*"],
-      "@ui/*": ["../../libraries/react-components/frontend/react/src/*"],
-      "@/*": ["../../libraries/react-components/frontend/react/src/*"]
+      "@ui/*": ["../../libraries/archive/react-components/frontend/react/src/*"],
+      "@/*": ["../../libraries/archive/react-components/frontend/react/src/*"]
     },
     "types": ["vite/client"]
   },
