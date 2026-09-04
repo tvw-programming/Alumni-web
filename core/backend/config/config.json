@@ -14,7 +14,9 @@
     "project": {
       "path": "",
       "must_exist": true,
-      "must_be_writable": true
+      "must_be_writable": true,
+      "ui_url": "${env:CODEGEN_PROJECT_UI_URL:-http://localhost:5174}",
+      "ui_label": "Product UI"
     },
     "retention_days": {
       "artifacts": 180,

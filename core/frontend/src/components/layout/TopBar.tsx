@@ -1,6 +1,9 @@
-import { AppBar, Box, Stack, Tab, Tabs, Toolbar, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { AppBar, Box, Button, Stack, Tab, Tabs, Toolbar, Typography } from '@mui/material';
+import OpenInNewIcon from '@mui/icons-material/OpenInNewRounded';
 import { Link, useLocation } from 'react-router-dom';
 import { fonts, tokens } from '../../theme';
+import { fetchProjectUi } from '../../api/client';
 import RefreshIndicator from './RefreshIndicator';
 
 interface Props {
@@ -31,6 +34,17 @@ function Mark() {
 export default function TopBar(props: Props) {
   const { pathname } = useLocation();
   const value = pathname.startsWith('/docs') ? '/docs' : '/';
+  const [projectUi, setProjectUi] = useState<{ url: string; label: string } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void fetchProjectUi().then((ui) => {
+      if (!cancelled) setProjectUi(ui);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <AppBar
@@ -43,7 +57,7 @@ export default function TopBar(props: Props) {
       }}
     >
       <Toolbar sx={{ gap: 3, minHeight: { xs: 56, sm: 60 }, px: { xs: 2, md: 3 } }}>
-        <Stack direction="row" spacing={1.25} sx={{ alignItems: "center" }}>
+        <Stack direction="row" spacing={1.25} sx={{ alignItems: 'center' }}>
           <Mark />
           <Box>
             <Typography
@@ -78,6 +92,33 @@ export default function TopBar(props: Props) {
         </Tabs>
 
         <Box sx={{ flex: 1 }} />
+
+        {projectUi && (
+          <Button
+            component="a"
+            href={projectUi.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="small"
+            endIcon={<OpenInNewIcon sx={{ fontSize: '14px !important' }} />}
+            sx={{
+              color: tokens.signal,
+              textTransform: 'none',
+              fontFamily: fonts.ui,
+              fontWeight: 500,
+              fontSize: 13,
+              px: 1.25,
+              border: `1px solid ${tokens.rule}`,
+              borderRadius: 1,
+              '&:hover': {
+                borderColor: tokens.signal,
+                bgcolor: 'rgba(255,255,255,0.04)',
+              },
+            }}
+          >
+            {projectUi.label}
+          </Button>
+        )}
 
         <RefreshIndicator {...props} />
       </Toolbar>

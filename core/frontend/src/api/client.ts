@@ -20,6 +20,12 @@ export const startRun = api.startRun;
 export const fetchArtifactText = api.fetchArtifactText;
 export const artifactUrl: (file: string) => Promise<string | null> = api.artifactUrl;
 export const fetchVisualVariants = api.fetchVisualVariants;
+export const fetchProjectUi = isLive
+  ? async () => {
+      const body = await http.health();
+      return body.projectUi ?? null;
+    }
+  : async () => mock.fetchProjectUi();
 
 /** Only the mock can answer synchronously; live mode paints from the first poll. */
 export const peekRun = isLive ? null : mock.peekRun;

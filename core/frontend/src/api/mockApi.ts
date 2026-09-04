@@ -384,6 +384,17 @@ export function fetchVisualVariants(): Promise<VisualVariants> {
   return delay(FALLBACK_VARIANTS);
 }
 
+/**
+ * Product UI the pipeline is changing — Alumni sample at :5174 by default.
+ * Mock mode still exposes the link so the dashboard chrome matches live mode.
+ */
+export function fetchProjectUi(): Promise<{ url: string; label: string } | null> {
+  return delay({
+    url: 'http://localhost:5174',
+    label: 'Product UI',
+  });
+}
+
 /** Test seam: put the simulation back to its opening state. */
 export function resetRun(): void {
   current = buildRun();

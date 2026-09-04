@@ -98,12 +98,20 @@ class ProjectCfg(Frozen):
     With `must_exist` on — the default — a missing or unusable path fails at
     boot, because every step from 04 onwards would otherwise fail later and less
     clearly.
+
+    `ui_url` is optional: the running product UI reviewers open to see features
+    the pipeline is adding (e.g. the Alumni sample at http://localhost:5174).
+    Exposed to the Core dashboard as a header link; empty means no link.
     """
 
     path: str = ""
     must_exist: bool = True
     #: Refuse a path the pipeline cannot write to. Steps 12, 15 and 21 edit here.
     must_be_writable: bool = True
+    #: Browser URL of the product UI for this project (shown on the dashboard).
+    ui_url: str = ""
+    #: Short label for the dashboard link (default "Product UI").
+    ui_label: str = "Product UI"
 
 
 class AppSection(Frozen):
