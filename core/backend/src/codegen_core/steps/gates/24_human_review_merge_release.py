@@ -70,9 +70,19 @@ class HumanReviewMergeRelease(Gate):
         ctx.journal.append_approval(self.step, record)
 
         if record["status"] != "APPROVED":
+            # Align with config remediation_edges: gate 24 uses CHANGES_REQUESTED
+            # (dashboard may still send REJECTED). Gate 06 keeps REJECTED for revision.
+            status = record["status"]
+            if status == "REJECTED":
+                status = "CHANGES_REQUESTED"
+                record["status"] = status
             ctx.artifacts.write(self.step, "merge_record", record, ext="json")
-            return env.reply(self.ref(), [structured("ApprovalRecordV1", record)],
-                             intent=Intent.ERROR, status=record["status"])
+            return env.reply(
+                self.ref(),
+                [structured("ApprovalRecordV1", record)],
+                intent=Intent.ERROR,
+                status=status,
+            )
 
         vcs = build_plugin(ctx.cfg, "vcs", ctx)
         merge = vcs.merge(pr.get("number", 0))

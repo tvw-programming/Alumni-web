@@ -201,11 +201,18 @@ class JsonAgentStep(Agent):
 
         prov = ctx.provenance_for(self.step, prompt=system + user, usage=completion.usage)
         prov = prov.model_copy(update={"backend_id": backend.id, "model_id": backend.model_id})
+        status = self.status_for(payload, ctx)
+        from ..core.envelope import failure_class_for
+
+        fclass = None
+        if status not in ("OK", "APPROVED", "PASSED"):
+            fclass = failure_class_for(self.step)
         return env.reply(
             self.ref(),
             [structured(self.emits, payload)],
-            status=self.status_for(payload, ctx),
+            status=status,
             provenance=prov,
+            failure_class=fclass,
         ).model_copy(update={"parts": [structured(self.emits, payload)]})
 
     def render_markdown(self, payload: dict) -> str:

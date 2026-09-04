@@ -27,6 +27,42 @@ class Intent(str, Enum):
     REMEDIATE = "remediate"
 
 
+class FailureClass(str, Enum):
+    """Typed failure category used by remediation routing.
+
+    Stops every machine-recoverable failure from blindly jumping to step 12.
+    """
+
+    TEST = "TEST"
+    LINT = "LINT"
+    AMBIGUITY = "AMBIGUITY"
+    CODE = "CODE"
+    SECURITY = "SECURITY"
+    OTHER = "OTHER"
+
+
+#: Default class for a step when the envelope does not set one.
+STEP_FAILURE_CLASS: dict[int, FailureClass] = {
+    3: FailureClass.AMBIGUITY,
+    7: FailureClass.TEST,
+    13: FailureClass.CODE,
+    14: FailureClass.LINT,
+    15: FailureClass.TEST,
+    16: FailureClass.TEST,
+    17: FailureClass.CODE,
+    18: FailureClass.SECURITY,
+    19: FailureClass.SECURITY,
+    23: FailureClass.CODE,
+    24: FailureClass.CODE,
+}
+
+
+def failure_class_for(step: int, env: "Envelope | None" = None) -> FailureClass:
+    if env is not None and env.failure_class is not None:
+        return env.failure_class
+    return STEP_FAILURE_CLASS.get(step, FailureClass.OTHER)
+
+
 class ComponentRef(BaseModel):
     step: int | None = None
     name: str
@@ -55,6 +91,8 @@ class Envelope(BaseModel):
     parts: list[Part] = Field(default_factory=list)
     provenance: Provenance = Field(default_factory=Provenance)
     created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+    #: Set on failed replies so the runner can route by class, not only by status.
+    failure_class: FailureClass | None = None
 
     # ------------------------------------------------------------------ #
     @property
@@ -85,6 +123,7 @@ class Envelope(BaseModel):
         intent: Intent = Intent.RESULT,
         status: str = "OK",
         provenance: Provenance | None = None,
+        failure_class: FailureClass | None = None,
     ) -> "Envelope":
         return Envelope(
             correlation_id=self.correlation_id,
@@ -94,6 +133,7 @@ class Envelope(BaseModel):
             intent=intent,
             status=status,
             parts=parts,
+            failure_class=failure_class,
             provenance=(provenance or Provenance()).model_copy(
                 update={"parent_message_ids": [self.message_id]}
             ),

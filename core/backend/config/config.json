@@ -656,20 +656,22 @@
       "on_exceed": "halt_and_notify"
     }
   },
-  "pipeline": {
+    "pipeline": {
     "start_step": 1,
     "stop_step": 24,
+    "max_parallel_steps": 3,
     "parallel_groups": [
-      [
-        18,
-        19
-      ],
-      [
-        20,
-        21
-      ]
+      [7, 8],
+      [18, 19],
+      [20, 21]
     ],
     "remediation_edges": [
+      {
+        "from": 7,
+        "on": "FAILED",
+        "to": 7,
+        "max_loops": 2
+      },
       {
         "from": 13,
         "on": "FAILED",
@@ -681,12 +683,6 @@
         "on": "FAILED",
         "to": 12,
         "max_loops": 3
-      },
-      {
-        "from": 16,
-        "on": "FAILED",
-        "to": 12,
-        "max_loops": 4
       },
       {
         "from": 17,
@@ -701,8 +697,20 @@
         "max_loops": 2
       },
       {
+        "from": 18,
+        "on": "FAILED",
+        "to": 12,
+        "max_loops": 2
+      },
+      {
         "from": 19,
         "on": "BLOCKING_FINDINGS",
+        "to": 12,
+        "max_loops": 2
+      },
+      {
+        "from": 19,
+        "on": "FAILED",
         "to": 12,
         "max_loops": 2
       },
@@ -718,6 +726,14 @@
         "to": 12,
         "max_loops": 5
       }
+    ],
+    "failure_class_routes": [
+      {"class": "TEST", "to": 15, "max_loops": 1, "then": 12},
+      {"class": "LINT", "to": 14, "max_loops": 2, "then": 12},
+      {"class": "AMBIGUITY", "to": 2, "max_loops": 2, "then": null},
+      {"class": "CODE", "to": 12, "max_loops": 3, "then": null},
+      {"class": "SECURITY", "to": 12, "max_loops": 2, "then": null},
+      {"class": "OTHER", "to": 12, "max_loops": 2, "then": null}
     ],
     "on_max_loops_exceeded": "halt_and_escalate"
   },

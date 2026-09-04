@@ -153,9 +153,10 @@ def test_retry_reruns_only_that_step_and_then_continues(cfg, ctx, monkeypatch):
 
     after = [e["step"] for e in ctx.journal.entries() if e.get("type") == "step"]
     fresh = after[len(before):]
-    # Strictly that step, then forward — never back over completed work.
+    # Strictly that step first, then forward. Parallel peers (18∥19, 20∥21) may
+    # finish out of numeric order in the journal.
     assert fresh[0] == 9
-    assert fresh == sorted(fresh)
+    assert all(s >= 9 for s in fresh), "retry must not re-run steps before the failure"
     assert ctx.journal.completed(24)
 
 
