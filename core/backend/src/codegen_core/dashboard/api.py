@@ -291,18 +291,21 @@ def create_app(config_path: str | None = None, cors_origins: list[str] | None = 
             "warnings": record["warnings"],
         }
 
-    @app.post("/api/runs/{job_id}/steps/{step}/retry", summary="Re-run a failed step from the beginning")
+    @app.post("/api/runs/{job_id}/steps/{step}/retry", summary="Re-run a failed or stalled step from the beginning")
     def retry(job_id: str, step: int, body: RetryRequest) -> dict:
-        """Ask for one failed step to run again.
+        """Ask for one failed or stalled step to run again.
 
         Intent, not execution: the request records what was asked and returns,
         and the watcher runs `codegen-core retry` in a subprocess. A step can take
         minutes and calls a model, neither of which belongs in a web request —
         and recording it means the ask survives an API restart.
 
-        Only a failed step is accepted. Retrying a step that succeeded would
-        spend tokens reproducing a document that is already correct, and the
-        rest of the run is built on the version that exists.
+        A FAILED step raised and wrote a record; a STALLED step is one whose
+        runner process died mid-execution and left no record at all. Both have
+        no result, and re-running is the only thing that produces one. A step
+        that succeeded is refused: re-running it would spend tokens reproducing
+        a document that is already correct, and the rest of the run is built on
+        the version that exists.
         """
         ctx = ctx_for(job_id)
         component = registry.get(step)
@@ -311,11 +314,11 @@ def create_app(config_path: str | None = None, cors_origins: list[str] | None = 
 
         presenter = RunPresenter(cfg, ctx, registry)
         status = presenter.step_payload(step, component)["status"]
-        if status != "FAILED":
+        if status not in ("FAILED", "STALLED"):
             raise HTTPException(
                 409,
-                f"Step {step:02d} is {status.replace('_', ' ').lower()}, not failed. "
-                "Retry re-runs a step that failed; there is nothing here to resolve.",
+                f"Step {step:02d} is {status.replace('_', ' ').lower()}, not failed or stalled. "
+                "Retry re-runs a step that failed or stalled; there is nothing here to resolve.",
             )
 
         ctx.journal.append_event("retry_requested", step=step, requested_by=body.requestedBy)
