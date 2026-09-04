@@ -199,11 +199,28 @@ class RemediationEdge(Frozen):
     model_config = ConfigDict(frozen=True, populate_by_name=True, extra="allow")
 
 
+class FailureClassRoute(Frozen):
+    """Typed remediation when no (step, status) edge matches.
+
+    `then_step` is the fallback after `max_loops` on this class route is spent.
+    """
+
+    failure_class: str = Field(alias="class")
+    to_step: int = Field(alias="to")
+    max_loops: int = 1
+    then_step: int | None = Field(default=12, alias="then")
+
+    model_config = ConfigDict(frozen=True, populate_by_name=True, extra="allow")
+
+
 class PipelineSection(Frozen):
     start_step: int = 1
     stop_step: int = 24
     parallel_groups: list[list[int]] = Field(default_factory=list)
+    #: Optional override; when unset the runner uses app.concurrency.max_parallel_steps.
+    max_parallel_steps: int | None = None
     remediation_edges: list[RemediationEdge] = Field(default_factory=list)
+    failure_class_routes: list[FailureClassRoute] = Field(default_factory=list)
     on_max_loops_exceeded: str = "halt_and_escalate"
 
 
@@ -588,6 +605,61 @@ class AppConfig(Frozen):
                 raise ConfigError(f"remediation edge {e.from_step}->{e.to_step} references unknown step")
             if e.max_loops < 1:
                 raise ConfigError(f"remediation edge {e.from_step}->{e.to_step} needs max_loops >= 1")
+
+        # 5b. parallel_groups: real steps, no gates, no overlaps, at least two members
+        if self.app.concurrency.max_parallel_steps < 1:
+            raise ConfigError("app.concurrency.max_parallel_steps must be >= 1")
+        if self.pipeline.max_parallel_steps is not None and self.pipeline.max_parallel_steps < 1:
+            raise ConfigError("pipeline.max_parallel_steps must be >= 1 when set")
+        seen_parallel: set[int] = set()
+        for i, group in enumerate(self.pipeline.parallel_groups):
+            if len(group) < 2:
+                raise ConfigError(f"parallel_groups[{i}] needs at least 2 steps")
+            if len(set(group)) != len(group):
+                raise ConfigError(f"parallel_groups[{i}] contains duplicate step numbers")
+            for step in group:
+                key = f"{step:02d}"
+                if key not in valid:
+                    raise ConfigError(
+                        f"parallel_groups[{i}] references unknown step {step}"
+                    )
+                scfg = self.steps[key]
+                if scfg.component == "gate":
+                    raise ConfigError(
+                        f"parallel_groups cannot include gate step {step}; "
+                        "gates must run alone so a human decision is never raced"
+                    )
+                if step in seen_parallel:
+                    raise ConfigError(
+                        f"step {step} appears in more than one parallel_groups entry"
+                    )
+                seen_parallel.add(step)
+
+        # 5c. failure_class_routes point at real steps
+        known_classes = {"TEST", "LINT", "AMBIGUITY", "CODE", "SECURITY", "OTHER"}
+        seen_classes: set[str] = set()
+        for route in self.pipeline.failure_class_routes:
+            if route.failure_class not in known_classes:
+                raise ConfigError(
+                    f"failure_class_routes: unknown class {route.failure_class!r}"
+                )
+            if route.failure_class in seen_classes:
+                raise ConfigError(
+                    f"failure_class_routes: duplicate class {route.failure_class}"
+                )
+            seen_classes.add(route.failure_class)
+            if f"{route.to_step:02d}" not in valid:
+                raise ConfigError(
+                    f"failure_class_routes[{route.failure_class}] to={route.to_step} unknown"
+                )
+            if route.then_step is not None and f"{route.then_step:02d}" not in valid:
+                raise ConfigError(
+                    f"failure_class_routes[{route.failure_class}] then={route.then_step} unknown"
+                )
+            if route.max_loops < 1:
+                raise ConfigError(
+                    f"failure_class_routes[{route.failure_class}] needs max_loops >= 1"
+                )
 
         # 6. no literal secrets committed to git
         if self.secrets.reject_literal_secrets_in_config:

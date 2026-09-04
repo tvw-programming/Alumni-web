@@ -4,6 +4,10 @@ Every envelope in and out, every approval, every remediation loop is appended as
 one JSON line. Nothing is ever mutated or deleted. This is what makes a run
 resumable and auditable, and it is where the router looks to enforce reviewer
 isolation ("which model wrote step 12?").
+
+Completions can be *logically* invalidated by appending a `steps_invalidated`
+event — used when remediation jumps backward so resume does not treat stale
+downstream steps as done.
 """
 
 from __future__ import annotations
@@ -37,20 +41,21 @@ class Journal:
 
     # ------------------------------------------------------------------ #
     def append(self, env_in: Envelope, env_out: Envelope) -> None:
-        self._append(
-            {
-                "type": "step",
-                "step": env_out.sender.step,
-                "component": env_out.sender.name,
-                "kind": env_out.sender.kind,
-                "status": env_out.status,
-                "intent": env_out.intent.value,
-                "request_id": env_in.message_id,
-                "message_id": env_out.message_id,
-                "schemas": env_out.schema_ids(),
-                "provenance": env_out.provenance.model_dump(mode="json"),
-            }
-        )
+        record = {
+            "type": "step",
+            "step": env_out.sender.step,
+            "component": env_out.sender.name,
+            "kind": env_out.sender.kind,
+            "status": env_out.status,
+            "intent": env_out.intent.value,
+            "request_id": env_in.message_id,
+            "message_id": env_out.message_id,
+            "schemas": env_out.schema_ids(),
+            "provenance": env_out.provenance.model_dump(mode="json"),
+        }
+        if env_out.failure_class is not None:
+            record["failure_class"] = env_out.failure_class.value
+        self._append(record)
 
     def append_approval(self, step: int, decision: dict) -> None:
         self._append({"type": "approval", "step": step, **decision})
@@ -63,16 +68,29 @@ class Journal:
             {"type": "loop", "from": edge.from_step, "to": edge.to_step, "on": edge.on}
         )
 
+    def invalidate_steps(self, steps: list[int], *, reason: str, keep_gates: tuple[int, ...] = (6, 24)) -> list[int]:
+        """Mark step completions stale so resume re-runs them.
+
+        Append-only: a later successful step record restores membership in
+        `completed_steps()`. Mandatory gates are never cleared.
+        """
+        cleared = sorted({s for s in steps if s not in keep_gates})
+        if cleared:
+            self.append_event("steps_invalidated", steps=cleared, reason=reason)
+        return cleared
+
     # ------------------------------------------------------------------ #
     #: Statuses that mean a step is done and must not be run again.
     DONE = ("OK", "APPROVED", "PASSED")
 
     def completed_steps(self) -> set[int]:
-        return {
-            e["step"]
-            for e in self.entries()
-            if e.get("type") == "step" and e.get("status") in self.DONE and e.get("step") is not None
-        }
+        completed: set[int] = set()
+        for e in self.entries():
+            if e.get("type") == "step" and e.get("status") in self.DONE and e.get("step") is not None:
+                completed.add(e["step"])
+            elif e.get("type") == "event" and e.get("event") == "steps_invalidated":
+                completed -= set(e.get("steps") or [])
+        return completed
 
     def completed(self, step: int) -> bool:
         return step in self.completed_steps()
@@ -82,6 +100,22 @@ class Journal:
             1
             for e in self.entries()
             if e.get("type") == "loop" and e.get("from") == edge.from_step and e.get("on") == edge.on
+        )
+
+    def class_loop_count(self, failure_class: str) -> int:
+        return sum(
+            1
+            for e in self.entries()
+            if e.get("type") == "loop"
+            and e.get("on") == f"CLASS:{failure_class}"
+        )
+
+    def class_then_count(self, failure_class: str) -> int:
+        return sum(
+            1
+            for e in self.entries()
+            if e.get("type") == "loop"
+            and e.get("on") == f"CLASS:{failure_class}:THEN"
         )
 
     def model_used(self, step: int) -> str | None:

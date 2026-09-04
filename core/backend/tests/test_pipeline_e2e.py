@@ -40,14 +40,15 @@ def test_approval_is_bound_to_the_artifact_sha(cfg, ctx, monkeypatch):
 # --------------------------------------------------------------------------- #
 def test_remediation_edge_routes_failures(cfg, ctx):
     rem = Remediation(cfg, ctx.journal)
-    assert rem.next_step(16, "FAILED", ctx) == 12
+    # TEST-class failures go to unit-test sync (15), not straight to code (12).
+    assert rem.next_step(16, "FAILED", ctx) == 15
 
 
 def test_loop_budget_is_exhausted_rather_than_looping_forever(cfg, ctx):
     rem = Remediation(cfg, ctx.journal)
-    edge = rem.edges[(16, "FAILED")]
-    for _ in range(edge.max_loops):
-        rem.next_step(16, "FAILED", ctx)
+    # One CLASS:TEST loop, then THEN→12 once, then halt.
+    assert rem.next_step(16, "FAILED", ctx) == 15
+    assert rem.next_step(16, "FAILED", ctx) == 12
     with pytest.raises(PipelineHalted, match="loop budget exhausted"):
         rem.next_step(16, "FAILED", ctx)
 

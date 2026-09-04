@@ -364,4 +364,4 @@ def test_halting_is_still_what_happens_where_no_edge_and_no_revision_exist(cfg, 
     from codegen_core.orchestrator.remediation import Remediation
 
     with pytest.raises(PipelineHalted, match="no remediation edge"):
-        Remediation(cfg, ctx.journal).next_step(9, "FAILED", ctx)
+        Remediation(cfg, ctx.journal).next_step(9, "WEIRD_STATUS", ctx)

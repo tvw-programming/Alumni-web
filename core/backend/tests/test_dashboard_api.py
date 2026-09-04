@@ -44,7 +44,7 @@ def test_health_reports_the_active_configuration(client, cfg):
     assert body["profile"] == cfg.active_profile
 
 
-def test_run_payload_has_every_field_the_ui_requires(client, completed_job):
+def test_run_payload_has_every_field_the_ui_requires(client, completed_job, cfg):
     run = client.get(f"/api/runs/{completed_job.job_id}").json()
 
     for key in (
@@ -54,10 +54,9 @@ def test_run_payload_has_every_field_the_ui_requires(client, completed_job):
         assert key in run, f"run payload is missing {key}"
 
     assert len(run["steps"]) == 24
-    # Eight, not nine: a rejected BRD gate has no edge, because re-running step
-    # 05 on the same inputs produces the same document. It is answered with a
-    # replacement document instead — see test_gate_revision.py.
-    assert len(run["edges"]) == 8
+    # Rejected BRD gate has no edge (answered with a replacement document).
+    # Edge count tracks config.pipeline.remediation_edges.
+    assert len(run["edges"]) == len(cfg.pipeline.remediation_edges)
     assert not any(e["from"] == 6 for e in run["edges"])
 
 
