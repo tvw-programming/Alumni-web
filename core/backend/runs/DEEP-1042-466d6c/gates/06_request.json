@@ -1,0 +1,23 @@
+{
+  "job_id": "DEEP-1042-466d6c",
+  "jira_id": "DEEP-1042",
+  "step": 6,
+  "gate": "BRD Approval",
+  "required_roles": [
+    "product_owner"
+  ],
+  "quorum": 1,
+  "artifacts": [
+    "artifact://DEEP-1042-466d6c/05_brd__DEEP-1042-6e7bfa__v1.json",
+    "artifact://DEEP-1042-466d6c/05_brd__DEEP-1042-6e7bfa__v1.md",
+    "artifact://DEEP-1042-466d6c/05_brd__DEEP-1042-6e7bfa__v1.pdf"
+  ],
+  "artifact_sha256": {
+    "artifact://DEEP-1042-466d6c/05_brd__DEEP-1042-6e7bfa__v1.json": "bfdb1432adf492aceee3ff0673bc344c179e627c736eb0b91bea9d01bf8c1622",
+    "artifact://DEEP-1042-466d6c/05_brd__DEEP-1042-6e7bfa__v1.md": "6ff3b48a79023a878bdaf4ce95f75717669f0b1aab3aa3a3ba49a922cb00e35b",
+    "artifact://DEEP-1042-466d6c/05_brd__DEEP-1042-6e7bfa__v1.pdf": "851da9f3955aac79a363e8caefddb19c9937a06c4e0ce745d9ea5186497dfb50"
+  },
+  "opened_at": "2026-09-04T13:37:41.818815+00:00",
+  "reminder_after_hours": 24,
+  "escalate_after_hours": 72
+}

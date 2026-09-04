@@ -1,0 +1,2577 @@
+diff --git a/core/backend/artifacts/DEEP-1042-19a169/index.json b/core/backend/artifacts/DEEP-1042-19a169/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-19a169/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-1a1957/index.json b/core/backend/artifacts/DEEP-1042-1a1957/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-1a1957/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-1fe471/index.json b/core/backend/artifacts/DEEP-1042-1fe471/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-1fe471/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-319244/index.json b/core/backend/artifacts/DEEP-1042-319244/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-319244/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-3505cf/index.json b/core/backend/artifacts/DEEP-1042-3505cf/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-3505cf/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-356ddd/index.json b/core/backend/artifacts/DEEP-1042-356ddd/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-356ddd/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-407c67/index.json b/core/backend/artifacts/DEEP-1042-407c67/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-407c67/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-463973/index.json b/core/backend/artifacts/DEEP-1042-463973/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-463973/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-5272f7/index.json b/core/backend/artifacts/DEEP-1042-5272f7/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-5272f7/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-58e92a/index.json b/core/backend/artifacts/DEEP-1042-58e92a/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-58e92a/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-77fdb0/index.json b/core/backend/artifacts/DEEP-1042-77fdb0/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-77fdb0/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-79977f/index.json b/core/backend/artifacts/DEEP-1042-79977f/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-79977f/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-859bb4/index.json b/core/backend/artifacts/DEEP-1042-859bb4/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-859bb4/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-8e2dd7/index.json b/core/backend/artifacts/DEEP-1042-8e2dd7/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-8e2dd7/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-b17141/index.json b/core/backend/artifacts/DEEP-1042-b17141/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-b17141/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-b26b88/index.json b/core/backend/artifacts/DEEP-1042-b26b88/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-b26b88/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-ba9d73/index.json b/core/backend/artifacts/DEEP-1042-ba9d73/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-ba9d73/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-bc927e/index.json b/core/backend/artifacts/DEEP-1042-bc927e/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-bc927e/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-c6c811/index.json b/core/backend/artifacts/DEEP-1042-c6c811/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-c6c811/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-c71100/index.json b/core/backend/artifacts/DEEP-1042-c71100/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-c71100/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-ca2b85/index.json b/core/backend/artifacts/DEEP-1042-ca2b85/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-ca2b85/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-cd0e17/index.json b/core/backend/artifacts/DEEP-1042-cd0e17/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-cd0e17/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-ce194d/index.json b/core/backend/artifacts/DEEP-1042-ce194d/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-ce194d/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-ded6f1/index.json b/core/backend/artifacts/DEEP-1042-ded6f1/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-ded6f1/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-e5f43b/index.json b/core/backend/artifacts/DEEP-1042-e5f43b/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-e5f43b/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-f1151b/index.json b/core/backend/artifacts/DEEP-1042-f1151b/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-f1151b/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/artifacts/DEEP-1042-f9be86/index.json b/core/backend/artifacts/DEEP-1042-f9be86/index.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/core/backend/artifacts/DEEP-1042-f9be86/index.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/core/backend/config/config.json b/core/backend/config/config.json
+index a136f66..6469f03 100644
+--- a/core/backend/config/config.json
++++ b/core/backend/config/config.json
+@@ -757,6 +757,10 @@
+       "component": "agent",
+       "prompt": "03_gap_detection.system.md",
+       "timeout_s": 300,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "on_ambiguity": "halt_and_ticket",
+       "risk_level": "low",
+       "allowed_actions": [
+@@ -769,6 +773,10 @@
+       "component": "agent",
+       "prompt": "04_project_context.system.md",
+       "timeout_s": 600,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "low",
+       "allowed_actions": [
+         "read",
+@@ -780,6 +788,10 @@
+       "component": "agent",
+       "prompt": "05_brd.system.md",
+       "timeout_s": 600,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "render_documents": [
+         "pdf"
+       ],
+@@ -804,6 +816,10 @@
+       "component": "agent",
+       "prompt": "07_test_design.system.md",
+       "timeout_s": 600,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "low",
+       "allowed_actions": [
+         "read",
+@@ -815,6 +831,10 @@
+       "component": "agent",
+       "prompt": "08_repo_understanding.system.md",
+       "timeout_s": 900,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "low",
+       "allowed_actions": [
+         "read",
+@@ -826,6 +846,10 @@
+       "component": "agent",
+       "prompt": "09_impact_analysis.system.md",
+       "timeout_s": 600,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "medium",
+       "allowed_actions": [
+         "read",
+@@ -837,6 +861,10 @@
+       "component": "agent",
+       "prompt": "10_feature_spec.system.md",
+       "timeout_s": 600,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "low",
+       "allowed_actions": [
+         "read",
+@@ -848,6 +876,10 @@
+       "component": "agent",
+       "prompt": "11_change_plan.system.md",
+       "timeout_s": 300,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "low",
+       "allowed_actions": [
+         "read",
+@@ -879,6 +911,10 @@
+       "component": "agent",
+       "prompt": "13_verification.system.md",
+       "timeout_s": 600,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "medium",
+       "allowed_actions": [
+         "read",
+@@ -904,6 +940,10 @@
+       "component": "agent",
+       "prompt": "15_test_sync.system.md",
+       "timeout_s": 900,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "high",
+       "allowed_actions": [
+         "read",
+@@ -973,6 +1013,10 @@
+       "component": "agent",
+       "prompt": "20_tdd.system.md",
+       "timeout_s": 900,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "render_documents": [
+         "pdf"
+       ],
+@@ -987,6 +1031,10 @@
+       "component": "agent",
+       "prompt": "21_docs_update.system.md",
+       "timeout_s": 600,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "high",
+       "allowed_actions": [
+         "read",
+@@ -1015,6 +1063,10 @@
+       "component": "agent",
+       "prompt": "23_ai_pr_review.system.md",
+       "timeout_s": 900,
++      "retry": {
++        "max_attempts": 2,
++        "backoff_s": 10
++      },
+       "risk_level": "medium",
+       "allowed_actions": [
+         "read",
+@@ -1458,7 +1510,7 @@
+           "schema_registry": "/app/config/schemas"
+         },
+         "project": {
+-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
++          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+           "must_exist": true,
+           "must_be_writable": true
+         }
+@@ -1560,7 +1612,7 @@
+           "schema_registry": "/app/config/schemas"
+         },
+         "project": {
+-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
++          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+           "must_exist": true,
+           "must_be_writable": true
+         }
+@@ -1680,7 +1732,7 @@
+           "schema_registry": "/app/config/schemas"
+         },
+         "project": {
+-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
++          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+           "must_exist": true,
+           "must_be_writable": true
+         }
+@@ -1782,7 +1834,7 @@
+           "schema_registry": "/app/config/schemas"
+         },
+         "project": {
+-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
++          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+           "must_exist": true,
+           "must_be_writable": true
+         }
+@@ -1883,7 +1935,7 @@
+           "schema_registry": "/app/config/schemas"
+         },
+         "project": {
+-          "path": "${env:CODEGEN_PROJECT_PATH:-/projects/react-web}",
++          "path": "${env:CODEGEN_PROJECT_PATH:-/libraries/react-components}",
+           "must_exist": true,
+           "must_be_writable": true
+         }
+diff --git a/core/backend/config/prompts/07_test_design.system.md b/core/backend/config/prompts/07_test_design.system.md
+index c8a6113..aed9090 100644
+--- a/core/backend/config/prompts/07_test_design.system.md
++++ b/core/backend/config/prompts/07_test_design.system.md
+@@ -5,7 +5,16 @@ current behaviour. That is the entire value of doing this now: a test written
+ after the code merely agrees with it.
+ 
+ Requirements:
+-- Every acceptance criterion id must appear in at least one test's `covers`.
++- Every acceptance criterion id from the BRD must appear in the `covers` list of
++  at least one unit design or acceptance scenario. `covers` points from a test to
++  the criteria it verifies - never the other way round, and never at other tests:
++
++      "unit":       [{"id": "U-1", "target": "exports.build_csv",
++                      "covers": ["AC-2"], ...}]
++      "acceptance": [{"id": "S-1", "covers": ["AC-1"], ...}]
++
++  Listing a test's own id, or the ids of the tests that cover a criterion, leaves
++  every criterion uncovered and the step fails.
+ - Each unit design names a target (module.function), a given, and an expectation.
+ - Include the negative and authorisation cases, not just the happy path.
+ - Acceptance scenarios are end-to-end and phrased as user-visible outcomes.
+diff --git a/core/backend/runs/DEEP-1042-19a169/journal.ndjson b/core/backend/runs/DEEP-1042-19a169/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-1a1957/journal.ndjson b/core/backend/runs/DEEP-1042-1a1957/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-1fe471/journal.ndjson b/core/backend/runs/DEEP-1042-1fe471/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-319244/journal.ndjson b/core/backend/runs/DEEP-1042-319244/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-3505cf/journal.ndjson b/core/backend/runs/DEEP-1042-3505cf/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-356ddd/journal.ndjson b/core/backend/runs/DEEP-1042-356ddd/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-407c67/journal.ndjson b/core/backend/runs/DEEP-1042-407c67/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-463973/journal.ndjson b/core/backend/runs/DEEP-1042-463973/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-5272f7/journal.ndjson b/core/backend/runs/DEEP-1042-5272f7/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-58e92a/journal.ndjson b/core/backend/runs/DEEP-1042-58e92a/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-77fdb0/journal.ndjson b/core/backend/runs/DEEP-1042-77fdb0/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-79977f/journal.ndjson b/core/backend/runs/DEEP-1042-79977f/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-859bb4/journal.ndjson b/core/backend/runs/DEEP-1042-859bb4/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-8e2dd7/journal.ndjson b/core/backend/runs/DEEP-1042-8e2dd7/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-b17141/journal.ndjson b/core/backend/runs/DEEP-1042-b17141/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-b26b88/journal.ndjson b/core/backend/runs/DEEP-1042-b26b88/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-ba9d73/journal.ndjson b/core/backend/runs/DEEP-1042-ba9d73/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-bc927e/journal.ndjson b/core/backend/runs/DEEP-1042-bc927e/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-c6c811/journal.ndjson b/core/backend/runs/DEEP-1042-c6c811/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-c71100/journal.ndjson b/core/backend/runs/DEEP-1042-c71100/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-ca2b85/journal.ndjson b/core/backend/runs/DEEP-1042-ca2b85/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-cd0e17/journal.ndjson b/core/backend/runs/DEEP-1042-cd0e17/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-ce194d/journal.ndjson b/core/backend/runs/DEEP-1042-ce194d/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-ded6f1/journal.ndjson b/core/backend/runs/DEEP-1042-ded6f1/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-e5f43b/journal.ndjson b/core/backend/runs/DEEP-1042-e5f43b/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-f1151b/journal.ndjson b/core/backend/runs/DEEP-1042-f1151b/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/runs/DEEP-1042-f9be86/journal.ndjson b/core/backend/runs/DEEP-1042-f9be86/journal.ndjson
+new file mode 100644
+index 0000000..e69de29
+diff --git a/core/backend/src/codegen_core/core/tasks.py b/core/backend/src/codegen_core/core/tasks.py
+index 23916ce..c2c13f0 100644
+--- a/core/backend/src/codegen_core/core/tasks.py
++++ b/core/backend/src/codegen_core/core/tasks.py
+@@ -112,16 +112,20 @@ class TaskTracker:
+         )
+ 
+ 
+-def tasks_for_step(journal: Any, step: int) -> list[dict[str, Any]]:
+-    """Rebuild a step's task list from the journal.
++def tasks_for_step(entries: list[dict[str, Any]], step: int) -> list[dict[str, Any]]:
++    """Rebuild a step's task list from journal entries.
+ 
+-    Last write wins per task id: the journal holds every transition, and what a
++    Takes the entries rather than the journal: a caller rendering all 24 steps
++    would otherwise re-read the file 24 times per request, and the presenter
++    already holds them.
++
++    Last write wins per task id — the journal holds every transition, and what a
+     reader wants is the current state of each task in declaration order.
+     """
+     latest: dict[str, dict[str, Any]] = {}
+     order: list[str] = []
+ 
+-    for entry in journal.entries():
++    for entry in entries:
+         if entry.get("event") != EVENT or entry.get("step") != step:
+             continue
+         task_id = entry.get("task_id")
+diff --git a/core/backend/src/codegen_core/dashboard/presenter.py b/core/backend/src/codegen_core/dashboard/presenter.py
+index 7a88e29..d16ee4b 100644
+--- a/core/backend/src/codegen_core/dashboard/presenter.py
++++ b/core/backend/src/codegen_core/dashboard/presenter.py
+@@ -12,8 +12,9 @@ client; everything inside the package stays snake_case.
+ from __future__ import annotations
+ 
+ import json
++import os
+ import re
+-from datetime import datetime
++from datetime import datetime, timezone
+ from pathlib import Path
+ from typing import Any
+ 
+@@ -34,6 +35,26 @@ PHASES: dict[str, tuple[int, ...]] = {
+ 
+ PHASE_BY_STEP = {step: phase for phase, steps in PHASES.items() for step in steps}
+ 
++#: How long a run may go without writing anything before the step it is on is
++#: reported as stalled rather than running.
++#:
++#: Anchored to the watcher's own resume timeout, which is the longest a run is
++#: allowed to take before it is killed: past that point nothing is executing,
++#: because the thing that would execute it has already given up. The default
++#: therefore cannot be shorter than the slowest legitimate step, which is what
++#: makes it safe to treat silence as death.
++STALL_AFTER_S = int(
++    os.getenv("CODEGEN_STALL_AFTER_S") or os.getenv("CODEGEN_RESUME_TIMEOUT") or "900"
++)
++
++#: Events that mean a run process was alive and working at that moment.
++LIVE_EVENTS = ("run_started", "retry_started", "task")
++
++#: Events a run writes when it stops on purpose. Their presence is the
++#: difference between a run that ended and one that was killed: a stall is
++#: defined by the absence of any of these.
++FINISHED_EVENTS = ("run_completed", "run_halted", "gate_waiting")
++
+ #: Journal statuses are orchestrator vocabulary; the UI has its own.
+ STATUS_MAP = {
+     "OK": "SUCCESS",
+@@ -45,7 +66,11 @@ STATUS_MAP = {
+     "BLOCKING_FINDINGS": "FAILED",
+     "CHANGES_REQUESTED": "FAILED",
+     "POLICY_VIOLATION": "FAILED",
+-    "AMBIGUOUS": "FAILED",
++    # Not a failure. Step 03 succeeded — it read the ticket and found it
++    # underspecified, which is the one job it has, and the run stopped to ask
++    # rather than to invent. Painting that red tells a reader something broke
++    # and sends them looking for a defect that is not there.
++    "AMBIGUOUS": "NEEDS_INPUT",
+     "PENDING": "AWAITING_APPROVAL",
+     "TIMEOUT": "FAILED",
+ }
+@@ -360,9 +385,70 @@ class RunPresenter:
+             if e.get("type") == "step" and e.get("status") in ("OK", "APPROVED", "PASSED")
+         }
+         if all(s in completed for s in range(1, step)):
+-            return "RUNNING" if component.kind.value != "GATE" else "AWAITING_APPROVAL"
++            if component.kind.value == "GATE":
++                return "AWAITING_APPROVAL"
++            # Next in line is not the same as under way. This branch used to
++            # return RUNNING on the strength of the *previous* steps having
++            # finished, which says nothing about whether a process is still
++            # alive to run this one — a run killed mid-step left its successor
++            # displayed as RUNNING indefinitely, with no failure for anyone to
++            # retry.
++            #
++            # Three outcomes, not two. A run that ended on purpose — completed,
++            # halted, parked at a gate — leaves this step simply not yet asked
++            # for, which is what PENDING has always meant. Only a run that went
++            # silent without saying anything is a stall.
++            state = self._run_state()
++            if state == "live":
++                return "RUNNING"
++            return "STALLED" if state == "stalled" else "PENDING"
+         return "PENDING"
+ 
++    def _run_state(self) -> str:
++        """Whether a run process is working on this job: live, ended, stalled.
++
++        Two questions, in order, because they fail differently:
++
++        **Did it stop on purpose?** A run that completed, halted, or parked at a
++        gate wrote an event saying so. Nothing is running, and no amount of
++        recency changes that — but nothing is wrong either, so this is `ended`.
++
++        **Has it gone quiet?** A killed process writes nothing at all — no halt,
++        no error, no record for the step it died on. Silence is the only trace
++        it leaves, so the age of the newest entry is the only evidence there is.
++
++        Erring towards `live` on an unparseable or missing timestamp is
++        deliberate: showing a working run as stalled is the more misleading of
++        the two mistakes, and it resolves itself the moment the step lands.
++        """
++        for entry in reversed(self._entries):
++            event = entry.get("event")
++            if event in FINISHED_EVENTS:
++                return "ended"
++            if event in LIVE_EVENTS or entry.get("type") == "step":
++                break
++        else:
++            # Nothing has ever been written, so nothing was ever started.
++            return "ended"
++
++        age = self._age_seconds(self._entries[-1].get("at"))
++        return "live" if age is None or age < STALL_AFTER_S else "stalled"
++
++    @staticmethod
++    def _age_seconds(stamp: Any) -> float | None:
++        """Seconds since an ISO-8601 journal timestamp, or None if unreadable."""
++        if not stamp:
++            return None
++        try:
++            when = datetime.fromisoformat(str(stamp))
++        except ValueError:
++            return None
++        # The orchestrator writes aware timestamps; a naive one from an older
++        # journal is read as UTC rather than thrown away.
++        if when.tzinfo is None:
++            when = when.replace(tzinfo=timezone.utc)
++        return (datetime.now(timezone.utc) - when).total_seconds()
++
+     def _pending_gate(self, step: int) -> bool:
+         gate_dir = Path(self.ctx.journal.root) / "gates"
+         request = gate_dir / f"{step:02d}_request.json"
+@@ -411,14 +497,65 @@ class RunPresenter:
+             return {
+                 "code": status,
+                 "message": f"Step finished with status {status}",
+-                "detail": "Consult the artifacts for this step; the orchestrator routed it "
+-                "through the remediation edge declared for this status.",
++                "detail": self._outcome_detail(step, status, records[-1]),
+             }
+         return None
+ 
++    def _outcome_detail(self, step: int, status: str, record: dict) -> str:
++        """What the orchestrator actually did about this status.
++
++        This used to assert, for every non-OK status, that the run had been
++        "routed through the remediation edge declared for this status". Edges
++        are declared for eight (step, status) pairs and no others, so for
++        everything else the sentence described a route that does not exist — and
++        it said so most confidently exactly where a reader was most stuck, on a
++        step whose run had halted.
++
++        The journal knows which of the two happened, so it is asked rather than
++        assumed.
++        """
++        edge = next(
++            (
++                e
++                for e in self.cfg.pipeline.remediation_edges
++                if e.from_step == step and e.on == status
++            ),
++            None,
++        )
++        if edge is not None:
++            # Loops are journalled as their own record type, not as events.
++            loops = sum(
++                1
++                for e in self._entries
++                if e.get("type") == "loop" and e.get("from") == step and e.get("on") == status
++            )
++            return (
++                f"The orchestrator routed this back to step {edge.to_step:02d} "
++                f"(loop {min(loops, edge.max_loops)} of {edge.max_loops}). "
++                "The run continues from there."
++            )
++
++        halt = next(
++            (
++                e
++                for e in reversed(self._entries)
++                if e.get("event") == "run_halted" and e.get("step") == step
++            ),
++            None,
++        )
++        if halt is not None:
++            return (
++                f"The run halted here: {halt.get('reason') or 'no reason recorded'}. "
++                "Nothing downstream has run."
++            )
++        return (
++            f"No remediation edge is declared for status {status} at this step, "
++            "so the run stops here until a person resolves it."
++        )
++
+     def _action_intent(self, step: int) -> dict | None:
+         """The step's declared intent, if it got as far as declaring one."""
+-        for entry in reversed(self.journal.entries()):
++        for entry in reversed(self._entries):
+             if entry.get("event") == "action_intent" and entry.get("step") == step:
+                 return {
+                     "action": entry.get("action"),
+@@ -467,7 +604,7 @@ class RunPresenter:
+             # failed after declaring its intent.
+             # Sub-step progress, rebuilt from the journal so a resumed run shows
+             # what it already did rather than an empty checklist.
+-            "tasks": tasks_for_step(self.journal, step),
++            "tasks": tasks_for_step(self._entries, step),
+             "actionIntent": self._action_intent(step),
+             "riskLevel": getattr(step_cfg, "risk_level", "low") if step_cfg else "low",
+             "allowedActions": list(getattr(step_cfg, "allowed_actions", []) or []) if step_cfg else [],
+@@ -480,6 +617,10 @@ class RunPresenter:
+         if error:
+             payload["error"] = error
+ 
++        questions = self._blocking_questions(step, payload["status"])
++        if questions:
++            payload["blockingQuestions"] = questions
++
+         approval = self._approval(step)
+         if approval:
+             payload["approval"] = approval
+@@ -497,6 +638,32 @@ class RunPresenter:
+ 
+         return payload
+ 
++    def _blocking_questions(self, step: int, status: str) -> list[dict] | None:
++        """The questions a halted step is waiting to have answered.
++
++        They already exist in the step's artifact, which is precisely where a
++        reader stuck on "why has this stopped" will not look. A run held up by
++        five questions should show the five questions.
++
++        Only while the step is actually holding the run: the same artifact is
++        still on disk once the questions have been answered and the run has
++        moved on, and showing them then would read as an outstanding demand.
++        """
++        if status != "NEEDS_INPUT":
++            return None
++        payload = self._read_json_artifact(step)
++        if not isinstance(payload, dict):
++            return None
++        questions = [q for q in payload.get("questions_for_human", []) if isinstance(q, dict)]
++        return [
++            {
++                "id": str(q.get("id", "")),
++                "text": str(q.get("text", "")),
++                "blocksStep": q.get("blocks_step"),
++            }
++            for q in questions
++        ] or None
++
+     # ------------------------------------------------------------------ #
+     @staticmethod
+     def _blocked_step(steps: list[dict]) -> int | None:
+@@ -506,8 +673,18 @@ class RunPresenter:
+         from an earlier pass rather than the current obstruction — the run never
+         got past the first one.
+         """
+-        failed = [s["step"] for s in steps if s["status"] == "FAILED"]
+-        return min(failed) if failed else None
++        # A stalled step obstructs exactly as a failed one does: no result, and
++        # nothing after it can run. Naming it here is what puts it behind the
++        # header's Retry button, which is the whole point of telling the two
++        # apart from RUNNING.
++        # NEEDS_INPUT obstructs too: the run stopped there and nothing after it
++        # runs. It differs from the other two only in what clears it — answering
++        # the questions rather than pressing Retry — which is the step dialog's
++        # business, not this function's.
++        blocking = [
++            s["step"] for s in steps if s["status"] in ("FAILED", "STALLED", "NEEDS_INPUT")
++        ]
++        return min(blocking) if blocking else None
+ 
+     def run_payload(self) -> dict:
+         steps = [self.step_payload(n, c) for n, c in sorted(self.registry.items())]
+@@ -517,6 +694,8 @@ class RunPresenter:
+         )
+         halted = any(e.get("event") == "run_halted" for e in self._entries)
+         blocked = self._blocked_step(steps)
++        stalled = any(s["status"] == "STALLED" for s in steps)
++        needs_input = any(s["status"] == "NEEDS_INPUT" for s in steps)
+         completed = any(e.get("event") == "run_completed" for e in self._entries)
+         awaiting = any(s["status"] == "AWAITING_APPROVAL" for s in steps)
+ 
+@@ -532,10 +711,18 @@ class RunPresenter:
+             # since been answered with a new document has stopped being a halt —
+             # in both cases saying anything else tells the reviewer there is
+             # nothing to do when there is.
++            # A run holding questions ranks with an open gate: both are the
++            # pipeline waiting on a person, and both are cleared by one.
+             "status": "AWAITING_APPROVAL"
+-            if awaiting
++            if awaiting or needs_input
+             else "HALTED"
+             if halted
++            # Below a clean halt, because a halt was recorded on purpose and
++            # says why; a stall is the absence of any such record. Above
++            # RUNNING, because saying a run is running when nothing is running
++            # is the failure this whole distinction exists to fix.
++            else "STALLED"
++            if stalled
+             else "COMPLETED"
+             if completed
+             else "RUNNING",
+diff --git a/core/backend/src/codegen_core/orchestrator/retry.py b/core/backend/src/codegen_core/orchestrator/retry.py
+index 3daf35e..632e043 100644
+--- a/core/backend/src/codegen_core/orchestrator/retry.py
++++ b/core/backend/src/codegen_core/orchestrator/retry.py
+@@ -5,12 +5,25 @@ from __future__ import annotations
+ import time
+ from typing import Any, Callable
+ 
++from pydantic import ValidationError
++
+ from ..core.errors import BackendError, PolicyViolation
+ from ..core.telemetry import log
+ 
+ #: Never retry these - retrying a policy violation just violates policy again.
+ FATAL = (PolicyViolation,)
+ 
++#: Worth another attempt.
++#:
++#: BackendError and TimeoutError are the transport failing. ValidationError is
++#: the model failing: it answered, and the answer did not fit the schema - a
++#: field typed as a string where the schema wants a list, most often, from a
++#: small local model. That is a resampling problem, not a fatal one, and the
++#: attempt costs one more call to a model that is already loaded. Left out of
++#: this tuple it was not merely unretried but uncaught, since a pydantic
++#: ValidationError is a ValueError rather than a CodeGenCoreError.
++RETRIABLE = (BackendError, TimeoutError, ValidationError)
++
+ 
+ class RetryPolicy:
+     def __init__(self, cfg: Any) -> None:
+@@ -24,11 +37,21 @@ class RetryPolicy:
+                 return fn(*args, **kw)
+             except FATAL:
+                 raise
+-            except (BackendError, TimeoutError) as exc:
++            except RETRIABLE as exc:
+                 last = exc
+                 log.warning(
+                     "step attempt failed",
+-                    extra={"extra_fields": {"step": step, "attempt": attempt, "error": str(exc)}},
++                    extra={
++                        "extra_fields": {
++                            "step": step,
++                            "attempt": attempt,
++                            "error_type": type(exc).__name__,
++                            # A ValidationError's own str() runs to several
++                            # lines; flattened, it still names the bad field,
++                            # which is the part worth having in a log line.
++                            "error": " ".join(str(exc).split())[:300],
++                        }
++                    },
+                 )
+                 if attempt < rcfg.max_attempts:
+                     time.sleep(rcfg.backoff_s * attempt)
+diff --git a/core/backend/src/codegen_core/orchestrator/runner.py b/core/backend/src/codegen_core/orchestrator/runner.py
+index d00658d..11201ed 100644
+--- a/core/backend/src/codegen_core/orchestrator/runner.py
++++ b/core/backend/src/codegen_core/orchestrator/runner.py
+@@ -135,9 +135,13 @@ class PipelineRunner:
+             env_out = self._execute(component, ctx, force=True)
+         except (PipelineHalted, BudgetExceeded) as exc:
+             return self._halt(ctx, step, str(exc))
+-        except CodeGenCoreError as exc:
+-            ctx.journal.append_event("step_error", step=step, error=str(exc))
+-            return self._halt(ctx, step, f"retry of step {step:02d} failed: {exc}")
++        # Same breadth as the run loop, for the same reason: a retry that dies
++        # on an unexpected exception must leave the step recorded as failed, not
++        # as though it had never been attempted.
++        except Exception as exc:  # noqa: BLE001 - recorded, then halted
++            detail = self._describe(exc)
++            ctx.journal.append_event("step_error", step=step, error=detail)
++            return self._halt(ctx, step, f"retry of step {step:02d} failed: {detail}")
+ 
+         if env_out.failed:
+             return self._halt(ctx, step, f"retry of step {step:02d} failed with {env_out.status}")
+@@ -167,8 +171,18 @@ class PipelineRunner:
+                 env_out = self._execute(step, ctx)
+             except (PipelineHalted, BudgetExceeded) as exc:
+                 return self._halt(ctx, n, str(exc))
+-            except CodeGenCoreError as exc:
+-                ctx.journal.append_event("step_error", step=n, error=str(exc))
++            # Anything else the step raised. Deliberately `Exception` and not
++            # `CodeGenCoreError`: a pydantic ValidationError is a ValueError, so
++            # the narrower clause let it escape the loop and kill the process
++            # *before* the journal record was written at the end of _execute.
++            # A step that leaves no record is indistinguishable from one still
++            # working, so the monitor showed it as RUNNING for as long as anyone
++            # cared to look. Recording the failure is what makes it a failure a
++            # person can see, and retry.
++            except Exception as exc:  # noqa: BLE001 - recorded, then routed
++                ctx.journal.append_event(
++                    "step_error", step=n, error=self._describe(exc)
++                )
+                 try:
+                     n = self.remediation.next_step(n, "FAILED", ctx)
+                     continue
+@@ -299,6 +313,26 @@ class PipelineRunner:
+             payload=ctx.recall(schemas[0]) if len(schemas) == 1 else None,
+         )
+ 
++    @staticmethod
++    def _describe(exc: Exception) -> str:
++        """A one-line reason a reader can act on.
++
++        `str(exc)` alone is enough for the errors this codebase raises: they are
++        written to be read, and prefixing them with a class name would only add
++        noise to a sentence that already reads as one. It is not enough for the
++        ones this codebase merely propagates — a bare pydantic ValidationError
++        prints a multi-line report whose first line does not name the exception,
++        and an IndexError prints nothing at all. Those get their type in front,
++        so the journal says what kind of thing went wrong even when the message
++        is empty.
++        """
++        text = " ".join(str(exc).split())
++        if isinstance(exc, CodeGenCoreError):
++            return text
++        if not text:
++            return type(exc).__name__
++        return f"{type(exc).__name__}: {text[:500]}"
++
+     def _halt(self, ctx: Any, step: int, reason: str) -> RunResult:
+         ctx.journal.append_event("run_halted", step=step, reason=reason)
+         log.error("pipeline halted", extra={"extra_fields": {"step": step, "reason": reason}})
+diff --git a/core/backend/src/codegen_core/schemas/analysis.py b/core/backend/src/codegen_core/schemas/analysis.py
+index c956884..7b55d1b 100644
+--- a/core/backend/src/codegen_core/schemas/analysis.py
++++ b/core/backend/src/codegen_core/schemas/analysis.py
+@@ -15,9 +15,25 @@ class StoryAnalysisV1(BaseModel):
+ 
+ 
+ class Question(BaseModel):
+-    id: str
+-    text: str
+-    blocks_step: int | None = None
++    """One thing the ticket does not answer, addressed to a person.
++
++    The descriptions are prompt material, not commentary: they are rendered into
++    the field spec the model is given, and they exist because a model asked for
++    a `Question` with types alone still has to guess *which* numbering
++    `blocks_step` uses, and answered with the name of a concern from its own
++    input ("backend") the last time it was left to.
++    """
++
++    id: str = Field(description='a short quoted identifier such as "Q1" - a string, not a bare number')
++    text: str = Field(description="the question, phrased for a human to answer")
++    blocks_step: int | None = Field(
++        default=None,
++        description=(
++            "the pipeline step number from 1 to 24 that cannot proceed until this "
++            "is answered, or null if it blocks nothing - never a step name or a "
++            "concern such as backend or ui"
++        ),
++    )
+ 
+ 
+ class AmbiguityReportV1(BaseModel):
+diff --git a/core/backend/src/codegen_core/schemas/brd.py b/core/backend/src/codegen_core/schemas/brd.py
+index 575f3c9..70081e5 100644
+--- a/core/backend/src/codegen_core/schemas/brd.py
++++ b/core/backend/src/codegen_core/schemas/brd.py
+@@ -6,8 +6,18 @@ from pydantic import BaseModel, Field
+ 
+ 
+ class AcceptanceCriterion(BaseModel):
+-    id: str
+-    text: str
++    """One testable condition of done.
++
++    The id is the join key for the rest of the run: step 07 designs a test
++    against it, step 13 checks the code covers it, step 22 lists it in the pull
++    request. Nothing enforces the "AC-n" spelling, but everything downstream
++    reads better when it holds, so the model is asked for it explicitly.
++    """
++
++    id: str = Field(description='a short id of the form "AC-1", numbered from 1')
++    text: str = Field(
++        description="one testable condition of done, stated so a test can assert it"
++    )
+ 
+ 
+ class BrdV1(BaseModel):
+diff --git a/core/backend/src/codegen_core/schemas/impact.py b/core/backend/src/codegen_core/schemas/impact.py
+index 3193f16..18b586a 100644
+--- a/core/backend/src/codegen_core/schemas/impact.py
++++ b/core/backend/src/codegen_core/schemas/impact.py
+@@ -20,11 +20,23 @@ class ImpactManifestV1(BaseModel):
+ 
+ 
+ class OrderedChange(BaseModel):
+-    seq: int
+-    layer: str              # schema | repository | service | api | ui | tests
+-    file: str
+-    action: str             # create | modify | delete
+-    rationale: str = ""
++    """One edit in the plan step 12 works through.
++
++    `layer` is a closed vocabulary and step 11 sorts on it. A value outside the
++    list does not fail — it sorts to the end — so a model inventing "frontend"
++    for "ui" quietly reorders the build instead of stopping it. That silence is
++    why the permitted values are stated here rather than left to a comment.
++    """
++
++    seq: int = Field(description="1-based position in the build order")
++    layer: str = Field(
++        description=(
++            "exactly one of: schema, migration, repository, service, api, ui, tests, docs"
++        )
++    )
++    file: str = Field(description="repository-relative path of the file to change")
++    action: str = Field(description="exactly one of: create, modify, delete")
++    rationale: str = Field(default="", description="why this change is needed")
+ 
+ 
+ class ChangePlanV1(BaseModel):
+diff --git a/core/backend/src/codegen_core/schemas/spec.py b/core/backend/src/codegen_core/schemas/spec.py
+index 7f3c1f2..1e10fef 100644
+--- a/core/backend/src/codegen_core/schemas/spec.py
++++ b/core/backend/src/codegen_core/schemas/spec.py
+@@ -27,10 +27,16 @@ class RepoUnderstandingV1(BaseModel):
+ 
+ 
+ class ApiContract(BaseModel):
+-    method: str
+-    path: str
+-    returns: str = ""
+-    auth: str = ""
++    """One endpoint step 12 has to build to."""
++
++    method: str = Field(description="HTTP method in upper case, e.g. GET, POST")
++    path: str = Field(description='route path beginning with "/", e.g. /admin/export')
++    returns: str = Field(
++        default="", description="the success response: status code and body shape"
++    )
++    auth: str = Field(
++        default="", description="who may call this, e.g. the role required, or none"
++    )
+ 
+ 
+ class FeatureSpecV1(BaseModel):
+diff --git a/core/backend/src/codegen_core/schemas/testing.py b/core/backend/src/codegen_core/schemas/testing.py
+index 022b95e..7282547 100644
+--- a/core/backend/src/codegen_core/schemas/testing.py
++++ b/core/backend/src/codegen_core/schemas/testing.py
+@@ -3,18 +3,34 @@ from __future__ import annotations
+ from pydantic import BaseModel, Field
+ 
+ 
++#: What `covers` points at, said once for both designs below.
++#:
++#: The direction is the whole contract and it is not guessable: asked for a test
++#: design with `covers` untyped in meaning, a model produced the matrix pointing
++#: the other way — acceptance entries listing the unit tests that covered them,
++#: unit entries listing nothing — which is a defensible reading of the word and
++#: fails step 07's check completely, because the two id spaces never meet.
++_COVERS = (
++    "the BRD acceptance-criterion ids this test verifies, e.g. [\"AC-1\", \"AC-3\"]. "
++    "Always ids from BrdV1.acceptance_criteria, never the ids of other tests. "
++    "Every acceptance-criterion id must appear here on at least one test"
++)
++
++
+ class UnitTestDesign(BaseModel):
+-    id: str
+-    target: str
+-    covers: list[str] = Field(default_factory=list)   # acceptance criteria ids
+-    given: str = ""
+-    expect: str = ""
++    id: str = Field(description='this test\'s own id, e.g. "U-1"')
++    target: str = Field(description="the module.function under test, e.g. exports.build_csv")
++    covers: list[str] = Field(default_factory=list, description=_COVERS)
++    given: str = Field(default="", description="the starting state or input for this test")
++    expect: str = Field(default="", description="the behaviour asserted, phrased as an outcome")
+ 
+ 
+ class AcceptanceScenario(BaseModel):
+-    id: str
+-    covers: list[str] = Field(default_factory=list)
+-    scenario: str = ""
++    id: str = Field(description='this scenario\'s own id, e.g. "S-1"')
++    covers: list[str] = Field(default_factory=list, description=_COVERS)
++    scenario: str = Field(
++        default="", description="the end-to-end scenario, phrased as a user-visible outcome"
++    )
+ 
+ 
+ class TestDesignV1(BaseModel):
+diff --git a/core/backend/src/codegen_core/steps/_base.py b/core/backend/src/codegen_core/steps/_base.py
+index 6ef2ab8..8fe7215 100644
+--- a/core/backend/src/codegen_core/steps/_base.py
++++ b/core/backend/src/codegen_core/steps/_base.py
+@@ -29,29 +29,76 @@ never invent content that is not supported by the inputs you were given.
+ """.strip()
+ 
+ 
+-def _json_type(prop: dict[str, Any], defs: dict[str, Any]) -> str:
++def _json_type(prop: dict[str, Any], defs: dict[str, Any], depth: int = 0) -> str:
+     """The JSON type a field wants, phrased the way a prompt can state it.
+ 
+-    A nested model is named by its keys rather than left as "object": the one
+-    place that detail is load-bearing is AmbiguityReportV1.questions_for_human,
+-    whose `blocks_step` decides whether the run halts for a human.
++    A nested model is described by its keys *and their types*: the one place
++    that detail is load-bearing is AmbiguityReportV1.questions_for_human, whose
++    `blocks_step` decides whether the run halts for a human.
++
++    Naming the keys without their types is what this used to do, and it left the
++    model to guess both of them. It guessed the way anyone would — `id: 1`,
++    because questions number from one, and `blocks_step: "backend"`, because the
++    name reads as "what does this block" and `backend` is a key of the analysis
++    the step was handed. Both are rejected by strict validation, and the step
++    dies on output it was never told how to shape.
++
++    `depth` stops a self-referential schema from recursing forever; one level of
++    nesting is also as much as a prompt line can carry legibly.
+     """
+     if "$ref" in prop:
+         nested = defs.get(prop["$ref"].rsplit("/", 1)[-1], {})
+-        keys = ", ".join(nested.get("properties", {}))
+-        return f"object with keys: {keys}" if keys else "object"
++        props = nested.get("properties", {})
++        if not props:
++            return "object"
++        if depth >= 1:
++            return f"object with keys: {', '.join(props)}"
++        required = set(nested.get("required", []))
++        # Everything about one key stays inside that key's brackets. Trailing
++        # the optional marker outside them reads as another key entirely, which
++        # is the opposite of what a spec this fussy is for.
++        keys = ", ".join(
++            f"{name} ({_describe_field(spec, defs, depth + 1)}"
++            + ("" if name in required else "; optional")
++            + ")"
++            for name, spec in props.items()
++        )
++        return f"object with keys: {keys}"
+     if "anyOf" in prop:
+-        named = [_json_type(o, defs) for o in prop["anyOf"] if o.get("type") != "null"]
+-        return named[0] if named else "any"
++        options = [o for o in prop["anyOf"] if o.get("type") != "null"]
++        nullable = len(options) != len(prop["anyOf"])
++        named = [_json_type(o, defs, depth) for o in options]
++        if not named:
++            return "any"
++        # "number or null" rather than "number": a field that may be omitted is
++        # one the model is otherwise tempted to fill with something wrong.
++        return f"{named[0]} or null" if nullable else named[0]
+     kind = prop.get("type")
+     if kind == "array":
+-        return f"array of {_json_type(prop.get('items', {}), defs)}"
++        return f"array of {_json_type(prop.get('items', {}), defs, depth)}"
+     if kind == "object":
+         values = prop.get("additionalProperties")
+-        return f"object of {_json_type(values, defs)}" if isinstance(values, dict) else "object"
++        return (
++            f"object of {_json_type(values, defs, depth)}"
++            if isinstance(values, dict)
++            else "object"
++        )
+     return {"integer": "number", "boolean": "true or false"}.get(kind, kind or "any")
+ 
+ 
++def _describe_field(prop: dict[str, Any], defs: dict[str, Any], depth: int = 0) -> str:
++    """A field's type, plus whatever the schema says it means.
++
++    A type alone fixes the shape but not the sense: told only that `blocks_step`
++    is a number, a model still has to guess which numbering. The description is
++    where the schema already answers that, so it goes in the prompt rather than
++    staying in the source for people to read.
++    """
++    kind = _json_type(prop, defs, depth)
++    note = " ".join(str(prop.get("description", "")).split())
++    return f"{kind} — {note}" if note else kind
++
++
+ def field_spec(schema_id: str) -> str:
+     """The fields of a schema, one per line, as types a model can honour.
+ 
+@@ -67,7 +114,8 @@ def field_spec(schema_id: str) -> str:
+     defs = schema.get("$defs", {})
+     required = set(schema.get("required", []))
+     lines = [
+-        f"- {name}: {_json_type(prop, defs)}" + (" (required)" if name in required else "")
++        f"- {name}: {_describe_field(prop, defs)}"
++        + (" (required)" if name in required else "")
+         for name, prop in schema.get("properties", {}).items()
+     ]
+     return f"### {schema_id} fields\n" + "\n".join(lines) if lines else ""
+diff --git a/core/backend/src/codegen_core/steps/design/07_test_case_design.py b/core/backend/src/codegen_core/steps/design/07_test_case_design.py
+index 1147653..7b61ac1 100644
+--- a/core/backend/src/codegen_core/steps/design/07_test_case_design.py
++++ b/core/backend/src/codegen_core/steps/design/07_test_case_design.py
+@@ -36,7 +36,37 @@ class TestCaseDesign(JsonAgentStep):
+                    for c in t.get("covers", [])}
+         # Every acceptance criterion needs at least one designed test, or the
+         # gap surfaces at step 16 as a passing suite that proves nothing.
+-        return "OK" if not (ac_ids - covered) else "FAILED"
++        missing = ac_ids - covered
++        if not missing:
++            return "OK"
++
++        # The reason goes in the journal, not into the status. A status is the
++        # key remediation edges are declared on, so it has to stay a token an
++        # edge can name — "FAILED: no test covers AC-1" would match nothing, and
++        # would do so silently. `step_error` is the event the dashboard already
++        # renders as a step's error, which is where a reader is looking.
++        ctx.journal.append_event("step_error", step=self.step, error=self._why(missing, covered - ac_ids))
++        return "FAILED"
++
++    @staticmethod
++    def _why(missing: set[str], stray: set[str]) -> str:
++        """Which criteria went uncovered, and the usual reason they did.
++
++        A bare failure sends a reader to the artifact to work out which of four
++        criteria was missed. The commonest cause is worth naming too: a coverage
++        map built pointing the wrong way — `covers` holding the ids of the tests
++        that cover a criterion, rather than the criteria a test verifies —
++        leaves every criterion uncovered, and is invisible until you notice the
++        ids are the wrong kind.
++        """
++        reason = f"No designed test covers {', '.join(sorted(missing))}."
++        if stray:
++            reason += (
++                f" Every covers[] holds test ids ({', '.join(sorted(stray)[:3])}…) rather than "
++                "BRD acceptance-criterion ids — the coverage map points the wrong way: "
++                "covers lists the criteria a test verifies, not the tests that cover a criterion."
++            )
++        return reason
+ 
+ 
+ STEP = TestCaseDesign()
+diff --git a/core/backend/tests/test_crash_visibility.py b/core/backend/tests/test_crash_visibility.py
+new file mode 100644
+index 0000000..1ac7f2f
+--- /dev/null
++++ b/core/backend/tests/test_crash_visibility.py
+@@ -0,0 +1,199 @@
++"""A crashed run must look crashed.
++
++All three behaviours here have the same failure signature and the same cause: a
++step that produced no journal record. The runner wrote the record only after
++`handle` returned, the retry policy re-raised anything that was not a transport
++error, and the presenter read "no record, predecessors finished" as RUNNING. A
++run killed mid-step therefore showed its next step as running indefinitely, with
++no failure for anyone to retry.
++"""
++
++from __future__ import annotations
++
++import json
++
++import pytest
++from pydantic import BaseModel, ValidationError
++
++from codegen_core.core.errors import BackendError, StepError
++from codegen_core.dashboard.presenter import RunPresenter
++from codegen_core.orchestrator.retry import RetryPolicy
++from codegen_core.orchestrator.runner import PipelineRunner
++
++
++class _Model(BaseModel):
++    covers: list[str]
++
++
++def _validation_error() -> ValidationError:
++    """The real thing, not a stand-in: this is the shape a step actually raises."""
++    with pytest.raises(ValidationError) as caught:
++        _Model(covers="U-6")
++    return caught.value
++
++
++# --------------------------------------------------------------------------- #
++# 1. The runner records what killed the step.
++# --------------------------------------------------------------------------- #
++def test_a_step_raising_a_non_codegen_error_is_journalled_and_halts(cfg, ctx):
++    """A ValidationError is a ValueError, so the old `except CodeGenCoreError`
++    let it escape the loop and kill the process with the journal still silent."""
++    runner = PipelineRunner(cfg)
++
++    def explode(_env, _ctx):
++        raise _validation_error()
++
++    runner.prepare(ctx)
++    runner.registry[3].handle = explode
++
++    result = runner.run(ctx, start=1, stop=5)
++
++    assert result.ok is False, "the run must stop rather than continue past a crash"
++    errors = [e for e in ctx.journal.entries() if e.get("event") == "step_error"]
++    assert [e["step"] for e in errors] == [3]
++    # The type is in front because a bare ValidationError's message never names
++    # it, and an IndexError's message is empty.
++    assert errors[0]["error"].startswith("ValidationError:")
++    assert "covers" in errors[0]["error"]
++
++
++def test_an_exception_with_no_message_still_names_itself(cfg, ctx):
++    runner = PipelineRunner(cfg)
++
++    def explode(_env, _ctx):
++        raise IndexError()
++
++    runner.prepare(ctx)
++    runner.registry[3].handle = explode
++    runner.run(ctx, start=1, stop=5)
++
++    errors = [e for e in ctx.journal.entries() if e.get("event") == "step_error"]
++    assert errors[0]["error"] == "IndexError"
++
++
++def test_a_domain_error_keeps_the_message_it_was_written_with(cfg, ctx):
++    """Widening the clause must not start decorating the errors that were
++    already readable — those are sentences, and a class name in front of one
++    only adds noise."""
++    runner = PipelineRunner(cfg)
++
++    def explode(_env, _ctx):
++        raise StepError(3, "no story to work from")
++
++    runner.prepare(ctx)
++    runner.registry[3].handle = explode
++    runner.run(ctx, start=1, stop=5)
++
++    errors = [e for e in ctx.journal.entries() if e.get("event") == "step_error"]
++    assert errors[0]["error"] == "step 03: no story to work from"
++
++
++# --------------------------------------------------------------------------- #
++# 2. A malformed field is resampled before it is fatal.
++# --------------------------------------------------------------------------- #
++#: Step 02 is one of the three the config gives more than one attempt (01, 02,
++#: 12). Retrying is per-step policy, so this has to be asked of a step that has
++#: attempts to spend.
++RETRIED_STEP = 2
++
++
++def test_validation_error_is_retried_then_succeeds(cfg):
++    """A small local model typing a field wrong is a resampling problem."""
++    assert cfg.step_cfg(RETRIED_STEP).retry.max_attempts > 1
++    attempts = []
++
++    def flaky():
++        attempts.append(1)
++        if len(attempts) == 1:
++            raise _validation_error()
++        return "second time lucky"
++
++    assert RetryPolicy(cfg).call(flaky, RETRIED_STEP) == "second time lucky"
++    assert len(attempts) == 2
++
++
++def test_validation_error_is_re_raised_once_the_attempts_are_spent(cfg):
++    """Retried is not the same as ignored — the last one still propagates, and
++    the runner turns it into a recorded failure."""
++    attempts = []
++
++    def always_bad():
++        attempts.append(1)
++        raise _validation_error()
++
++    with pytest.raises(ValidationError):
++        RetryPolicy(cfg).call(always_bad, RETRIED_STEP)
++    assert len(attempts) == cfg.step_cfg(RETRIED_STEP).retry.max_attempts
++
++    # Same policy, same step: the transport errors it always retried still are.
++    def transport():
++        raise BackendError("connection reset")
++
++    with pytest.raises(BackendError):
++        RetryPolicy(cfg).call(transport, RETRIED_STEP)
++
++
++# --------------------------------------------------------------------------- #
++# 3. The presenter tells "next in line" from "under way".
++# --------------------------------------------------------------------------- #
++def _status_of(cfg, ctx, registry, step: int) -> str:
++    return RunPresenter(cfg, ctx, registry).step_payload(step, registry[step])["status"]
++
++
++@pytest.fixture
++def two_steps_in(cfg, ctx):
++    """Steps 01 and 02 finished, and the run never said it had stopped.
++
++    `stop=2` on its own would append run_completed, which is a run ending on
++    purpose rather than the killed one this file is about. Dropping that entry
++    leaves the journal in the shape a killed process leaves it: the last thing
++    written is step 02's record, and nothing follows.
++    """
++    runner = PipelineRunner(cfg)
++    runner.run(ctx, start=1, stop=2)
++
++    journal = ctx.journal.path if hasattr(ctx.journal, "path") else None
++    kept = [e for e in ctx.journal.entries() if e.get("event") != "run_completed"]
++    assert journal is not None and len(kept) < len(ctx.journal.entries())
++    journal.write_text("".join(json.dumps(e) + "\n" for e in kept))
++    return runner.registry
++
++
++def test_the_next_step_is_running_while_the_run_is_recent(cfg, ctx, two_steps_in):
++    assert _status_of(cfg, ctx, two_steps_in, 3) == "RUNNING"
++
++
++def test_a_run_that_ended_on_purpose_leaves_the_next_step_pending(cfg, ctx):
++    """`--stop 2` finishes cleanly. Step 03 was never asked for, so it is
++    pending — silence after a deliberate ending is not a stall."""
++    runner = PipelineRunner(cfg)
++    runner.run(ctx, start=1, stop=2)
++
++    assert _status_of(cfg, ctx, runner.registry, 3) == "PENDING"
++
++
++def test_the_next_step_is_stalled_once_the_run_has_gone_quiet(
++    cfg, ctx, two_steps_in, monkeypatch
++):
++    """The journal is minutes old and no process is left to add to it."""
++    monkeypatch.setattr("codegen_core.dashboard.presenter.STALL_AFTER_S", 0)
++
++    assert _status_of(cfg, ctx, two_steps_in, 3) == "STALLED"
++    # Silence says nothing about steps that never came up for execution.
++    assert _status_of(cfg, ctx, two_steps_in, 5) == "PENDING"
++
++    run = RunPresenter(cfg, ctx, two_steps_in).run_payload()
++    assert run["status"] == "STALLED"
++    # Named as the obstruction, which is what puts it behind the Retry button.
++    assert run["blockedAt"] == 3
++
++
++def test_a_deliberate_halt_is_not_reported_as_a_stall(cfg, ctx, two_steps_in, monkeypatch):
++    """A halt was recorded on purpose and says why; a stall is the absence of
++    any such record. Age must not turn one into the other."""
++    monkeypatch.setattr("codegen_core.dashboard.presenter.STALL_AFTER_S", 0)
++    ctx.journal.append_event("run_halted", step=3, reason="budget exceeded")
++
++    assert _status_of(cfg, ctx, two_steps_in, 3) == "PENDING"
++    # The run carries the explanation; the step is simply one that never ran.
++    assert RunPresenter(cfg, ctx, two_steps_in).run_payload()["status"] == "HALTED"
+diff --git a/core/backend/tests/test_dashboard_api.py b/core/backend/tests/test_dashboard_api.py
+index b2a47cc..d890a6c 100644
+--- a/core/backend/tests/test_dashboard_api.py
++++ b/core/backend/tests/test_dashboard_api.py
+@@ -66,7 +66,7 @@ def test_every_step_carries_the_fields_the_ui_renders(client, completed_job):
+     required = {
+         "step", "name", "title", "category", "kind", "phase", "consumes", "produces",
+         "rationale", "status", "startedAt", "durationMs", "attempt", "provenance",
+-        "artifacts", "input", "output",
++        "artifacts", "input", "output", "tasks", "riskLevel", "allowedActions",
+     }
+     for step in run["steps"]:
+         missing = required - set(step)
+@@ -76,6 +76,28 @@ def test_every_step_carries_the_fields_the_ui_renders(client, completed_job):
+         assert set(step["provenance"]) >= {"backendId", "modelId", "tokensIn", "tokensOut", "costUsd"}
+ 
+ 
++def test_agent_steps_report_the_tasks_they_ran(client, completed_job):
++    """The per-step checklist the monitor draws under a running step.
++
++    Pinned because it is rebuilt from journal entries rather than stored: the
++    presenter reads the entries it cached at construction, and a refactor that
++    reaches for a journal attribute instead breaks every run page at once.
++    """
++    run = client.get(f"/api/runs/{completed_job.job_id}").json()
++
++    agent_steps = [s for s in run["steps"] if s["kind"] == "AGENT" and s["tasks"]]
++    assert agent_steps, "no step reported any task"
++
++    for step in agent_steps:
++        for task in step["tasks"]:
++            assert set(task) == {"id", "title", "status", "detail", "durationMs"}
++            assert task["id"].startswith(f"{step['step']:02d}.")
++            assert task["status"] in {"pending", "running", "done", "failed", "skipped"}
++        # A finished run must not leave anything mid-flight: a task stuck at
++        # "running" is indistinguishable in the UI from a slow one.
++        assert not [t for t in step["tasks"] if t["status"] == "running"]
++
++
+ def test_rationale_explains_the_component_choice(client, completed_job):
+     """Every step's docstring must survive into the UI, or the inspector is empty."""
+     run = client.get(f"/api/runs/{completed_job.job_id}").json()
+diff --git a/core/backend/tests/test_field_spec.py b/core/backend/tests/test_field_spec.py
+new file mode 100644
+index 0000000..b2305f5
+--- /dev/null
++++ b/core/backend/tests/test_field_spec.py
+@@ -0,0 +1,107 @@
++"""The shape a model is told to produce.
++
++Every one of these pins a real rejection. A nested object used to reach the
++prompt as its key names alone — no types — so the model filled them by guessing,
++and strict validation threw the step away for output it was never told how to
++shape. Two guesses cost two runs:
++
++    questions_for_human.0.id           1          Input should be a valid string
++    questions_for_human.0.blocks_step  'backend'  unable to parse as an integer
++    acceptance.2.covers                'U-6'      Input should be a valid list
++"""
++
++from __future__ import annotations
++
++import pytest
++
++from codegen_core.schemas import REGISTRY
++from codegen_core.steps._base import field_spec
++
++
++def _line(schema_id: str, field: str) -> str:
++    for line in field_spec(schema_id).splitlines():
++        if line.startswith(f"- {field}:"):
++            return line
++    raise AssertionError(f"{schema_id} has no line for {field}")
++
++
++def test_a_nested_object_states_the_type_of_every_key():
++    line = _line("AmbiguityReportV1", "questions_for_human")
++
++    assert "id (string" in line
++    assert "text (string" in line
++    # The field that decides whether the run halts for a human. It is `int |
++    # None`, and both halves have to survive into the prompt: told only
++    # "number", a model has no licence to leave it out and invents one.
++    assert "blocks_step (number or null" in line
++
++
++def test_a_nested_array_states_what_it_is_an_array_of():
++    """`covers` is a list of ids. Given only the key name, a model sent the one
++    id it had as a bare string."""
++    assert "covers (array of string" in _line("TestDesignV1", "acceptance")
++
++
++def test_covers_states_which_direction_it_points():
++    """The failure this pass exists for: a model built the coverage matrix the
++    other way round, and nothing in the prompt said which way was meant."""
++    for field in ("unit", "acceptance"):
++        line = _line("TestDesignV1", field)
++        assert "BRD acceptance-criterion ids this test verifies" in line
++        assert "never the ids of other tests" in line
++
++
++def test_descriptions_reach_the_prompt_where_a_type_is_not_enough():
++    """A type fixes the shape, not the sense: `blocks_step` is a number, but so
++    is every other number the model could reach for."""
++    line = _line("AmbiguityReportV1", "questions_for_human")
++
++    assert "pipeline step number from 1 to 24" in line
++    assert "never a step name" in line
++
++
++def test_optional_is_marked_inside_the_key_it_belongs_to():
++    """Trailing it outside the brackets read as another key entirely."""
++    line = _line("TestDesignV1", "acceptance")
++
++    assert "scenario (string — " in line and "; optional)" in line
++    # The marker outside the brackets is the old rendering, and read as a key.
++    assert ", optional," not in line
++
++
++def _constrained_fields() -> list[tuple[str, str]]:
++    """Every field whose items are a declared model, across all schemas.
++
++    These are the ones a model can get wrong: the schema fixes their keys, so
++    strict validation rejects anything else. A `list[dict]` is excluded because
++    it constrains nothing — TestReportV1.failures and FeatureSpecV1.errors are
++    deliberately free-form, and "array of object" is the honest description of a
++    field that accepts any object at all.
++    """
++    out = []
++    for schema_id, model in REGISTRY.items():
++        schema = model.model_json_schema()
++        for name, prop in schema.get("properties", {}).items():
++            ref = prop.get("$ref") or (prop.get("items") or {}).get("$ref")
++            if ref:
++                out.append((schema_id, name))
++    return sorted(out)
++
++
++@pytest.mark.parametrize("schema_id,field", _constrained_fields())
++def test_every_declared_nested_model_states_its_key_types(schema_id: str, field: str):
++    """The whole class of failure, across every schema at once. Nine fields
++    reached the prompt as key names alone; each was a step waiting to die on the
++    first local model that guessed wrong."""
++    line = _line(schema_id, field)
++
++    assert "object with keys:" in line, line
++    # Naming a key without a type in brackets after it is the old behaviour.
++    keys = line.split("object with keys:", 1)[1]
++    for key in (k.strip() for k in keys.split("),")):
++        assert "(" in key, f"{schema_id}.{field} names a key with no type: {key}"
++
++
++@pytest.mark.parametrize("schema_id", sorted(REGISTRY))
++def test_every_schema_renders_without_recursing_forever(schema_id: str):
++    assert field_spec(schema_id).startswith(f"### {schema_id} fields")
+diff --git a/core/docker-compose.yml b/core/docker-compose.yml
+index 6a2bbd6..31d10ae 100644
+--- a/core/docker-compose.yml
++++ b/core/docker-compose.yml
+@@ -72,6 +72,9 @@ services:
+       # Writes are still confined to the configured project: GuardedFS roots
+       # itself at that path, so a step cannot wander into a sibling app.
+       - ../apps:/projects
++      # The component library the pipeline implements user stories against —
++      # app.project.path in backend/config/config.json points here.
++      - ../libraries:/libraries
+       # The original demo target, kept so config.json can point back at it.
+       - ./backend/sample-project:/workspace
+       # Drop a .md file in here and it becomes a runnable story.
+diff --git a/core/docker/backend.Dockerfile b/core/docker/backend.Dockerfile
+index 836c1ed..e09b333 100644
+--- a/core/docker/backend.Dockerfile
++++ b/core/docker/backend.Dockerfile
+@@ -34,6 +34,9 @@ COPY backend/pyproject.toml ./
+ # Every wheel below publishes manylinux_aarch64, so none of this compiles.
+ # pymupdf and python-docx are what let a reviewer answer a rejected gate with a
+ # .pdf or .docx; without them that upload is refused and .md still works.
++# guardrails-ai is not optional here despite being an extra: step 12 refuses to
++# write generated code when it is absent, so a container without it fails the
++# run at step 12 rather than degrading.
+ RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked \
+     pip install --upgrade pip setuptools wheel \
+  && pip install \
+@@ -44,7 +47,9 @@ RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked \
+       "pytest>=8" "pytest-cov" "pytest-json-report" \
+       "reportlab" "pillow" \
+       "pymupdf" "python-docx" \
+-      "langchain-openai>=0.3"
++      "langchain-openai>=0.3" \
++      "guardrails-ai>=0.5" \
++      "opentelemetry-sdk>=1.27" "opentelemetry-exporter-otlp-proto-http>=1.27"
+ 
+ 
+ # --- runtime ----------------------------------------------------------------
+diff --git a/core/frontend/src/components/dashboard/ActionButtons.tsx b/core/frontend/src/components/dashboard/ActionButtons.tsx
+index 8fd65fc..4e249c1 100644
+--- a/core/frontend/src/components/dashboard/ActionButtons.tsx
++++ b/core/frontend/src/components/dashboard/ActionButtons.tsx
+@@ -64,7 +64,11 @@ export function availableActions(step: RunStep): Record<StepAction, { enabled: b
+   // tokens reproducing a document that is already correct, and everything
+   // after it is built on the version that exists.
+   const failed = step.status === 'FAILED';
+-  const rerunnable = step.status === 'FAILED' || step.status === 'REJECTED';
++  // A stalled step is rerunnable for the same reason a failed one is: it has no
++  // result, and re-running is the only thing that produces one. It is not
++  // `failed`, though — it never got far enough to fail.
++  const rerunnable =
++    step.status === 'FAILED' || step.status === 'REJECTED' || step.status === 'STALLED';
+ 
+   const owedReason = 'This gate was rejected. Supply a replacement document and it re-opens against it';
+   const spentReason = `All ${step.revision?.maxRevisions ?? 0} replacement documents have been used; this needs an escalation, not another draft`;
+diff --git a/core/frontend/src/components/dashboard/RunHeader.tsx b/core/frontend/src/components/dashboard/RunHeader.tsx
+index d6014a4..143594b 100644
+--- a/core/frontend/src/components/dashboard/RunHeader.tsx
++++ b/core/frontend/src/components/dashboard/RunHeader.tsx
+@@ -215,7 +215,9 @@ export default function RunHeader({
+                     ? 'AWAITING_APPROVAL'
+                     : run.status === 'COMPLETED'
+                       ? 'SUCCESS'
+-                      : 'RUNNING'
++                      : run.status === 'STALLED'
++                        ? 'STALLED'
++                        : 'RUNNING'
+               }
+             />
+             <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+diff --git a/core/frontend/src/components/dashboard/StepTaskPanel.tsx b/core/frontend/src/components/dashboard/StepTaskPanel.tsx
+new file mode 100644
+index 0000000..a8fe903
+--- /dev/null
++++ b/core/frontend/src/components/dashboard/StepTaskPanel.tsx
+@@ -0,0 +1,300 @@
++import { useEffect, useMemo, useState } from 'react';
++import { Box, Button, Card, Chip, LinearProgress, Stack, Tooltip, Typography } from '@mui/material';
++import { alpha } from '@mui/material/styles';
++import MyLocationIcon from '@mui/icons-material/MyLocation';
++import OpenInFullIcon from '@mui/icons-material/OpenInFull';
++
++import type { RunStep, StepTask } from '../../types/workflow';
++import { fonts, statusMeta, tokens } from '../../theme';
++import { focusedStep } from '../../hooks/useKeepStepInView';
++import { TASK_STATUS_LABEL, TaskGlyph, statusColor } from './StepTasks';
++
++interface Props {
++  steps: RunStep[];
++  /** Opens the full step dialog — the panel is a summary, not a replacement. */
++  onInspect?: (step: RunStep) => void;
++}
++
++/**
++ * The tasks of one step, in a container of its own beneath the route.
++ *
++ * Why a dedicated box rather than more height on each card: the route is
++ * twenty-four cards wide and each is 240px, so a checklist drawn inside one
++ * would be four lines of 9px text — and twenty-four checklists at once is a
++ * hundred rows of noise for a reader who only ever cares about the step the run
++ * is actually on. The cards keep a pip strip, which answers "how far in", and
++ * this panel answers "doing what" with the width to say it properly.
++ *
++ * It follows the run by default and pins when a reader picks a step, because a
++ * panel that jumps to step 07 while you are reading step 03 is unusable during
++ * a live run.
++ */
++export default function StepTaskPanel({ steps, onInspect }: Props) {
++  const [pinned, setPinned] = useState<number | null>(null);
++
++  const following = focusedStep(steps)?.step ?? steps[0]?.step ?? null;
++  const shownStep = pinned ?? following;
++  const step = steps.find((s) => s.step === shownStep) ?? null;
++
++  // A pin on a step the run has since left is still a pin; a pin on a step that
++  // vanished (a new run, a different pipeline) is not.
++  useEffect(() => {
++    if (pinned !== null && !steps.some((s) => s.step === pinned)) setPinned(null);
++  }, [pinned, steps]);
++
++  const counts = useMemo(() => tally(step?.tasks ?? []), [step]);
++
++  if (!step) return null;
++
++  const meta = statusMeta[step.status];
++  const percent = counts.total === 0 ? 0 : Math.round((counts.settled / counts.total) * 100);
++
++  return (
++    <Card sx={{ mt: 2, bgcolor: tokens.panel, border: `1px solid ${tokens.rule}` }}>
++      {/* The step strip: which step the panel is showing, and the shape of the
++          whole run's task progress in one line. */}
++      <Stack
++        direction="row"
++        spacing={0.75}
++        sx={{
++          alignItems: 'center',
++          px: 1.5,
++          py: 1,
++          borderBottom: `1px solid ${tokens.rule}`,
++          overflowX: 'auto',
++          '&::-webkit-scrollbar': { height: 6 },
++        }}
++      >
++        <Typography
++          sx={{
++            fontFamily: fonts.mono,
++            fontSize: 10,
++            letterSpacing: '.12em',
++            color: 'text.secondary',
++            flexShrink: 0,
++            mr: 0.5,
++          }}
++        >
++          TASKS
++        </Typography>
++
++        {steps.map((s) => {
++          const t = tally(s.tasks);
++          const active = s.step === shownStep;
++          const color = statusMeta[s.status].color;
++          return (
++            <Tooltip
++              key={s.step}
++              arrow
++              title={`${String(s.step).padStart(2, '0')} · ${s.title}${
++                t.total > 0 ? ` — ${t.settled}/${t.total} tasks` : ' — no tasks yet'
++              }`}
++            >
++              <Box
++                component="button"
++                type="button"
++                aria-pressed={active}
++                onClick={() => setPinned(s.step)}
++                sx={{
++                  flexShrink: 0,
++                  width: 30,
++                  border: `1px solid ${active ? color : tokens.rule}`,
++                  bgcolor: active ? alpha(color, 0.16) : 'transparent',
++                  borderRadius: 1,
++                  px: 0,
++                  py: 0.5,
++                  cursor: 'pointer',
++                  font: 'inherit',
++                  '&:hover': { borderColor: alpha(color, 0.7) },
++                  '&:focus-visible': { outline: `2px solid ${color}`, outlineOffset: 2 },
++                }}
++              >
++                <Typography
++                  sx={{
++                    fontFamily: fonts.mono,
++                    fontSize: 10,
++                    color: active ? color : 'text.secondary',
++                    lineHeight: 1.4,
++                  }}
++                >
++                  {String(s.step).padStart(2, '0')}
++                </Typography>
++                {/* A two-pixel bar is the whole story at this size: how much of
++                    this step's checklist is behind it. */}
++                <Box sx={{ mt: 0.25, mx: 'auto', width: 18, height: 2, bgcolor: tokens.rule }}>
++                  <Box
++                    sx={{
++                      width: `${t.total === 0 ? 0 : (t.settled / t.total) * 100}%`,
++                      height: '100%',
++                      bgcolor: t.failed ? tokens.fail : color,
++                    }}
++                  />
++                </Box>
++              </Box>
++            </Tooltip>
++          );
++        })}
++      </Stack>
++
++      <Box sx={{ p: { xs: 1.75, md: 2.25 } }}>
++        <Stack
++          direction="row"
++          spacing={2}
++          sx={{ alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', mb: 1.25 }}
++        >
++          <Stack direction="row" spacing={1.25} sx={{ alignItems: 'center', minWidth: 0 }}>
++            <Typography sx={{ fontFamily: fonts.mono, fontSize: 12, color: meta.color, flexShrink: 0 }}>
++              {String(step.step).padStart(2, '0')}
++            </Typography>
++            <Typography sx={{ fontSize: 15, fontWeight: 700, minWidth: 0 }} noWrap>
++              {step.title}
++            </Typography>
++            <Chip
++              size="small"
++              label={meta.label}
++              sx={{
++                color: meta.color,
++                bgcolor: alpha(meta.color, 0.1),
++                border: `1px solid ${alpha(meta.color, 0.3)}`,
++                fontFamily: fonts.mono,
++                fontSize: 9.5,
++                flexShrink: 0,
++              }}
++            />
++          </Stack>
++
++          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flexShrink: 0 }}>
++            <Typography
++              sx={{ fontSize: 11.5, color: 'text.secondary', fontVariantNumeric: 'tabular-nums' }}
++            >
++              {counts.total === 0 ? 'no tasks' : `${counts.settled} of ${counts.total} tasks`}
++            </Typography>
++            {pinned === null ? (
++              <Chip
++                size="small"
++                icon={<MyLocationIcon sx={{ fontSize: 13 }} />}
++                label="Following the run"
++                sx={{ fontSize: 10.5, color: 'text.secondary', border: `1px solid ${tokens.rule}` }}
++                variant="outlined"
++              />
++            ) : (
++              <Button size="small" startIcon={<MyLocationIcon sx={{ fontSize: 14 }} />} onClick={() => setPinned(null)}>
++                Follow run
++              </Button>
++            )}
++            {onInspect && (
++              <Button
++                size="small"
++                startIcon={<OpenInFullIcon sx={{ fontSize: 14 }} />}
++                onClick={() => onInspect(step)}
++              >
++                Open step
++              </Button>
++            )}
++          </Stack>
++        </Stack>
++
++        <LinearProgress
++          variant="determinate"
++          value={percent}
++          color={counts.failed ? 'error' : percent === 100 ? 'success' : 'warning'}
++          sx={{ height: 4, borderRadius: 2, mb: 1.5 }}
++        />
++
++        {step.tasks.length === 0 ? (
++          <Typography sx={{ fontSize: 12.5, color: 'text.secondary', py: 1 }}>
++            {step.status === 'PENDING'
++              ? 'This step has not started — its tasks are declared when it does.'
++              : 'No tasks were recorded for this step.'}
++          </Typography>
++        ) : (
++          // A grid, not a list: the panel is full-page width and a single column
++          // of four rows wastes it. Cells are wide enough for a task title plus
++          // its detail, and wrap to one column on a narrow window.
++          <Box
++            sx={{
++              display: 'grid',
++              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
++              gap: 1,
++            }}
++          >
++            {step.tasks.map((task) => (
++              <TaskCell key={task.id} task={task} />
++            ))}
++          </Box>
++        )}
++      </Box>
++    </Card>
++  );
++}
++
++function TaskCell({ task }: { task: StepTask }) {
++  const color = statusColor(task.status);
++  const live = task.status === 'running';
++
++  return (
++    <Stack
++      direction="row"
++      spacing={1.25}
++      sx={{
++        alignItems: 'center',
++        px: 1.25,
++        py: 1,
++        borderRadius: 1,
++        border: `1px solid ${live ? alpha(color, 0.5) : tokens.rule}`,
++        bgcolor: live ? alpha(color, 0.07) : tokens.panelRaised,
++        minWidth: 0,
++      }}
++    >
++      <TaskGlyph status={task.status} />
++      <Box sx={{ flex: 1, minWidth: 0 }}>
++        <Typography
++          sx={{
++            fontSize: 13,
++            lineHeight: 1.3,
++            color: task.status === 'pending' ? 'text.secondary' : 'text.primary',
++          }}
++          noWrap
++          title={task.title}
++        >
++          {task.title}
++        </Typography>
++        {task.detail && (
++          <Typography
++            sx={{
++              fontFamily: fonts.mono,
++              fontSize: 10.5,
++              color: task.status === 'failed' ? tokens.fail : 'text.secondary',
++            }}
++            noWrap
++            title={task.detail}
++          >
++            {task.detail}
++          </Typography>
++        )}
++      </Box>
++      <Stack sx={{ alignItems: 'flex-end', flexShrink: 0 }}>
++        <Typography
++          sx={{ fontFamily: fonts.mono, fontSize: 9.5, letterSpacing: '.06em', color, textTransform: 'uppercase' }}
++        >
++          {TASK_STATUS_LABEL[task.status]}
++        </Typography>
++        {task.durationMs !== null && (
++          <Typography
++            sx={{ fontSize: 10.5, color: 'text.secondary', fontVariantNumeric: 'tabular-nums' }}
++          >
++            {(task.durationMs / 1000).toFixed(1)}s
++          </Typography>
++        )}
++      </Stack>
++    </Stack>
++  );
++}
++
++function tally(tasks: StepTask[]) {
++  return {
++    total: tasks.length,
++    settled: tasks.filter((t) => t.status === 'done' || t.status === 'skipped').length,
++    failed: tasks.some((t) => t.status === 'failed'),
++  };
++}
+diff --git a/core/frontend/src/components/dashboard/StepTasks.tsx b/core/frontend/src/components/dashboard/StepTasks.tsx
+index 27bae6c..2626684 100644
+--- a/core/frontend/src/components/dashboard/StepTasks.tsx
++++ b/core/frontend/src/components/dashboard/StepTasks.tsx
+@@ -11,9 +11,11 @@ interface Props {
+   tasks: StepTask[];
+   /** Compact hides titles and shows only the pips — for a dense table row. */
+   dense?: boolean;
++  /** Dense only: drop the n/m text where the row has no width for it. */
++  hideCount?: boolean;
+ }
+ 
+-const STATUS_LABEL: Record<TaskStatus, string> = {
++export const TASK_STATUS_LABEL: Record<TaskStatus, string> = {
+   pending: 'Not started',
+   running: 'Running',
+   done: 'Done',
+@@ -21,7 +23,7 @@ const STATUS_LABEL: Record<TaskStatus, string> = {
+   skipped: 'Skipped',
+ };
+ 
+-function statusColor(status: TaskStatus): string {
++export function statusColor(status: TaskStatus): string {
+   switch (status) {
+     case 'done':
+       return tokens.pass;
+@@ -48,7 +50,7 @@ function statusColor(status: TaskStatus): string {
+  * scanned for *where it is*, and four numbers in the row defeat that. The
+  * detail is one hover away for whoever needs it.
+  */
+-export default function StepTasks({ tasks, dense = false }: Props) {
++export default function StepTasks({ tasks, dense = false, hideCount = false }: Props) {
+   const { done, total, running } = useMemo(() => {
+     const finished = tasks.filter((t) => t.status === 'done' || t.status === 'skipped').length;
+     return {
+@@ -102,16 +104,18 @@ export default function StepTasks({ tasks, dense = false }: Props) {
+               }}
+             />
+           ))}
+-          <Typography
+-            sx={{
+-              ml: 0.5,
+-              fontSize: 11,
+-              color: 'text.secondary',
+-              fontVariantNumeric: 'tabular-nums',
+-            }}
+-          >
+-            {done}/{total}
+-          </Typography>
++          {!hideCount && (
++            <Typography
++              sx={{
++                ml: 0.5,
++                fontSize: 11,
++                color: 'text.secondary',
++                fontVariantNumeric: 'tabular-nums',
++              }}
++            >
++              {done}/{total}
++            </Typography>
++          )}
+         </Stack>
+       </Tooltip>
+     );
+@@ -193,7 +197,7 @@ export default function StepTasks({ tasks, dense = false }: Props) {
+ }
+ 
+ /** Shape as well as colour, so status survives greyscale. */
+-function TaskGlyph({ status }: { status: TaskStatus }) {
++export function TaskGlyph({ status }: { status: TaskStatus }) {
+   const color = statusColor(status);
+ 
+   if (status === 'done') {
+@@ -207,7 +211,7 @@ function TaskGlyph({ status }: { status: TaskStatus }) {
+   }
+   return (
+     <Box
+-      aria-label={STATUS_LABEL[status]}
++      aria-label={TASK_STATUS_LABEL[status]}
+       sx={{
+         width: 10,
+         height: 10,
+diff --git a/core/frontend/src/components/step/StepDialog.tsx b/core/frontend/src/components/step/StepDialog.tsx
+index 46a6916..c52ceb6 100644
+--- a/core/frontend/src/components/step/StepDialog.tsx
++++ b/core/frontend/src/components/step/StepDialog.tsx
+@@ -21,6 +21,7 @@ import CloseIcon from '@mui/icons-material/Close';
+ import SouthIcon from '@mui/icons-material/SouthEast';
+ import NorthIcon from '@mui/icons-material/NorthEast';
+ import DescriptionIcon from '@mui/icons-material/InsertDriveFileOutlined';
++import HelpIcon from '@mui/icons-material/HelpOutlineOutlined';
+ import type { RunStep, StepAction } from '../../types/workflow';
+ import type { DecisionOptions } from '../../hooks/useRun';
+ import StepTasks from '../dashboard/StepTasks';
+@@ -183,9 +184,58 @@ export default function StepDialog({ step, isCurrent = false, open, onClose, onA
+       </Box>
+ 
+       <DialogContent sx={{ px: 3, py: 2.5 }}>
++        {/* The questions come before the error, because on a NEEDS_INPUT step
++            they *are* the finding: the error line says the run stopped, and
++            these say what it is waiting to be told. Reading them in the other
++            order makes a reader hunt for the actionable half. */}
++        {step.blockingQuestions && step.blockingQuestions.length > 0 && (
++          <Alert
++            severity="warning"
++            variant="outlined"
++            icon={<HelpIcon fontSize="inherit" />}
++            sx={{ mb: 2.5, borderColor: alpha(tokens.signal, 0.4), '& .MuiAlert-message': { width: '100%' } }}
++          >
++            <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
++              {step.blockingQuestions.length} question
++              {step.blockingQuestions.length === 1 ? '' : 's'} must be answered before the run
++              continues
++            </Typography>
++            <Stack spacing={1}>
++              {step.blockingQuestions.map((q) => (
++                <Stack key={q.id} direction="row" spacing={1.25} sx={{ alignItems: 'baseline' }}>
++                  <Typography
++                    sx={{ fontFamily: fonts.mono, fontSize: 11, color: tokens.signal, flexShrink: 0 }}
++                  >
++                    {q.id}
++                  </Typography>
++                  <Typography variant="body2" sx={{ flex: 1 }}>
++                    {q.text}
++                  </Typography>
++                  {q.blocksStep !== null && (
++                    <Typography
++                      sx={{ fontFamily: fonts.mono, fontSize: 10.5, color: 'text.secondary', flexShrink: 0 }}
++                    >
++                      blocks {String(q.blocksStep).padStart(2, '0')}
++                    </Typography>
++                  )}
++                </Stack>
++              ))}
++            </Stack>
++            <Typography
++              variant="body2"
++              sx={{ mt: 1.5, fontSize: 12, color: 'text.secondary' }}
++            >
++              Answering these means starting a run from a ticket that says more — re-running this
++              step reads the same ticket and asks the same questions.
++            </Typography>
++          </Alert>
++        )}
++
+         {step.error && (
+           <Alert
+-            severity={step.status === 'BLOCKED' ? 'warning' : 'error'}
++            severity={
++              step.status === 'BLOCKED' || step.status === 'NEEDS_INPUT' ? 'warning' : 'error'
++            }
+             variant="outlined"
+             sx={{ mb: 2.5, borderColor: alpha(meta.color, 0.4), '& .MuiAlert-message': { width: '100%' } }}
+           >
+diff --git a/core/frontend/src/components/visual/TruckCard.tsx b/core/frontend/src/components/visual/TruckCard.tsx
+index 78c3dfc..efbaaa1 100644
+--- a/core/frontend/src/components/visual/TruckCard.tsx
++++ b/core/frontend/src/components/visual/TruckCard.tsx
+@@ -7,6 +7,7 @@ import type { RunStep, StepAction } from '../../types/workflow';
+ import type { VisualVariant } from '../../data/visualVariants';
+ import { fonts, statusMeta, tokens } from '../../theme';
+ import ActionButtons, { isInspectable } from '../dashboard/ActionButtons';
++import StepTasks from '../dashboard/StepTasks';
+ import { routeColor, routeFill, routeStatus } from './routeStatus';
+ 
+ interface Props {
+@@ -230,9 +231,15 @@ export default function TruckCard({ step, variant, orientation, onInspect, onAct
+             </Typography>
+           </Stack>
+         ) : (
+-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+-            {statusMeta[step.status].label}
+-          </Typography>
++          // Status and the task pips share one line: the trailer has no room for
++          // a second, and the pips are only the shape of progress anyway — the
++          // checklist itself lives in the panel below the route.
++          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
++            <Typography variant="caption" sx={{ color: 'text.secondary' }}>
++              {statusMeta[step.status].label}
++            </Typography>
++            {step.tasks.length > 0 && <StepTasks tasks={step.tasks} dense hideCount={horizontal} />}
++          </Stack>
+         )}
+ 
+         {!horizontal && (
+diff --git a/core/frontend/src/components/visual/routeStatus.ts b/core/frontend/src/components/visual/routeStatus.ts
+index 6fed35c..4d6168c 100644
+--- a/core/frontend/src/components/visual/routeStatus.ts
++++ b/core/frontend/src/components/visual/routeStatus.ts
+@@ -21,6 +21,11 @@ const BY_STATUS: Record<StepStatus, RouteStatus> = {
+   REJECTED: 'failed',
+   PENDING: 'upcoming',
+   SKIPPED: 'upcoming',
++  // Waiting, not failed: the freight has not broken down, it has been left
++  // standing, and what it needs is someone to start it moving again.
++  STALLED: 'waiting',
++  // Waiting on a person, exactly as a gate is.
++  NEEDS_INPUT: 'waiting',
+ };
+ 
+ export function routeStatus(step: RunStep): RouteStatus {
+diff --git a/core/frontend/src/pages/DashboardPage.tsx b/core/frontend/src/pages/DashboardPage.tsx
+index 0ec97c8..cd1b802 100644
+--- a/core/frontend/src/pages/DashboardPage.tsx
++++ b/core/frontend/src/pages/DashboardPage.tsx
+@@ -24,6 +24,7 @@ import RunHeader from '../components/dashboard/RunHeader';
+ import StartRunDialog from '../components/dashboard/StartRunDialog';
+ import PhaseStepper from '../components/dashboard/PhaseStepper';
+ import RunSpine from '../components/dashboard/RunSpine';
++import StepTaskPanel from '../components/dashboard/StepTaskPanel';
+ import { focusedStep } from '../hooks/useKeepStepInView';
+ import StepDialog from '../components/step/StepDialog';
+ import RevisionDialog from '../components/step/RevisionDialog';
+@@ -310,6 +311,11 @@ export default function DashboardPage({ controller }: Props) {
+               />
+             </Suspense>
+           )}
++
++          {/* The route says where the run is; this says what it is doing there.
++              A container of its own rather than more height on every card —
++              see StepTaskPanel for why. */}
++          <StepTaskPanel steps={run.steps} onInspect={inspect} />
+         </Box>
+       </Stack>
+ 
+diff --git a/core/frontend/src/theme.ts b/core/frontend/src/theme.ts
+index 6892bfb..ed2eff8 100644
+--- a/core/frontend/src/theme.ts
++++ b/core/frontend/src/theme.ts
+@@ -44,6 +44,11 @@ export const statusMeta: Record<
+   BLOCKED: { label: 'Blocked', color: tokens.signal, short: 'BLK' },
+   AWAITING_APPROVAL: { label: 'Awaiting you', color: tokens.signal, short: 'YOU' },
+   PENDING: { label: 'Pending', color: tokens.idle, short: '—' },
++  // Amber rather than rose: nothing is broken, but it needs a person to
++  // restart it — the same thing amber means at a gate.
++  STALLED: { label: 'Stalled', color: tokens.signal, short: 'STL' },
++  // Amber, like a gate: the run is waiting on a person, not on a fix.
++  NEEDS_INPUT: { label: 'Needs your input', color: tokens.signal, short: 'ASK' },
+   SKIPPED: { label: 'Skipped', color: tokens.faint, short: 'SKP' },
+ };
+ 
+diff --git a/core/frontend/src/types/workflow.ts b/core/frontend/src/types/workflow.ts
+index dd294d9..840b858 100644
+--- a/core/frontend/src/types/workflow.ts
++++ b/core/frontend/src/types/workflow.ts
+@@ -14,7 +14,20 @@ export type StepStatus =
+   | 'AWAITING_APPROVAL'
+   | 'APPROVED'
+   | 'REJECTED'
+-  | 'SKIPPED';
++  | 'SKIPPED'
++  /**
++   * Next in line, but nothing is executing it. The run process died without
++   * writing a record — a killed container, an uncaught crash — so the step has
++   * no result and never will until someone re-runs it.
++   */
++  | 'STALLED'
++  /**
++   * The step ran, succeeded, and found the inputs underspecified. Step 03 does
++   * this by design: it halts rather than inventing an answer. Distinct from
++   * FAILED because nothing is broken — it is a question, and it is cleared by
++   * answering it rather than by retrying.
++   */
++  | 'NEEDS_INPUT';
+ 
+ /** A step is not necessarily an agent — the kind tells you whether it costs money. */
+ export type ComponentKind = 'AGENT' | 'TOOL' | 'PLUGIN' | 'GATE';
+@@ -141,6 +154,14 @@ export type TaskStatus = 'pending' | 'running' | 'done' | 'failed' | 'skipped';
+  * Between "step 12 running" and "step 12 finished" there is a minute of nothing
+  * otherwise.
+  */
++/** One thing a halted step is waiting to have answered. */
++export interface BlockingQuestion {
++  id: string;
++  text: string;
++  /** The step that cannot proceed until this is answered. */
++  blocksStep: number | null;
++}
++
+ export interface StepTask {
+   id: string;
+   title: string;
+@@ -167,6 +188,8 @@ export interface RunStep extends StepDefinition {
+   output: unknown;
+   /** Present when status is FAILED or BLOCKED. */
+   error?: { code: string; message: string; detail?: string };
++  /** Present when status is NEEDS_INPUT: what the step is waiting to be told. */
++  blockingQuestions?: BlockingQuestion[];
+   /** Set on gate steps only. */
+   approval?: Approval;
+   requiredRoles?: string[];
+@@ -192,7 +215,7 @@ export interface Run {
+   jiraId: string;
+   title: string;
+   profile: string;
+-  status: 'RUNNING' | 'HALTED' | 'COMPLETED' | 'AWAITING_APPROVAL';
++  status: 'RUNNING' | 'HALTED' | 'COMPLETED' | 'AWAITING_APPROVAL' | 'STALLED';
+   /**
+    * The step holding the run up, if one is. A failed step blocks everything
+    * behind it until a human resolves it, so the run names it rather than
+diff --git a/docs/pipeline-24-steps.html b/docs/pipeline-24-steps.html
+new file mode 100644
+index 0000000..af7141d
+--- /dev/null
++++ b/docs/pipeline-24-steps.html
+@@ -0,0 +1,260 @@
++<!doctype html><html><head><meta charset="utf-8">
++<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
++<style>
++*{box-sizing:border-box;margin:0}
++body{width:1400px;background:#0F1117;color:#E6E8F0;
++  font-family:"Space Grotesk",system-ui,sans-serif;padding:44px 48px 40px}
++.head{display:flex;align-items:flex-end;justify-content:space-between;
++  border-bottom:1px solid #333949;padding-bottom:18px;margin-bottom:26px}
++.kicker{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;
++  color:#E8A33D;margin-bottom:8px}
++h1{font-size:30px;font-weight:700;letter-spacing:-.01em}
++.sub{font-size:13px;color:#878DA3;margin-top:7px}
++.total{font-family:"JetBrains Mono",monospace;text-align:right}
++.total b{display:block;font-size:40px;font-weight:600;line-height:1}
++.total span{font-size:10.5px;letter-spacing:.14em;color:#878DA3}
++.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
++.leg{display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:7px;
++  background:#171A23;border:1px solid #262A36;border-left:3px solid var(--kc)}
++.leg-chip{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;
++  letter-spacing:.1em;color:var(--kc)}
++.leg-n{font-family:"JetBrains Mono",monospace;font-size:15px;font-weight:600;color:#E6E8F0}
++.leg-hint{font-size:10.5px;color:#878DA3;line-height:1.3}
++.cols{column-count:2;column-gap:34px}
++.phase{break-inside:avoid;margin-bottom:20px}
++.phase-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
++.phase-range{font-family:"JetBrains Mono",monospace;font-size:10px;color:#5C6178;
++  letter-spacing:.08em}
++.phase-label{font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:600;
++  letter-spacing:.13em;text-transform:uppercase;color:#878DA3}
++.phase-rule{flex:1;height:1px;background:#262A36}
++.phase-count{font-family:"JetBrains Mono",monospace;font-size:9.5px;color:#5C6178}
++.row{display:grid;grid-template-columns:34px 1fr auto 62px;align-items:center;gap:12px;
++  padding:9px 13px;margin-bottom:5px;border-radius:6px;background:#171A23;
++  border:1px solid #262A36;border-left:3px solid var(--kc)}
++.num{font-family:"JetBrains Mono",monospace;font-size:14px;font-weight:600;color:var(--kc)}
++.title{font-size:14px;font-weight:500}
++.cat{font-size:10.5px;color:#5C6178;text-align:right;white-space:nowrap}
++.kind{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:600;letter-spacing:.09em;
++  color:var(--kc);text-align:center;padding:3px 0;border-radius:4px;
++  background:color-mix(in srgb,var(--kc) 13%,transparent);
++  border:1px solid color-mix(in srgb,var(--kc) 32%,transparent)}
++.foot{margin-top:14px;padding-top:14px;border-top:1px solid #262A36;
++  font-family:"JetBrains Mono",monospace;font-size:10px;color:#5C6178;
++  display:flex;justify-content:space-between}
++</style></head><body>
++<div class="head">
++  <div>
++    <div class="kicker">CODEGEN CORE · PIPELINE</div>
++    <h1>The 24-step run, in order</h1>
++    <div class="sub">Every step with its component kind. Two gates stop the run for a human decision.</div>
++  </div>
++  <div class="total"><b>24</b><span>STEPS</span></div>
++</div>
++<div class="legend">
++  <div class="leg" style="--kc:#7C8CF8">
++    <span class="leg-chip">AGENT</span>
++    <span class="leg-n">15</span>
++    <span class="leg-hint">Model judgement — non-deterministic, costs tokens</span>
++  </div>
++  <div class="leg" style="--kc:#4FC3A1">
++    <span class="leg-chip">TOOL</span>
++    <span class="leg-n">1</span>
++    <span class="leg-hint">Deterministic Python — same input, same output</span>
++  </div>
++  <div class="leg" style="--kc:#E8A33D">
++    <span class="leg-chip">PLUGIN</span>
++    <span class="leg-n">6</span>
++    <span class="leg-hint">Adapter to an external system</span>
++  </div>
++  <div class="leg" style="--kc:#F0616F">
++    <span class="leg-chip">GATE</span>
++    <span class="leg-n">2</span>
++    <span class="leg-hint">A human decides — the run blocks here</span>
++  </div></div>
++<div class="cols">
++  <section class="phase">
++    <div class="phase-head">
++      <span class="phase-range">01–05</span>
++      <span class="phase-label">Requirements</span>
++      <span class="phase-rule"></span>
++      <span class="phase-count">5 steps</span>
++    </div>
++    <div class="row" style="--kc:#E8A33D">
++        <span class="num">01</span>
++        <span class="title">Jira story extraction</span>
++        <span class="cat">Ingestion / Integration</span>
++        <span class="kind">PLUGIN</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">02</span>
++        <span class="title">Story detailed analysis</span>
++        <span class="cat">Requirement Decomposition</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">03</span>
++        <span class="title">Gap & ambiguity detection</span>
++        <span class="cat">Requirement QA / Non-invention</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">04</span>
++        <span class="title">Project context specification</span>
++        <span class="cat">Context Engineering</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">05</span>
++        <span class="title">BRD generation</span>
++        <span class="cat">Business Documentation</span>
++        <span class="kind">AGENT</span>
++      </div>
++  </section>
++  <section class="phase">
++    <div class="phase-head">
++      <span class="phase-range">06</span>
++      <span class="phase-label">BRD approval</span>
++      <span class="phase-rule"></span>
++      <span class="phase-count">1 step</span>
++    </div>
++    <div class="row" style="--kc:#F0616F">
++        <span class="num">06</span>
++        <span class="title">BRD approval</span>
++        <span class="cat">Human-in-the-loop control</span>
++        <span class="kind">GATE</span>
++      </div>
++  </section>
++  <section class="phase">
++    <div class="phase-head">
++      <span class="phase-range">07–11</span>
++      <span class="phase-label">Design & scope</span>
++      <span class="phase-rule"></span>
++      <span class="phase-count">5 steps</span>
++    </div>
++    <div class="row" style="--kc:#7C8CF8">
++        <span class="num">07</span>
++        <span class="title">Test case design</span>
++        <span class="cat">Test Design (pre-implementation)</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">08</span>
++        <span class="title">Repository understanding</span>
++        <span class="cat">Code Comprehension</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">09</span>
++        <span class="title">Impact analysis</span>
++        <span class="cat">Change Scoping / Whitelisting</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">10</span>
++        <span class="title">Feature specification</span>
++        <span class="cat">Technical Specification</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">11</span>
++        <span class="title">Implementation plan</span>
++        <span class="cat">Ordered Change Planning</span>
++        <span class="kind">AGENT</span>
++      </div>
++  </section>
++  <section class="phase">
++    <div class="phase-head">
++      <span class="phase-range">12–15</span>
++      <span class="phase-label">Build & verify</span>
++      <span class="phase-rule"></span>
++      <span class="phase-count">4 steps</span>
++    </div>
++    <div class="row" style="--kc:#7C8CF8">
++        <span class="num">12</span>
++        <span class="title">Code update</span>
++        <span class="cat">Code Synthesis (write-scoped)</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">13</span>
++        <span class="title">Code-to-requirement verification</span>
++        <span class="cat">Traceability Verification</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#4FC3A1">
++        <span class="num">14</span>
++        <span class="title">Static quality validation</span>
++        <span class="cat">Deterministic Quality Gates</span>
++        <span class="kind">TOOL</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">15</span>
++        <span class="title">Unit test synchronisation</span>
++        <span class="cat">Test Reconciliation</span>
++        <span class="kind">AGENT</span>
++      </div>
++  </section>
++  <section class="phase">
++    <div class="phase-head">
++      <span class="phase-range">16–19</span>
++      <span class="phase-label">Validate</span>
++      <span class="phase-rule"></span>
++      <span class="phase-count">4 steps</span>
++    </div>
++    <div class="row" style="--kc:#E8A33D">
++        <span class="num">16</span>
++        <span class="title">Unit test execution</span>
++        <span class="cat">Test Execution</span>
++        <span class="kind">PLUGIN</span>
++      </div><div class="row" style="--kc:#E8A33D">
++        <span class="num">17</span>
++        <span class="title">Integration & E2E testing</span>
++        <span class="cat">Behavioural Validation</span>
++        <span class="kind">PLUGIN</span>
++      </div><div class="row" style="--kc:#E8A33D">
++        <span class="num">18</span>
++        <span class="title">Security & dependency scan</span>
++        <span class="cat">Static Security & Supply Chain</span>
++        <span class="kind">PLUGIN</span>
++      </div><div class="row" style="--kc:#E8A33D">
++        <span class="num">19</span>
++        <span class="title">Runtime security (DAST)</span>
++        <span class="cat">Runtime Security</span>
++        <span class="kind">PLUGIN</span>
++      </div>
++  </section>
++  <section class="phase">
++    <div class="phase-head">
++      <span class="phase-range">20–23</span>
++      <span class="phase-label">Document & publish</span>
++      <span class="phase-rule"></span>
++      <span class="phase-count">4 steps</span>
++    </div>
++    <div class="row" style="--kc:#7C8CF8">
++        <span class="num">20</span>
++        <span class="title">Technical design document</span>
++        <span class="cat">As-Built Design Documentation</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">21</span>
++        <span class="title">Documentation update</span>
++        <span class="cat">Docs Synchronisation</span>
++        <span class="kind">AGENT</span>
++      </div><div class="row" style="--kc:#E8A33D">
++        <span class="num">22</span>
++        <span class="title">Pull request creation</span>
++        <span class="cat">VCS Publication</span>
++        <span class="kind">PLUGIN</span>
++      </div><div class="row" style="--kc:#7C8CF8">
++        <span class="num">23</span>
++        <span class="title">AI pull request review</span>
++        <span class="cat">Independent Review</span>
++        <span class="kind">AGENT</span>
++      </div>
++  </section>
++  <section class="phase">
++    <div class="phase-head">
++      <span class="phase-range">24</span>
++      <span class="phase-label">Merge approval</span>
++      <span class="phase-rule"></span>
++      <span class="phase-count">1 step</span>
++    </div>
++    <div class="row" style="--kc:#F0616F">
++        <span class="num">24</span>
++        <span class="title">Human review, merge & release</span>
++        <span class="cat">HITL Approval / Merge / Release</span>
++        <span class="kind">GATE</span>
++      </div>
++  </section></div>
++<div class="foot"><span>Kinds derive from each step class base in src/codegen_core/steps/</span><span>AGENT 15 · PLUGIN 6 · GATE 2 · TOOL 1</span></div>
++</body></html>
+\ No newline at end of file
+diff --git a/docs/pipeline-24-steps.png b/docs/pipeline-24-steps.png
+new file mode 100644
+index 0000000..333334f
+Binary files /dev/null and b/docs/pipeline-24-steps.png differ
