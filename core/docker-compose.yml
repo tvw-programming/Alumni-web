@@ -82,6 +82,9 @@ services:
       # Live-edit the pipeline itself without rebuilding.
       - ./backend/src:/app/src:ro
       - ./backend/config:/app/config:ro
+      # Watcher picks up clarification_requested / retries; bind-mount so
+      # `docker restart` keeps the host file without rebuilding the image.
+      - ./docker/gate_watcher.py:/usr/local/bin/gate_watcher.py:ro
       # Journals and artifacts survive `make down`.
       - codegen-core-data:/data
 

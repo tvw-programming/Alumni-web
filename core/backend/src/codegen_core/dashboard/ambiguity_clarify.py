@@ -128,6 +128,8 @@ def clarify(
         description = _format_clarifications(pairs)
 
     who = (answered_by or "").strip() or "dashboard-user"
+    # Strip control chars that break JSON responses / journal rendering.
+    description = "".join(ch for ch in description if ch == "\n" or ch == "\t" or ord(ch) >= 32)
     story_input.save(
         ctx,
         {
