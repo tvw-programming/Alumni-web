@@ -20,21 +20,37 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from codegen_core.core import story_input
 from ._base import JsonAgentStep
 
 CLARIFICATION_HEADING = "## Clarifications from run monitor"
-_ANSWERED_IDS = re.compile(r"^###\s+(Q\d+)\s*$", re.M)
+_ANSWERED_IDS = re.compile(r"^###\s+(Q\d+)\s*$", re.M | re.I)
 
 
-def _answered_question_ids(story: dict | None) -> set[str]:
-    """Ids already answered in the run-monitor clarifications block."""
-    if not isinstance(story, dict):
-        return set()
-    description = str(story.get("description") or "")
+def _answered_question_ids_from_text(description: str) -> set[str]:
     idx = description.find(CLARIFICATION_HEADING)
     if idx < 0:
         return set()
-    return set(_ANSWERED_IDS.findall(description[idx:]))
+    return {m.upper() for m in _ANSWERED_IDS.findall(description[idx:])}
+
+
+def _answered_question_ids(ctx: Any) -> set[str]:
+    """Ids already answered in the run-monitor clarifications block.
+
+    Prefer the live JiraStoryV1, then fall back to story_input.json — the file
+    the clarify endpoint just wrote — so a stale rehydrate cannot hide answers.
+    """
+    found: set[str] = set()
+    story = ctx.recall("JiraStoryV1")
+    if isinstance(story, dict):
+        found |= _answered_question_ids_from_text(str(story.get("description") or ""))
+    try:
+        typed = story_input.load(ctx)
+    except Exception:  # noqa: BLE001 - unreadable input must not crash QA
+        typed = None
+    if typed is not None:
+        found |= _answered_question_ids_from_text(typed.description or "")
+    return found
 
 
 class GapAmbiguityDetection(JsonAgentStep):
@@ -49,14 +65,17 @@ class GapAmbiguityDetection(JsonAgentStep):
     accepts = ["application/json"]
 
     def post_process(self, payload: dict, ctx: Any) -> dict:
-        answered = _answered_question_ids(ctx.recall("JiraStoryV1"))
+        answered = _answered_question_ids(ctx)
         questions = list(payload.get("questions_for_human") or [])
         if answered and questions:
-            remaining = [
-                q
-                for q in questions
-                if not isinstance(q, dict) or str(q.get("id") or "") not in answered
-            ]
+            remaining = []
+            for q in questions:
+                if not isinstance(q, dict):
+                    remaining.append(q)
+                    continue
+                qid = str(q.get("id") or "").strip().upper()
+                if qid not in answered:
+                    remaining.append(q)
             dropped = len(questions) - len(remaining)
             if dropped:
                 payload["questions_for_human"] = remaining
@@ -67,14 +86,14 @@ class GapAmbiguityDetection(JsonAgentStep):
                         f"'{CLARIFICATION_HEADING}' and were not re-asked."
                     )
 
-        # A question that blocks a step is by definition blocking, whatever the
-        # model said about the `blocking` flag.
-        remaining_qs = payload.get("questions_for_human") or []
-        if any(isinstance(q, dict) and q.get("blocks_step") for q in remaining_qs):
+        remaining_qs = [q for q in (payload.get("questions_for_human") or []) if isinstance(q, dict)]
+        if any(q.get("blocks_step") for q in remaining_qs):
             payload["blocking"] = True
-        elif answered and not remaining_qs:
-            # Human cleared every outstanding question on the monitor.
+        elif answered:
+            # Human already answered on the monitor; do not halt again on the
+            # same ids even if the model left blocking=true with an empty list.
             payload["blocking"] = False
+            payload["questions_for_human"] = remaining_qs
         return payload
 
     def status_for(self, payload: dict, ctx: Any) -> str:
