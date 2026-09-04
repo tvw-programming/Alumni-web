@@ -660,6 +660,7 @@
     "start_step": 1,
     "stop_step": 24,
     "max_parallel_steps": 3,
+    "loop_budget": 3,
     "parallel_groups": [
       [7, 8],
       [18, 19],
@@ -725,6 +726,12 @@
         "on": "CHANGES_REQUESTED",
         "to": 12,
         "max_loops": 5
+      },
+      {
+        "from": 12,
+        "on": "LOOP_BUDGET_EXHAUSTED",
+        "to": 24,
+        "max_loops": 1
       }
     ],
     "failure_class_routes": [

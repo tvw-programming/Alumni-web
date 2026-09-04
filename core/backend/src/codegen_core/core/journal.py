@@ -138,3 +138,17 @@ class Journal:
     def last_step(self) -> int | None:
         steps = [e.get("step") for e in self.entries() if e.get("type") == "step"]
         return max((s for s in steps if s is not None), default=None)
+
+    def code_fix_loop_count(self) -> int:
+        """How many times step 12 has entered the code-fix loop this run."""
+        return sum(
+            1
+            for e in self.entries()
+            if e.get("type") == "event" and e.get("event") == "code_fix_loop"
+        )
+
+    def enter_code_fix_loop(self) -> int:
+        """Record a step-12 entry and return the new 1-based loop count."""
+        n = self.code_fix_loop_count() + 1
+        self.append_event("code_fix_loop", step=12, loop_count=n)
+        return n

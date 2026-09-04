@@ -13,6 +13,18 @@ class PolicyViolation(CodeGenCoreError):
     """An agent tried to do something policy forbids (write outside whitelist, etc)."""
 
 
+class DirectWriteProhibited(PolicyViolation):
+    """A backend with `edits_files_directly` tried to write outside GuardedFS.
+
+    Production profile has no escape hatch: in-process + GuardedFS is the only
+    write path. Local profile may still run CLI backends for development.
+    """
+
+
+#: Go-style alias used in architecture docs / tests.
+ErrDirectWriteProhibited = DirectWriteProhibited
+
+
 class BackendError(CodeGenCoreError):
     """An LLM backend failed or is misconfigured."""
 

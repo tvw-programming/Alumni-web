@@ -1,6 +1,7 @@
 node_modules/
 dist/
-build/
+# Packaging output at repo root only — do not ignore **/steps/build/.
+/build/
 .DS_Store
 *.log
 .env

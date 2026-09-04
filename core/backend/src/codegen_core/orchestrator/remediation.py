@@ -176,6 +176,12 @@ class Remediation:
                 reason=f"remediate {from_step}->{to_step} ({fclass.value})",
             )
         # Prior failure payloads for step 12 / 14 / 15 to consume.
+        from ..steps.step12.failures import remember_failure
+
+        if env is not None:
+            remember_failure(ctx, from_step, env)
+
+        prior = list(ctx.store.get("_prior_failures") or [])
         payload = {
             "from_step": from_step,
             "to_step": to_step,
@@ -187,6 +193,8 @@ class Remediation:
                 for p in (getattr(env, "parts", None) or [])
             ],
             "invalidated_steps": cleared,
+            "prior_failures": prior[-3:],
+            "remediation_source": "FAILURE_CLASS",
         }
         ctx.store["_remediation_context"] = payload
         ctx.journal.append_event(

@@ -349,6 +349,23 @@ class PipelineRunner:
                 env_in = env_in.model_copy(
                     update={"parts": list(env_in.parts) + [structured("RemediationContextV1", rem)]}
                 )
+            if n == 12:
+                from ..core.envelope import FailurePayload
+                from ..steps.step12.failures import prior_failures_from_ctx
+
+                prior = prior_failures_from_ctx(ctx, limit=3)
+                if rem and rem.get("prior_failures"):
+                    prior = [FailurePayload.model_validate(p) for p in rem["prior_failures"][-3:]]
+                env_in = env_in.model_copy(
+                    update={
+                        "prior_failures": prior,
+                        "remediation_source": (rem or {}).get("remediation_source") or (
+                            "FAILURE_CLASS" if rem else "MANUAL"
+                        ),
+                        "loop_budget": int(getattr(self.cfg.pipeline, "loop_budget", 3) or 3),
+                        "loop_count": ctx.journal.code_fix_loop_count(),
+                    }
+                )
             fingerprint = self._fingerprint(step, ctx) if self._cacheable(step, ctx) else ""
             cached = None if force else self._replay_cached(step, ctx, env_in, fingerprint)
             if cached is not None:
