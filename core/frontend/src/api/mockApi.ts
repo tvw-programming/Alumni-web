@@ -198,11 +198,11 @@ export function submitAction(
   }
 
   if (action === 'retry') {
-    if (target.status !== 'FAILED') {
+    if (target.status !== 'FAILED' && target.status !== 'STALLED') {
       return Promise.reject(
         new Error(
-          `Step ${step} is ${target.status.replace('_', ' ').toLowerCase()}, not failed. ` +
-            'Retry re-runs a step that failed; there is nothing here to resolve.',
+          `Step ${step} is ${target.status.replace('_', ' ').toLowerCase()}, not failed or stalled. ` +
+            'Retry re-runs a step that failed or stalled; there is nothing here to resolve.',
         ),
       );
     }

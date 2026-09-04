@@ -169,6 +169,33 @@ def test_the_api_refuses_to_retry_a_step_that_did_not_fail(client, cfg, ctx, mon
     assert "not failed" in response.json()["detail"]
 
 
+def test_the_api_accepts_a_retry_for_a_stalled_step(client, cfg, ctx, monkeypatch):
+    """A stalled step — its runner died mid-execution and left no record — has
+    no result, so retry is the only way forward. The endpoint must accept it,
+    not refuse it as "not failed"."""
+    monkeypatch.setenv("CODEGEN_AUTO_APPROVE", "1")
+    PipelineRunner(cfg).run(ctx, start=1, stop=2)
+
+    # Simulate a killed process: drop the run_completed event so the journal's
+    # last entry is step 02's record, the shape a crash leaves behind.
+    journal = ctx.journal.path
+    kept = [e for e in ctx.journal.entries() if e.get("event") != "run_completed"]
+    journal.write_text("".join(json.dumps(e) + "\n" for e in kept))
+
+    # Force the stall threshold to zero so step 03 reads as STALLED, not RUNNING.
+    monkeypatch.setattr("codegen_core.dashboard.presenter.STALL_AFTER_S", 0)
+    from codegen_core.dashboard.presenter import RunPresenter
+    from codegen_core.steps._loader import load_steps
+
+    registry = load_steps(cfg)
+    assert RunPresenter(cfg, ctx, registry).step_payload(3, registry[3])["status"] == "STALLED"
+
+    response = client.post(f"/api/runs/{ctx.job_id}/steps/3/retry", json={"requestedBy": "tejas"})
+    assert response.status_code == 200, response.json()
+    asked = [e for e in ctx.journal.entries() if e.get("event") == "retry_requested"]
+    assert asked and asked[-1]["step"] == 3 and asked[-1]["requested_by"] == "tejas"
+
+
 def test_retry_is_recorded_as_intent_rather_than_run_in_the_request(client, cfg, ctx, monkeypatch):
     monkeypatch.setenv("CODEGEN_AUTO_APPROVE", "1")
     registry, _, restore = registry_with_failure(cfg, 9, times=99)
