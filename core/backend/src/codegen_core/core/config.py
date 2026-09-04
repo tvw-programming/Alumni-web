@@ -219,6 +219,8 @@ class PipelineSection(Frozen):
     parallel_groups: list[list[int]] = Field(default_factory=list)
     #: Optional override; when unset the runner uses app.concurrency.max_parallel_steps.
     max_parallel_steps: int | None = None
+    #: Max times step 12 may run per job before escalating to gate 24.
+    loop_budget: int = 3
     remediation_edges: list[RemediationEdge] = Field(default_factory=list)
     failure_class_routes: list[FailureClassRoute] = Field(default_factory=list)
     on_max_loops_exceeded: str = "halt_and_escalate"

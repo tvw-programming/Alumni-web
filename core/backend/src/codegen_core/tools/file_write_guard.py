@@ -11,19 +11,59 @@ Every write an agent performs goes through GuardedFS. It enforces, in order:
 Two agents cannot share a guard: each job gets its own instance so the budget
 counters are per-job.
 
-LIMITATION worth understanding: a cli_agent backend with edits_files_directly=true
-writes to disk itself and never calls this class. For those, audit_changeset()
-below performs the same checks AFTER the fact, against the resulting diff. That
-is strictly weaker - the damage is already on disk, just not yet committed - so
-prefer in-process tools when the whitelist matters.
+In **prod** profile, backends with `edits_files_directly=true` are refused
+(`ErrDirectWriteProhibited`) — in-process GuardedFS is the only write path.
+Local profile may still use CLI backends for development, with post-hoc audit.
 """
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Any, Callable
 
-from ..core.errors import PolicyViolation
+from ..core.errors import DirectWriteProhibited, ErrDirectWriteProhibited, PolicyViolation
+from ..core.telemetry import log
+
+__all__ = [
+    "GuardedFS",
+    "AuditResult",
+    "make_guarded_fs_tools",
+    "audit_changeset",
+    "assert_direct_writes_allowed",
+    "DirectWriteProhibited",
+    "ErrDirectWriteProhibited",
+]
+
+
+def assert_direct_writes_allowed(cfg: Any, *, backend_id: str = "") -> None:
+    """Refuse `edits_files_directly` backends under the prod profile."""
+    profile = getattr(cfg, "active_profile", None) or "local"
+    if str(profile).lower() in {"prod", "production"}:
+        raise ErrDirectWriteProhibited(
+            f"backend {backend_id or '<cli>'!r} sets edits_files_directly=true, which is "
+            f"prohibited under profile {profile!r}. In-process GuardedFS is the only "
+            f"production write path."
+        )
+
+
+class AuditResult:
+    """Outcome of a post-hoc CLI / gateway write audit."""
+
+    def __init__(
+        self,
+        *,
+        violations: list[str] | None = None,
+        changed_files: list[str] | None = None,
+        used_guarded_fs: bool = True,
+    ) -> None:
+        self.violations = list(violations or [])
+        self.changed_files = list(changed_files or [])
+        self.used_guarded_fs = used_guarded_fs
+
+    @property
+    def ok(self) -> bool:
+        return not self.violations
 
 
 class GuardedFS:
@@ -33,11 +73,20 @@ class GuardedFS:
         allowed_globs: list[str],
         policy: Any,
         loc_budget: int,
+        *,
+        author: str = "agent",
+        step: int | None = None,
+        trace_id: str | None = None,
+        journal: Any = None,
     ) -> None:
         self.root = Path(root).resolve()
         self.allowed = allowed_globs
         self.policy = policy
         self.loc_budget = loc_budget
+        self.author = author
+        self.step = step
+        self.trace_id = trace_id
+        self.journal = journal
         self.changed_files: set[str] = set()
         self.created_files: set[str] = set()
         self.changed_loc = 0
@@ -62,6 +111,22 @@ class GuardedFS:
                 f"changed {self.changed_loc} lines, Impact Manifest budget is {self.loc_budget}"
             )
 
+    def _audit_write(self, rel_path: str, content: str) -> None:
+        digest = hashlib.sha256(content.encode("utf-8", errors="replace")).hexdigest()
+        fields = {
+            "author": self.author,
+            "step": self.step,
+            "path": rel_path,
+            "sha256": digest,
+            "trace_id": self.trace_id,
+        }
+        log.info(
+            "guardedfs write",
+            extra={"extra_fields": fields},
+        )
+        if self.journal is not None:
+            self.journal.append_event("guardedfs_write", **fields)
+
     # ------------------------------------------------------------------ #
     def read_file(self, rel_path: str) -> str:
         target = (self.root / rel_path).resolve()
@@ -77,6 +142,7 @@ class GuardedFS:
         self._account(rel_path, content, existed)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(content)
+        self._audit_write(rel_path, content)
         return f"wrote {rel_path} ({len(content.splitlines())} lines)"
 
     def edit_file(self, rel_path: str, old: str, new: str) -> str:
@@ -87,6 +153,7 @@ class GuardedFS:
         updated = body.replace(old, new)
         self._account(rel_path, new, True)
         target.write_text(updated)
+        self._audit_write(rel_path, updated)
         return f"edited {rel_path}"
 
     def ls(self, rel_path: str = ".") -> list[str]:
@@ -107,7 +174,7 @@ def make_guarded_fs_tools(guard: GuardedFS) -> list[Callable]:
 
 
 def audit_changeset(changeset: dict, allowed_globs: list[str], policy: Any) -> list[str]:
-    """Post-hoc check for dev-tool backends that wrote to disk themselves.
+    """Post-hoc check for local-only CLI backends that wrote to disk themselves.
 
     Returns the list of violations rather than raising, so the caller can decide
     whether to revert, fail the step, or open a remediation ticket.

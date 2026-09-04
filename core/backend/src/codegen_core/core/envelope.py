@@ -41,6 +41,28 @@ class FailureClass(str, Enum):
     OTHER = "OTHER"
 
 
+class RemediationSource(str, Enum):
+    """Why step 12 (or another remediator) was entered."""
+
+    FAILURE_CLASS = "FAILURE_CLASS"
+    MANUAL = "MANUAL"
+    LOOP_BUDGET_EXHAUSTED = "LOOP_BUDGET_EXHAUSTED"
+
+
+class FailurePayload(BaseModel):
+    """Compact prior-failure context injected into the code-fix agent prompt.
+
+    Never carries full envelope blobs — only a one-liner summary plus structured
+    finding strings the agent can act on.
+    """
+
+    step_id: str
+    failure_class: str
+    envelope_sha256: str = ""
+    summary: str
+    findings: list[str] = Field(default_factory=list)
+
+
 #: Default class for a step when the envelope does not set one.
 STEP_FAILURE_CLASS: dict[int, FailureClass] = {
     3: FailureClass.AMBIGUITY,
@@ -93,6 +115,14 @@ class Envelope(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
     #: Set on failed replies so the runner can route by class, not only by status.
     failure_class: FailureClass | None = None
+    #: Dashboard / UI: why remediation entered this step (step 12 contract).
+    remediation_source: RemediationSource | str | None = None
+    #: How many times step 12 has been entered this run (code-fix loop).
+    loop_count: int | None = None
+    #: Max code-fix loops from `pipeline.loop_budget` (default 3).
+    loop_budget: int | None = None
+    #: Last few prior failures (never full envelopes) for prompt injection.
+    prior_failures: list[FailurePayload] = Field(default_factory=list)
 
     # ------------------------------------------------------------------ #
     @property
@@ -124,6 +154,10 @@ class Envelope(BaseModel):
         status: str = "OK",
         provenance: Provenance | None = None,
         failure_class: FailureClass | None = None,
+        remediation_source: RemediationSource | str | None = None,
+        loop_count: int | None = None,
+        loop_budget: int | None = None,
+        prior_failures: list[FailurePayload] | None = None,
     ) -> "Envelope":
         return Envelope(
             correlation_id=self.correlation_id,
@@ -134,6 +168,10 @@ class Envelope(BaseModel):
             status=status,
             parts=parts,
             failure_class=failure_class,
+            remediation_source=remediation_source if remediation_source is not None else self.remediation_source,
+            loop_count=loop_count if loop_count is not None else self.loop_count,
+            loop_budget=loop_budget if loop_budget is not None else self.loop_budget,
+            prior_failures=list(prior_failures) if prior_failures is not None else list(self.prior_failures),
             provenance=(provenance or Provenance()).model_copy(
                 update={"parent_message_ids": [self.message_id]}
             ),

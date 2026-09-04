@@ -501,6 +501,31 @@ class RunPresenter:
             }
         return None
 
+    def _step12_remediation_fields(self) -> dict:
+        """Dashboard contract: remediation target + loop budget on step 12."""
+        rem: dict | None = None
+        for e in reversed(self._entries):
+            if e.get("type") == "event" and e.get("event") == "remediation_context" and e.get("to_step") == 12:
+                rem = e
+                break
+        artifact = self._read_json_artifact(12)
+        if not isinstance(artifact, dict):
+            artifact = {}
+        loop_budget = int(getattr(self.cfg.pipeline, "loop_budget", 3) or 3)
+        loop_count = self.ctx.journal.code_fix_loop_count()
+        failure_class = artifact.get("failure_class") or (rem or {}).get("failure_class")
+        remediation_source = artifact.get("remediation_source")
+        if not remediation_source and failure_class:
+            remediation_source = "FAILURE_CLASS"
+        return {
+            "remediationSource": remediation_source,
+            "failureClass": failure_class,
+            "loopCount": artifact.get("loop_count", loop_count),
+            "loopBudget": artifact.get("loop_budget", loop_budget),
+            "remediationTarget": 12,
+            "priorFailures": artifact.get("prior_failures") or (rem or {}).get("prior_failures") or [],
+        }
+
     def _outcome_detail(self, step: int, status: str, record: dict) -> str:
         """What the orchestrator actually did about this status.
 
@@ -612,6 +637,9 @@ class RunPresenter:
             "input": self._input_for(component),
             "output": self._read_json_artifact(step),
         }
+
+        if step == 12:
+            payload.update(self._step12_remediation_fields())
 
         error = self._error(step)
         if error:
