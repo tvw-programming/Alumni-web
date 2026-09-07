@@ -13,6 +13,8 @@ from codegen_core.core.component import Tool
 from codegen_core.core.config import ConfigLoader
 from codegen_core.core.context import JobContext
 from codegen_core.core.envelope import ComponentRef, Envelope, Intent, RemediationSource
+from codegen_core.core.errors import PolicyViolation
+from codegen_core.llm.base import Completion
 from codegen_core.steps.step12.gateway import run_gateway_patch
 from codegen_core.steps.step12.router import dispatch_code_update
 from codegen_core.tools.file_write_guard import GuardedFS
@@ -63,6 +65,114 @@ def test_gateway_patch_is_isolated_noop_without_writes(tmp_path):
     assert result.ok
     assert result.status == "noop"
     assert result.findings == ["lint: unused"]
+
+
+def test_step12_rejects_modification_targets_outside_the_live_project(cfg, ctx):
+    ctx.remember(
+        "ImpactManifestV1",
+        {
+            "allowed_paths": ["src/components/InventedTable.tsx"],
+            "loc_budget": 50,
+            "files_to_modify": ["src/components/InventedTable.tsx"],
+            "files_to_create": [],
+        },
+    )
+    ctx.remember(
+        "FeatureSpecV1",
+        {"summary": "change the table", "acceptance_criteria": ["AC-1"]},
+    )
+    ctx.router = SimpleNamespace(
+        backend_for=lambda _step: SimpleNamespace(tier="local")
+    )
+
+    class Fake12(Tool):
+        step = 12
+        name = "code_update"
+        consumes = []
+        produces = []
+        accepts = ["*/*"]
+
+        def handle(self, env, ctx):
+            return dispatch_code_update(self, env, ctx)
+
+    env = Envelope(
+        correlation_id="c",
+        sender=ComponentRef(name="runner", kind="orchestrator"),
+        recipient=ComponentRef(step=12, name="code_update", kind="agent"),
+        intent=Intent.REQUEST,
+    )
+    with pytest.raises(PolicyViolation, match="do not exist under the configured project"):
+        Fake12().handle(env, ctx)
+
+
+def test_step12_fails_when_the_agent_changes_nothing(cfg, ctx, monkeypatch):
+    target = ctx.workspace / "src" / "existing.py"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text("before = True\n")
+    ctx.remember(
+        "ImpactManifestV1",
+        {
+            "allowed_paths": ["src/existing.py"],
+            "loc_budget": 50,
+            "files_to_modify": ["src/existing.py"],
+            "files_to_create": [],
+        },
+    )
+    ctx.remember(
+        "FeatureSpecV1",
+        {"summary": "change existing behavior", "acceptance_criteria": ["AC-1"]},
+    )
+
+    backend = SimpleNamespace(
+        id="local.author",
+        model_id="author-model",
+        tier="local",
+        edits_files_directly=False,
+        cfg=SimpleNamespace(cost_per_1k_usd={"input": 0.0, "output": 0.0}),
+    )
+    ctx.router = SimpleNamespace(backend_for=lambda _step: backend)
+    monkeypatch.setattr(
+        "codegen_core.steps.step12.router.run_agent_fix",
+        lambda *a, **k: SimpleNamespace(
+            completion=Completion('{"files": []}', 1, 1),
+            transcript='{"files": []}',
+        ),
+    )
+    monkeypatch.setattr(
+        "codegen_core.steps.step12.router.build_plugin",
+        lambda *a, **k: SimpleNamespace(
+            snapshot_changes=lambda _root: {
+                "changed_files": [],
+                "created_files": [],
+                "changed_loc": 0,
+                "commits": [],
+                "unified_diff": "",
+            }
+        ),
+    )
+
+    class Fake12(Tool):
+        step = 12
+        name = "code_update"
+        consumes = []
+        produces = []
+        accepts = ["*/*"]
+
+        def handle(self, env, ctx):
+            return dispatch_code_update(self, env, ctx)
+
+    env = Envelope(
+        correlation_id="c",
+        sender=ComponentRef(name="runner", kind="orchestrator"),
+        recipient=ComponentRef(step=12, name="code_update", kind="agent"),
+        intent=Intent.REQUEST,
+    )
+    out = Fake12().handle(env, ctx)
+
+    assert out.status == "FAILED"
+    payload = out.json_part("CodeChangesetV1")
+    assert payload["empty_changeset"] is True
+    assert "without changing or creating any files" in payload["failure_reason"]
 
 
 def test_loop_budget_exhaustion_routes_before_agent(tmp_path, raw_config, monkeypatch):

@@ -40,6 +40,8 @@ services:
       # CODEGEN_PROFILE=docker goes back to mocked, offline, zero-network.
       CODEGEN_PROFILE: ${CODEGEN_PROFILE:-docker-lmstudio}
       CODEGEN_STORY: ${CODEGEN_STORY:-DEEP-2042}
+      # The product UI on :5174 is apps/react-web, mounted under /projects.
+      CODEGEN_PROJECT_PATH: ${CODEGEN_PROJECT_PATH:-/projects/react-web}
       CODEGEN_SEED_RUN: ${CODEGEN_SEED_RUN:-0}
       CODEGEN_SEED_STOP: ${CODEGEN_SEED_STOP:-5}
       CODEGEN_WATCH_INTERVAL: ${CODEGEN_WATCH_INTERVAL:-3}
@@ -52,9 +54,10 @@ services:
       LMSTUDIO_API_KEY: ${LMSTUDIO_API_KEY:-lm-studio}
       LMSTUDIO_BASE_URL: ${LMSTUDIO_BASE_URL:-http://host.docker.internal:1234/v1}
       LMSTUDIO_MODEL: ${LMSTUDIO_MODEL:-qwen3-coder-30b-a3b-instruct}
-      # Taken when the model above fails, and by steps 13 and 23, which review
-      # what 12 and 15 wrote and so must not run on the same model.
+      # General fallback for local generation.
       LMSTUDIO_FALLBACK_MODEL: ${LMSTUDIO_FALLBACK_MODEL:-qwen/qwen3.5-9b}
+      # Dedicated reasoning reviewer; isolation prevents author self-review.
+      LMSTUDIO_REVIEW_MODEL: ${LMSTUDIO_REVIEW_MODEL:-microsoft/phi-4-reasoning-plus}
       # Only read by the docker-freebuff profile. The gateway runs on the Mac,
       # so the default base_url reaches it through host.docker.internal.
       FREEBUFF_API_KEY: ${FREEBUFF_API_KEY:-freebuff}

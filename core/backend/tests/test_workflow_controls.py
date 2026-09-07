@@ -217,6 +217,23 @@ def test_retry_is_recorded_as_intent_rather_than_run_in_the_request(client, cfg,
 # --------------------------------------------------------------------------- #
 # 5 — the story ledger
 # --------------------------------------------------------------------------- #
+def test_configured_project_path_is_part_of_the_cache_fingerprint(
+    cfg, ctx, tmp_path
+):
+    ctx.remember("JiraStoryV1", STORY)
+    runner = PipelineRunner(cfg)
+    legacy = runner._fingerprint(runner.registry[2], ctx)
+
+    configured = cfg.model_copy(deep=True)
+    project = tmp_path / "product"
+    project.mkdir()
+    object.__setattr__(configured.app.project, "path", str(project))
+    project_runner = PipelineRunner(configured)
+    project_key = project_runner._fingerprint(project_runner.registry[2], ctx)
+
+    assert project_key != legacy
+
+
 def test_a_second_run_of_the_same_story_reuses_what_exists(cfg, ctx, monkeypatch):
     from codegen_core.core.context import JobContext
 
@@ -235,6 +252,8 @@ def test_a_second_run_of_the_same_story_reuses_what_exists(cfg, ctx, monkeypatch
     assert cached, "the second run reused nothing"
     assert 2 in cached and 5 in cached, "the expensive agent steps are the point"
     assert second.journal.total_cost_usd() <= spend
+    assert second.journal.model_used(2) == ctx.journal.model_used(2)
+    assert second.journal.model_used(5) == ctx.journal.model_used(5)
 
     # The reused artifacts are readable in the new job, not references to the old.
     for entry in second.artifacts.index():

@@ -141,7 +141,9 @@ class Journal:
         """Which model id executed a step - drives reviewer isolation."""
         for e in reversed(self.entries()):
             if e.get("type") == "step" and e.get("step") == step:
-                return (e.get("provenance") or {}).get("model_id")
+                model_id = (e.get("provenance") or {}).get("model_id")
+                if model_id:
+                    return model_id
         return None
 
     def total_cost_usd(self) -> float:

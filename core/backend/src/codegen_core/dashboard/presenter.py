@@ -488,10 +488,16 @@ class RunPresenter:
         return bool(opened_at) and opened_at > str(record.get("at") or "")
 
     def _error(self, step: int) -> dict | None:
-        for e in reversed(self._entries):
-            if e.get("type") == "event" and e.get("step") == step and e.get("event") == "step_error":
-                return {"code": "STEP_ERROR", "message": str(e.get("error", ""))}
         records = self._step_records(step)
+        latest_record_at = str(records[-1].get("at") or "") if records else ""
+        for e in reversed(self._entries):
+            if (
+                e.get("type") == "event"
+                and e.get("step") == step
+                and e.get("event") == "step_error"
+                and str(e.get("at") or "") > latest_record_at
+            ):
+                return {"code": "STEP_ERROR", "message": str(e.get("error", ""))}
         if records and records[-1].get("status") not in ("OK", "APPROVED", "PASSED"):
             status = records[-1]["status"]
             return {

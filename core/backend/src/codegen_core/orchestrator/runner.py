@@ -10,6 +10,7 @@ Concurrency uses stdlib `concurrent.futures` (WaitGroup / errgroup equivalent).
 
 from __future__ import annotations
 
+import hashlib
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any
@@ -20,6 +21,7 @@ from ..core.envelope import Intent, failure_class_for
 from ..core.errors import BudgetExceeded, CodeGenCoreError, PipelineHalted
 from ..core.ledger import StoryLedger, input_fingerprint
 from ..core.parts import structured
+from ..core.provenance import Provenance
 from ..core.telemetry import log
 from ..core.tracing import RUN_ID
 from ..llm.factory import build_backends
@@ -416,7 +418,15 @@ class PipelineRunner:
         return str(story.get("key") or ctx.jira_id or "")
 
     def _fingerprint(self, step: Component, ctx: Any) -> str:
-        return input_fingerprint(list(getattr(step, "consumes", [])), ctx.store)
+        fingerprint = input_fingerprint(list(getattr(step, "consumes", [])), ctx.store)
+        if self.cfg.app.project.path:
+            # Artifacts derived against one configured checkout must never be
+            # replayed into another. The fallback workspace contains job_id and
+            # is intentionally excluded so legacy per-run workspaces still
+            # share ticket-only artifacts as before.
+            project = str(ctx.workspace.resolve())
+            return hashlib.sha256(f"{project}\0{fingerprint}".encode()).hexdigest()
+        return fingerprint
 
     def _replay_cached(self, step: Component, ctx: Any, env_in: Any, fingerprint: str):
         if not fingerprint:
@@ -450,8 +460,13 @@ class PipelineRunner:
             from_job=entry["job_id"],
             input_sha=fingerprint,
             artifacts=[a["file"] for a in entry["artifacts"]],
+            backend_id=(entry.get("provenance") or {}).get("backend_id"),
+            model_id=(entry.get("provenance") or {}).get("model_id"),
         )
-        return env_in.reply(step.ref(), parts, status="OK").model_copy(update={"parts": parts})
+        provenance = Provenance.model_validate(entry.get("provenance") or {})
+        return env_in.reply(
+            step.ref(), parts, status="OK", provenance=provenance
+        ).model_copy(update={"parts": parts})
 
     def _remember_in_ledger(self, step: Component, ctx: Any, env_out: Any, fingerprint: str) -> None:
         schemas = env_out.schema_ids()
@@ -461,6 +476,7 @@ class PipelineRunner:
             fingerprint,
             schemas,
             payload=ctx.recall(schemas[0]) if len(schemas) == 1 else None,
+            provenance=env_out.provenance.model_dump(mode="json"),
         )
 
     @staticmethod

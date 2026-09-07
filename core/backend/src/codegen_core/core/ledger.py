@@ -99,7 +99,13 @@ class StoryLedger:
         return entry
 
     def record(
-        self, ctx: Any, step: int, fingerprint: str, schemas: list[str], payload: Any = None
+        self,
+        ctx: Any,
+        step: int,
+        fingerprint: str,
+        schemas: list[str],
+        payload: Any = None,
+        provenance: dict[str, Any] | None = None,
     ) -> None:
         """Remember what this step produced, keyed to the inputs that made it.
 
@@ -124,6 +130,7 @@ class StoryLedger:
             "payload": payload,
             "artifacts": artifacts,
             "job_id": ctx.job_id,
+            "provenance": provenance or {},
             "at": datetime.now(UTC).isoformat(),
         }
         self._write(data)

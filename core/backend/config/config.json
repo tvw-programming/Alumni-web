@@ -411,6 +411,34 @@
       },
       "enabled": true
     },
+    "local.lmstudio.reviewer": {
+      "driver": "openai_compatible",
+      "tier": "local",
+      "model": "${env:LMSTUDIO_REVIEW_MODEL:-microsoft/phi-4-reasoning-plus}",
+      "base_url": "${env:LMSTUDIO_BASE_URL:-http://host.docker.internal:1234/v1}",
+      "auth": {
+        "type": "bearer",
+        "token_env": "LMSTUDIO_API_KEY"
+      },
+      "capabilities": [
+        "reasoning"
+      ],
+      "params": {
+        "temperature": 0.0,
+        "max_tokens": 4096,
+        "timeout": 1800,
+        "max_retries": 3
+      },
+      "limits": {
+        "timeout_s": 1800,
+        "rpm": 0
+      },
+      "cost_per_1k_usd": {
+        "input": 0.0,
+        "output": 0.0
+      },
+      "enabled": true
+    },
     "free.freebuff.minimax": {
       "driver": "openai_compatible",
       "tier": "cloud",
@@ -1892,6 +1920,16 @@
           "vision": [
             "free.freebuff.minimax"
           ]
+        },
+        "steps": {
+          "13": {
+            "capability": "reasoning",
+            "backend": "local.lmstudio.reviewer"
+          },
+          "23": {
+            "capability": "reasoning",
+            "backend": "local.lmstudio.reviewer"
+          }
         },
         "budgets": {
           "per_job_usd": 0.0

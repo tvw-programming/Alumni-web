@@ -1,7 +1,10 @@
 """Reviewer isolation is enforced against the journal, not by convention."""
 
+import json
+
 import pytest
 
+from codegen_core.core.config import ConfigLoader
 from codegen_core.core.context import JobContext
 from codegen_core.core.errors import BackendError
 from codegen_core.llm.base import Completion
@@ -19,6 +22,26 @@ def test_step_routes_to_its_configured_capability(cfg, ctx):
     assert r.explain(23)["capability"] == "reasoning"
 
 
+def test_docker_profile_uses_the_dedicated_phi_reviewer(
+    raw_config, tmp_path, monkeypatch
+):
+    config_path = tmp_path / "config.json"
+    config_path.write_text(json.dumps(raw_config))
+    monkeypatch.setenv("CODEGEN_PROJECT_PATH", str(tmp_path))
+    monkeypatch.setenv(
+        "LMSTUDIO_REVIEW_MODEL", "microsoft/phi-4-reasoning-plus"
+    )
+
+    cfg = ConfigLoader.load(config_path, profile="docker-lmstudio")
+
+    assert cfg.resolve_backend_id(13) == "local.lmstudio.reviewer"
+    assert cfg.resolve_backend_id(23) == "local.lmstudio.reviewer"
+    assert (
+        cfg.backends["local.lmstudio.reviewer"].model
+        == "microsoft/phi-4-reasoning-plus"
+    )
+
+
 def test_reviewer_falls_back_when_it_would_reuse_the_author_model(cfg, ctx):
     r = _router(cfg, ctx)
     author = r.backend_for(12)
@@ -30,6 +53,24 @@ def test_reviewer_falls_back_when_it_would_reuse_the_author_model(cfg, ctx):
     )
     reviewer = r.backend_for(23)
     assert reviewer.model_id != author.model_id
+
+
+def test_cached_step_without_model_does_not_erase_author_identity(cfg, ctx):
+    """Old cached records had null provenance; isolation must keep looking back
+    to the model that actually authored the implementation."""
+    author = _router(cfg, ctx).backend_for(12)
+    ctx.journal._append(
+        {"type": "step", "step": 12, "status": "OK",
+         "provenance": {"model_id": author.model_id, "backend_id": author.id}}
+    )
+    ctx.journal._append(
+        {"type": "step", "step": 12, "status": "OK",
+         "provenance": {"model_id": None, "backend_id": None}}
+    )
+
+    r = _router(cfg, ctx)
+    assert author.model_id in r.forbidden_models(13)
+    assert r.backend_for(13).model_id != author.model_id
 
 
 def test_without_journal_history_no_fallback_is_forced(cfg, ctx):

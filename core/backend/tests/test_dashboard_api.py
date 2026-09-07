@@ -79,6 +79,32 @@ def test_every_step_carries_the_fields_the_ui_renders(client, completed_job):
         assert set(step["provenance"]) >= {"backendId", "modelId", "tokensIn", "tokensOut", "costUsd"}
 
 
+def test_a_later_step_result_hides_an_old_transport_error(cfg, ctx):
+    """A model can fail transiently and then return a real FAILED verdict. The
+    dashboard must describe that verdict, not the older transport failure."""
+    from codegen_core.dashboard.presenter import RunPresenter
+    from codegen_core.steps._loader import load_steps
+
+    ctx.journal.append_event("step_error", step=13, error="backend terminated")
+    ctx.journal._append(
+        {
+            "type": "step",
+            "step": 13,
+            "component": "code_requirement_verification",
+            "kind": "AGENT",
+            "status": "FAILED",
+            "schemas": ["RequirementCoverageV1"],
+            "provenance": {"model_id": "reviewer-4b"},
+        }
+    )
+
+    registry = load_steps(cfg)
+    payload = RunPresenter(cfg, ctx, registry).step_payload(13, registry[13])
+    assert payload["status"] == "FAILED"
+    assert payload["error"]["code"] == "FAILED"
+    assert "terminated" not in payload["error"]["message"]
+
+
 def test_agent_steps_report_the_tasks_they_ran(client, completed_job):
     """The per-step checklist the monitor draws under a running step.
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import PurePosixPath
 from typing import Any
 
 from codegen_core.core.envelope import (
@@ -80,6 +81,15 @@ def dispatch_code_update(step_agent: Any, env: Envelope, ctx: Any) -> Envelope:
             prior_failures=prior,
         )
 
+    backend = ctx.router.backend_for(12)
+    missing_modifications = _invalid_modification_paths(ctx, manifest)
+    if getattr(backend, "tier", "") != "mock" and missing_modifications:
+        raise PolicyViolation(
+            "Impact manifest references files_to_modify that do not exist under "
+            f"the configured project {ctx.workspace}: {missing_modifications}. "
+            "Rebuild repository context and impact analysis for the correct project."
+        )
+
     loop_count = ctx.journal.enter_code_fix_loop()
     env = env.model_copy(
         update={
@@ -112,7 +122,6 @@ def dispatch_code_update(step_agent: Any, env: Envelope, ctx: Any) -> Envelope:
         risk_level=intent.risk_level,
     )
 
-    backend = ctx.router.backend_for(12)
     system = ctx.prompts.load(ctx.cfg.step_cfg(12).prompt)
     user = _instruction(spec, plan, manifest)
 
@@ -213,6 +222,18 @@ def dispatch_code_update(step_agent: Any, env: Envelope, ctx: Any) -> Envelope:
     payload["loop_count"] = loop_count
     payload["loop_budget"] = loop_budget
     payload["prior_failures"] = [fp.model_dump(mode="json") for fp in prior]
+    empty_changeset = (
+        getattr(backend, "tier", "") != "mock"
+        and not payload.get("changed_files")
+        and not payload.get("created_files")
+    )
+    payload["empty_changeset"] = empty_changeset
+    if empty_changeset:
+        payload["failure_reason"] = (
+            "The code agent completed without changing or creating any files. "
+            "Step 12 cannot succeed because step 13 would have no implementation "
+            "to verify."
+        )
 
     ctx.remember("CodeChangesetV1", payload)
     ctx.artifacts.write(12, "code_changeset", payload, ext="json")
@@ -230,10 +251,11 @@ def dispatch_code_update(step_agent: Any, env: Envelope, ctx: Any) -> Envelope:
 
     prov = ctx.provenance_for(12, prompt=prompt_body, usage=completion.usage)
     prov = prov.model_copy(update={"backend_id": backend.id, "model_id": backend.model_id})
+    status = "POLICY_VIOLATION" if violations else "FAILED" if empty_changeset else "OK"
     return env.reply(
         step_agent.ref(),
         parts,
-        status="POLICY_VIOLATION" if violations else "OK",
+        status=status,
         provenance=prov,
         remediation_source=remediation_source,
         loop_count=loop_count,
@@ -312,6 +334,23 @@ def _generated_sources(ctx: Any, changeset: dict) -> dict[str, str]:
         except (OSError, IsADirectoryError):
             continue
     return sources
+
+
+def _invalid_modification_paths(ctx: Any, manifest: dict) -> list[str]:
+    """Modification targets must be existing files inside the selected project."""
+    root = ctx.workspace.resolve()
+    invalid = []
+    for raw in manifest.get("files_to_modify", []):
+        rel = PurePosixPath(raw)
+        candidate = (root / rel.as_posix()).resolve()
+        if (
+            rel.is_absolute()
+            or ".." in rel.parts
+            or not candidate.is_relative_to(root)
+            or not candidate.is_file()
+        ):
+            invalid.append(raw)
+    return invalid
 
 
 def _require_gateway(ctx: Any, step_agent: Any) -> None:
