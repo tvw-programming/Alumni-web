@@ -15,6 +15,7 @@
       "path": "",
       "must_exist": true,
       "must_be_writable": true,
+      "isolate_per_run": true,
       "ui_url": "${env:CODEGEN_PROJECT_UI_URL:-http://localhost:5174}",
       "ui_label": "Product UI"
     },
@@ -686,15 +687,24 @@
       "on_exceed": "halt_and_notify"
     }
   },
-    "pipeline": {
+  "pipeline": {
     "start_step": 1,
     "stop_step": 24,
     "max_parallel_steps": 3,
     "loop_budget": 3,
     "parallel_groups": [
-      [7, 8],
-      [18, 19],
-      [20, 21]
+      [
+        7,
+        8
+      ],
+      [
+        18,
+        19
+      ],
+      [
+        20,
+        21
+      ]
     ],
     "remediation_edges": [
       {
@@ -765,12 +775,42 @@
       }
     ],
     "failure_class_routes": [
-      {"class": "TEST", "to": 15, "max_loops": 1, "then": 12},
-      {"class": "LINT", "to": 14, "max_loops": 2, "then": 12},
-      {"class": "AMBIGUITY", "to": 2, "max_loops": 2, "then": null},
-      {"class": "CODE", "to": 12, "max_loops": 3, "then": null},
-      {"class": "SECURITY", "to": 12, "max_loops": 2, "then": null},
-      {"class": "OTHER", "to": 12, "max_loops": 2, "then": null}
+      {
+        "class": "TEST",
+        "to": 15,
+        "max_loops": 1,
+        "then": 12
+      },
+      {
+        "class": "LINT",
+        "to": 14,
+        "max_loops": 2,
+        "then": 12
+      },
+      {
+        "class": "AMBIGUITY",
+        "to": 2,
+        "max_loops": 2,
+        "then": null
+      },
+      {
+        "class": "CODE",
+        "to": 12,
+        "max_loops": 3,
+        "then": null
+      },
+      {
+        "class": "SECURITY",
+        "to": 12,
+        "max_loops": 2,
+        "then": null
+      },
+      {
+        "class": "OTHER",
+        "to": 12,
+        "max_loops": 2,
+        "then": null
+      }
     ],
     "on_max_loops_exceeded": "halt_and_escalate"
   },
@@ -1265,6 +1305,8 @@
         "token_env": "GITHUB_TOKEN"
       },
       "repo": "${env:TARGET_REPO:-}",
+      "head_repo": "${env:SOURCE_REPO:-}",
+      "base_branch": "${env:TARGET_BASE_BRANCH:-main}",
       "branch_template": "codegen/{jira_id}-{slug}",
       "draft_pr": true
     },
@@ -1396,8 +1438,51 @@
     "reject_literal_secrets_in_config": true
   },
   "visualization": {
-    "default_variant": "logistics",
+    "default_variant": "precision",
     "variants": {
+      "precision": {
+        "label": "Precision",
+        "kicker": "SUPERVISED DELIVERY PIPELINE",
+        "headline": "Twenty-four steps, one controlled system",
+        "route_label": "PROCESS STEPS",
+        "vehicle": "card",
+        "motion": "none",
+        "palette": {
+          "accent": "#8ea2c6",
+          "accent_bright": "#7c8cf8",
+          "accent_soft": "#20242f",
+          "secondary": "#7c8cf8",
+          "completed": "#4fc3a1",
+          "muted": "#5c6178",
+          "surface": "#12141b",
+          "surface_active": "#1b2030",
+          "surface_completed": "#15181f",
+          "surface_upcoming": "#131519",
+          "pattern": ""
+        },
+        "card": {
+          "border_width": "1px",
+          "border_style": "solid",
+          "border_color": "",
+          "radius": "3px",
+          "background": "",
+          "shadow": "1px 1px 0 rgba(0,0,0,0.04)",
+          "hover_shadow": "2px 2px 0 rgba(0,0,0,0.10)",
+          "depth_layer": true,
+          "depth_offset": "2px",
+          "depth_opacity": 0.08,
+          "accent_edge": "left",
+          "accent_width": "2px",
+          "indicator": "bars",
+          "active_accent_width": "3px",
+          "active_animation": "scan",
+          "active_animation_ms": 1800,
+          "active_shadow": "",
+          "completed_opacity": 0.86,
+          "upcoming_opacity": 0.5,
+          "upcoming_border_style": "dashed"
+        }
+      },
       "logistics": {
         "label": "Logistics",
         "kicker": "INTELLIGENT FREIGHT CORRIDOR",

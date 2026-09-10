@@ -132,3 +132,7 @@ class PolicyEngine:
 
     def blocking_severities(self) -> list[str]:
         return self.cfg.policy.quality_thresholds.block_on_severity
+
+    def override_cfg(self) -> Any:
+        """Terms on which a blocking finding may be waived. See OverrideCfg."""
+        return self.cfg.policy.override

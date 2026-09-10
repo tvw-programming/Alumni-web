@@ -1,0 +1,25 @@
+{
+  "ordered_changes": [
+    {
+      "seq": 1,
+      "layer": "service",
+      "file": "app/services/exporter.py",
+      "action": "create",
+      "rationale": ""
+    },
+    {
+      "seq": 2,
+      "layer": "api",
+      "file": "app/api/users.py",
+      "action": "modify",
+      "rationale": ""
+    },
+    {
+      "seq": 3,
+      "layer": "tests",
+      "file": "tests/test_exporter.py",
+      "action": "create",
+      "rationale": ""
+    }
+  ]
+}

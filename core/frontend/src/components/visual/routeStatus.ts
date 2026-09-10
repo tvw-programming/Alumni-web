@@ -1,3 +1,4 @@
+import { decomposeColor, recomposeColor } from '@mui/material/styles';
 import type { RunStep, StepStatus } from '../../types/workflow';
 import type { VisualVariant } from '../../data/visualVariants';
 import { tokens } from '../../theme';
@@ -62,6 +63,44 @@ export function routeFill(status: RouteStatus, variant: VisualVariant): string {
       return '#302718';
     case 'failed':
       return '#2c161b';
+    default:
+      return variant.palette.surfaceUpcoming;
+  }
+}
+
+/** A tint of `over` mixed into `base`, as an opaque colour. */
+function mix(base: string, over: string, ratio: number): string {
+  const a = decomposeColor(base).values;
+  const b = decomposeColor(over).values;
+  return recomposeColor({
+    type: 'rgb',
+    values: [0, 1, 2].map((i) => Math.round(a[i] + (b[i] - a[i]) * ratio)) as [number, number, number],
+  });
+}
+
+/**
+ * The ground under a plain card.
+ *
+ * Same five states, but always opaque and always the variant's own surface with
+ * the status mixed in, rather than the two fixed warm tints the truck uses. A
+ * card whose "needs you" fill came from another palette would look borrowed,
+ * and the whole point of the plain card is that it looks decided.
+ *
+ * `override` is the config's `card.background`; a variant that names one colour
+ * gets exactly that colour, for every status.
+ */
+export function cardFill(status: RouteStatus, variant: VisualVariant, override = ''): string {
+  if (override) return override;
+  const surface = variant.palette.surface;
+  switch (status) {
+    case 'cleared':
+      return variant.palette.surfaceCompleted;
+    case 'moving':
+      return variant.palette.surfaceActive;
+    case 'waiting':
+      return mix(surface, tokens.signal, 0.1);
+    case 'failed':
+      return mix(surface, tokens.fail, 0.1);
     default:
       return variant.palette.surfaceUpcoming;
   }

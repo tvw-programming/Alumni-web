@@ -108,6 +108,13 @@ class ProjectCfg(Frozen):
     must_exist: bool = True
     #: Refuse a path the pipeline cannot write to. Steps 12, 15 and 21 edit here.
     must_be_writable: bool = True
+    #: Clone `path` per run into app.paths.workspace/{job_id} and work in the
+    #: clone, instead of editing `path` itself. Two runs then cannot collide in
+    #: one tree, each starts from a clean base branch, and the run's branch can
+    #: be created without disturbing whatever the checkout was on. Ignored when
+    #: `path` is empty or is not a git repository — there is nothing to clone.
+    #: Turn it off to keep the older in-place behaviour.
+    isolate_per_run: bool = True
     #: Browser URL of the product UI for this project (shown on the dashboard).
     ui_url: str = ""
     #: Short label for the dashboard link (default "Product UI").
@@ -315,12 +322,34 @@ class QualityThresholds(Frozen):
     block_on_severity: list[str] = Field(default_factory=lambda: ["CRITICAL", "HIGH"])
 
 
+class OverrideCfg(Frozen):
+    """Who may waive a blocking security finding, and on what terms.
+
+    Step 18 blocks the run on a CRITICAL or HIGH finding and gate 24 refuses to
+    open while one is outstanding. Sometimes the right answer is still "ship it"
+    — a confirmed false positive, or a CVE in a path this service does not
+    reach. Without a way to say so on the record, the only exit is editing
+    `block_on_severity`, which is global, silent, and disables the check for
+    every future run rather than excusing one finding in one run.
+
+    Defaults are deliberately closed: an empty `allowed_roles` waives nothing,
+    so a deployment that never configures this keeps the hard block it has now.
+    """
+
+    #: Empty means nobody. There is no implicit "any reviewer will do".
+    allowed_roles: list[str] = Field(default_factory=list)
+    #: A waiver without a reason is an unexplained hole in the audit trail.
+    requires_justification: bool = True
+    #: The journal is append-only, so recording a waiver is recording it for good.
+    audited: bool = True
+
+
 class PolicySection(Frozen):
     write_scope: WriteScope = WriteScope()
     non_invention: NonInvention = NonInvention()
     quality_thresholds: QualityThresholds = QualityThresholds()
     forbidden_dependencies: list[str] = Field(default_factory=list)
-    override: dict[str, Any] = Field(default_factory=dict)
+    override: OverrideCfg = OverrideCfg()
 
 
 class GateRevisionCfg(Frozen):
@@ -413,6 +442,61 @@ class VisualPalette(Frozen):
     pattern: str = ""
 
 
+class VisualCard(Frozen):
+    """The shell one step is drawn in, when the variant draws a plain card.
+
+    A surface reads as confident when it signals precision, stability and a
+    single authority: one hairline stroke rather than a thick frame, near-sharp
+    corners rather than a pill, an opaque ground rather than glass, and depth
+    implied by one barely-there offset layer rather than a stack of rectangles.
+    Every value lives here so that look stays a JSON change, and so a deployment
+    that wants the older freight metaphor keeps it by switching `vehicle`.
+
+    Empty strings mean "take it from the step's status colour", which is how the
+    card says running/waiting/failed without a second palette.
+    """
+
+    border_width: str = "1px"
+    border_style: str = "solid"
+    #: "" → the status colour, dimmed. A literal colour overrides it everywhere.
+    border_color: str = ""
+    #: Near-sharp. Large radii read as approachable; 2-4px reads as engineered.
+    radius: str = "3px"
+    #: "" → the variant's surface for that status. Never transparent.
+    background: str = ""
+    #: Nearly invisible: depth, not drama.
+    shadow: str = "1px 1px 0 rgba(0,0,0,0.04)"
+    hover_shadow: str = "2px 2px 0 rgba(0,0,0,0.10)"
+    #: One offset layer beneath the card. Three would look like a shuffled deck.
+    depth_layer: bool = True
+    depth_offset: str = "2px"
+    depth_opacity: float = 0.08
+    #: Where the status stripe sits: "left", "top" or "none".
+    accent_edge: str = "left"
+    accent_width: str = "2px"
+    #: How the tasks inside the step are drawn: "bars", "dots" or "none".
+    indicator: str = "bars"
+
+    # -- state treatment -------------------------------------------------- #
+    # A run of 24 steps is mostly settled history and unstarted future, with one
+    # or two steps actually working. The three states are therefore weighted
+    # rather than merely coloured: the running step is the loud one, success is
+    # quiet and finished, and upcoming recedes. Weight comes from contrast and
+    # motion, never from a thicker frame — a heavy border reads as defensive.
+    #: The running step's rail, wider than the rest so the eye lands on it.
+    active_accent_width: str = "3px"
+    #: Motion on the running step: "scan" (a bar crossing the rail), "pulse", or "none".
+    active_animation: str = "scan"
+    active_animation_ms: int = 1800
+    #: "" → a ring in the status colour. Lifts the running card off the route.
+    active_shadow: str = ""
+    #: Settled work stays legible but stops competing with the live step.
+    completed_opacity: float = 0.86
+    #: Not started: present in the plan, plainly not underway.
+    upcoming_opacity: float = 0.5
+    upcoming_border_style: str = "dashed"
+
+
 class VisualVariantCfg(Frozen):
     """A named way of drawing the 24 steps — the domain metaphor and its palette."""
 
@@ -420,10 +504,13 @@ class VisualVariantCfg(Frozen):
     kicker: str = ""
     headline: str = ""
     route_label: str = ""
-    #: Which silhouette the dashboard draws per step. Unknown values fall back.
+    #: Which silhouette the dashboard draws per step. "card" (and "plain" and
+    #: "none") draw the plain rectangle described by `card`; every other value
+    #: draws the freight truck, which is the only silhouette in the code today.
     vehicle: str = "truck"
     motion: str = "speed-route"
     palette: VisualPalette
+    card: VisualCard = VisualCard()
 
 
 class VisualizationSection(Frozen):

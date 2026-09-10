@@ -1,6 +1,6 @@
 {
   "2": {
-    "input_sha": "a96058c838cd1728ae5df2799c6eba929dd22ff289d054364e71e3e87a9901d2",
+    "input_sha": "adc75fb93f4212d4cc56b3cc5845f00dfb5535659f789847c9afe7decb1b1b21",
     "schemas": [
       "StoryAnalysisV1"
     ],
@@ -29,19 +29,32 @@
         "step": 2,
         "slug": "story_analysis",
         "variant": null,
-        "file": "02_story_analysis__DEEP-1042-6e7bfa__v1.json",
-        "dir": "DEEP-1042-allow-users-to",
+        "file": "02_story_analysis__DEEP-1042-3720c7__v1.json",
+        "dir": "DEEP-1042-export-data",
         "ext": "json",
         "output_class": "structured",
         "bytes": 442,
         "sha256": "88cef15fd542046b3a85fb9e094d190d811722770e8e848d5a05bd90b2e2419c"
       }
     ],
-    "job_id": "DEEP-1042-6e7bfa",
-    "at": "2026-08-31T21:50:05.468797+00:00"
+    "job_id": "DEEP-1042-3720c7",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "77b8ab2f775485659d3faa6b673632bca7472794e76675713e59e6c69c327f34",
+      "tokens_in": 325,
+      "tokens_out": 110,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_efb178569f0d"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:44:40.872283Z"
+    },
+    "at": "2026-09-10T05:44:40.872554+00:00"
   },
   "3": {
-    "input_sha": "1108d429b7219dd088d2c401ea93bc60dee2814c3eae058ad5f0df08251a8f4f",
+    "input_sha": "0903b206b708577aad0e9bc7d2fbef3f17ce873d1299357449a2521b02b7ab16",
     "schemas": [
       "AmbiguityReportV1"
     ],
@@ -59,19 +72,32 @@
         "step": 3,
         "slug": "ambiguity_report",
         "variant": null,
-        "file": "03_ambiguity_report__DEEP-1042-6e7bfa__v1.json",
-        "dir": "DEEP-1042-allow-users-to",
+        "file": "03_ambiguity_report__DEEP-1042-3720c7__v1.json",
+        "dir": "DEEP-1042-export-data",
         "ext": "json",
         "output_class": "structured",
         "bytes": 163,
         "sha256": "441d0379af9c84742afc102e4908b72c03b47e3026b2af9a6a04cd2c13fa985d"
       }
     ],
-    "job_id": "DEEP-1042-6e7bfa",
-    "at": "2026-08-31T21:50:05.471384+00:00"
+    "job_id": "DEEP-1042-3720c7",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "05451b0af94bd7b775d3617bd6207cb1fb98b65d0378326ccec631a325b32529",
+      "tokens_in": 585,
+      "tokens_out": 29,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_ca0269ab0505"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:44:40.874179Z"
+    },
+    "at": "2026-09-10T05:44:40.874430+00:00"
   },
   "4": {
-    "input_sha": "1108d429b7219dd088d2c401ea93bc60dee2814c3eae058ad5f0df08251a8f4f",
+    "input_sha": "0903b206b708577aad0e9bc7d2fbef3f17ce873d1299357449a2521b02b7ab16",
     "schemas": [
       "ProjectContextV1"
     ],
@@ -103,19 +129,32 @@
         "step": 4,
         "slug": "project_context",
         "variant": null,
-        "file": "04_project_context__DEEP-1042-6e7bfa__v1.md",
-        "dir": "DEEP-1042-allow-users-to",
+        "file": "04_project_context__DEEP-1042-3720c7__v1.md",
+        "dir": "DEEP-1042-export-data",
         "ext": "md",
         "output_class": "specification",
         "bytes": 402,
         "sha256": "dbce59ca307a933c80f9cde683b0692481dbbe6e595b2abc067de11c04b79fa7"
       }
     ],
-    "job_id": "DEEP-1042-6e7bfa",
-    "at": "2026-08-31T21:50:05.473392+00:00"
+    "job_id": "DEEP-1042-3720c7",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "7781926ce42268d2d20d9cc0aba957577d82f1e2787b69607689b436a93efd5d",
+      "tokens_in": 495,
+      "tokens_out": 98,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_4c1319c5a502"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:44:40.875974Z"
+    },
+    "at": "2026-09-10T05:44:40.876209+00:00"
   },
   "5": {
-    "input_sha": "52e8bc3f041dcb8bcf89ff9aa97c7003935870b094898ef7814c9601a01f94fc",
+    "input_sha": "bb2f3c4df2c955f40425598fed0c906023bcb8028a34dac23668b6113eb91ebb",
     "schemas": [
       "BrdV1"
     ],
@@ -157,8 +196,8 @@
         "step": 5,
         "slug": "brd",
         "variant": null,
-        "file": "05_brd__DEEP-1042-6e7bfa__v1.json",
-        "dir": "DEEP-1042-allow-users-to",
+        "file": "05_brd__DEEP-1042-3720c7__v1.json",
+        "dir": "DEEP-1042-export-data",
         "ext": "json",
         "output_class": "structured",
         "bytes": 733,
@@ -168,8 +207,8 @@
         "step": 5,
         "slug": "brd",
         "variant": null,
-        "file": "05_brd__DEEP-1042-6e7bfa__v1.md",
-        "dir": "DEEP-1042-allow-users-to",
+        "file": "05_brd__DEEP-1042-3720c7__v1.md",
+        "dir": "DEEP-1042-export-data",
         "ext": "md",
         "output_class": "specification",
         "bytes": 584,
@@ -179,16 +218,29 @@
         "step": 5,
         "slug": "brd",
         "variant": null,
-        "file": "05_brd__DEEP-1042-6e7bfa__v1.pdf",
-        "dir": "DEEP-1042-allow-users-to",
+        "file": "05_brd__DEEP-1042-3720c7__v1.pdf",
+        "dir": "DEEP-1042-export-data",
         "ext": "pdf",
         "output_class": "document",
         "bytes": 1391,
         "sha256": "851da9f3955aac79a363e8caefddb19c9937a06c4e0ce745d9ea5186497dfb50"
       }
     ],
-    "job_id": "DEEP-1042-6e7bfa",
-    "at": "2026-08-31T21:50:05.476451+00:00"
+    "job_id": "DEEP-1042-3720c7",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "eb3441b0789a26ac402a65e320de92ce3a666b54f3e10e5c49e8480021283d21",
+      "tokens_in": 708,
+      "tokens_out": 178,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_d1a02182acf2"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:44:40.877620Z"
+    },
+    "at": "2026-09-10T05:44:40.878738+00:00"
   },
   "7": {
     "input_sha": "e033ab41bd6a0733e8c593e1f64c6b65e5ba45bfdd676fb327386b5c84d2f15b",

@@ -13,4 +13,7 @@ Read in this order:
 | [06-safety-model.md](06-safety-model.md) | Every safety property and where it is enforced |
 | [07-extending.md](07-extending.md) | Adding steps, backends, plugins |
 | [08-claude-code-workflow.md](08-claude-code-workflow.md) | Building on this with Claude Code |
+| [09-visualization-variants.md](09-visualization-variants.md) | How the dashboard draws a run, and the card block that styles it |
+| [11-mutation-inventory.md](11-mutation-inventory.md) | Every step that changes something, and what it may touch |
+| [12-pull-request-target.md](12-pull-request-target.md) | Which repository step 22 opens the pull request against |
 | [adr/](adr/) | Decisions and their reasoning |

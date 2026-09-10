@@ -62,6 +62,15 @@ class RevisionNotAllowed(CodeGenCoreError):
     """A replacement document was offered where the gate state does not permit one."""
 
 
+class VcsError(CodeGenCoreError):
+    """A git or forge operation failed, or would have done something unsafe.
+
+    Raised rather than returned so a failed push halts the run: step 22 would
+    otherwise go on to ask GitHub for a pull request from a branch that was
+    never published, and the reviewer would get a 422 instead of a reason.
+    """
+
+
 class StepError(CodeGenCoreError):
     """A step failed in a way the runner should treat as a step failure."""
 

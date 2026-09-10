@@ -1,0 +1,15 @@
+{
+  "key": "DEEP-1042",
+  "title": "Export data",
+  "description": "",
+  "acceptance_criteria": [
+    "works"
+  ],
+  "priority": "Medium",
+  "labels": [],
+  "components": [],
+  "dependencies": [],
+  "attachments": [],
+  "reporter": null,
+  "source_checksum": "dfa3c7b4f4fd2debff01cecbf7aa00f3edd11643910af242ab8015a981f931fe"
+}

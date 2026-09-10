@@ -1,0 +1,1139 @@
+{
+  "2": {
+    "input_sha": "d9b85ed87cebc4d86d8e07da342ecc5b11c860a0c98d2cb9f88792902028d16a",
+    "schemas": [
+      "StoryAnalysisV1"
+    ],
+    "payload": {
+      "ui": [
+        "Render export button on the account page"
+      ],
+      "backend": [
+        "POST /api/v1/users/{id}/export returns a job id"
+      ],
+      "database": [
+        "No schema change; read-only over users and orders"
+      ],
+      "security": [
+        "Export must be authorised for the owning user only"
+      ],
+      "integration": [
+        "Publishes to the existing notification queue"
+      ],
+      "non_functional": [
+        "Export completes within 30s for 10k rows"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 2,
+        "slug": "story_analysis",
+        "variant": null,
+        "file": "02_story_analysis__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 442,
+        "sha256": "88cef15fd542046b3a85fb9e094d190d811722770e8e848d5a05bd90b2e2419c"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "35305a1c343e1a30db7b75951ffeff7f4e677c63b910fa994d1f09046f35a532",
+      "tokens_in": 325,
+      "tokens_out": 110,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_2db08863e8c9"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.631746Z"
+    },
+    "at": "2026-09-10T05:45:00.631953+00:00"
+  },
+  "3": {
+    "input_sha": "84e242ce04d74732c97dee67d4baed0aaf61a0a332b5d4870fa09db6e4c64c48",
+    "schemas": [
+      "AmbiguityReportV1"
+    ],
+    "payload": {
+      "gaps": [],
+      "contradictions": [],
+      "unclear_behaviour": [],
+      "unavailable_data": [],
+      "edge_cases": [],
+      "questions_for_human": [],
+      "blocking": false
+    },
+    "artifacts": [
+      {
+        "step": 3,
+        "slug": "ambiguity_report",
+        "variant": null,
+        "file": "03_ambiguity_report__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 163,
+        "sha256": "441d0379af9c84742afc102e4908b72c03b47e3026b2af9a6a04cd2c13fa985d"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "d9de127cee9517f562622108a7611fca4c86d6b4a5cb5118b550146f68cb4f96",
+      "tokens_in": 585,
+      "tokens_out": 29,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_f8201d635b22"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.633871Z"
+    },
+    "at": "2026-09-10T05:45:00.634060+00:00"
+  },
+  "4": {
+    "input_sha": "84e242ce04d74732c97dee67d4baed0aaf61a0a332b5d4870fa09db6e4c64c48",
+    "schemas": [
+      "ProjectContextV1"
+    ],
+    "payload": {
+      "architecture": "Layered FastAPI service with SQLAlchemy over Postgres",
+      "frameworks": [
+        "fastapi",
+        "sqlalchemy",
+        "pytest"
+      ],
+      "conventions": [
+        "snake_case modules",
+        "one router per resource"
+      ],
+      "folder_structure": [
+        "app/api",
+        "app/services",
+        "app/repositories",
+        "app/models"
+      ],
+      "reusable_components": [
+        "app/services/exporter.py"
+      ],
+      "api_conventions": [],
+      "db_conventions": []
+    },
+    "artifacts": [
+      {
+        "step": 4,
+        "slug": "project_context",
+        "variant": null,
+        "file": "04_project_context__DEEP-7777-f9c336__v1.md",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 402,
+        "sha256": "dbce59ca307a933c80f9cde683b0692481dbbe6e595b2abc067de11c04b79fa7"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "ca2f23a2e7bd57971d18e505590c443a5938750c6aaf07f7c0b4c0e6d10d0aaf",
+      "tokens_in": 495,
+      "tokens_out": 98,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_c518b879f1d9"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.635367Z"
+    },
+    "at": "2026-09-10T05:45:00.635548+00:00"
+  },
+  "5": {
+    "input_sha": "11faf93d2f143117b53689aacb53dcc58fee7f81b51a3ed1e567a3e3f241f0a9",
+    "schemas": [
+      "BrdV1"
+    ],
+    "payload": {
+      "title": "User data export",
+      "background": "Users need a self-service export of their own data.",
+      "objectives": [
+        "Self-service export",
+        "No support ticket required"
+      ],
+      "scope_in": [
+        "CSV export of profile and orders"
+      ],
+      "scope_out": [
+        "PDF export",
+        "Bulk admin export"
+      ],
+      "acceptance_criteria": [
+        {
+          "id": "AC-1",
+          "text": "An authenticated user can request an export of their own data"
+        },
+        {
+          "id": "AC-2",
+          "text": "The export contains profile and order history as CSV"
+        },
+        {
+          "id": "AC-3",
+          "text": "A user cannot request an export for another user"
+        }
+      ],
+      "risks": [
+        "PII handling in the generated file"
+      ],
+      "assumptions": []
+    },
+    "artifacts": [
+      {
+        "step": 5,
+        "slug": "brd",
+        "variant": null,
+        "file": "05_brd__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 733,
+        "sha256": "bfdb1432adf492aceee3ff0673bc344c179e627c736eb0b91bea9d01bf8c1622"
+      },
+      {
+        "step": 5,
+        "slug": "brd",
+        "variant": null,
+        "file": "05_brd__DEEP-7777-f9c336__v1.md",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 584,
+        "sha256": "6ff3b48a79023a878bdaf4ce95f75717669f0b1aab3aa3a3ba49a922cb00e35b"
+      },
+      {
+        "step": 5,
+        "slug": "brd",
+        "variant": null,
+        "file": "05_brd__DEEP-7777-f9c336__v1.pdf",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "pdf",
+        "output_class": "document",
+        "bytes": 1391,
+        "sha256": "851da9f3955aac79a363e8caefddb19c9937a06c4e0ce745d9ea5186497dfb50"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "930e84fa5bda305581c3ee8b7a3ae0a616340ff4f46697522bbdfaa55e7ca8b6",
+      "tokens_in": 708,
+      "tokens_out": 178,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_d824c5c6208f"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.636996Z"
+    },
+    "at": "2026-09-10T05:45:00.637937+00:00"
+  },
+  "7": {
+    "input_sha": "e033ab41bd6a0733e8c593e1f64c6b65e5ba45bfdd676fb327386b5c84d2f15b",
+    "schemas": [
+      "TestDesignV1"
+    ],
+    "payload": {
+      "unit": [
+        {
+          "id": "UT-1",
+          "target": "ExportService.build",
+          "covers": [
+            "AC-2"
+          ],
+          "given": "a user with two orders",
+          "expect": "csv with three rows"
+        },
+        {
+          "id": "UT-2",
+          "target": "ExportService.authorise",
+          "covers": [
+            "AC-3"
+          ],
+          "given": "a mismatched user id",
+          "expect": "PermissionError"
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "AT-1",
+          "covers": [
+            "AC-1",
+            "AC-2"
+          ],
+          "scenario": "user requests export and downloads the file"
+        }
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 7,
+        "slug": "test_design",
+        "variant": null,
+        "file": "07_test_design__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 579,
+        "sha256": "7b03f6c5617ce7b2d5aa5d9fb09a6c132825e0bfa0ee3fe9828bf76249bfb479"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "b8ace82dad70a1aa7f93b10680b8c291938b932ce9ae7e29622194365af273ff",
+      "tokens_in": 885,
+      "tokens_out": 144,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_21cf5f33232e"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.641466Z"
+    },
+    "at": "2026-09-10T05:45:00.641876+00:00"
+  },
+  "8": {
+    "input_sha": "6e0c9ec631e6bb6cfb1eb5ae4f6c5b3226a4edd57ac6380a7685b821e2e24242",
+    "schemas": [
+      "RepoUnderstandingV1"
+    ],
+    "payload": {
+      "modules": [
+        "app/api",
+        "app/services",
+        "app/repositories"
+      ],
+      "entry_points": [
+        "app/main.py"
+      ],
+      "ci_jobs": [
+        "lint",
+        "test"
+      ],
+      "integration_touchpoints": [
+        "notification queue"
+      ],
+      "related_implementations": [
+        "app/services/report.py"
+      ],
+      "dependency_graph": {}
+    },
+    "artifacts": [
+      {
+        "step": 8,
+        "slug": "repo_understanding",
+        "variant": null,
+        "file": "08_repo_understanding__DEEP-7777-f9c336__v1.md",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 252,
+        "sha256": "28b254c6f5f227216416bad6fa2bfbbd87459daf7c0eab9424fdb11abf03edb1"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "561099b5ede9e9972426aa2f19631d64b3a13d0faa0769b7a5d3ce2f35458e73",
+      "tokens_in": 644,
+      "tokens_out": 73,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_e99c08342fee"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.642779Z"
+    },
+    "at": "2026-09-10T05:45:00.643018+00:00"
+  },
+  "9": {
+    "input_sha": "c57e143b44ac8b94d7c297493a82f69d677663b32453be41e39a5b936d8a1f56",
+    "schemas": [
+      "ImpactManifestV1"
+    ],
+    "payload": {
+      "files_to_modify": [
+        "app/api/users.py"
+      ],
+      "files_to_create": [
+        "app/services/exporter.py",
+        "tests/test_exporter.py"
+      ],
+      "allowed_paths": [
+        "app/api/*",
+        "app/services/*",
+        "tests/*"
+      ],
+      "loc_budget": 300,
+      "impacted_components": [],
+      "apis": [
+        "POST /api/v1/users/{id}/export"
+      ],
+      "db_entities": [],
+      "config_changes": [],
+      "tests": [],
+      "docs": [
+        "README.md"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 9,
+        "slug": "impact_manifest",
+        "variant": null,
+        "file": "09_impact_manifest__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 418,
+        "sha256": "002e7bd00a5865442e1304dc3685a90d821743569739896e2acb552719d5db1d"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "1100511ebd5d9b2b39deb50f5e8bf1bbd938a7fafbde8b8fd8d7e416f493c3cc",
+      "tokens_in": 870,
+      "tokens_out": 93,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_bd0f47cbe64e"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.644849Z"
+    },
+    "at": "2026-09-10T05:45:00.645077+00:00"
+  },
+  "10": {
+    "input_sha": "5abbdd11eb1971f56009e629279d545fe8c81e2848d046ac936a856186743b06",
+    "schemas": [
+      "FeatureSpecV1"
+    ],
+    "payload": {
+      "summary": "Self-service CSV export of a user's own data",
+      "api_contracts": [
+        {
+          "method": "POST",
+          "path": "/api/v1/users/{id}/export",
+          "returns": "202 {job_id}",
+          "auth": ""
+        }
+      ],
+      "data_model": [],
+      "validation": [
+        "id must equal the authenticated subject"
+      ],
+      "errors": [
+        {
+          "code": 403,
+          "when": "id != subject"
+        }
+      ],
+      "ui_states": [
+        "idle",
+        "requested",
+        "ready",
+        "failed"
+      ],
+      "state_management": [],
+      "accessibility": [
+        "button has an accessible name"
+      ],
+      "security": [
+        "ownership check before any read"
+      ],
+      "acceptance_criteria": [
+        "AC-1",
+        "AC-2",
+        "AC-3"
+      ],
+      "implementation_boundaries": [
+        "Only these paths may be touched: ['app/api/*', 'app/services/*', 'tests/*']",
+        "Total changed lines must stay under 300",
+        "No refactoring unrelated to the acceptance criteria"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 10,
+        "slug": "feature_spec",
+        "variant": null,
+        "file": "10_feature_spec__DEEP-7777-f9c336__v1.md",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 649,
+        "sha256": "114ad598a1c9b649e0961024666de579b11daa42fab2948fe157e9a70b68333e"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "53621fce33199ffe47647b8999295638376b620e05dfa74e2df1e4164d028315",
+      "tokens_in": 886,
+      "tokens_out": 158,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_452406660c4a"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.646817Z"
+    },
+    "at": "2026-09-10T05:45:00.647027+00:00"
+  },
+  "11": {
+    "input_sha": "13ca9d3c4c8a21d61e8d33daf69cdf333e9f5520628f3a810a540024ba9f13f7",
+    "schemas": [
+      "ChangePlanV1"
+    ],
+    "payload": {
+      "ordered_changes": [
+        {
+          "seq": 1,
+          "layer": "service",
+          "file": "app/services/exporter.py",
+          "action": "create",
+          "rationale": ""
+        },
+        {
+          "seq": 2,
+          "layer": "api",
+          "file": "app/api/users.py",
+          "action": "modify",
+          "rationale": ""
+        },
+        {
+          "seq": 3,
+          "layer": "tests",
+          "file": "tests/test_exporter.py",
+          "action": "create",
+          "rationale": ""
+        }
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 11,
+        "slug": "change_plan",
+        "variant": null,
+        "file": "11_change_plan__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 448,
+        "sha256": "8a336d931ff02cd6a2c2d4a9291301e4e4a1235872f542a7eb9053d73a8f43c8"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "7684ffe67d7f28a6fe535c9967728201862dabafad1cb6688974be500a59d2c3",
+      "tokens_in": 615,
+      "tokens_out": 94,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_65424860df95"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.648730Z"
+    },
+    "at": "2026-09-10T05:45:00.648948+00:00"
+  },
+  "12": {
+    "input_sha": "8e2f507e009d0b58a3f5f78a0eaa72beee147b83c0a8b2b292043702c9e23fd3",
+    "schemas": [
+      "CodeChangesetV1"
+    ],
+    "payload": {
+      "changed_files": [],
+      "created_files": [],
+      "changed_loc": 0,
+      "commits": [],
+      "repo_root": "/Users/tejasvikaswaghulde/Downloads/CodeGen2",
+      "workspace_is_repo_root": false,
+      "policy_violations": [],
+      "transcript_excerpt": "{\n  \"mock\": true,\n  \"digest\": \"19267bc4\",\n  \"note\": \"no stub matched\"\n}",
+      "action_intent": {
+        "step": 12,
+        "agent": "code_update",
+        "action": "apply_patch",
+        "justification": "Change app/api/users.py, app/services/exporter.py, tests/test_exporter.py to satisfy AC-1. Scope is bounded by the step-09 Impact Manifest (3 file(s), 300 LOC budget); nothing outside that whitelist is writable.",
+        "target_files": [
+          "app/api/users.py",
+          "app/services/exporter.py",
+          "tests/test_exporter.py"
+        ],
+        "expected_outcome": "The whitelisted files implement the specified change and the acceptance criteria become verifiable at step 13.",
+        "validation_plan": [
+          "step 14 static quality validation (ruff, mypy)",
+          "step 16 pytest unit test execution",
+          "step 18 sast and dependency scan"
+        ],
+        "risk_level": "critical",
+        "requires_human_approval": true
+      },
+      "guardrails": [],
+      "remediation_source": "MANUAL",
+      "failure_class": null,
+      "loop_count": 1,
+      "loop_budget": 3,
+      "prior_failures": [],
+      "empty_changeset": false
+    },
+    "artifacts": [
+      {
+        "step": 12,
+        "slug": "code_changeset",
+        "variant": null,
+        "file": "12_code_changeset__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 1325,
+        "sha256": "1bb897521d286a82ff76de5454d5ef3eab464acd07c36a239109d6b3aa6ad2ca"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "b50b578e715a24b350066ffdea15b0214c02c57ee34176833b15ae3cb4771355",
+      "tokens_in": 421,
+      "tokens_out": 17,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_9ad50bad8646"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.730859Z"
+    },
+    "at": "2026-09-10T05:45:00.731606+00:00"
+  },
+  "13": {
+    "input_sha": "3ec5c651f0baa9c00ffde2431c1b8012a8e6289d626422b8668bda0b3cb52d64",
+    "schemas": [
+      "RequirementCoverageV1"
+    ],
+    "payload": {
+      "covered": [
+        "AC-1",
+        "AC-2",
+        "AC-3"
+      ],
+      "missing": [],
+      "unrelated_changes": [],
+      "hallucinated_functionality": [],
+      "verdict": "PASSED"
+    },
+    "artifacts": [
+      {
+        "step": 13,
+        "slug": "requirement_coverage",
+        "variant": null,
+        "file": "13_requirement_coverage__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 160,
+        "sha256": "bbd569879978d629740eb0a3dc05810afd264cef6fe84199094d6b7ca68134d3"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.reviewer",
+      "model_id": "mock-reviewer-1",
+      "prompt_sha256": "1ba9d41877937210d7e8dce0283ba5d581a104eca1ae7ff0abb4ddf43dc0043e",
+      "tokens_in": 1242,
+      "tokens_out": 40,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_8a71a3d2a571"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.735872Z"
+    },
+    "at": "2026-09-10T05:45:00.736208+00:00"
+  },
+  "14": {
+    "input_sha": "96d33382677bd4ae86e6369d4491f7f2b2700d7ccd5bb8104f5baa7f78376ef7",
+    "schemas": [
+      "StaticAnalysisV1"
+    ],
+    "payload": {
+      "checks": {
+        "compile": {
+          "ok": true,
+          "skipped": "no python sources"
+        },
+        "lint": {
+          "ok": true,
+          "skipped": "no python sources"
+        },
+        "format": {
+          "ok": true,
+          "skipped": "no python sources"
+        },
+        "types": {
+          "ok": true,
+          "skipped": "no python sources"
+        }
+      },
+      "passed": true
+    },
+    "artifacts": [
+      {
+        "step": 14,
+        "slug": "static_analysis",
+        "variant": null,
+        "file": "14_static_analysis__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 348,
+        "sha256": "4da23ca6cafa1fb69eb3ee46f08d2b19f0b64b8d3701523c9a097ec465050b4d"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": null,
+      "model_id": null,
+      "prompt_sha256": null,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_22884796032f"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.737452Z"
+    },
+    "at": "2026-09-10T05:45:00.737702+00:00"
+  },
+  "15": {
+    "input_sha": "aa4c455420457a15af610aae23b6ab9a4398e8f430e358a61ae92c3b5cf2f669",
+    "schemas": [
+      "TestSyncV1"
+    ],
+    "payload": {
+      "created": [
+        "tests/test_exporter.py"
+      ],
+      "updated": [],
+      "removed": [],
+      "unimplementable": []
+    },
+    "artifacts": [
+      {
+        "step": 15,
+        "slug": "test_sync",
+        "variant": null,
+        "file": "15_test_sync__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 110,
+        "sha256": "8ab0f5b3755831f529d74ac62240473eac3f11461647fea09ce0352dcc526a3a"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "bd18f0c46ea48e8bb9f51c68d147b132f70a3f20e113184ef2b0ef9f9ad954a2",
+      "tokens_in": 1057,
+      "tokens_out": 21,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_a44ab919c840"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.740058Z"
+    },
+    "at": "2026-09-10T05:45:00.740714+00:00"
+  },
+  "16": {
+    "input_sha": "9acf31bc3413129c091573362d9ce3f4d5b3d65252f7dbd72fd7a26bf722b526",
+    "schemas": [
+      "TestReportV1"
+    ],
+    "payload": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "duration_s": 3.4,
+      "failures": [],
+      "coverage": {
+        "line_pct": 91.2,
+        "uncovered_files": [],
+        "changed_line_pct": 100.0
+      },
+      "coverage_ok": true
+    },
+    "artifacts": [
+      {
+        "step": 16,
+        "slug": "unit_test_report",
+        "variant": null,
+        "file": "16_unit_test_report__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 211,
+        "sha256": "fc70cf89404b2271dc8facdf45ac25143788525a56cb58e35f69be6365ba9de1"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": null,
+      "model_id": null,
+      "prompt_sha256": null,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_e95c76d4cbed"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.742156Z"
+    },
+    "at": "2026-09-10T05:45:00.742431+00:00"
+  },
+  "17": {
+    "input_sha": "0664063d8f389632938497e4ff7ea8df383edb5c7d2ffb0cc75b8e52b75af16d",
+    "schemas": [
+      "E2EReportV1"
+    ],
+    "payload": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration_s": 22.1,
+      "failures": [],
+      "screenshots": []
+    },
+    "artifacts": [
+      {
+        "step": 17,
+        "slug": "e2e_report",
+        "variant": null,
+        "file": "17_e2e_report__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 109,
+        "sha256": "a48e77ad440f0faa73f2cd1425de940cab764da31249c86a0370779f38a268f2"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": null,
+      "model_id": null,
+      "prompt_sha256": null,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_b8b1f78de115"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.743768Z"
+    },
+    "at": "2026-09-10T05:45:00.744047+00:00"
+  },
+  "18": {
+    "input_sha": "5a16ac5962e442af26c06a597502c64d6bf3c669b0f468d34fe32653e69b8da6",
+    "schemas": [
+      "SecurityScanV1"
+    ],
+    "payload": {
+      "reports": {
+        "sast": {
+          "scanner": "semgrep",
+          "findings": []
+        },
+        "sca": {
+          "scanner": "trivy",
+          "findings": []
+        },
+        "secrets": {
+          "scanner": "gitleaks",
+          "findings": []
+        }
+      },
+      "blocking_findings": [],
+      "waived_findings": []
+    },
+    "artifacts": [
+      {
+        "step": 18,
+        "slug": "sast",
+        "variant": null,
+        "file": "18_sast__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 44,
+        "sha256": "36117edee1a5adfe3344d56f9e1a2c864429e6d67eb55b2da832c8653d013640"
+      },
+      {
+        "step": 18,
+        "slug": "sca",
+        "variant": null,
+        "file": "18_sca__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 42,
+        "sha256": "773e88cf03f71c1c5a13cca6e0639009ffea13c33042d39356356d9f01eca422"
+      },
+      {
+        "step": 18,
+        "slug": "secrets",
+        "variant": null,
+        "file": "18_secrets__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 45,
+        "sha256": "79013da48aa8a3ac673885addef69cae0fe1a073dcabc6f762e5691476d30d8b"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": null,
+      "model_id": null,
+      "prompt_sha256": null,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_a6d92bc96218"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.748684Z"
+    },
+    "at": "2026-09-10T05:45:00.749031+00:00"
+  },
+  "20": {
+    "input_sha": "e7438904fba37049504fd69c3801717f7b7b43b6f0a598763b2e9234a4ee13dc",
+    "schemas": [
+      "TechnicalDesignV1"
+    ],
+    "payload": {
+      "architecture": "One new service class behind the existing users router",
+      "sequence": [
+        "client -> api -> service -> repository -> csv"
+      ],
+      "apis": [
+        "POST /api/v1/users/{id}/export"
+      ],
+      "db_changes": [],
+      "impacted_files": [
+        "app/api/users.py",
+        "app/services/exporter.py"
+      ],
+      "decisions": [
+        "synchronous export for v1; async job if rows exceed 50k"
+      ],
+      "security_considerations": [
+        "ownership check",
+        "no PII in logs"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 20,
+        "slug": "tdd",
+        "variant": null,
+        "file": "20_tdd__DEEP-7777-f9c336__v1.md",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "md",
+        "output_class": "specification",
+        "bytes": 476,
+        "sha256": "bbd6e81c9370c5c366fac31ae84ae3b55db3d58546f664a2cf63630c20cda4e8"
+      },
+      {
+        "step": 20,
+        "slug": "tdd",
+        "variant": null,
+        "file": "20_tdd__DEEP-7777-f9c336__v1.pdf",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "pdf",
+        "output_class": "document",
+        "bytes": 1283,
+        "sha256": "5f669683f01dccc7e24e64f1d00e83df188502e9d9f8a2081beda2b687c45d79"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "48589a6cc65d5253b4e3a958c502de726b1533a7de20f38a740df07d4351e71d",
+      "tokens_in": 949,
+      "tokens_out": 117,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_8fd48f95cd13"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.751500Z"
+    },
+    "at": "2026-09-10T05:45:00.752220+00:00"
+  },
+  "21": {
+    "input_sha": "3bf8424ca269b2eafa7bcd696ff06c15d415df356c074dd6fa5f6a437a7f13ab",
+    "schemas": [
+      "DocUpdateV1"
+    ],
+    "payload": {
+      "readme": true,
+      "openapi": true,
+      "developer_docs": false,
+      "changed": [
+        "README.md",
+        "openapi.yaml"
+      ]
+    },
+    "artifacts": [
+      {
+        "step": 21,
+        "slug": "doc_updates",
+        "variant": null,
+        "file": "21_doc_updates__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 122,
+        "sha256": "a3be8769a8f9eeefc7f21015cd02da8c529c967a43993fadcaec0c7eed775dfe"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.offline",
+      "model_id": "mock-1",
+      "prompt_sha256": "570b8a68a62de3296a98af36e72a7f3a9c415a00cb439ea1f7bfe11882d7d680",
+      "tokens_in": 872,
+      "tokens_out": 30,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_800fc3d5ae8b"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.753782Z"
+    },
+    "at": "2026-09-10T05:45:00.754087+00:00"
+  },
+  "22": {
+    "input_sha": "e267d077b673e409f69a3ee7b675391388e6ad79813c811b4e87b882786e3420",
+    "schemas": [
+      "PullRequestV1"
+    ],
+    "payload": {
+      "number": 0,
+      "url": "https://github.com/dry-run/pull/0",
+      "head": "codegen/DEEP-7777-user-data-export",
+      "base": "main",
+      "draft": true,
+      "dry_run": true,
+      "title": "DEEP-7777: User data export",
+      "repo": "",
+      "commit": ""
+    },
+    "artifacts": [
+      {
+        "step": 22,
+        "slug": "pull_request",
+        "variant": null,
+        "file": "22_pull_request__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 237,
+        "sha256": "1c04d6976d0ce0485a0982050722ac9d0f390dbd71340292954daa8fab2c88ef"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": null,
+      "model_id": null,
+      "prompt_sha256": null,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_4df0162d6cf2"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.755905Z"
+    },
+    "at": "2026-09-10T05:45:00.756212+00:00"
+  },
+  "23": {
+    "input_sha": "6a258acb1e833b325cf13c2b8e994706c80719890e4393165cfda96d38cb6046",
+    "schemas": [
+      "AiReviewV1"
+    ],
+    "payload": {
+      "requirement_compliance": "PASSED",
+      "bugs": [],
+      "regression_risk": "low",
+      "security": [],
+      "performance": [],
+      "architecture": [],
+      "maintainability": [
+        "consider extracting the CSV writer"
+      ],
+      "test_quality": [],
+      "verdict": "APPROVED",
+      "reviewer_model_id": "mock-reviewer-1"
+    },
+    "artifacts": [
+      {
+        "step": 23,
+        "slug": "ai_review",
+        "variant": null,
+        "file": "23_ai_review__DEEP-7777-f9c336__v1.json",
+        "dir": "DEEP-7777-fresh-story",
+        "ext": "json",
+        "output_class": "structured",
+        "bytes": 301,
+        "sha256": "70c50572779fbdb56fba4a1a85bd34efd0ddb15ea5cf4c3ba5f96f45dfaa5288"
+      }
+    ],
+    "job_id": "DEEP-7777-f9c336",
+    "provenance": {
+      "backend_id": "mock.reviewer",
+      "model_id": "mock-reviewer-1",
+      "prompt_sha256": "a9096c251bc644610a6586b4285f8a9af3c16f3869d7b5a840969b58ed0c1fec",
+      "tokens_in": 1391,
+      "tokens_out": 53,
+      "cost_usd": 0.0,
+      "parent_message_ids": [
+        "msg_778f2c3fbaa9"
+      ],
+      "component_version": "1.0.0",
+      "produced_at": "2026-09-10T05:45:00.762809Z"
+    },
+    "at": "2026-09-10T05:45:00.763746+00:00"
+  }
+}

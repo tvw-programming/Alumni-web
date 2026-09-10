@@ -74,7 +74,7 @@ export default function DashboardPage({ controller }: Props) {
   }, []);
 
   const visualVariant: VisualVariant =
-    variants.variants[variants.default] ?? Object.values(variants.variants)[0] ?? FALLBACK_VARIANTS.variants.logistics;
+    variants.variants[variants.default] ?? Object.values(variants.variants)[0] ?? FALLBACK_VARIANTS.variants.precision;
 
   const inspect = (step: RunStep) => setSelected(step);
 

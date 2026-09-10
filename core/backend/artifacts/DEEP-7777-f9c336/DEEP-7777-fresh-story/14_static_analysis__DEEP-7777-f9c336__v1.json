@@ -1,0 +1,21 @@
+{
+  "checks": {
+    "compile": {
+      "ok": true,
+      "skipped": "no python sources"
+    },
+    "lint": {
+      "ok": true,
+      "skipped": "no python sources"
+    },
+    "format": {
+      "ok": true,
+      "skipped": "no python sources"
+    },
+    "types": {
+      "ok": true,
+      "skipped": "no python sources"
+    }
+  },
+  "passed": true
+}

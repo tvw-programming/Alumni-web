@@ -2,8 +2,10 @@ import { useRef } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import type { RemediationEdge, RunStep, StepAction } from '../../types/workflow';
 import type { VisualVariant } from '../../data/visualVariants';
+import { cardStyle, drawsPlainCard } from '../../data/visualVariants';
 import { focusedStep, useKeepStepInView } from '../../hooks/useKeepStepInView';
 import { fonts, tokens } from '../../theme';
+import ProcessCard from './ProcessCard';
 import RouteConnector from './RouteConnector';
 import TruckCard from './TruckCard';
 import { routeStatus } from './routeStatus';
@@ -64,6 +66,11 @@ export default function RouteMap({
   const viewport = useRef<HTMLDivElement | null>(null);
   const horizontal = orientation === 'horizontal';
   const cleared = steps.filter((s) => routeStatus(s) === 'cleared').length;
+  // Which drawing the config asked for. The silhouette and the plain card take
+  // the same props, so the choice is one component reference and a connector.
+  const plain = drawsPlainCard(variant);
+  const StepCard = plain ? ProcessCard : TruckCard;
+  const style = cardStyle(variant);
 
   // Keep whatever the run is working on — or stuck on — in view, in either
   // orientation. The old version only handled horizontal and centred on the
@@ -94,16 +101,18 @@ export default function RouteMap({
           width: '100%',
           overflowX: horizontal ? 'auto' : 'visible',
           overflowY: 'visible',
-          borderRadius: 1,
+          // The frame takes the variant's own radius, so a card asking for
+          // near-sharp corners is not sat inside a rounded box.
+          borderRadius: plain ? style.radius : 1,
           border: `1px solid ${tokens.rule}`,
           backgroundImage: variant.palette.pattern,
           backgroundSize: '32px 32px',
           bgcolor: variant.palette.surface,
           px: 2,
-          pt: 3,
+          pt: plain ? 2 : 3,
           // The scrollbar sits inside the bordered box, so the cards give it
           // room rather than sharing the bottom edge with it.
-          pb: horizontal ? 1.5 : 3,
+          pb: horizontal ? 1.5 : plain ? 2 : 3,
           ...(horizontal ? scrollbarSx : {}),
         }}
       >
@@ -128,7 +137,7 @@ export default function RouteMap({
                 width: horizontal ? 'auto' : '100%',
               }}
             >
-              <TruckCard
+              <StepCard
                 step={step}
                 variant={variant}
                 orientation={orientation}
@@ -142,6 +151,7 @@ export default function RouteMap({
                   // The corridor is lit where the freight has already passed.
                   energized={routeStatus(step) === 'cleared'}
                   variant={variant}
+                  shape={plain ? 'rule' : 'corridor'}
                 />
               )}
             </Box>

@@ -1,0 +1,32 @@
+{
+  "unit": [
+    {
+      "id": "UT-1",
+      "target": "ExportService.build",
+      "covers": [
+        "AC-2"
+      ],
+      "given": "a user with two orders",
+      "expect": "csv with three rows"
+    },
+    {
+      "id": "UT-2",
+      "target": "ExportService.authorise",
+      "covers": [
+        "AC-3"
+      ],
+      "given": "a mismatched user id",
+      "expect": "PermissionError"
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "AT-1",
+      "covers": [
+        "AC-1",
+        "AC-2"
+      ],
+      "scenario": "user requests export and downloads the file"
+    }
+  ]
+}

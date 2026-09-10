@@ -1,0 +1,9 @@
+{
+  "readme": true,
+  "openapi": true,
+  "developer_docs": false,
+  "changed": [
+    "README.md",
+    "openapi.yaml"
+  ]
+}

@@ -16,7 +16,7 @@ import StartRunDialog from './src/components/dashboard/StartRunDialog';
 import RouteMap from './src/components/visual/RouteMap';
 import TruckCard from './src/components/visual/TruckCard';
 import DashboardPage from './src/pages/DashboardPage';
-import { LOGISTICS_VARIANT } from './src/data/visualVariants';
+import { DEFAULT_CARD, LOGISTICS_VARIANT, PRECISION_VARIANT } from './src/data/visualVariants';
 import { buildRun } from './src/data/run';
 import { docsById } from './src/data/docs';
 import { mockArtifactText } from './src/data/artifactText';
@@ -430,9 +430,10 @@ const checks: [string, () => string][] = [
         act: async () => '',
         rerunFrom: async () => '',
       };
+      // The shipped default is the plain card, not the freight metaphor.
       const html = renderContaining(<DashboardPage controller={controller} />, [
-        'Every release arrives on time',
-        'FREIGHT ROUTE',
+        'Twenty-four steps, one controlled system',
+        'PROCESS STEPS',
         'Route orientation',
       ]);
 
@@ -441,6 +442,37 @@ const checks: [string, () => string][] = [
       );
       if (order.some((p, i) => p < 0 || (i > 0 && p < order[i - 1]))) {
         throw new Error('the view buttons are not in Visual, Spine, Table order');
+      }
+      return html;
+    },
+  ],
+  [
+    // The default variant draws a plain card per step: no silhouette, and the
+    // running step weighted apart from the settled ones around it.
+    'visual route: plain cards weight running apart from success',
+    () => {
+      const run = buildRun();
+      const html = renderContaining(
+        <RouteMap
+          steps={run.steps}
+          edges={run.edges}
+          variant={PRECISION_VARIANT}
+          orientation="horizontal"
+          onInspect={() => {}}
+          onAction={() => {}}
+        />,
+        ['PROCESS STEPS', 'Running', 'Success'],
+      );
+      // The shell is the confident one: a hairline stroke and a near-sharp
+      // radius, both straight off the card block.
+      if (!html.includes('1px solid') || !html.includes('border-radius:3px')) {
+        throw new Error('the plain card is not drawn with the card block from config');
+      }
+      // Motion belongs to the running step alone; a route where every card
+      // animates says nothing about which one is live.
+      const scans = html.split('processScanY').length - 1;
+      if (scans === 0) {
+        throw new Error('the running step carries no animation');
       }
       return html;
     },
@@ -513,6 +545,16 @@ const assertions: [string, boolean][] = [
   ['binary artifacts report no body', mockArtifactText(`05_brd__DEEP-1042-9d3a7c__v1.pdf`) === null],
   // The variant is the orchestrator's; this copy only stands in for it.
   ['logistics variant carries its headline', LOGISTICS_VARIANT.headline === 'Every release arrives on time'],
+  // The default is the plain card, and its shell is the confident spec: one
+  // hairline stroke, a near-sharp radius, an opaque ground, one depth layer.
+  [
+    'the default variant draws a confident card',
+    PRECISION_VARIANT.vehicle === 'card' &&
+      DEFAULT_CARD.borderWidth === '1px' &&
+      DEFAULT_CARD.radius === '3px' &&
+      DEFAULT_CARD.depthLayer &&
+      DEFAULT_CARD.depthOpacity === 0.08,
+  ],
   // The dashboard sends a role with every decision and takes it from here. An
   // empty list would leave it inventing one, which is how gate 06 came to be
   // approved as a role it does not accept.

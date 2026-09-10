@@ -1,0 +1,11 @@
+{
+  "key": "DEEP-1042",
+  "title": "Export data",
+  "description": "",
+  "acceptance_criteria": [
+    "works"
+  ],
+  "priority": "Medium",
+  "labels": [],
+  "entered_by": ""
+}

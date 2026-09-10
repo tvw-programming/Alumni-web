@@ -1,0 +1,15 @@
+{
+  "gate": "PR",
+  "status": "APPROVED",
+  "approver_id": "auto:tejasvikaswaghulde",
+  "approver_role": "senior_engineer",
+  "decided_at": "2026-09-10T05:45:00.765670+00:00",
+  "comment": "CODEGEN_AUTO_APPROVE was set - non-interactive run",
+  "artifact_sha256": "1c04d6976d0ce0485a0982050722ac9d0f390dbd71340292954daa8fab2c88ef",
+  "merge": {
+    "merged": true,
+    "dry_run": true,
+    "sha": "0000000000000000000000000000000000000000",
+    "repo": ""
+  }
+}

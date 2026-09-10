@@ -13,12 +13,14 @@ from __future__ import annotations
 import hashlib
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 from typing import Any
 
 from ..core.bus import MessageBus
 from ..core.component import Component, Kind
 from ..core.envelope import Intent, failure_class_for
 from ..core.errors import BudgetExceeded, CodeGenCoreError, PipelineHalted
+from ..core.identity import assert_identifiable
 from ..core.ledger import StoryLedger, input_fingerprint
 from ..core.parts import structured
 from ..core.provenance import Provenance
@@ -78,7 +80,41 @@ class PipelineRunner:
         self.remediation = Remediation(self.cfg, ctx.journal, notifier)
         self.notifier = notifier
         self._guard_journal(ctx.journal)
+        # A run that can reach a commit has to be able to name its author, and
+        # the useful moment to say so is now — not at step 22, after the models
+        # have been paid for.
+        assert_identifiable(self.cfg, ctx)
+        self._isolate_workspace(ctx)
         self.rehydrate(ctx)
+
+    def _isolate_workspace(self, ctx: Any) -> None:
+        """Give the run its own clone of the project, if it has a project.
+
+        Without this, every run edits `app.project.path` in place, on whatever
+        branch that checkout happened to be on — so two runs collide, and the
+        first commit lands wherever the last person left HEAD. Idempotent: a
+        resume finds the clone already there and keeps the work in it.
+        """
+        project = self.cfg.app.project
+        if not project.path or not project.isolate_per_run:
+            return
+        source = self.cfg.project_path(ctx.job_id)
+        vcs = build_plugin(self.cfg, "vcs", ctx)
+        if not vcs.is_repo(source):
+            # Not a checkout, so there is no branch lifecycle to give it. Step
+            # 22 says so plainly if a push is then attempted.
+            return
+
+        destination = Path(self.cfg.app.paths.workspace.format(job_id=ctx.job_id)).expanduser()
+        result = vcs.prepare_worktree(source, destination, base=vcs.base_branch())
+        ctx.workspace = destination
+        if not result["reused"]:
+            ctx.journal.append_event(
+                "workspace_cloned",
+                source=str(source),
+                path=result["path"],
+                base=result["base"],
+            )
 
     def _guard_journal(self, journal: Any) -> None:
         if getattr(journal, "_parallel_guarded", False):

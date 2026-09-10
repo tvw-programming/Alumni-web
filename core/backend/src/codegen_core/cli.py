@@ -96,6 +96,13 @@ def cmd_run(args) -> int:
             "acceptance_criteria": args.criteria,
             "entered_by": args.user or "",
         })
+    if args.user:
+        # Recorded the same way the dashboard records it, so whoever asks later
+        # — including the commit author at step 22 — has one place to look.
+        # Without this, `--as` only survived when story details were typed too.
+        ctx.journal.append_event(
+            "run_requested", jira_id=args.jira_id, started_by=args.user, story_source="cli"
+        )
     print(f"job {ctx.job_id}  profile={cfg.active_profile}")
     result = PipelineRunner(cfg).run(ctx, start=args.start, stop=args.stop)
     print(json.dumps({"job_id": result.job_id, "ok": result.ok,
@@ -213,7 +220,9 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--description", default="", help="story description")
     r.add_argument("--criteria", action="append", default=[],
                    help="an acceptance criterion; repeat for each one")
-    r.add_argument("--as", dest="user", default="", help="who is starting this run")
+    r.add_argument("--as", dest="user", default="",
+                   help="email of whoever is starting this run; required once "
+                        "plugins.vcs.repo is set, because it authors the commits")
     r.set_defaults(fn=cmd_run)
 
     rs = sub.add_parser("resume", help="resume a halted job")

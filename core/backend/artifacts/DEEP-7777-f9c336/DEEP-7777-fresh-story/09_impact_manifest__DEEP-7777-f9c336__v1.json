@@ -1,0 +1,25 @@
+{
+  "files_to_modify": [
+    "app/api/users.py"
+  ],
+  "files_to_create": [
+    "app/services/exporter.py",
+    "tests/test_exporter.py"
+  ],
+  "allowed_paths": [
+    "app/api/*",
+    "app/services/*",
+    "tests/*"
+  ],
+  "loc_budget": 300,
+  "impacted_components": [],
+  "apis": [
+    "POST /api/v1/users/{id}/export"
+  ],
+  "db_entities": [],
+  "config_changes": [],
+  "tests": [],
+  "docs": [
+    "README.md"
+  ]
+}

@@ -81,12 +81,20 @@ export default function StartRunDialog({ open, busy, onClose, onStart }: Props) 
     try {
       const named = startedBy.trim();
       if (named) rememberApprover(named);
-      await onStart({ ...request, startedBy: named || 'dashboard-user' });
+      // No 'dashboard-user' fallback: a deployment that pushes branches refuses
+      // the run rather than authoring commits as nobody, and the error it
+      // returns is clearer than a placeholder that fails later.
+      await onStart({ ...request, startedBy: named });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'That run could not be started.');
     } finally {
       setSending(false);
     }
+  }
+
+  /** Loose on purpose: the orchestrator decides, this only catches typos. */
+  function isEmail(value: string): boolean {
+    return /^[^@\s]+@[^@\s.]+\.[^@\s]+$/.test(value.trim());
   }
 
   async function submit(): Promise<void> {
@@ -224,12 +232,16 @@ export default function StartRunDialog({ open, busy, onClose, onStart }: Props) 
 
           <TextField
             size="small"
-            label="Your name"
-            placeholder="firstname.lastname"
+            type="email"
+            label="Your email"
+            placeholder="firstname.lastname@example.com"
             value={startedBy}
             onChange={(e) => setStartedBy(e.target.value)}
             disabled={working}
-            helperText="Recorded against the run"
+            error={startedBy.trim().length > 0 && !isEmail(startedBy)}
+            // An address rather than a name because step 22 authors this run's
+            // commits as this person, and git has nowhere to put a bare name.
+            helperText="Recorded against the run, and used to author its commits"
           />
 
           {error && (

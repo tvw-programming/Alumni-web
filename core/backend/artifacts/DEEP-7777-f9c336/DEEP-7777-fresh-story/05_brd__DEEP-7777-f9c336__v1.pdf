@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 845 >>
+stream
+BT /F1 10 Tf 12 TL 40 780 Td (# Business Requirement Document) Tj T* () Tj T* (## User data export) Tj T* () Tj T* (### Background) Tj T* (Users need a self-service export of their own data.) Tj T* () Tj T* (### Objectives) Tj T* (- Self-service export) Tj T* (- No support ticket required) Tj T* () Tj T* (### In Scope) Tj T* (- CSV export of profile and orders) Tj T* () Tj T* (### Out of Scope) Tj T* (- PDF export) Tj T* (- Bulk admin export) Tj T* () Tj T* (### Acceptance Criteria) Tj T* (- **AC-1** An authenticated user can request an export of their own data) Tj T* (- **AC-2** The export contains profile and order history as CSV) Tj T* (- **AC-3** A user cannot request an export for another user) Tj T* () Tj T* (### Risks) Tj T* (- PII handling in the generated file) Tj T* () Tj T* (### Assumptions) Tj T* (- [none]) Tj T* () Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001137 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1207
+%%EOF

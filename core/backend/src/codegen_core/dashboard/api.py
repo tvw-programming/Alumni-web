@@ -20,8 +20,10 @@ from pydantic import BaseModel
 from ..core import story_input
 from ..core.config import ConfigLoader
 from ..core.context import JobContext
+from ..core.identity import can_publish, is_email
 from ..core.errors import CodeGenCoreError, DocumentRejected, RevisionNotAllowed
 from ..orchestrator.gates import GateService
+from ..orchestrator.overrides import OverrideService, waived_refs
 from ..steps._loader import load_steps
 from .ambiguity_clarify import ClarificationError, clarify
 from .presenter import RunPresenter
@@ -57,7 +59,10 @@ class NewRun(BaseModel):
     acceptanceCriteria: list[str] = []
     #: The developer declined the form; step 01 reads the configured tracker.
     useTracker: bool = False
-    startedBy: str = "dashboard-user"
+    #: An email: step 22 authors the run's commits as this person, and git needs
+    #: an address. Validated at the point of use rather than here, so a
+    #: deployment with no target repository is not forced to supply one.
+    startedBy: str = ""
 
 
 class RevisionUpload(BaseModel):
@@ -86,6 +91,20 @@ class ClarifyRequest(BaseModel):
 
     answers: list[ClarificationAnswer]
     answeredBy: str = "dashboard-user"
+
+
+class OverrideRequest(BaseModel):
+    """A security owner accepting one or more blocking findings, with a reason.
+
+    `role` is explicit rather than inferred: the whole control is that a named
+    person in a named role signed for this, so it is not something the API
+    should guess on their behalf.
+    """
+
+    refs: list[str]
+    role: str
+    justification: str = ""
+    requestedBy: str = "dashboard-user"
 
 
 def create_app(config_path: str | None = None, cors_origins: list[str] | None = None) -> Any:
@@ -167,6 +186,13 @@ def create_app(config_path: str | None = None, cors_origins: list[str] | None = 
                 raise HTTPException(422, str(exc)) from exc
 
         source = "the configured tracker" if body.useTracker else "the details you entered"
+        if can_publish(cfg) and not is_email(body.startedBy):
+            raise HTTPException(
+                422,
+                "This deployment pushes branches and opens pull requests, so a run "
+                "has to record who started it: give an email address, which is what "
+                "its commits will be authored as.",
+            )
         ctx.journal.append_event(
             "run_requested",
             jira_id=jira,
@@ -330,6 +356,73 @@ def create_app(config_path: str | None = None, cors_origins: list[str] | None = 
             ),
         }
 
+    @app.get(
+        "/api/runs/{job_id}/security/findings",
+        summary="Blocking security findings from step 18, with their waiver refs",
+    )
+    def security_findings(job_id: str) -> dict:
+        """What is blocking the run, and what it would take to waive each one.
+
+        Read off the artifacts, so it answers the same way whether or not the
+        run is still in memory. `ref` is what the override endpoint takes.
+        """
+        ctx = ctx_for(job_id)
+        service = OverrideService(cfg)
+        override = cfg.policy.override
+        return {
+            "findings": service.open_findings(ctx),
+            "waived": sorted(waived_refs(ctx.journal)),
+            "policy": {
+                "allowedRoles": list(override.allowed_roles),
+                "requiresJustification": override.requires_justification,
+            },
+        }
+
+    @app.post(
+        "/api/runs/{job_id}/security/override",
+        summary="Waive blocking security findings for this run, on the record",
+    )
+    def security_override(job_id: str, body: OverrideRequest) -> dict:
+        """Accept a blocking finding instead of fixing it.
+
+        The alternative this exists to replace is editing `block_on_severity` in
+        config, which turns the check off for every run and records nothing. A
+        waiver here names one occurrence, dies with this job, and leaves a
+        journal entry naming who accepted it and why.
+
+        It does not restart anything. Step 18 has to run again to see the waiver
+        — which is right: the waiver says a finding is acceptable, not that the
+        code is unchanged since it was found.
+        """
+        ctx = ctx_for(job_id)
+        try:
+            result = OverrideService(cfg).waive(
+                ctx,
+                refs=body.refs,
+                approver_id=body.requestedBy,
+                role=body.role,
+                justification=body.justification,
+            )
+        except PermissionError as exc:
+            raise HTTPException(403, str(exc)) from exc
+        except ValueError as exc:
+            raise HTTPException(422, str(exc)) from exc
+
+        waived, remaining = result["waived"], result["remaining"]
+        return {
+            "waived": waived,
+            "remaining": remaining,
+            "message": (
+                f"{len(waived)} finding{'' if len(waived) == 1 else 's'} waived by "
+                f"{body.requestedBy} ({body.role}). "
+                + (
+                    f"{len(remaining)} still blocking; step 18 stays blocked."
+                    if remaining
+                    else "Retry step 18 and the run continues once it re-scans."
+                )
+            ),
+        }
+
     @app.post(
         "/api/runs/{job_id}/steps/{step}/clarify",
         summary="Answer ambiguity questions and resume from step 01",
@@ -385,9 +478,15 @@ def create_app(config_path: str | None = None, cors_origins: list[str] | None = 
             "default": cfg.visualization.default_variant,
             "variants": {
                 variant_id: {
-                    **{camel(k): v for k, v in variant.model_dump(exclude={"palette"}).items()},
+                    **{
+                        camel(k): v
+                        for k, v in variant.model_dump(exclude={"palette", "card"}).items()
+                    },
                     "id": variant_id,
                     "palette": {camel(k): v for k, v in variant.palette.model_dump().items()},
+                    # The card block carries defaults the config need not spell
+                    # out, so it is always sent whole rather than only when set.
+                    "card": {camel(k): v for k, v in variant.card.model_dump().items()},
                 }
                 for variant_id, variant in cfg.visualization.variants.items()
             },

@@ -1,0 +1,14 @@
+{
+  "requirement_compliance": "PASSED",
+  "bugs": [],
+  "regression_risk": "low",
+  "security": [],
+  "performance": [],
+  "architecture": [],
+  "maintainability": [
+    "consider extracting the CSV writer"
+  ],
+  "test_quality": [],
+  "verdict": "APPROVED",
+  "reviewer_model_id": "mock-reviewer-1"
+}

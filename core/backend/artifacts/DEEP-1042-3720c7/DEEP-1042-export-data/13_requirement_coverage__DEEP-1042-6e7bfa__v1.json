@@ -1,0 +1,11 @@
+{
+  "covered": [
+    "AC-1",
+    "AC-2",
+    "AC-3"
+  ],
+  "missing": [],
+  "unrelated_changes": [],
+  "hallucinated_functionality": [],
+  "verdict": "PASSED"
+}

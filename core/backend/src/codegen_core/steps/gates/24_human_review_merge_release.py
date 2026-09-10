@@ -8,7 +8,8 @@ does anything merge.
 
 `block_if_open_findings` means an approval cannot override an unresolved
 blocking security finding by accident; that requires the explicit override path
-in config.policy.override, which is role-restricted and audited.
+in config.policy.override, which is role-restricted and audited. It lives in
+`orchestrator.overrides`, and waives one occurrence for this job only.
 
 Release notes are generated after the merge decision, from artifacts rather than
 from the diff, so they describe intent rather than mechanics.
@@ -21,7 +22,9 @@ from typing import Any
 from ..core.component import Gate
 from ..core.envelope import Envelope, Intent
 from ..core.parts import structured
+from ..orchestrator.overrides import waived_refs
 from ..plugins.factory import build_plugin
+from ..schemas.security import finding_ref
 
 
 class HumanReviewMergeRelease(Gate):
@@ -39,7 +42,17 @@ class HumanReviewMergeRelease(Gate):
         pr = ctx.recall("PullRequestV1") or {}
 
         security = ctx.recall("SecurityScanV1") or {}
-        open_findings = security.get("blocking_findings", [])
+        # Step 18 already excludes what was waived, so this normally subtracts
+        # nothing. It matters when a waiver is signed after step 18 last ran:
+        # the gate should reach the same verdict whenever the decision landed,
+        # rather than blocking on a finding somebody has already accepted and
+        # leaving no visible reason why.
+        waived = waived_refs(ctx.journal)
+        open_findings = [
+            f
+            for f in security.get("blocking_findings", [])
+            if finding_ref(f.get("scanner", ""), f) not in waived
+        ]
         if gate_cfg.block_if_open_findings and open_findings:
             record = {
                 "gate": "PR", "status": "BLOCKED", "approver_id": "", "approver_role": "",
