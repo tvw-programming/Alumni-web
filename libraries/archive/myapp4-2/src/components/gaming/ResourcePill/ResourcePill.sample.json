@@ -1,8 +1,0 @@
-{
-  "lives": { "type": "lives", "current": 5, "maximum": 5, "status": "available" },
-  "livesExhausted": { "type": "lives", "current": 0, "maximum": 5, "regenerateAt": "2026-08-20T09:12:00+05:30", "status": "exhausted" },
-  "energy": { "type": "energy", "current": 60, "maximum": 100, "status": "available" },
-  "coins": { "type": "coins", "current": 1240, "status": "available" },
-  "gems": { "type": "gems", "current": 85, "status": "syncing" },
-  "tokens": { "type": "tokens", "current": 3, "status": "error" }
-}

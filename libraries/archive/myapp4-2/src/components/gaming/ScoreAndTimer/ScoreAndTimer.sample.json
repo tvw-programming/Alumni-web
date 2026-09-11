@@ -1,9 +1,0 @@
-{
-  "score": 1240,
-  "delta": 100,
-  "isPersonalBest": true,
-  "timerRunning": { "endsAt": "2026-08-20T00:00:30.000Z", "status": "running" },
-  "timerCritical": { "endsAt": "2026-08-20T00:00:04.000Z", "status": "critical" },
-  "timerPaused": { "endsAt": "2026-08-20T00:00:45.000Z", "status": "paused" },
-  "timerExpired": { "endsAt": "2026-08-19T23:59:00.000Z", "status": "expired" }
-}

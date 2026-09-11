@@ -1,9 +1,0 @@
-{
-  "files": [
-    { "id": "f-1", "name": "Q3_Budget_Review.xlsx", "mimeType": "application/vnd.ms-excel", "sizeBytes": 245000, "uri": "https://files.example.com/q3-budget.xlsx", "status": "available" },
-    { "id": "f-2", "name": "Vendor_Contract_Final.pdf", "mimeType": "application/pdf", "sizeBytes": 1840000, "status": "downloading", "progress": 0.55 },
-    { "id": "f-3", "name": "onboarding_photo.jpg", "mimeType": "image/jpeg", "sizeBytes": 3200000, "status": "uploading", "progress": 0.3 },
-    { "id": "f-4", "name": "Design_Review_Recording.mp4", "mimeType": "video/mp4", "sizeBytes": 84000000, "status": "error" },
-    { "id": "f-5", "name": "Expired_Report.csv", "mimeType": "text/csv", "status": "expired" }
-  ]
-}

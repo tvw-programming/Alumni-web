@@ -1,6 +1,10 @@
 node_modules/
 dist/
 dist-smoke/
+# TypeScript incremental build info
+*.tsbuildinfo
+# Local agent tooling (machine-specific)
+.abacusai/
 # Packaging output at repo root only — do not ignore **/steps/build/.
 /build/
 .DS_Store

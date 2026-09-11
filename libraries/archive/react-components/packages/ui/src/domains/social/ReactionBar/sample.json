@@ -1,9 +1,0 @@
-{
-  "summary": { "counts": { "like": 128, "celebrate": 14, "insightful": 7 }, "mine": "like" },
-  "options": [
-    { "key": "like", "glyph": "👍", "label": "Like" },
-    { "key": "celebrate", "glyph": "🎉", "label": "Celebrate" },
-    { "key": "insightful", "glyph": "💡", "label": "Insightful" },
-    { "key": "support", "glyph": "🤝", "label": "Support" }
-  ]
-}

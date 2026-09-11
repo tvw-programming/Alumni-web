@@ -1,4 +1,0 @@
-{
-  "role": "member",
-  "assignableRoles": ["admin", "member", "guest"]
-}

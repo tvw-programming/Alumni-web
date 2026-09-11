@@ -1,6 +1,0 @@
-{
-  "target": "dry-run",
-  "scanner": "zap",
-  "findings": [],
-  "evidence": []
-}

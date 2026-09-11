@@ -1,8 +1,0 @@
-{
-  "id": "dev_bed_light",
-  "name": "Bedroom light",
-  "room": "Bedroom",
-  "on": true,
-  "reachable": true,
-  "detail": "60%"
-}

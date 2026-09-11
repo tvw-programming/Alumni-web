@@ -1,4 +1,0 @@
-{
-  "value": { "adults": 2, "children": 1, "childAges": [7], "rooms": 1 },
-  "rules": { "minAdults": 1, "maxAdults": 16, "maxChildren": 8, "maxRooms": 8, "maxGuestsPerRoom": 3, "requireChildAges": true }
-}

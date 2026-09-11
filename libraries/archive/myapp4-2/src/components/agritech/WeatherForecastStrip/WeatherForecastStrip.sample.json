@@ -1,9 +1,0 @@
-{
-  "days": [
-    { "date": "2026-08-20", "label": "Today", "icon": "weather-partly-cloudy", "high": 32, "low": 24, "precipitationChance": 20, "humidity": 58, "alert": "none" },
-    { "date": "2026-08-21", "label": "Tomorrow", "icon": "weather-pouring", "high": 29, "low": 23, "precipitationChance": 80, "humidity": 74, "alert": "warning" },
-    { "date": "2026-08-22", "label": "Fri", "icon": "weather-rainy", "high": 28, "low": 22, "precipitationChance": 65, "humidity": 70, "alert": "watch" },
-    { "date": "2026-08-23", "label": "Sat", "icon": "weather-sunny", "high": 33, "low": 25, "precipitationChance": 5, "humidity": 45, "alert": "none" },
-    { "date": "2026-08-24", "label": "Sun", "icon": "weather-lightning-rainy", "high": 27, "low": 21, "precipitationChance": 90, "humidity": 82, "alert": "severe" }
-  ]
-}

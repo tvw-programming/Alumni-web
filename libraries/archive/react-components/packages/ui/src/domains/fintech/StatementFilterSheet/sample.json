@@ -1,5 +1,0 @@
-{
-  "value": { "range": "90d", "direction": "debit", "categories": ["Food & drink", "Travel"] },
-  "availableCategories": ["Food & drink", "Travel", "Bills", "Shopping", "Transfers", "Salary"],
-  "matchCount": 42
-}

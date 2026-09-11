@@ -1,7 +1,0 @@
-{
-  "items": [
-    { "id": "cw-1", "title": "Quiet Harbor", "subtitle": "S1:E4 · The Tide Turns", "image": { "uri": "https://images.example.com/quiet-harbor-ep4.jpg", "alt": "Quiet Harbor episode 4" }, "progress": 0.67, "durationLabel": "48 min", "progressLabel": "Watched 32 of 48 min" },
-    { "id": "cw-2", "title": "Nebula Drift", "image": { "uri": "https://images.example.com/nebula-drift.jpg", "alt": "Nebula Drift" }, "progress": 0.12, "durationLabel": "1h 58m", "progressLabel": "12 min left · started recently" },
-    { "id": "cw-3", "title": "Skyline Echoes", "subtitle": "S2:E1 · Reset", "image": { "alt": "Skyline Echoes episode 1" }, "progress": 0.4, "progressLabel": "Watched 18 of 45 min", "availability": { "status": "unavailable", "reason": "Episode removed from catalog" } }
-  ]
-}

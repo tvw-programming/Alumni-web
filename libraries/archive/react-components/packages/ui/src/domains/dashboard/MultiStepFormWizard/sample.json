@@ -1,8 +1,0 @@
-{
-  "initialValues": { "companyName": "Northwind Traders", "contactEmail": "", "plan": "growth" },
-  "steps": [
-    { "id": "company", "label": "Company" },
-    { "id": "contact", "label": "Contact" },
-    { "id": "plan", "label": "Plan", "optional": true }
-  ]
-}

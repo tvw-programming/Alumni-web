@@ -1,6 +1,0 @@
-{
-  "active": { "code": "4821", "status": "active", "expiresAt": "2026-08-20T07:15:00+05:30" },
-  "verified": { "code": "4821", "status": "verified" },
-  "expired": { "code": "7790", "status": "expired" },
-  "failed": { "code": "5510", "status": "failed", "attemptsRemaining": 2 }
-}

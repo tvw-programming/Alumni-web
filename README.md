@@ -1,96 +1,75 @@
-# CodeGen — AI Workflow Monorepo
+# Alumni Management — sample application
 
-**CodeGen Core** turns a Jira story into a reviewed change set in 24 steps, with
-two mandatory human gates (BRD approval and merge). The engine and its dashboard
-live entirely under `core/`.
+A worked example of the full stack: React consuming shared components, a Go
+Fiber gateway, Firebase for identity and storage, Cloud Vision for moderation,
+and PostgreSQL with raw SQL.
 
-## Quick Start
+```
+.
+  src/          React app (Vite, dev server on port 5174)
+  vendor/       shared React components, vendored as source
+  api/          Go Fiber gateway
+  db/
+    migrations/ golang-migrate pairs, applied by the gateway at startup
+    queries/    raw SQL, kept as .sql so EXPLAIN works without running the API
+```
+
+## The shared components are vendored as source
+
+The upstream `react-components` library is private and publishes no `dist`, so
+the components it exposes are checked in under `vendor/react-components/src` and
+imported as source. That has one consequence that breaks first for anyone wiring
+it up again: those components import each other through the library's own `@/`
+alias. Aliasing `@ui` alone gets you a module that fails to resolve its own
+imports.
+
+So `vite.config.ts` and `tsconfig.json` both map:
+
+| alias  | resolves to                                          |
+|--------|------------------------------------------------------|
+| `~/*`  | this app's `src`                                      |
+| `@ui/*`| the vendored library's `src` — how this app names it    |
+| `@/*`  | the vendored library's `src` — what it calls itself     |
+
+The two files must agree, or the editor and the build will disagree.
+
+## Running it
 
 ```bash
-bash scripts/install.sh
-npm run dev:core
+npm install
+npm run dev                   # http://localhost:5174, fixture data
+
+# Or the whole stack — React, gateway and Postgres — in Docker:
+docker compose up -d --build
 ```
 
-Open the dashboard at http://localhost:5173 and press **Start a run**.
-
-## Actual stack (what exists)
-
-| Path | Role |
-|------|------|
-| `core/backend/` | Python 3.11+ pipeline (`codegen_core`): orchestrator, GuardedFS, gates, FastAPI dashboard API, CLI |
-| `core/frontend/` | React 19 + MUI + Vite run monitor |
-| `core/backend/sample-project/` | **Primary pipeline target** — FastAPI sample service the agent edits |
-| `apps/react-web/` | Optional sample Alumni UI (consumes archived component lib; not required for Core) |
-
-## What is NOT in this repo
-
-These names appear in older docs or empty folders. They are **not** shipped products:
-
-- Angular web, React Native, Kotlin mobile apps (empty reserved dirs under `apps/`)
-- Explainer services (`python-explainer`, `express-explainer`, `springboot-explainer`, etc.) — empty
-- Hollow `packages/shared-types`, `packages/design-tokens`, `packages/shared-utils`
-- Large UI showcases formerly under `libraries/` — quarantined to `libraries/archive/`
-
-Do not expect Nx/Turborepo to build those stubs.
-
-## Storage budget
-
-`apps/`, `libraries/`, `services/`, and `packages/` are **workspace reserved capacity**.
-The 24-step engine, tests, config, and safety contracts live only under **`core/`**.
-Archived trees under `libraries/archive/` (~420 MB) are kept for history, not for CI.
-
-See `.workspace-root` and `core/README.md`.
-
-## Structure
-
-```
-core/                 ← canonical product (pipeline + dashboard + sample-project)
-apps/                 ← reserved; only react-web has real code
-libraries/archive/    ← quarantined showcases / empty stubs
-services/             ← reserved empty explainer slots
-packages/             ← reserved empty shared-package slots
-```
-
-## Services (running)
-
-- Core API: http://localhost:8000
-- Core dashboard: http://localhost:5173
-
-Optional: `npm run dev:react` for `apps/react-web` on :3000 (independent of the pipeline).
-
-## The core workflow
-
-`core/` runs a story from a Jira ticket to a reviewed pull request in 24 steps,
-stopping twice for a person: BRD gate (06) and merge gate (24). Models, prompts,
-budgets and remediation edges are declared in `core/backend/config/config.json`.
+The React app serves fixture data unless `VITE_USE_FIXTURES=false`, so it renders
+with nothing else running. Point it at a gateway with `VITE_API_TARGET`.
 
 ```bash
-npm run dev:core                        # backend :8000 + dashboard :5173
-npm run test:core                       # backend pytest suite
-npm run cli:core -- config validate
-npm run cli:core -- steps list
-npm run docker:up                       # core stack via Docker
+cd api && go run ./cmd/server # :8080, proxied at /api by vite
+migrate -path db/migrations -database "$DATABASE_URL" up
 ```
 
-`core/README.md` is the deep guide; `core/backend/docs/` covers architecture and safety.
+## What is scaffolded vs. complete
 
-## Installation
+Complete and verified: the schema and its indexes, the raw queries (checked with
+EXPLAIN against Postgres 17 with 500 seeded rows), the Firebase auth middleware,
+the signed-URL issuer, the Vision moderation service and its webhook, and the
+React pieces listed below.
 
-1. Clone the repository
-2. `bash scripts/install.sh`
-3. `npm run dev:core`
+Left as stubs, because they are mechanical once the patterns above are settled:
+the remaining CRUD handlers, `internal/repository/*` bodies, `internal/config`,
+`cmd/server/main.go` wiring, and the routing shell in `src/routes`.
 
-## Docker
-
-```bash
-npm run docker:up
-npm run docker:down
-```
-
-Or `cd core && make up` (health checks + browser).
-
-## For AI tools
-
-1. Prefer `.ai-context.json` and **`core/`** as the working set
-2. Pass only the folder you are changing (e.g. `core/backend`)
-3. Treat `libraries/archive/` as read-only historical material
+| Area | File |
+|---|---|
+| Social login + ID token | `src/lib/firebase.ts` |
+| Authenticated API client | `src/api/client.ts` |
+| AG-Grid admin table | `src/features/admin/AlumniAdminGrid.tsx` |
+| Education domain form | `src/features/alumni/educationFormSchema.ts` |
+| Swiper gallery, virtualised | `src/features/media/MediaGallery.tsx` |
+| Firebase session validation | `api/internal/firebaseauth/middleware.go` |
+| Signed upload URLs | `api/internal/storage/signed_url.go` |
+| Vision moderation | `api/internal/moderation/vision.go` |
+| Upload + webhook lifecycle | `api/internal/handler/media_handler.go` |

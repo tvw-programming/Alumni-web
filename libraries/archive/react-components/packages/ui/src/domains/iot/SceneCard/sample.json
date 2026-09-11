@@ -1,9 +1,0 @@
-{
-  "scene": {
-    "id": "scn_movie",
-    "name": "Movie night",
-    "summary": "Dim the living room to 20%, close the blinds and set the thermostat to 21°.",
-    "deviceCount": 4
-  },
-  "result": { "succeeded": 3, "total": 4, "failed": ["Hallway light"] }
-}

@@ -1,9 +1,0 @@
-{
-  "tasks": [
-    { "id": "t-1", "title": "Finalize Q3 budget review", "completed": false, "priority": "urgent", "assignee": { "id": "u-1", "name": "Maya Chen" }, "dueDate": "2026-08-15T00:00:00Z", "status": "In review" },
-    { "id": "t-2", "title": "Draft onboarding checklist for new hires", "completed": false, "priority": "medium", "assignee": { "id": "u-2", "name": "Devon Osei" }, "dueDate": "2026-08-20T18:00:00Z", "subtaskCount": { "complete": 3, "total": 5 } },
-    { "id": "t-3", "title": "Update API documentation for v2 endpoints", "completed": true, "priority": "low", "assignee": { "id": "u-3", "name": "Priya Nair" } },
-    { "id": "t-4", "title": "Review contractor invoice for August", "completed": false, "priority": "high", "syncError": true },
-    { "id": "t-5", "title": "Archive completed project files", "completed": false, "priority": "none", "locked": true, "status": "Locked by admin" }
-  ]
-}

@@ -1,9 +1,0 @@
-{
-  "accountName": "Everyday Savings · ••4821",
-  "balance": { "amountMinor": "2400000", "currency": "INR" },
-  "availableBalance": { "amountMinor": "2312500", "currency": "INR" },
-  "visibility": "masked",
-  "status": "ready",
-  "updatedAt": "2026-08-06T10:42:00Z",
-  "autoMaskAfterMinutes": 2
-}

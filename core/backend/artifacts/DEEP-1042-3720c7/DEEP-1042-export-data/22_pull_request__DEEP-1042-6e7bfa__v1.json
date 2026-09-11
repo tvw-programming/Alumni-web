@@ -1,9 +1,0 @@
-{
-  "number": 0,
-  "url": "https://github.com/dry-run/pull/0",
-  "head": "codegen/DEEP-1042-user-data-export",
-  "base": "main",
-  "draft": true,
-  "dry_run": true,
-  "title": "DEEP-1042: User data export"
-}

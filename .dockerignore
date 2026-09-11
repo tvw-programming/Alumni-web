@@ -1,0 +1,11 @@
+# Keep build contexts small and deterministic: nothing here is needed by either
+# image (./Dockerfile installs with npm, ./api/Dockerfile compiles Go).
+node_modules
+dist
+.git
+.gitignore
+**/.DS_Store
+*.log
+.abacusai
+.ai-context.json
+.workspace-root

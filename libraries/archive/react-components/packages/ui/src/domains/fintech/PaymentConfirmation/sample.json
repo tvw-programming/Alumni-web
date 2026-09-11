@@ -1,7 +1,0 @@
-{
-  "amount": { "amountMinor": "1250000", "currency": "INR" },
-  "recipient": "Meera Iyer · meera@okhdfc",
-  "fundingSource": "Everyday Savings ••4821",
-  "fee": { "amountMinor": "0", "currency": "INR" },
-  "riskNotice": "You have not paid this person before. Check the UPI ID carefully."
-}

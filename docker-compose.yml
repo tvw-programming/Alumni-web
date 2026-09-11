@@ -1,20 +1,90 @@
 # ---------------------------------------------------------------------------
-# CodeGen — monorepo stack.
+# Alumni web app.
 #
-#   npm run docker:up     start everything
-#   npm run docker:down   stop it
+#   docker compose up -d --build
+#   http://localhost:5174
 #
-# The core services (the 24-step workflow backend and its dashboard) are
-# defined in core/docker-compose.yml and pulled in here, so `make up` from
-# core/ and `docker compose up` from the repo root bring up the same thing.
+# The React app runs on fixture data by default, so it renders with no backend
+# at all. Bring the gateway and Postgres up too (they are in this file) and set
+# ALUMNI_FIXTURES=false to talk to the real API instead.
 # ---------------------------------------------------------------------------
 
-name: codegen
+services:
 
-include:
-  - path: core/docker-compose.yml
-    project_directory: core
-  # The Alumni sample app — http://localhost:5174. Runs on fixture data until
-  # its Go gateway compiles; see apps/react-web/README.md.
-  - path: apps/react-web/docker-compose.yml
-    project_directory: apps/react-web
+  # -------------------------------------------------------------------------
+  # Postgres for the alumni app. Its own instance rather than sharing the
+  # library's: this schema is applied by the gateway at startup, and pointing
+  # migrations at a database another project owns is how two projects end up
+  # fighting over one schema_migrations table.
+  # -------------------------------------------------------------------------
+  alumni-db:
+    image: postgres:17-alpine
+    container_name: alumni-web-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${ALUMNI_DB_NAME:-alumni}
+      POSTGRES_USER: ${ALUMNI_DB_USER:-alumni}
+      POSTGRES_PASSWORD: ${ALUMNI_DB_PASSWORD:-alumni-dev-only}
+    volumes:
+      - alumni-db-data:/var/lib/postgresql/data
+    ports:
+      - "${ALUMNI_DB_PORT:-5434}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${ALUMNI_DB_USER:-alumni} -d ${ALUMNI_DB_NAME:-alumni}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # -------------------------------------------------------------------------
+  # The Go Fiber gateway. Serves alumni CRUD only — Firebase session validation,
+  # signed uploads and Vision moderation are written but not wired here, because
+  # they need Google credentials this environment does not have.
+  # -------------------------------------------------------------------------
+  alumni-api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    image: alumni-web/api:1.0.0
+    container_name: alumni-web-api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://${ALUMNI_DB_USER:-alumni}:${ALUMNI_DB_PASSWORD:-alumni-dev-only}@alumni-db:5432/${ALUMNI_DB_NAME:-alumni}?sslmode=disable
+      # There is no authenticated mode in this build; the server refuses to
+      # start unless this says so explicitly.
+      AUTH_MODE: dev-no-auth
+      CORS_ORIGINS: http://localhost:${ALUMNI_PORT:-5174}
+      PORT: "8080"
+    ports:
+      - "${ALUMNI_API_PORT:-8080}:8080"
+    depends_on:
+      alumni-db:
+        condition: service_healthy
+
+  alumni-web:
+    build:
+      # The repository root, because the app imports the shared components as
+      # source from ./vendor/react-components.
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    image: alumni-web/web:1.0.0
+    container_name: alumni-web
+    restart: unless-stopped
+
+    environment:
+      VITE_USE_FIXTURES: ${ALUMNI_FIXTURES:-true}
+      VITE_API_TARGET: ${ALUMNI_API:-http://alumni-api:8080}
+      # Firebase is only reached once fixtures are off; empty values are fine
+      # until then, and the app renders without them.
+      VITE_FIREBASE_API_KEY: ${VITE_FIREBASE_API_KEY:-}
+      VITE_FIREBASE_AUTH_DOMAIN: ${VITE_FIREBASE_AUTH_DOMAIN:-}
+      VITE_FIREBASE_PROJECT_ID: ${VITE_FIREBASE_PROJECT_ID:-}
+      VITE_FIREBASE_STORAGE_BUCKET: ${VITE_FIREBASE_STORAGE_BUCKET:-}
+      VITE_FIREBASE_APP_ID: ${VITE_FIREBASE_APP_ID:-}
+
+    ports:
+      - "${ALUMNI_PORT:-5174}:5174"
+
+volumes:
+  alumni-db-data:
+    name: alumni-web-db-data

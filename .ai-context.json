@@ -1,74 +1,49 @@
 {
   "monorepo": {
-    "name": "CodeGen",
-    "description": "CodeGen Core 24-step AI workflow — product lives under core/"
+    "name": "alumni-web",
+    "description": "Alumni management sample app — React (Vite) UI, Go Fiber gateway, PostgreSQL"
   },
   "projects": [
     {
-      "name": "core-backend",
-      "path": "core/backend/",
-      "description": "24-step AI workflow engine — pipeline runner, two human gates, gate API and CLI",
+      "name": "alumni-web",
+      "path": ".",
+      "description": "React 19 + MUI admin, profile and gallery screens, backed by fixture data or the gateway",
       "key-files": [
-        "core/backend/src/codegen_core/orchestrator/runner.py",
-        "core/backend/src/codegen_core/steps/",
-        "core/backend/src/codegen_core/core/config.py",
-        "core/backend/src/codegen_core/dashboard/api.py",
-        "core/backend/src/codegen_core/tools/file_write_guard.py",
-        "core/backend/config/config.json",
-        "core/backend/sample-project/",
-        "core/backend/pyproject.toml"
-      ],
-      "language": "python",
-      "ignore": ["__pycache__", "artifacts", "runs", "workspace", ".venv"]
-    },
-    {
-      "name": "core-frontend",
-      "path": "core/frontend/",
-      "description": "Run monitor dashboard — React 19 + MUI, reads the core-backend gate API",
-      "key-files": [
-        "core/frontend/src/App.tsx",
-        "core/frontend/src/api/httpApi.ts",
-        "core/frontend/src/api/mockApi.ts",
-        "core/frontend/src/types/workflow.ts",
-        "core/frontend/src/pages/DashboardPage.tsx",
-        "core/frontend/package.json"
+        "src/main.tsx",
+        "src/App.tsx",
+        "src/api/alumni.ts",
+        "src/features/admin/AlumniAdminGrid.tsx",
+        "src/features/alumni/ProfilePage.tsx",
+        "src/features/media/MediaGallery.tsx",
+        "vite.config.ts",
+        "package.json"
       ],
       "language": "typescript",
-      "ignore": ["node_modules", "dist", "dist-smoke"]
-    },
-    {
-      "name": "sample-project",
-      "path": "core/backend/sample-project/",
-      "description": "Primary FastAPI service the pipeline edits",
-      "language": "python",
-      "ignore": ["__pycache__", ".venv"]
-    },
-    {
-      "name": "react-web",
-      "path": "apps/react-web/",
-      "description": "Optional Alumni sample UI (not required for Core)",
-      "key-files": [
-        "apps/react-web/src/",
-        "apps/react-web/package.json"
-      ],
-      "language": "javascript",
       "ignore": ["node_modules", "dist"]
+    },
+    {
+      "name": "alumni-api",
+      "path": "api/",
+      "description": "Go Fiber gateway — alumni CRUD over PostgreSQL with raw SQL",
+      "key-files": [
+        "api/cmd/server/main.go",
+        "api/internal/handler/alumni_handler.go",
+        "api/internal/repository/alumni_repository.go",
+        "db/migrations/",
+        "db/queries/alumni.sql"
+      ],
+      "language": "go",
+      "ignore": ["bin"]
     }
-  ],
-  "archive": [
-    "libraries/archive/react-components/",
-    "libraries/archive/myapp4-2/"
   ],
   "shared": [],
   "ignore-globally": [
     "node_modules",
     "dist",
-    "dist-smoke",
-    "build",
     ".git",
     "__pycache__",
     ".venv",
     "venv",
-    "libraries/archive"
+    "vendor/react-components"
   ]
 }

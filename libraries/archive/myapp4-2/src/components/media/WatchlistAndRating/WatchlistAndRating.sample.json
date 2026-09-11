@@ -1,7 +1,0 @@
-{
-  "title": "Stranger Things",
-  "ratings": [
-    { "rating": "16+", "descriptors": ["Violence", "Language"], "restricted": false },
-    { "rating": "18+", "descriptors": ["Strong violence", "Sexual content"], "restricted": true }
-  ]
-}

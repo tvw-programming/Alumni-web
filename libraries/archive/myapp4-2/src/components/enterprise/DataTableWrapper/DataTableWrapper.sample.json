@@ -1,9 +1,0 @@
-{
-  "rows": [
-    { "id": "d-1", "name": "Acme Corp — Enterprise Plan", "owner": "Maya Chen", "amount": "$48,000", "stage": "Negotiation", "closeDate": "2026-09-15" },
-    { "id": "d-2", "name": "Globex — Standard Plan", "owner": "Devon Osei", "amount": "$12,500", "stage": "Proposal sent", "closeDate": "2026-08-28" },
-    { "id": "d-3", "name": "Initech — Renewal", "owner": "Priya Nair", "amount": "$31,200", "stage": "Closed won", "closeDate": "2026-08-10" },
-    { "id": "d-4", "name": "Umbrella Inc — Trial upgrade", "owner": "Maya Chen", "amount": "$8,900", "stage": "Discovery", "closeDate": "2026-09-30" },
-    { "id": "d-5", "name": "Hooli — Enterprise Plan", "owner": "Devon Osei", "amount": "$62,000", "stage": "Negotiation", "closeDate": "2026-09-05" }
-  ]
-}

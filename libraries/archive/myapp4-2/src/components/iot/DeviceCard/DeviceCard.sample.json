@@ -1,9 +1,0 @@
-{
-  "devices": [
-    { "id": "dv-1", "name": "Living Room Light", "type": "light", "room": "Living Room", "icon": "lightbulb-outline", "powerState": "on", "connection": "online", "capabilities": ["power", "brightness"], "batteryLevel": null, "signalStatus": "excellent", "signalProtocol": "wifi" },
-    { "id": "dv-2", "name": "Front Door Lock", "type": "lock", "room": "Entryway", "icon": "lock-outline", "connection": "online", "capabilities": ["lock"], "batteryLevel": 72, "batteryStatus": "normal", "signalStatus": "good", "signalProtocol": "thread" },
-    { "id": "dv-3", "name": "Bedroom Thermostat", "type": "thermostat", "room": "Bedroom", "icon": "thermostat", "connection": "connecting", "capabilities": ["temperature"] },
-    { "id": "dv-4", "name": "Garage Sensor", "type": "sensor", "room": "Garage", "icon": "garage-variant", "connection": "error", "capabilities": ["power"], "sync": { "connection": "error", "lastSeenAt": "2 hours ago" } },
-    { "id": "dv-5", "name": "Backyard Camera", "type": "camera", "room": "Backyard", "icon": "cctv", "connection": "offline", "capabilities": ["power"], "batteryLevel": 12, "batteryStatus": "low", "signalStatus": "offline", "signalProtocol": "wifi", "sync": { "connection": "offline", "lastSeenAt": "35 minutes ago" } }
-  ]
-}

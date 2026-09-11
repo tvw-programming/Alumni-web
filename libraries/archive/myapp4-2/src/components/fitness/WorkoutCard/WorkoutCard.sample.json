@@ -1,9 +1,0 @@
-{
-  "workouts": [
-    { "id": "wo-1", "title": "Full Body Strength", "image": { "uri": "https://images.example.com/full-body.jpg", "alt": "Full body strength workout" }, "type": "Strength", "durationLabel": "30 min", "difficulty": "intermediate", "caloriesLabel": "280 kcal", "equipmentLabel": "Dumbbells", "state": "available" },
-    { "id": "wo-2", "title": "Morning Flow Yoga", "image": { "uri": "https://images.example.com/yoga-flow.jpg", "alt": "Morning yoga flow" }, "type": "Yoga", "durationLabel": "20 min", "difficulty": "beginner", "equipmentLabel": "No equipment", "state": "inProgress" },
-    { "id": "wo-3", "title": "HIIT Sprint Intervals", "image": { "alt": "HIIT sprint intervals" }, "type": "Cardio", "durationLabel": "25 min", "difficulty": "advanced", "caloriesLabel": "310 kcal", "state": "completed" },
-    { "id": "wo-4", "title": "Core & Mobility", "image": { "alt": "Core and mobility" }, "type": "Mobility", "durationLabel": "15 min", "difficulty": "beginner", "state": "scheduled" },
-    { "id": "wo-5", "title": "Elite Power Circuit", "image": { "alt": "Elite power circuit" }, "type": "Strength", "durationLabel": "45 min", "difficulty": "advanced", "equipmentLabel": "Full gym", "state": "locked" }
-  ]
-}
