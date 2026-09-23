@@ -7,7 +7,7 @@
 # The React app runs on fixture data by default, so it renders with no backend
 # at all. Bring the gateway and Postgres up too (they are in this file) and set
 # ALUMNI_FIXTURES=false to talk to the real API instead.
-#
+# ALUMNI_FIXTURES=false ./run.sh
 # Project name is pinned rather than inferred: Compose would otherwise derive it
 # from the directory, so the network and any resource that keys off the project
 # would be renamed by moving the checkout. `-p` and COMPOSE_PROJECT_NAME still
