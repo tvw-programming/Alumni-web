@@ -1,0 +1,21 @@
+{
+  "_comment": "CodeGen settings for this project. The engine ships its own defaults; only put what is specific to this project here. Read on every run. Credentials are never written in this file - the engine reads them from the environment variables its plugins name.",
+  "app": {
+    "job_id_prefix": "DEEP"
+  },
+  "plugins": {
+    "tracker": {
+      "base_url": "",
+      "project_key": ""
+    },
+    "vcs": {
+      "repo": "tvw-programming/Alumni-web",
+      "head_repo": "",
+      "base_branch": "main",
+      "branch_template": "codegen/{jira_id}-{slug}"
+    }
+  },
+  "pipeline": {
+    "loop_budget": 3
+  }
+}
