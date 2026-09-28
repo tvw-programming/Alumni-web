@@ -92,6 +92,7 @@ func run(logger *slog.Logger) error {
 	v1.Put("/alumni/:id", alumni.Update)
 	v1.Post("/alumni/bulk-delete", alumni.BulkDelete)
 	v1.Post("/alumni/import", alumni.Import)
+	v1.Get("/alumni/:id/export", alumni.Export)
 
 	addr := ":" + env("PORT", "8080")
 	go func() {

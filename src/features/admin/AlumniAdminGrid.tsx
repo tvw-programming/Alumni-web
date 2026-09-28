@@ -17,6 +17,7 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/EditOutlined';
+import DownloadIcon from '@mui/icons-material/Download';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import type { ColDef, ValueGetterParams } from 'ag-grid-community';
@@ -26,7 +27,7 @@ import { useCallback, useDeferredValue, useMemo, useState } from 'react';
 import { AppDataGrid } from '@ui/components/grid/AppDataGrid';
 
 import {
-  createAlumni, deleteAlumni, fetchAlumniPage, importAlumni, updateAlumni,
+  createAlumni, deleteAlumni, exportAlumni, fetchAlumniPage, importAlumni, updateAlumni,
   type AlumniDraft, type AlumniRow,
 } from '~/api/alumni';
 import AlumniFormDialog from '~/features/admin/AlumniFormDialog';
@@ -88,15 +89,19 @@ export default function AlumniAdminGrid() {
     },
   });
 
-  const bulkImport = useMutation({
-    mutationFn: (drafts: AlumniDraft[]) => importAlumni(drafts),
-    onSuccess: (outcome) => {
-      setImportOpen(false);
-      refresh(
-        outcome.failed.length === 0
-          ? `Imported ${outcome.created} rows`
-          : `Imported ${outcome.created}, ${outcome.failed.length} failed`,
-      );
+  const exportSingle = useMutation({
+    mutationFn: (id: number) => exportAlumni(id),
+    onSuccess: (blob) => {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `alumni-${id}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+      refresh(`Exported ${selected[0]?.fullName}`);
+    },
+    onError: () => {
+      setToast('Export failed');
     },
   });
 
@@ -195,6 +200,18 @@ export default function AlumniAdminGrid() {
         </Tooltip>
         <Button startIcon={<UploadFileIcon />} disabled={busy} onClick={() => setImportOpen(true)}>
           Import Excel
+        </Button>
+        <Button
+          startIcon={<DownloadIcon />}
+          disabled={selected.length !== 1 || busy || save.isPending}
+          onClick={() => {
+            const id = selected[0]?.id;
+            if (id !== undefined && id !== null) {
+              exportSingle.mutate(id);
+            }
+          }}
+        >
+          Export
         </Button>
         <Button
           variant="contained"

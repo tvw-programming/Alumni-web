@@ -118,6 +118,21 @@ func (h *AlumniHandler) Import(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{"created": created, "failed": failed})
 }
 
+func (h *AlumniHandler) Export(c *fiber.Ctx) error {
+	idStr := c.Params("id")
+	id, err := strconv.ParseInt(idStr, 10, 64)
+	if err != nil {
+		return fiber.NewError(fiber.StatusBadRequest, "id must be a number")
+	}
+
+	row, err := h.repo.Get(c.UserContext(), id)
+	if err != nil {
+		return fiber.NewError(fiber.StatusNotFound, "no alumnus with that id")
+	}
+
+	return c.JSON(row)
+}
+
 func parseDraft(c *fiber.Ctx) (repository.Draft, error) {
 	var draft repository.Draft
 	if err := c.BodyParser(&draft); err != nil {

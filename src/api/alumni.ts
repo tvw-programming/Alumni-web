@@ -133,6 +133,18 @@ export async function importAlumni(drafts: AlumniDraft[]): Promise<ImportOutcome
   return data;
 }
 
+export async function exportAlumni(id: number): Promise<Blob> {
+  if (USING_FIXTURES) {
+    const row = alumniFixtures.find((a) => a.id === id);
+    if (!row) throw new Error(`No alumni with id ${id}`);
+    const blob = new Blob([JSON.stringify(row, null, 2)], { type: 'application/json' });
+    return blob;
+  }
+  const { data } = await api.get<AlumniRow>(`/alumni/${id}/export`);
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  return blob;
+}
+
 function nextFixtureId(): number {
   return alumniFixtures.reduce((max, row) => Math.max(max, row.id), 0) + 1;
 }
